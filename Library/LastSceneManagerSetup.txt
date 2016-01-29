@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Search iBeacon.unity
+  isLoaded: 1
+  isActive: 1
