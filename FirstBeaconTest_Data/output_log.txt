@@ -14,14 +14,12 @@ Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTes
 Loading C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  1.221 seconds
+Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\LibGit2Sharp.dll (this message is harmless)
+Loading C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\LibGit2Sharp.dll into Unity Child Domain
+- Completed reload, in  0.425 seconds
 Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 1.498500 ms
-Setting up 1 worker threads for Enlighten.
-  Thread -> id: 2c80 -> priority: 1 
