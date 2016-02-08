@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{D96B9E77-0507-EACC-D9E1-1AD384E4F617}") = "Genos", "Assembly-CSharp.csproj", "{3AF975C4-56C8-73D5-D054-28AB552FFE10}"
+EndProject
+Project("{D96B9E77-0507-EACC-D9E1-1AD384E4F617}") = "Genos", "Assembly-CSharp-Editor.csproj", "{E06B986A-80E8-26AE-EE59-5808F50D3553}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AF975C4-56C8-73D5-D054-28AB552FFE10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AF975C4-56C8-73D5-D054-28AB552FFE10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AF975C4-56C8-73D5-D054-28AB552FFE10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AF975C4-56C8-73D5-D054-28AB552FFE10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E06B986A-80E8-26AE-EE59-5808F50D3553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E06B986A-80E8-26AE-EE59-5808F50D3553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E06B986A-80E8-26AE-EE59-5808F50D3553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E06B986A-80E8-26AE-EE59-5808F50D3553}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

@@ -86,7 +86,7 @@ public class iBeaconReceiverExample : MonoBehaviour {
 		}
 	}
 	
-	/*void OnGUI() {
+	void OnGUI() {
 		GUIStyle labelStyle = GUI.skin.GetStyle("Label");
 #if UNITY_ANDROID
 		labelStyle.fontSize = 40;
@@ -111,5 +111,5 @@ public class iBeaconReceiverExample : MonoBehaviour {
 		}
 		GUILayout.EndVertical();
 		GUI.EndScrollView();
-	}*/
+	}
 }
