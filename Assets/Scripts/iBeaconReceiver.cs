@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-
+namespace Assets.Scripts { 
 public enum BluetoothLowEnergyState {
 	UNKNOWN,
 	RESETTING,
@@ -13,30 +13,34 @@ public enum BluetoothLowEnergyState {
 	POWERED_ON
 }
 
-[ExecuteInEditMode]
-public class iBeaconReceiver : MonoBehaviour {
-	public delegate void BeaconRangeChanged(List<Beacon> beacons);
-	public static event BeaconRangeChanged BeaconRangeChangedEvent;
-	public delegate void BluetoothStateChanged(BluetoothLowEnergyState state);
-	public static event BluetoothStateChanged BluetoothStateChangedEvent;
-	public iBeaconRegion[] regions;
-	public string NSLocationUsageDescription;
-	public bool updateDescription;
-	public static bool btenabled = false;
-	
+    [ExecuteInEditMode]
+    public class iBeaconReceiver : MonoBehaviour
+    {
+        public delegate void BeaconRangeChanged(List<Beacon> beacons);
+
+        public static event BeaconRangeChanged BeaconRangeChangedEvent;
+
+        public delegate void BluetoothStateChanged(BluetoothLowEnergyState state);
+
+        public static event BluetoothStateChanged BluetoothStateChangedEvent;
+        public iBeaconRegion[] regions;
+        public string NSLocationUsageDescription;
+        public bool updateDescription;
+        public static bool btenabled = false;
+
 #if UNITY_ANDROID
-	private static AndroidJavaObject plugin;
+        private static AndroidJavaObject plugin;
 #endif
-	
-	private static iBeaconReceiver m_instance;
-	
-	// assign variables to statics
-	void Awake()
-	{
-		m_instance = this;
-	}
-	
-	#if UNITY_IOS	
+
+        private static iBeaconReceiver m_instance;
+
+        // assign variables to statics
+        void Awake()
+        {
+            m_instance = this;
+        }
+
+#if UNITY_IOS	
 	[DllImport ("__Internal")]
 	private static extern void InitReceiver(string regions, bool shouldLog);
 
@@ -49,21 +53,24 @@ public class iBeaconReceiver : MonoBehaviour {
 	[DllImport ("__Internal")]
 	private static extern int GetIOSBluetoothState();
 #endif
-	
-	void Start () {
-	}
-	
-	public static void Init() {
-		#if !UNITY_EDITOR
+
+        void Start()
+        {
+        }
+
+        public static void Init()
+        {
+#if !UNITY_EDITOR
 		#if UNITY_IOS
 		InitReceiver(iBeaconRegion.regionsToString(m_instance.regions),true);
 		#elif UNITY_ANDROID
 		GetPlugin().Call("Init",true);
 		#endif
 		#endif
-	}
-	
-	public static void Stop() {
+        }
+
+        public static void Stop()
+        {
 #if !UNITY_EDITOR
 #if UNITY_IOS
 		StopIOSScan();
@@ -71,19 +78,21 @@ public class iBeaconReceiver : MonoBehaviour {
 		GetPlugin().Call("Stop");
 #endif
 #endif
-	}
-	
-	public static void Scan() {
+        }
+
+        public static void Scan()
+        {
 #if !UNITY_EDITOR
 #if UNITY_IOS
 		InitReceiver(iBeaconRegion.regionsToString(m_instance.regions),true);
 #elif UNITY_ANDROID
 		GetPlugin().Call("Scan");
 #endif
-#endif		
-	}
+#endif
+        }
 
-	public static void CheckBluetoothLEStatus() {
+        public static void CheckBluetoothLEStatus()
+        {
 #if !UNITY_EDITOR
 #if UNITY_ANDROID
 		if (!GetPlugin().Call<bool>("IsBLEFeatured")) {
@@ -112,15 +121,17 @@ public class iBeaconReceiver : MonoBehaviour {
 		btenabled = (bletest == 5);
 #endif
 #endif
-	}
+        }
 
-	public void ReportBluetoothStateChange(string newstate) {
-		if (BluetoothStateChangedEvent != null)
-			BluetoothStateChangedEvent((BluetoothLowEnergyState)int.Parse(newstate));
-		btenabled = (int.Parse(newstate) == 5);
-	}
+        public void ReportBluetoothStateChange(string newstate)
+        {
+            if (BluetoothStateChangedEvent != null)
+                BluetoothStateChangedEvent((BluetoothLowEnergyState) int.Parse(newstate));
+            btenabled = (int.Parse(newstate) == 5);
+        }
 
-    public static void EnableBluetooth() {
+        public static void EnableBluetooth()
+        {
 #if !UNITY_EDITOR
 #if UNITY_ANDROID
 		GetPlugin().Call("EnableBluetooth");
@@ -128,42 +139,51 @@ public class iBeaconReceiver : MonoBehaviour {
 		EnableIOSBluetooth();
 #endif
 #endif
-	}
-#if UNITY_ANDROID
-	public static AndroidJavaObject GetPlugin() {
-		if (plugin == null) {
-			plugin = new AndroidJavaObject("com.kaasa.ibeacon.BeaconService");
-		}
-		return plugin;
-	}
-#endif
-	
-	public void RangeBeacons(string beacons) {
-		if (!string.IsNullOrEmpty(beacons)) {
-			string beaconsClean = beacons.Remove(beacons.Length-1); // Get rid of last ;
-			string[] beaconsArr = beaconsClean.Split(';');
-			List<Beacon> tempbeacons = new List<Beacon>();
-			foreach (string beacon in beaconsArr) {
-				string[] beaconArr = beacon.Split(',');
-				string uuid = beaconArr[0];
-				int major = int.Parse(beaconArr[1]);
-				int minor = int.Parse(beaconArr[2]);
-				int range = int.Parse(beaconArr[3]);
-				int strenght = int.Parse(beaconArr[4]);
-				double accuracy = double.Parse(beaconArr[5]);
-				int rssi = int.Parse(beaconArr[6]);
-				Beacon bTmp = new Beacon(uuid,major,minor,range,strenght,accuracy,rssi);
-				tempbeacons.Add(bTmp);
-			}
-			if (BeaconRangeChangedEvent != null)
-				BeaconRangeChangedEvent(tempbeacons);
-		}
-	}
+        }
 
-	void Update() {
-		if (updateDescription) {
-			PlayerPrefs.SetString("NSLocationUsageDescription",NSLocationUsageDescription);
-			updateDescription = false;
-		}
-	}
+#if UNITY_ANDROID
+        public static AndroidJavaObject GetPlugin()
+        {
+            if (plugin == null)
+            {
+                plugin = new AndroidJavaObject("com.kaasa.ibeacon.BeaconService");
+            }
+            return plugin;
+        }
+#endif
+
+        public void RangeBeacons(string beacons)
+        {
+            if (!string.IsNullOrEmpty(beacons))
+            {
+                string beaconsClean = beacons.Remove(beacons.Length - 1); // Get rid of last ;
+                string[] beaconsArr = beaconsClean.Split(';');
+                List<Beacon> tempbeacons = new List<Beacon>();
+                foreach (string beacon in beaconsArr)
+                {
+                    string[] beaconArr = beacon.Split(',');
+                    string uuid = beaconArr[0];
+                    int major = int.Parse(beaconArr[1]);
+                    int minor = int.Parse(beaconArr[2]);
+                    int range = int.Parse(beaconArr[3]);
+                    int strenght = int.Parse(beaconArr[4]);
+                    double accuracy = double.Parse(beaconArr[5]);
+                    int rssi = int.Parse(beaconArr[6]);
+                    Beacon bTmp = new Beacon(uuid, major, minor, range, strenght, accuracy, rssi);
+                    tempbeacons.Add(bTmp);
+                }
+                if (BeaconRangeChangedEvent != null)
+                    BeaconRangeChangedEvent(tempbeacons);
+            }
+        }
+
+        void Update()
+        {
+            if (updateDescription)
+            {
+                PlayerPrefs.SetString("NSLocationUsageDescription", NSLocationUsageDescription);
+                updateDescription = false;
+            }
+        }
+    }
 }
