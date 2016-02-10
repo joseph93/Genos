@@ -14,14 +14,8 @@ public class TourButton : MonoBehaviour {
 	
 	}
 
-    public void changeSceneToTour()
+    public void changeSceneToBeacon()
     {
-        SceneManager.LoadScene("Tour List");
+        SceneManager.LoadScene("Search iBeacon");
     }
-
-    public void changeSceneToFloor()
-    {
-        SceneManager.LoadScene("Floor2");
-    }
-
 }

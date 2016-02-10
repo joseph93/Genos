@@ -39,7 +39,7 @@ public class iBeaconReceiverExample : MonoBehaviour {
 
     public void CreateNipper()
     {
-        GameObject nipper = Instantiate(Nipper, new Vector3(702, -77, 15), Quaternion.identity) as GameObject;
+        GameObject nipper = Instantiate(Nipper, new Vector3(400, 45, 0), Quaternion.identity) as GameObject;
         nipper.transform.SetParent(transform);
     }
 
