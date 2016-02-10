@@ -1,2 +1,0 @@
-# Genos
-Mini Capstone Project
