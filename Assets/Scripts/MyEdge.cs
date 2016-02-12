@@ -5,12 +5,19 @@ using System.Text;
 
 namespace Assets.Scripts
 {
-    class MyEdge<TVertex>
+    class MyEdge
     {
         private int edgeWeight { get; set; }
+        private Node source;
+        private Node target;
          
-        public MyEdge(TVertex source, TVertex target)
+        public MyEdge(Node source, Node target, int eW)
         {
+            this.source = source;
+            this.target = target;
+            edgeWeight = eW;
         }  
+
+
     }
 }
