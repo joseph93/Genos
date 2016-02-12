@@ -20,7 +20,7 @@ namespace Assets.Scripts {
 
             Node n1 = new Node(5, 5);
             Node n2 = new Node(10, 10);
-            MyEdge<Node> edge1 = new MyEdge<Node>(n1, n2);
+            MyEdge edge1 = new MyEdge(n1, n2, 5);
         }
 
 
