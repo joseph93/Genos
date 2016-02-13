@@ -16,8 +16,6 @@ namespace Assets.Scripts
             this.source = source;
             this.target = target;
             edgeWeight = eW;
-        }  
-
-
+        }
     }
 }

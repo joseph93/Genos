@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -72,8 +74,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Beacon.cs" />
+    <Compile Include="Assets\Scripts\BreadthFirstSearch.cs" />
     <Compile Include="Assets\Scripts\Floor.cs" />
     <Compile Include="Assets\Scripts\FloorManager.cs" />
+    <Compile Include="Assets\Scripts\Graph.cs" />
+    <Compile Include="Assets\Scripts\IGraph.cs" />
     <Compile Include="Assets\Scripts\MapTest.cs" />
     <Compile Include="Assets\Scripts\MyEdge.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
