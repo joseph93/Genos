@@ -1,33 +1,37 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using LibGit2Sharp.Core.Compat;
 using UnityEngine;
 
-namespace Assets.Scripts {
+namespace Assets.Scripts
+{
     public class MapTest : MonoBehaviour
     {
         public GameObject NipperBeacon;
+
         void Start()
         {
-            testGraph();
         }
 
         void Update()
         {
-            
-        }
-        public void testGraph()
-        {
-            iBeaconReceiverExample bc = new iBeaconReceiverExample();
 
-            Node n1 = new Node(5, 5);
-            Node n2 = new Node(10, 10);
-            MyEdge edge1 = new MyEdge(n1, n2, 5);
         }
 
-
-        public void MakeNipper()
+        public static void Main()
         {
-            GameObject nipper = Instantiate(NipperBeacon, new Vector3(1, 0, 0), Quaternion.identity) as GameObject;
-            nipper.transform.SetParent(transform);
+            Node n1 = new Node(5, 6);
+            List<Node> nodeList = new List<Node>();
+            nodeList.Add(n1);
+            /* //var graph = new Graph<Node>(
+               // Tuple<Node, Node>.Create(n1, nodeList));
+
+           // var breadthFirstSearch = new BreadthFirstSearch<int>(graph);
+
+            foreach (var vertex in breadthFirstSearch.GetAllReachableVertices(4))
+            {
+                Console.WriteLine("Next vertex is {0}", vertex);
+            }*/
         }
     }
 }
