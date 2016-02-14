@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts
 {
+<<<<<<< HEAD
     
     public interface IGraph
     {
@@ -25,5 +26,11 @@ namespace Assets.Scripts
        void InsertUndirectedEdge(int vertexAKey, int vertexBKey, int Weight = 0);
       //  Node PrimAlgorithm();
        Node FindByKey(int vertexKey);
+=======
+    interface IGraph<T>
+    {
+        bool Contains(T vertex);
+        IEnumerable<T> GetAdjacent(T vertex);
+>>>>>>> 6ab2d662f68cd329c1f999fb179d3fd170b3911a
     }
 }

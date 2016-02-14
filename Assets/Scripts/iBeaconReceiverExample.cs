@@ -15,7 +15,6 @@ namespace Assets.Scripts {
         // Use this for initialization
         void Start()
         {
-            //CreateNipper();
             iBeaconReceiver.BeaconRangeChangedEvent += OnBeaconRangeChanged;
             iBeaconReceiver.BluetoothStateChangedEvent += OnBluetoothStateChanged;
             iBeaconReceiver.CheckBluetoothLEStatus();
@@ -36,8 +35,10 @@ namespace Assets.Scripts {
                 if (0.00 < b.accuracy && b.accuracy < 2.00)
                 {
                     CreateNipper();
-                    //guion = true;
-                    //SceneManager.LoadScene("BeaconDetected");
+                }
+                if (b.accuracy > 2.00)
+                {
+                    DestroyNipper();
                 }
             }
 
@@ -45,8 +46,13 @@ namespace Assets.Scripts {
 
         public void CreateNipper()
         {
-            GameObject nipper = Instantiate(Nipper, new Vector3(400, 45, 0), Quaternion.identity) as GameObject;
-            nipper.transform.SetParent(transform);
+            GameObject nipper = Instantiate(Nipper, new Vector3(1, 1, -7), Quaternion.identity) as GameObject;
+           // nipper.transform.SetParent(transform);
+        }
+
+        public void DestroyNipper()
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
         }
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
@@ -102,7 +108,7 @@ namespace Assets.Scripts {
             }
         }
 
-        void OnGUI() {
+        /*void OnGUI() {
 		GUIStyle labelStyle = GUI.skin.GetStyle("Label");
 #if UNITY_ANDROID
 		labelStyle.fontSize = 40;
@@ -127,6 +133,6 @@ namespace Assets.Scripts {
 		}
 		GUILayout.EndVertical();
 		GUI.EndScrollView();
-	}
+	}*/
     }
 }

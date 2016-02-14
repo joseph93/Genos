@@ -17,9 +17,13 @@ namespace Assets.Scripts
             this._startNode = startNode;
             this._endNode = endNode;
             edgeWeight = eW;
+<<<<<<< HEAD:Assets/Scripts/Edge.cs
         }  
 
 
 
+=======
+        }
+>>>>>>> 6ab2d662f68cd329c1f999fb179d3fd170b3911a:Assets/Scripts/MyEdge.cs
     }
 }

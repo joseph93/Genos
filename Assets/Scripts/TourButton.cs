@@ -19,9 +19,14 @@ namespace Assets.Scripts
 
         }
 
-        public void changeSceneToBeacon()
+        public void changeSceneToTour()
         {
-            SceneManager.LoadScene("Search iBeacon");
+            SceneManager.LoadScene("TourSelection");
+        }
+
+        public void changeSceneToFloor()
+        {
+            SceneManager.LoadScene("F2");
         }
     }
 }
