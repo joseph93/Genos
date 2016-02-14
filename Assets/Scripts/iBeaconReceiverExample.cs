@@ -36,7 +36,7 @@ namespace Assets.Scripts {
                 {
                     CreateNipper();
                 }
-                else
+                if (b.accuracy > 2.00)
                 {
                     DestroyNipper();
                 }
