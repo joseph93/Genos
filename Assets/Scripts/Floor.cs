@@ -8,4 +8,5 @@ namespace Assets.Scripts
     class Floor
     {
     }
+
 }

@@ -5,18 +5,20 @@ using System.Text;
 
 namespace Assets.Scripts
 {
-    class MyEdge
+    class Edge
     {
         private int edgeWeight { get; set; }
-        private Node source;
-        private Node target;
+
+        private Node _startNode;
+        private Node _endNode;
          
-        public MyEdge(Node source, Node target, int eW)
+        public Edge(Node startNode, Node endNode, int eW)
         {
-            this.source = source;
-            this.target = target;
+            this._startNode = startNode;
+            this._endNode = endNode;
             edgeWeight = eW;
         }  
+
 
 
     }

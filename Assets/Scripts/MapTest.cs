@@ -16,11 +16,11 @@ namespace Assets.Scripts {
         }
         public void testGraph()
         {
-            iBeaconReceiverExample bc = new iBeaconReceiverExample();
+            //iBeaconReceiverExample bc = new iBeaconReceiverExample();
 
             Node n1 = new Node(5, 5);
             Node n2 = new Node(10, 10);
-            MyEdge edge1 = new MyEdge(n1, n2, 5);
+            Edge edge1 = new Edge(n1, n2, 5);
         }
 
 
