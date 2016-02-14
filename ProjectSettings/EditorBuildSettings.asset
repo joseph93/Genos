@@ -8,16 +8,20 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MainMenu.unity
   - enabled: 0
-    path: Assets/Scenes/StartMenu.unity
-  - enabled: 0
-    path: Assets/Scenes/TestMenu.unity
+    path: Assets/Scenes/BadMenu(dont use).unity
+  - enabled: 1
+    path: Assets/Scenes/LoadingPage.unity
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+  - enabled: 1
+    path: Assets/Scenes/TourSelection.unity
+  - enabled: 1
+    path: Assets/Scenes/F2.unity
   - enabled: 0
     path: Assets/Scenes/Search iBeacon.unity
   - enabled: 0
     path: Assets/Scenes/Floor2Scene.unity
   - enabled: 0
     path: Assets/Scenes/Floor3Scene.unity
-  - enabled: 1
-    path: Assets/Scenes/F2.unity
   - enabled: 0
     path: Assets/Scenes/F3.unity
