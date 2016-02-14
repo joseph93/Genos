@@ -1,36 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using UnityEngine;
+using System.Collections;
 
-namespace Assets.Scripts
-{
-<<<<<<< HEAD
-    
-    public interface IGraph
-    {
-       bool Contains(Node vertex);
-       void InsertDirectEdge(int edgeAKey, int edgeBKey, int weight = 0);
+public interface IGraph {
+
+	
+        bool Contains(Node vertex);
+        void InsertDirectEdge(int edgeAKey, int edgeBKey, int weight = 0);
         void InsertNewVertex(int vertexKey);
-       bool ExistKey(int vertexKey);
-        //Node InitializeDFS(int vertexKeyToFind);
-       // bool MakeItBipartite();
-        //Node DFS(Node root, int vertexKeyToFind);
-      //  void FindNumberOfConnectedComponents();
+        bool ExistKey(int vertexKey);
+        // Node InitializeDFS(int vertexKeyToFind);
+        // bool MakeItBipartite();
+        // Node DFS(Node root, int vertexKeyToFind);
+        //  void FindNumberOfConnectedComponents();
         void BFS(int startVertexKey);
         Node InitializeBFS(int vertexKeyToFind);
         bool IsVisited(Node v);
 
-      //  Node MarkVertexAsVisited(Node v);
-      Node GetFirstElementOfTheList(int findKey);
-       void InsertUndirectedEdge(int vertexAKey, int vertexBKey, int Weight = 0);
-      //  Node PrimAlgorithm();
-       Node FindByKey(int vertexKey);
-=======
-    interface IGraph<T>
-    {
-        bool Contains(T vertex);
-        IEnumerable<T> GetAdjacent(T vertex);
->>>>>>> 6ab2d662f68cd329c1f999fb179d3fd170b3911a
+        //  Node MarkVertexAsVisited(Node v);
+        Node GetFirstElementOfTheList(int findKey);
+        void InsertUndirectedEdge(int vertexAKey, int vertexBKey, int Weight = 0);
+        //  Node PrimAlgorithm();
+        Node FindByKey(int vertexKey);
     }
-}
+

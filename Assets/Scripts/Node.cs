@@ -1,33 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-<<<<<<< HEAD
-using UnityEditorInternal;
-=======
-using UnityEngine;
->>>>>>> 6ab2d662f68cd329c1f999fb179d3fd170b3911a
+﻿using UnityEngine;
+using System.Collections;
 
-namespace Assets.Scripts
-{
 
-    public enum State { Visited = 0, UnVisited = 1, Processed = 2 }
-    public class Node
-    {
-<<<<<<< HEAD
+
+
+public enum State { Visited = 0, UnVisited = 1, Processed = 2 }
+
+public class Node : MonoBehaviour {
+
+ 
+
+    // Use this for initialization
+    void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+    
+    
         public State Status = State.UnVisited;
-        private int x;
-        private int y;
-        private Floor floor;
+        // private int x;
+        //  private int y;
+        // private Floor floor;
 
         public Node Next;
         public int Weight = 0;
-        public int Key;
-        public int Value;
-=======
-        private int x { get; set; }
-        private int y { get; set; }
->>>>>>> 6ab2d662f68cd329c1f999fb179d3fd170b3911a
+        public int x;
+        public int y;
 
         /*
         public Node(int x, int y, Floor floor)
@@ -37,20 +39,17 @@ namespace Assets.Scripts
             this.floor = floor;
         }
         */
-        public Node(int key)
+        public Node(int x)
         {
-            this.Key = key;
-            this.Value = 0;
+            this.x = x;
+            this.y = 0;
         }
 
-<<<<<<< HEAD
-        public Node(int key, int value)
+        public Node(int x, int y)
         {
-            this.Key = key;
-            this.Value = value;
+            this.x = x;
+            this.y = y;
         }
 
-=======
->>>>>>> 6ab2d662f68cd329c1f999fb179d3fd170b3911a
-    }
+    
 }

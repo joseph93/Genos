@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -59,12 +57,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -77,21 +69,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Beacon.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets\Scripts\Driver.cs" />
-=======
-    <Compile Include="Assets\Scripts\BreadthFirstSearch.cs" />
->>>>>>> 6ab2d662f68cd329c1f999fb179d3fd170b3911a
-    <Compile Include="Assets\Scripts\Floor.cs" />
+    <Compile Include="Assets\Scripts\Edge.cs" />
     <Compile Include="Assets\Scripts\FloorManager.cs" />
     <Compile Include="Assets\Scripts\Graph.cs" />
     <Compile Include="Assets\Scripts\IGraph.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Assets\Scripts\LoadingScene.cs" />
->>>>>>> 6ab2d662f68cd329c1f999fb179d3fd170b3911a
-    <Compile Include="Assets\Scripts\MapTest.cs" />
-    <Compile Include="Assets\Scripts\Edge.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\TouchScreenCamera.cs" />
     <Compile Include="Assets\Scripts\TourButton.cs" />
