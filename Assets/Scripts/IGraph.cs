@@ -1,13 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using UnityEngine;
+using System.Collections;
 
-namespace Assets.Scripts
-{
-    interface IGraph<T>
-    {
-        bool Contains(T vertex);
-        IEnumerable<T> GetAdjacent(T vertex);
+public interface IGraph {
+
+	
+        bool Contains(Node vertex);
+        void InsertDirectEdge(int edgeAKey, int edgeBKey, int weight = 0);
+        void InsertNewVertex(int vertexKey);
+        bool ExistKey(int vertexKey);
+        // Node InitializeDFS(int vertexKeyToFind);
+        // bool MakeItBipartite();
+        // Node DFS(Node root, int vertexKeyToFind);
+        //  void FindNumberOfConnectedComponents();
+        void BFS(int startVertexKey);
+        Node InitializeBFS(int vertexKeyToFind);
+        bool IsVisited(Node v);
+
+        //  Node MarkVertexAsVisited(Node v);
+        Node GetFirstElementOfTheList(int findKey);
+        void InsertUndirectedEdge(int vertexAKey, int vertexBKey, int Weight = 0);
+        //  Node PrimAlgorithm();
+        Node FindByKey(int vertexKey);
     }
-}
+

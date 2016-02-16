@@ -1,21 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+using Assets.Scripts;
 
-namespace Assets.Scripts
-{
-    class Node
-    {
-        private int x { get; set; }
-        private int y { get; set; }
 
-        public Node(int x, int y)
+public enum State { Visited = 0, UnVisited = 1, Processed = 2 }
+
+public class Node : MonoBehaviour {
+
+ 
+
+    // Use this for initialization
+    void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+    
+    
+        public State Status = State.UnVisited;
+
+        public Floor floor;
+
+        public Node Next;
+        public int Weight = 0;
+        public int x;
+        public int y;
+
+        /*
+        public Node(int x, int y, Floor floor)
         {
             this.x = x;
             this.y = y;
+            this.floor = floor;
+        }
+        */
+        public Node(int x)
+        {
+            this.x = x;
+            this.y = 0;
         }
 
-    }
+        public Node(int x, int y, Floor floor)
+        {
+            this.x = x;
+            this.y = y;
+            this.floor = floor;
+        }
+
+    
+
+
 }
