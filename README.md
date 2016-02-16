@@ -1,2 +1,2 @@
 # Genos
-Mini Capstone Project
+Mini Capstone Project - OnePunch Team
