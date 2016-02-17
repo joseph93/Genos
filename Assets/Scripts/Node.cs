@@ -18,39 +18,57 @@ public class Node : MonoBehaviour {
 	void Update () {
 	
 	}
-    
-    
-        public State Status = State.UnVisited;
 
-        public Floor floor;
 
-        public Node Next;
-        public int Weight = 0;
-        public int x;
-        public int y;
+    private State Status = State.UnVisited;
+    private int id;
+    private Floor floor;
+    private Node next;
+    public int x;
+    public int y;
+        
 
-        /*
-        public Node(int x, int y, Floor floor)
-        {
-            this.x = x;
-            this.y = y;
-            this.floor = floor;
-        }
-        */
-        public Node(int x)
-        {
-            this.x = x;
-            this.y = 0;
-        }
+    public Node(int id, int x, int y, Floor floor)
+    {
+        this.x = x;
+        this.y = y;
+        this.floor = floor;
+        this.id = id;
+    }
 
-        public Node(int x, int y, Floor floor)
-        {
-            this.x = x;
-            this.y = y;
-            this.floor = floor;
-        }
+    public State getState()
+    {
+        return Status;
+    }
 
-    
+    public void setState(State newState)
+    {
+        Status = newState;
+    }
 
+    public int getID()
+    {
+        return id;
+    }
+
+    public void setID(int id)
+    {
+        this.id = id;
+    }
+
+    public Floor GetFloor()
+    {
+        return floor;
+    }
+
+    public Node getNext()
+    {
+        return next;
+    }
+
+    public void setNext(Node next)
+    {
+        this.next = next;
+    }
 
 }

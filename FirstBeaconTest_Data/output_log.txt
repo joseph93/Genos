@@ -6,20 +6,28 @@ Direct3D:
     Vendor:   Intel
     VRAM:     128 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\LibGit2Sharp.dll (this message is harmless)
-Loading C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\LibGit2Sharp.dll into Unity Child Domain
-- Completed reload, in  0.425 seconds
-Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Joseph\Documents\REAL IBEACON PROJECT\FirstBeaconTest_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\LibGit2Sharp.dll (this message is harmless)
+Loading C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\LibGit2Sharp.dll into Unity Child Domain
+- Completed reload, in  0.320 seconds
+Platform assembly: C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Joseph\Documents\GitHub\FirstBeaconTest_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.588819 ms
+Listening for beacons
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 1c68 -> priority: 1 

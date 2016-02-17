@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
 public interface IGraph {
 
 	
@@ -22,4 +23,4 @@ public interface IGraph {
         //  Node PrimAlgorithm();
         Node FindByKey(int vertexKey);
     }
-
+    */
