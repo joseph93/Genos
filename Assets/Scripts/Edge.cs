@@ -13,9 +13,9 @@ public class Edge : MonoBehaviour {
 	
 	}
 
-        public Node startingNode;
-        public Node endNode;
-        public double edgeWeight;
+        public Node startingNode { get; set; }
+        public Node endNode { get; set; }
+        public double edgeWeight { get; set; }
 
 
         public Edge(Node n1, Node n2, double weight)
@@ -23,7 +23,6 @@ public class Edge : MonoBehaviour {
             startingNode = n1;
             endNode = n2;
             edgeWeight = weight;
-
         }
 
     

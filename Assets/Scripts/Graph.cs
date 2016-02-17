@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts;
 
 public class Graph : MonoBehaviour {
 
@@ -16,9 +17,7 @@ public class Graph : MonoBehaviour {
 	
 	}
 
-
-
-        private Dictionary<int, Node> Vertices { get; set; }
+        private Dictionary<int, Node> Vertices { get; }
 
         //For use on the DFS to "break" the recursion.
         private bool finished;
@@ -33,23 +32,26 @@ public class Graph : MonoBehaviour {
         //Initialize all vertices with Unvisited value.
         private void InitializeVertices()
         {
-            foreach (int key in this.Vertices.Keys)
+            foreach (int key in Vertices.Keys)
             {
-                this.Vertices[key].Status = State.UnVisited;
+                Vertices[key].setState(State.UnVisited);
             }
         }
 
 
         public bool Contains(Node vertex)
         {
-            throw new NotImplementedException();
+            if (Vertices.ContainsKey(vertex.getID()))
+                return true;
+
+            return false;
         }
 
 
         public Node GetFirstElementOfTheList(int findKey)
         {
-            if (this.Vertices.ContainsKey(findKey))
-                return this.Vertices[findKey];
+            if (Vertices.ContainsKey(findKey))
+                return Vertices[findKey];
 
             return null;
         }
@@ -61,24 +63,24 @@ public class Graph : MonoBehaviour {
             if (this.Vertices.Count == 0)
                 return;
 
-            Queue<Node> Q = new Queue<Node>();
-            Console.WriteLine("Starting at: {0}", this.Vertices[startVertexKey].x);
+            Queue<Node> nodes = new Queue<Node>();
+            Console.WriteLine("Starting at: {0}", Vertices[startVertexKey].getID());
 
-            this.GetFirstElementOfTheList(startVertexKey).Status = State.Visited;
-            Q.Enqueue(this.GetFirstElementOfTheList(startVertexKey));
+            GetFirstElementOfTheList(startVertexKey).setState(State.Visited);
+            nodes.Enqueue(GetFirstElementOfTheList(startVertexKey));
 
-            while (Q.Count != 0)
+            while (nodes.Count != 0)
             {
-                List<Node> children = GetChildrenOfVertex(Q.Dequeue());
+                List<Node> children = GetChildrenOfVertex(nodes.Dequeue());
 
                 foreach (Node v in children)
                 {
-                    if (this.Vertices[v.x].Status == State.UnVisited)
+                    if (Vertices[v.getID()].getState() == State.UnVisited)
                     {
 
-                        Console.WriteLine("Passed to {0}", v.x);
-                        this.Vertices[v.x].Status = State.Visited;
-                        Q.Enqueue(this.Vertices[v.x]);
+                        Console.WriteLine("Passed to {0}", v.getID());
+                        Vertices[v.getID()].setState(State.Visited);
+                        nodes.Enqueue(Vertices[v.getID()]);
                     }
                 }
             }
@@ -88,19 +90,19 @@ public class Graph : MonoBehaviour {
         public Node InitializeBFS(int vertexKeyToFind)
         {
             InitializeVertices();
-            return BFS(this.Vertices.First().Key, vertexKeyToFind);
+            return BFS(Vertices.First().Key, vertexKeyToFind);
         }
 
 
         private List<Node> GetChildrenOfVertex(Node headVertex)
         {
             List<Node> vertexes = new List<Node>();
-            Node v = headVertex.Next;
+            Node v = headVertex.getNext();
 
             while (v != null)
             {
                 vertexes.Add(v);
-                v = v.Next;
+                v = v.getNext();
             }
             return vertexes;
         }
@@ -109,28 +111,29 @@ public class Graph : MonoBehaviour {
 
         private Node BFS(int startVertexKey, int vertexKeyToFind)
         {
-            if (this.Vertices.Count == 0)
+            if (Vertices.Count == 0)
                 return null;
 
             //Starting from the first element
-            Queue<Node> Q = new Queue<Node>();
-            Console.WriteLine("Starting at: {0}", this.Vertices[startVertexKey].x);
-            this.GetFirstElementOfTheList(startVertexKey).Status = State.Visited;
-            Q.Enqueue(this.GetFirstElementOfTheList(startVertexKey));
+            Queue<Node> nodes = new Queue<Node>();
+            Console.WriteLine("Starting at: {0}", Vertices[startVertexKey].getID());
+            Node firstNode = GetFirstElementOfTheList(startVertexKey);
+            firstNode.setState(State.Visited);
+            nodes.Enqueue(firstNode);
 
-            while (Q.Count != 0)
+            while (nodes.Count != 0)
             {
-                List<Node> children = GetChildrenOfVertex(Q.Dequeue());
+                List<Node> children = GetChildrenOfVertex(nodes.Dequeue());
 
                 foreach (Node v in children)
                 {
-                    if (this.Vertices[v.x].Status == State.UnVisited)
+                    if (Vertices[v.getID()].getState() == State.UnVisited)
                     {
-                        Console.WriteLine("Passed to {0}", v.x);
-                        if (v.x == vertexKeyToFind)
+                        Console.WriteLine("Passed to {0}", v.getID());
+                        if (v.getID() == vertexKeyToFind)
                             return v;
-                        this.Vertices[v.x].Status = State.Visited;
-                        Q.Enqueue(this.Vertices[v.x]);
+                        Vertices[v.getID()].setState(State.Visited);
+                        nodes.Enqueue(Vertices[v.getID()]);
                     }
                 }
             }
@@ -143,60 +146,64 @@ public class Graph : MonoBehaviour {
         {
             if (v == null)
                 return false;
-            return this.Vertices[v.x].Status == State.Visited;
+            return Vertices[v.getID()].getState() == State.Visited;
         }
 
 
         public Node FindByKey(int vertexKey)
         {
-            if (this.Vertices.ContainsKey(vertexKey))
-                return this.Vertices[vertexKey];
+            if (Vertices.ContainsKey(vertexKey))
+                return Vertices[vertexKey];
 
             return null;
         }
         public bool ExistKey(int vertexKey)
         {
-            if (this.FindByKey(vertexKey) == null)
+            if (FindByKey(vertexKey) == null)
                 return false;
             else
                 return true;
         }
 
-
-        public void InsertUndirectedEdge(int vertexAKey, int vertexBKey, int Weight = 0)
+        //JOSEPH: I'm not sure how edges work here.
+        public Edge InsertUndirectedEdge(Node startingNode, Node endNode, int weight)
         {
-            this.InsertDirectEdge(vertexAKey, vertexBKey, Weight);
-            this.InsertDirectEdge(vertexBKey, vertexAKey, Weight);
+            InsertDirectEdge(startingNode, endNode, weight);
+            InsertDirectEdge(endNode, startingNode, weight);
+
+            return new Edge(startingNode, endNode, weight);
         }
 
-        public void InsertNewVertex(int vertexKey)
+        public void InsertNewVertex(Node vertex)
         {
-            if (!this.ExistKey(vertexKey))
+            if (!ExistKey(vertex.getID()))
             {
-                this.Vertices.Add(vertexKey, new Node(vertexKey));
+                Vertices.Add(vertex.getID(), vertex);
             }
         }
 
-
-        public void InsertDirectEdge(int vertexAKey, int vertexBKey, int weightEdge = 0)
+        //JOSEPH: I'm not sure how edges work here.
+        public Edge InsertDirectEdge(Node startingNode, Node endNode, int weightEdge)
         {
             //Create the vertex A on the vertex list
-            if (!this.ExistKey(vertexAKey))
+            if (!ExistKey(startingNode.getID()))
             {
-                this.InsertNewVertex(vertexAKey);
+                InsertNewVertex(startingNode);
             }
             //Create the vertex B on the vertex list
-            if (!this.ExistKey(vertexBKey))
+            if (!ExistKey(endNode.getID()))
             {
-                this.InsertNewVertex(vertexBKey);
+               InsertNewVertex(endNode);
             }
 
             //Add the vertex B on the vertex A position on the Dictionary, as the second element of the list
-            Node vertexB = new Node(vertexBKey);
-            vertexB.Weight = weightEdge;
-            vertexB.Next = this.Vertices[vertexAKey].Next;
-            this.Vertices[vertexAKey].Next = vertexB;
+            Node vertexB = endNode;
+           // vertexB.Weight = weightEdge;
+            vertexB.setNext(Vertices[startingNode.getID()].getNext());
+            Vertices[startingNode.getID()].setNext(vertexB);
+            Edge edge = new Edge(startingNode, endNode, weightEdge);
 
+            return edge;
         }
 
 
