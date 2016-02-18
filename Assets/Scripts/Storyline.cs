@@ -10,8 +10,8 @@ namespace Assets.Scripts
         public string name { get; set; }
         public string description { get; set; }
         public int floorsCovered { get; set; }
-        public int walkingTimeInMinutes { get; }
-        public List<PointOfInterest> pointOfInterests { get; }
+        public int walkingTimeInMinutes { get; set; }
+        public List<PointOfInterest> pointOfInterests { get; set; }
 
         public Storyline(string name, int fc)
         {
