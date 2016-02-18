@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ public class Graph : MonoBehaviour {
 	
 	}
 
-        private Dictionary<int, Node> Vertices { get; }
+       private Dictionary<int, Node> Vertices { get; set; }
 
         //For use on the DFS to "break" the recursion.
         private bool finished;
@@ -205,7 +206,6 @@ public class Graph : MonoBehaviour {
 
             return edge;
         }
-
 
 
 
