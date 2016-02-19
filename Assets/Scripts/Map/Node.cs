@@ -56,6 +56,11 @@ public class Node : MonoBehaviour {
         Status = newState;
     }
 
+    public bool IsVisited()
+    {
+        return Status == State.Visited;
+    }
+
     public int getID()
     {
         return id;
