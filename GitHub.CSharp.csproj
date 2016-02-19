@@ -84,7 +84,6 @@
     <Compile Include="Assets\Scripts\Map\Floor.cs" />
     <Compile Include="Assets\Scripts\FloorManager.cs" />
     <Compile Include="Assets\Scripts\Map\Graph.cs" />
-    <Compile Include="Assets\Scripts\Map\IGraph.cs" />
     <Compile Include="Assets\Scripts\Map\LabeledNode.cs" />
     <Compile Include="Assets\Scripts\LoadingScene.cs" />
     <Compile Include="Assets\Scripts\Map\Map.cs" />
