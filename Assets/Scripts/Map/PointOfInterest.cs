@@ -12,7 +12,7 @@ namespace Assets.Scripts
         private Beacon beacon;
         private bool visited;
 
-        public PointOfInterest(int id, int x, int y, Floor floor, string name, Beacon bc) : base(id, x, y, floor)
+        public PointOfInterest(int id, int x, int y, int floorNumber, string name, Beacon bc) : base(id, x, y, floorNumber)
         {
             this.name = name;
             this.beacon = bc;
