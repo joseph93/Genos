@@ -75,7 +75,7 @@ public class Graph : MonoBehaviour {
 
                 foreach (Node v in adjacentNode.Keys)
                 {
-                    if (Vertices[v.getID()].getState() == State.UnVisited)
+                    if (!v.IsVisited())
                     {
 
                         Console.WriteLine("Passed to {0}", v.getID());
@@ -137,7 +137,7 @@ public class Graph : MonoBehaviour {
 
                 foreach (Node v in adjacentNodes.Keys)
                 {
-                    if (v.getState() == State.UnVisited)
+                    if (!v.IsVisited())
                     {
                         Console.WriteLine("Passed to {0}", v.getID());
                         //if you found the node that you wanted to find, return it and its path. 
@@ -153,12 +153,9 @@ public class Graph : MonoBehaviour {
         }
 
         
-        public bool IsVisited(Node v)
-        {
-            return v?.getState() == State.Visited;
-        }
+       
 
-        //JOSEPH: Find a node by giving its id
+    //JOSEPH: Find a node by giving its id
         public Node FindByKey(int nodeID)
         {
             foreach (KeyValuePair<int, Node> entry in Vertices)
