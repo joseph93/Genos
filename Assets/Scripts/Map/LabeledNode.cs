@@ -19,9 +19,9 @@ namespace Assets.Scripts
             EMERGENCY
         }
 
-        public Label label { get; set; }
+        private Label label { get; set; }
 
-        public LabeledNode(int id, int x, int y, Floor floor, Label label) : base(id, x, y, floor)
+        public LabeledNode(int id, int x, int y, int floorNumber, Label label) : base(id, x, y, floorNumber)
         {
             this.label = label;
         }

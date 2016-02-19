@@ -18,14 +18,14 @@ public class Graph : MonoBehaviour {
 	
 	}
 
-       private Dictionary<Node, Dictionary<Node, Edge>> Vertices { get; set; }
+       private Dictionary<int, Node> Vertices { get; set; }
 
         //For use on the DFS to "break" the recursion.
         private bool finished;
 
         public Graph()
         {
-            Vertices = new Dictionary<Node, Dictionary<Node, Edge>>();
+            Vertices = new Dictionary<int, Node>();
 
         }
 
@@ -33,16 +33,16 @@ public class Graph : MonoBehaviour {
         //Initialize all vertices with Unvisited value.
         private void InitializeVertices()
         {
-            foreach (KeyValuePair<Node, Dictionary<Node, Edge>> entry in Vertices)
+            foreach (KeyValuePair<int, Node> entry in Vertices)
             {
-                entry.Key.setState(State.UnVisited);
+                entry.Value.setState(State.UnVisited);
             }
         }
 
-
-        public bool Contains(Node vertex)
+        //JOSEPH: Contains the id of the node?
+        public bool Contains(int vertexKey)
         {
-            if (Vertices.ContainsKey(vertex))
+            if (Vertices.ContainsKey(vertexKey))
                 return true;
 
             return false;
@@ -51,11 +51,11 @@ public class Graph : MonoBehaviour {
 
     public Node GetFirstElementOfTheList(int findKey)
     {
-        return (from entry in Vertices where entry.Key.getID() == findKey select entry.Key).FirstOrDefault();
+        return (from entry in Vertices where entry.Key == findKey select entry.Value).FirstOrDefault();
     }
 
 
-    /*public void BFS(Node startVertex)
+    public void BFS(Node startVertex)
         {
 
             if (Vertices.Count == 0)
@@ -63,43 +63,49 @@ public class Graph : MonoBehaviour {
 
             Queue<Node> nodes = new Queue<Node>();
             Console.WriteLine("Starting at: {0}", startVertex.getID());
-
+            //JOSEPH: Put the first element in the queue.
             startVertex.setState(State.Visited);
             nodes.Enqueue(startVertex);
 
             while (nodes.Count != 0)
             {
-                List<Node> children = GetChildrenOfVertex(nodes.Dequeue());
+            //JOSEPH: put the adjacent nodes of the element in the queue in a dictionary.
+            //        Then, take out the element out of the queue.
+            Dictionary<Node, double> adjacentNode = nodes.Dequeue().getAdjacentNodes();
 
-                foreach (Node v in children)
+                foreach (Node v in adjacentNode.Keys)
                 {
                     if (Vertices[v.getID()].getState() == State.UnVisited)
                     {
 
                         Console.WriteLine("Passed to {0}", v.getID());
                         Vertices[v.getID()].setState(State.Visited);
-                        nodes.Enqueue(Vertices[v.getID()]);
+                        nodes.Enqueue(v);
                     }
                 }
             }
 
         }
 
-        public Node InitializeBFS(int vertexKeyToFind)
+        public Node InitializeBFS(Node vertexToFind)
         {
             InitializeVertices();
-            return BFS(Vertices.First().Key.getID(), vertexKeyToFind);
+            return BFS(Vertices.First().Value, vertexToFind);
         }
 
 
-        private List<Node> GetChildrenOfVertex(Node headVertex)
+        /*private List<Node> GetChildrenOfVertex(Node headVertex)
         {
             List<Node> vertices = new List<Node>();
 
-            foreach (Node key in Vertices.Keys)
+           
+            Dictionary<Node, Edge> adjacentNodes = headVertex.getAdjacentNodes();
+
+            foreach (Node key in adjacentNodes.Keys)
             {
-                //Vertices[key]
+              vertices.Add(key);
             }
+            
             Node v = headVertex.getNext();
 
             while (v != null)
@@ -108,35 +114,37 @@ public class Graph : MonoBehaviour {
                 v = v.getNext();
             }
             return vertices;
-        }
+        }*/
 
 
 
-        private Node BFS(int startVertexKey, int vertexKeyToFind)
+        private Node BFS(Node startVertex, Node vertexToFind)
         {
             if (Vertices.Count == 0)
                 return null;
 
             //Starting from the first element
             Queue<Node> nodes = new Queue<Node>();
-            Console.WriteLine("Starting at: {0}", Vertices[startVertexKey].getID());
-            Node firstNode = GetFirstElementOfTheList(startVertexKey);
-            firstNode.setState(State.Visited);
-            nodes.Enqueue(firstNode);
+            Console.WriteLine("Starting at: {0}", startVertex.getID());
+            startVertex.setState(State.Visited);
+            nodes.Enqueue(startVertex);
 
             while (nodes.Count != 0)
             {
-                List<Node> children = GetChildrenOfVertex(nodes.Dequeue());
+                //JOSEPH: put the adjacent nodes of the element in the queue in a dictionary.
+                //        Then, take out the element out of the queue.
+                Dictionary<Node, double> adjacentNodes = nodes.Dequeue().getAdjacentNodes();
 
-                foreach (Node v in children)
+                foreach (Node v in adjacentNodes.Keys)
                 {
-                    if (Vertices[v.getID()].getState() == State.UnVisited)
+                    if (v.getState() == State.UnVisited)
                     {
                         Console.WriteLine("Passed to {0}", v.getID());
-                        if (v.getID() == vertexKeyToFind)
+                        //if you found the node that you wanted to find, return it and its path. 
+                        if (v.getID() == vertexToFind.getID())
                             return v;
                         Vertices[v.getID()].setState(State.Visited);
-                        nodes.Enqueue(Vertices[v.getID()]);
+                        nodes.Enqueue(v);
                     }
                 }
             }
@@ -144,45 +152,38 @@ public class Graph : MonoBehaviour {
             return null;
         }
 
-
+        
         public bool IsVisited(Node v)
         {
             return v?.getState() == State.Visited;
         }
 
-
-        public Dictionary<Node, Edge> getAdjacentListOf(Node v)
-        {
-                return Vertices[v];
-
-            return null;
-        }
-
+        //JOSEPH: Find a node by giving its id
         public Node FindByKey(int nodeID)
         {
-            foreach (KeyValuePair<Node, Dictionary<Node, Edge>> entry in Vertices)
+            foreach (KeyValuePair<int, Node> entry in Vertices)
             {
-                if (entry.Key.getID() == nodeID)
-                    return entry.Key;
+                if (entry.Key == nodeID)
+                    return entry.Value;
             }
             return null;
         }
-        public bool ExistKey(Node v)
+
+        //JOSEPH: does the node exist in the vertices dictionary?
+        public bool ExistKey(int v)
         {
-            if (FindByKey(v.getID()) == null)
+            if (FindByKey(v) == null)
                 return false;
             else
                 return true;
         }
 
         //JOSEPH: I'm not sure how edges work here.
-        public Edge InsertUndirectedEdge(Node startingNode, Node endNode, int weight)
+        /*public void InsertUndirectedEdge(Node source, Node target, double weight)
         {
-            InsertDirectEdge(startingNode, endNode, weight);
-            InsertDirectEdge(endNode, startingNode, weight);
-
-            return new Edge(startingNode, endNode, weight);
-        }
+            if(!source.existsInAdjacentNodes(target))
+                source.addAdjacentNode(target, weight);
+        }*/
 
         public void InsertNewVertex(Node vertex)
         {
@@ -193,7 +194,7 @@ public class Graph : MonoBehaviour {
         }
 
         //JOSEPH: I'm not sure how edges work here.
-        public Edge InsertDirectEdge(Node startingNode, Node endNode, int weightEdge)
+       /* public Edge InsertDirectEdge(Node startingNode, Node endNode, int weightEdge)
         {
             //Create the vertex A on the vertex list
             if (!ExistKey(startingNode.getID()))

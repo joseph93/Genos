@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts;
 
 
@@ -22,25 +24,25 @@ public class Node : MonoBehaviour {
 
     private State Status = State.UnVisited;
     private int id;
-    private Floor floor;
-    private Node next;
+    private int floorNumber;
+    private Dictionary<Node, double> adjacentNodes;
     public int x;
     public int y;
-        
 
-    public Node(int id, int x, int y, Floor floor)
+    public Node(int id, int x, int y, int floorNumber)
     {
         this.x = x;
         this.y = y;
-        this.floor = floor;
+        this.floorNumber = floorNumber;
         this.id = id;
+        adjacentNodes = new Dictionary<Node, double>();
     }
 
     public Node(Node n)
     {
         x = n.x;
         y = n.y;
-        floor = n.floor;
+        floorNumber = n.floorNumber;
         id = n.id;
     }
 
@@ -64,19 +66,23 @@ public class Node : MonoBehaviour {
         this.id = id;
     }
 
-    public Floor GetFloor()
+    public int GetFloorNumber()
     {
-        return floor;
+        return floorNumber;
     }
 
-    public Node getNext()
+    public Dictionary<Node, double> getAdjacentNodes()
     {
-        return next;
+        return adjacentNodes;
+    } 
+
+    public void addAdjacentNode(Dictionary<Node, double> aN)
+    {
+        adjacentNodes = aN;
     }
 
-    public void setNext(Node next)
+    public bool existsInAdjacentNodes(Node n)
     {
-        this.next = next;
+        return adjacentNodes.Keys.Any(key => n.getID() == key.getID());
     }
-
 }
