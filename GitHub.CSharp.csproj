@@ -70,18 +70,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Beacon.cs" />
-    <Compile Include="Assets\Scripts\Edge.cs" />
-    <Compile Include="Assets\Scripts\Floor.cs" />
+    <Compile Include="Assets\Scripts\Beacon\Beacon.cs" />
+    <Compile Include="Assets\Scripts\Beacon\iBeaconReceiver.cs" />
+    <Compile Include="Assets\Scripts\Beacon\iBeaconReceiverExample.cs" />
+    <Compile Include="Assets\Scripts\Camera\TouchScreenCamera.cs" />
     <Compile Include="Assets\Scripts\FloorManager.cs" />
-    <Compile Include="Assets\Scripts\Graph.cs" />
-    <Compile Include="Assets\Scripts\IGraph.cs" />
     <Compile Include="Assets\Scripts\LoadingScene.cs" />
-    <Compile Include="Assets\Scripts\Node.cs" />
-    <Compile Include="Assets\Scripts\TouchScreenCamera.cs" />
+    <Compile Include="Assets\Scripts\Map\Edge.cs" />
+    <Compile Include="Assets\Scripts\Map\Graph.cs" />
+    <Compile Include="Assets\Scripts\Map\LabeledNode.cs" />
+    <Compile Include="Assets\Scripts\Map\Map.cs" />
+    <Compile Include="Assets\Scripts\Map\Node.cs" />
+    <Compile Include="Assets\Scripts\Map\PointOfInterest.cs" />
+    <Compile Include="Assets\Scripts\Map\StoryPoint.cs" />
+    <Compile Include="Assets\Scripts\Map\Storyline.cs" />
+    <Compile Include="Assets\Scripts\Path\PathFollower.cs" />
     <Compile Include="Assets\Scripts\TourButton.cs" />
-    <Compile Include="Assets\Scripts\iBeaconReceiver.cs" />
-    <Compile Include="Assets\Scripts\iBeaconReceiverExample.cs" />
     <Compile Include="Assets\Source\iBeacon\iBeaconRegion.cs" />
     <Compile Include="Assets\Source\iBeacon\iBeaconServer.cs" />
     <Compile Include="Assets\Source\iBeacon\iBeaconServerExample.cs" />

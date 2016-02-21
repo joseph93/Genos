@@ -14,7 +14,7 @@ namespace Assets.Scripts {
         {
             GetComponent<SpriteRenderer>().sprite = floor2;
             Destroy(GameObject.FindGameObjectWithTag("Player"));
-            floorNumber.text = "Floor 2";
+            floorNumber.text = "int 2";
         }
 
         void Start()
@@ -26,7 +26,7 @@ namespace Assets.Scripts {
         {
             GetComponent<SpriteRenderer>().sprite = floor3;
             Destroy(GameObject.FindGameObjectWithTag("Player"));
-            floorNumber.text = "Floor 3";
+            floorNumber.text = "int 3";
         }
     }
 }
