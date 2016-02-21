@@ -216,39 +216,42 @@ public class Graph : MonoBehaviour {
 
 
     // REVIEWED by Joseph Atallah
-    //IHCENE: The shortest path algorithm
+    // IHCENE: The shortest path algorithm
     public List<Node> shortest_path(Node start, Node finish)
     {
-
         // previous Dictionary: helps us to get the previous node
         var previous = new Dictionary<Node, Node>();
         // distances Dictionary: helps us to get the distances registered for each paths
         var distances = new Dictionary<Node, double>();
-        // the nodes list : helps us to keep track of all the nodes in the graph, so that they can be easily sorted later.
+        // the nodes list : helps us to keep track of all the nodes in the graph, so that 
+        // they can be easily sorted later.
         var nodes = new List<Node>();
 
         // the path list : represents our shortest path between 2 nodes (final result)
         List<Node> path = null;
 
-        foreach (KeyValuePair<int, Node> entry in Vertices)
+        // JOSEPH-REVIEW: KeyValuePari<int,Node> can be replaced by Node value in Vertices.Values.
+        foreach (Node entry in Vertices.Values)
         {
-            //the distance between the first node and itself is equal to 0
-            if (entry.Value.getID() == start.getID())
+            // the distance between the first node and itself is equal to 0
+            if (entry.getID() == start.getID())
             {
-                distances[entry.Value] = 0;
+                distances[entry] = 0;
             }
-            //the distance between the first node and the other nodes is unknown, thus set to "Infinity"
+            // the distance between the first node and the other nodes is unknown, thus set to "Infinity"
             else
             {
-                distances[entry.Value] = int.MaxValue;
+                distances[entry] = int.MaxValue;
             }
 
-            nodes.Add(entry.Value);
+            nodes.Add(entry);
         }
 
         while (nodes.Count != 0)
         {
             // Then sorting the list of nodes from smallest distance to the biggest
+            // JOSEPH-REVIEW: Here the casting of int will lead to an error when comparing two values
+            // that are different by a few decimals.
             nodes.Sort((x, y) => (int)distances[x] - (int)distances[y]);
 
             var smallest = nodes[0];
@@ -259,7 +262,8 @@ public class Graph : MonoBehaviour {
                 path = new List<Node>();
                 while (previous.ContainsKey(smallest))
                 {
-                    //insert the exact shortest path by retracing the values of each nodes inside the previous Dictionary
+                    // insert the exact shortest path by retracing the values of each nodes inside 
+                    // the previous Dictionary
                     path.Add(smallest);
                     smallest = previous[smallest];
                 }
@@ -275,9 +279,9 @@ public class Graph : MonoBehaviour {
             Dictionary<Node, double> neighbors = smallest.getAdjacentNodes();
             foreach (KeyValuePair<Node, double> neighbor in neighbors)
             {
-                //distance of the current node + adjacent node
+                // distance of the current node + adjacent node
                 double alt = distances[smallest] + neighbor.Value;
-                //then compare with the distance of the other adjacent node
+                // then compare with the distance of the other adjacent node
                 if (alt < distances[neighbor.Key])
                 {
                     distances[neighbor.Key] = alt;
