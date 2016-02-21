@@ -118,7 +118,7 @@ public class Graph : MonoBehaviour {
 
 
 
-    private Node BFS(Node startVertex, Node vertexToFind)
+    public Node BFS(Node startVertex, Node vertexToFind)
     {
         if (Vertices.Count == 0)
             return null;

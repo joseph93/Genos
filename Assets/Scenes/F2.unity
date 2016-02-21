@@ -406,6 +406,10 @@ Prefab:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 11487324, guid: 5c89eb821fd96ca4cac37308786dc693, type: 2}
+      propertyPath: mapHeight
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c89eb821fd96ca4cac37308786dc693, type: 2}
   m_IsPrefabParent: 0
@@ -813,10 +817,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1894885265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fffc5ab04aea33f4ca259abb3fa52d6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 51dc8797f4aafc844aac5ccf8e92a373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Nipper: {fileID: 157970, guid: f96b497af1ef7ea44afc27da034ef208, type: 2}
+  poiIBeacon: {fileID: 145172, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
 --- !u!1 &1957905960
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,7 +987,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc5ab04aea33f4ca259abb3fa52d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Nipper: {fileID: 157970, guid: f96b497af1ef7ea44afc27da034ef208, type: 2}
 --- !u!212 &1988644489
 SpriteRenderer:
   m_ObjectHideFlags: 0
