@@ -16,6 +16,7 @@ public enum BluetoothLowEnergyState {
     [ExecuteInEditMode]
     public class iBeaconReceiver : MonoBehaviour
     {
+        //Reviewer Ihcene: Not sure if the list of beacons is taken into consideration within our structure
         public delegate void BeaconRangeChanged(List<Beacon> beacons);
 
         public static event BeaconRangeChanged BeaconRangeChangedEvent;
@@ -177,6 +178,7 @@ public enum BluetoothLowEnergyState {
             }
         }
 
+        //Reviewer Ihcene : very good - the update for the frames per second was fixed
         void Update()
         {
             if (updateDescription)
