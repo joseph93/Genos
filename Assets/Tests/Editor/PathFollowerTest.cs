@@ -5,39 +5,26 @@ using NUnit.Framework;
 public class PathFollowerTest {
 
     [Test]
-    public void EditorTest()
-    {
+    //Test if point distance is less than the final distance before updating the scene
+    public void Update()
+    {     
         //Arrange
-        var gameObject = new GameObject();
+        float reachDist = 1.0f;
+        int currentPoint = 0;
+        float dist = 0f;
 
         //Act
-        //Try to rename the GameObject
-        var newGameObjectName = "My game object";
-        gameObject.name = newGameObjectName;
+        //Increase current point to 1 if distance is smaller then reached distance
+        int currentPointBefore = 0;
+        int currentPointAfter = 0;
+        if (dist <= reachDist)
+            currentPointBefore = currentPoint; //0
+            currentPoint++;
+        currentPointAfter = currentPoint; //1
 
         //Assert
-        //The object has a new name
-        Assert.AreEqual(newGameObjectName, gameObject.name);
-    }
-
-    [Test]
-    public void Update()
-    {      Transform[] path;
-           float speed = 5.0f;
-           float reachDist = 1.0f;
-           int currentPoint = 0;
-        /*   float dist = Vector3.Distance(path[currentPoint].position, transform.position);
-
-           transform.position = Vector3.MoveTowards(transform.position, path[currentPoint].position, Time.deltaTime * speed);
-
-        //Nipper goes to next point
-        if (dist <= reachDist)
-            currentPoint++;
-            */
-        /*      
-        //Nipper goes back to initial point
-                if (currentPoint >= path.Length)
-                    currentPoint = 0;
-        */
+        //Check if the current point has increase
+        Assert.GreaterOrEqual(currentPointAfter, currentPointBefore);
+      
     }
 }
