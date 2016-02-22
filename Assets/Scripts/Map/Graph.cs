@@ -169,7 +169,7 @@ public class Graph {
     //JOSEPH: I'm not sure how edges work here.
     /*public void InsertUndirectedEdge(Node source, Node target, double weight)
     {
-        if(!source.existsInAdjacentNodes(target))
+        if(!source.hasAdjacentNode(target))
             source.addAdjacentNode(target, weight);
     }*/
 
