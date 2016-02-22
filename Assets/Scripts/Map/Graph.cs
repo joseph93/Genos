@@ -1,22 +1,13 @@
 ﻿
 using System;
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts;
 
-public class Graph : MonoBehaviour {
+public class Graph {
 
 	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     private Dictionary<int, Node> Vertices { get; set; }
 
@@ -118,7 +109,7 @@ public class Graph : MonoBehaviour {
 
 
 
-    private Node BFS(Node startVertex, Node vertexToFind)
+    public Node BFS(Node startVertex, Node vertexToFind)
     {
         if (Vertices.Count == 0)
             return null;
@@ -178,7 +169,7 @@ public class Graph : MonoBehaviour {
     //JOSEPH: I'm not sure how edges work here.
     /*public void InsertUndirectedEdge(Node source, Node target, double weight)
     {
-        if(!source.existsInAdjacentNodes(target))
+        if(!source.hasAdjacentNode(target))
             source.addAdjacentNode(target, weight);
     }*/
 

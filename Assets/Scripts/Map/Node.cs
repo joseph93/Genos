@@ -86,7 +86,7 @@ public class Node : MonoBehaviour {
         adjacentNodes = aN;
     }
 
-    public bool existsInAdjacentNodes(Node n)
+    public bool hasAdjacentNode(Node n)
     {
         return adjacentNodes.Keys.Any(key => n.getID() == key.getID());
     }

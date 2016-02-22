@@ -185,5 +185,6 @@ public enum BluetoothLowEnergyState {
                 updateDescription = false;
             }
         }
+        
     }
 }
