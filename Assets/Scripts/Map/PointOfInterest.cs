@@ -1,23 +1,29 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class PointOfInterest : Node
     {
         private string description;
-        private string name;
+        private new string name;
         private Beacon beacon;
         private bool visited;
+        
 
-        public PointOfInterest(int id, int x, int y, int floorNumber, string name, Beacon bc) : base(id, x, y, floorNumber)
+        public PointOfInterest(int id, int x, int y, int floorNumber, string name) : base(id, x, y, floorNumber)
         {
             this.name = name;
-            this.beacon = bc;
             description = "";
             visited = false;
         }
+
+      
+
+        
     }
 }
