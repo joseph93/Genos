@@ -10,10 +10,11 @@ namespace Assets.Scripts {
         private bool scanning = true;
         private List<Beacon> myBeacons;
         public GameObject poiIBeacon;
-        private PointOfInterest poi = new PointOfInterest(1, 0, -1, 1, "Test");
+        private PointOfInterest poi = new PointOfInterest(1, 0, 2, 1, "Test");
         // Use this for initialization
         void Start()
         {
+            //DisplayPointOfInterest();
             iBeaconReceiver.BeaconRangeChangedEvent += OnBeaconRangeChanged;
             iBeaconReceiver.BluetoothStateChangedEvent += OnBluetoothStateChanged;
             iBeaconReceiver.CheckBluetoothLEStatus();
@@ -29,7 +30,18 @@ namespace Assets.Scripts {
         // Update is called once per frame
         void Update()
         {
-            StartCoroutine(searchForDistanceOfBeacon());
+            //StartCoroutine(searchForDistanceOfBeacon());
+            foreach (Beacon b in myBeacons)
+            {
+                if (0.00 < b.accuracy && b.accuracy < 2.00)
+                {
+                    DisplayPointOfInterest();
+                }
+                if (b.accuracy > 2.00)
+                {
+                    DisappearIcon();
+                }
+            }
         }
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
@@ -60,7 +72,7 @@ namespace Assets.Scripts {
 
         public void DisplayPointOfInterest()
         {
-            GameObject nipper = Instantiate(poiIBeacon, new Vector3(poi.x, poi.y, -7), Quaternion.identity) as GameObject;
+            Instantiate(poiIBeacon, new Vector3(poi.x, poi.y, -7), Quaternion.identity);
             // nipper.transform.SetParent(transform);
         }
 
@@ -69,7 +81,7 @@ namespace Assets.Scripts {
             Destroy(GameObject.FindGameObjectWithTag("Icon"));
         }
 
-        public IEnumerator searchForDistanceOfBeacon()
+       /* public IEnumerator searchForDistanceOfBeacon()
         {
             yield return new WaitForSeconds(1);
             foreach (Beacon b in myBeacons)
@@ -83,7 +95,7 @@ namespace Assets.Scripts {
                     DisappearIcon();
                 }
             }
-        }
+        }*/
 
         private void OnBeaconRangeChanged(List<Beacon> beacons)
         {

@@ -11,7 +11,7 @@ namespace Assets.Scripts
     {
         private string description;
         private new string name;
-        private GameObject beacon;
+        private Beacon beacon;
         private bool visited;
         
 
@@ -22,10 +22,7 @@ namespace Assets.Scripts
             visited = false;
         }
 
-        public GameObject getBeacon()
-        {
-            return beacon;
-        }
+      
 
         
     }
