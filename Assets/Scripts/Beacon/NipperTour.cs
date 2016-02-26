@@ -44,7 +44,7 @@ namespace Assets.Scripts {
             //StartCoroutine(searchForDistanceOfBeacon());
             foreach (Beacon b in myBeacons)
             {
-               /* if (0.00 < b.accuracy && b.accuracy < 2.00)
+               if (0.00 < b.accuracy && b.accuracy < 2.00)
                 {
                     foreach (PointOfInterest poi in nodeList)
                     {
@@ -54,8 +54,7 @@ namespace Assets.Scripts {
                 if (b.accuracy > 2.00)
                 {
                    
-                }*/
-                Debug.Log("Test: " + b.UUID);
+                }
             }
         }
 
