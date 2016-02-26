@@ -18,7 +18,6 @@ namespace Assets.Scripts
         void Awake()
         {
             beacon = BeaconGameObject.GetComponent<iBeaconServer>();
-            Debug.Log(beacon.m_uuid);
         }
         public PointOfInterest(int id, int x, int y, int floorNumber, string name) : base(id, x, y, floorNumber)
         {
