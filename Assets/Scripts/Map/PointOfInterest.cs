@@ -10,11 +10,16 @@ namespace Assets.Scripts
     public class PointOfInterest : Node
     {
         private string description;
-        private new string name;
-        private Beacon beacon;
+        public new string name;
+        public iBeaconServer beacon { get; set; }
+        public GameObject BeaconGameObject;
         private bool visited;
-        
 
+        void Awake()
+        {
+            beacon = BeaconGameObject.GetComponent<iBeaconServer>();
+            Debug.Log(beacon.m_uuid);
+        }
         public PointOfInterest(int id, int x, int y, int floorNumber, string name) : base(id, x, y, floorNumber)
         {
             this.name = name;
@@ -22,8 +27,14 @@ namespace Assets.Scripts
             visited = false;
         }
 
-      
+        public void enableSpriteRenderer()
+        {
+            GetComponent<Renderer>().enabled = true;
+        }
 
-        
+        public iBeaconServer getBeacon()
+        {
+            return beacon;
+        }
     }
 }

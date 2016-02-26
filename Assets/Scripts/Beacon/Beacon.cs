@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Object = System.Object;
 
 namespace Assets.Scripts { 
 public enum BeaconRange {
@@ -13,7 +14,7 @@ public enum BeaconRange {
     public class Beacon : EqualityComparer<Beacon>, IComparable, IEquatable<Beacon>, IComparable<Beacon>
     {
 
-        public string UUID;
+        public string UUID { get; set; }
         public int major;
         public int minor;
         public int rssi;
