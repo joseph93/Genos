@@ -19,11 +19,11 @@ namespace Assets.Scripts {
 
         private Node startingNode { get; set; }
         private Node endNode { get; set; }
-        private double edgeWeight { get; set; }
+        private float edgeWeight { get; set; }
         private int floorNumber { get; set; }
 
 
-        public Edge(Node n1, Node n2, int fN, double weight)
+        public Edge(Node n1, Node n2, int fN, float weight)
         {
             startingNode = n1;
             endNode = n2;

@@ -77,6 +77,9 @@
     <Compile Include="Assets\Scripts\Beacon\Beacon.cs" />
     <Compile Include="Assets\Scripts\Beacon\NipperTour.cs" />
     <Compile Include="Assets\Scripts\Beacon\iBeaconReceiver.cs" />
+    <Compile Include="Assets\Scripts\Beacon\iBeaconRegion.cs" />
+    <Compile Include="Assets\Scripts\Beacon\iBeaconServer.cs" />
+    <Compile Include="Assets\Scripts\Beacon\iBeaconServerExample.cs" />
     <Compile Include="Assets\Scripts\Camera\TouchScreenCamera.cs" />
     <Compile Include="Assets\Scripts\DrawLine.cs" />
     <Compile Include="Assets\Scripts\FloorManager.cs" />
@@ -91,9 +94,6 @@
     <Compile Include="Assets\Scripts\Map\Storyline.cs" />
     <Compile Include="Assets\Scripts\Path\PathFollower.cs" />
     <Compile Include="Assets\Scripts\TourButton.cs" />
-    <Compile Include="Assets\Source\iBeacon\iBeaconRegion.cs" />
-    <Compile Include="Assets\Source\iBeacon\iBeaconServer.cs" />
-    <Compile Include="Assets\Source\iBeacon\iBeaconServerExample.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\Assertions.cs" />

@@ -6,28 +6,16 @@ using Assets.Scripts;
 
 
 public enum State { Visited = 0, UnVisited = 1, Processed = 2 }
-
+[ExecuteInEditMode]
 public class Node : MonoBehaviour {
 
- 
-
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-
+    
     private State Status = State.UnVisited;
-    private int id;
-    private int floorNumber;
-    private Dictionary<Node, double> adjacentNodes;
-    public int x;
-    public int y;
+    public int id;
+    public int floorNumber;
+    private Dictionary<Node, float> adjacentNodes;
+    public float x;
+    public float y;
 
     public Node(int id, int x, int y, int floorNumber)
     {
@@ -35,7 +23,15 @@ public class Node : MonoBehaviour {
         this.y = y;
         this.floorNumber = floorNumber;
         this.id = id;
-        adjacentNodes = new Dictionary<Node, double>();
+        adjacentNodes = new Dictionary<Node, float>();
+    }
+
+    void Update()
+    {
+        if (Application.isEditor)
+        {
+            transform.position = new Vector3(x, y, transform.position.z);
+        }
     }
 
     public Node(Node n)
@@ -76,12 +72,14 @@ public class Node : MonoBehaviour {
         return floorNumber;
     }
 
-    public Dictionary<Node, double> getAdjacentNodes()
+    //JOSEPH: Changed the type to "float" for the edge distance since it takes less memory (7 digits, 32 bit) 
+    //than doubles (15-16 digits, 64 bit).
+    public Dictionary<Node, float> getAdjacentNodes()
     {
         return adjacentNodes;
     } 
 
-    public void addAdjacentNode(Dictionary<Node, double> aN)
+    public void addAdjacentNode(Dictionary<Node, float> aN)
     {
         adjacentNodes = aN;
     }

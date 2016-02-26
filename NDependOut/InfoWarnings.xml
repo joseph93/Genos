@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<InfoWarnings>
+  <Info>Begin full analysis with NDepend v6.2.1.8630</Info>
+  <Info>No Baseline for Comparison loaded.</Info>
+  <Warning>Can't load the assembly {Assembly-CSharp-Editor}:
+Can't find the .NET assembly {Assembly-CSharp-Editor} in specified folders. 
+Has it been compiled properly? 
+Is the NDepend project missing the containing folder of the .NET assembly?</Warning>
+  <Info>Concurrent mode</Info>
+  <Info>.NET Assemblies loaded from {C:\Users\Joseph\Documents\GitHub\GitHub.CSharpTests4\bin\Debug} 
+   GitHub.CSharpTests4.dll   v1.0.0.0
+   Assembly-CSharp.dll   v0.0.0.0
+   UnityEngine.dll   v0.0.0.0
+   UnityEngine.UI.dll   v1.0.0.0
+   xunit.core.dll   v2.0.0.2929
+   xunit.assert.dll   v2.0.0.2929</Info>
+  <Info>.NET Assemblies loaded from {C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319} 
+   mscorlib.dll   v4.0.0.0
+   System.dll   v4.0.0.0
+   System.Core.dll   v4.0.0.0</Info>
+  <Warning>No application or third party assembly found in directory {C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\WPF}</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\GitHub.CSharpTests4\Assets\Scripts\Map\GraphTests.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {GitHub.CSharpTests4} (last modified 2/21/2016 10:19:46 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\GitHub.CSharpTests4\Assets\Scripts\Map\NodeTests.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {GitHub.CSharpTests4} (last modified 2/21/2016 10:19:46 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\GitHub.CSharpTests4\Properties\AssemblyInfo.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {GitHub.CSharpTests4} (last modified 2/21/2016 10:19:46 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Camera\TouchScreenCamera.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\DrawLine.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\LoadingScene.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\Graph.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\Node.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Path\PathFollower.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Beacon\Beacon.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Beacon\NipperTour.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Beacon\iBeaconReceiver.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\FloorManager.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\Edge.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\LabeledNode.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\Map.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\PointOfInterest.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\StoryPoint.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\Storyline.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\Scripts\TourButton.cs} (last modified 2/21/2016 11:26:42 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\AssertionComponent.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\AssertionException.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Assertions.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\CheckMethod.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\ActionBase.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\BoolComparer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\ColliderComparer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\ComparerBase.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\FloatComparer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\GeneralComparer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\IntComparer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\IsRenderedByCamera.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\StringComparer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\TransformComparer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\ValueDoesNotChange.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\Vector2Comparer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\Vector3Comparer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\Vector4Comparer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\VectorComparerBase.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\InvalidPathException.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\MemberResolver.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\ITestResult.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\TestResultState.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Scripts\GameScore.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\CodeBasedAssertionExample.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\CustomComponent.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\DynamicIntegrationTest.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\ThrowCustomException.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\DTOFormatter.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\ITestRunnerCallback.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\IntegrationTest.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\IntegrationTestAttribute.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\IntegrationTestsProvider.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\NetworkResultSender.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\ResultDTO.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestComponent.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestResult.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestResultRenderer.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunner.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerCallbackList.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerConfigurator.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Warning>The source file {C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestingAssets\CallTesting.cs} (last modified 2/21/2016 11:26:43 PM) and the PDB file of the assembly {Assembly-CSharp} (last modified 2/21/2016 10:13:50 PM) are not in-sync.</Warning>
+  <Info>65 source files parsed ; all source files found ; 62 source files not in-sync with PDB</Info>
+  <Info>0 code rule has been extracted from code.</Info>
+  <Info>No dependency cycle detected in assemblies referencement graph.</Info>
+  <Info>Do merge code generated by compiler into application code.</Info>
+  <Info>Analyse dependencies of your application.</Info>
+  <Info>Log trend metrics values.</Info>
+  <Info>Execute queries and rules</Info>
+  <Warning>2 critical rules are violated.
+  - Potentially dead Methods
+  - Potentially dead Fields</Warning>
+  <Info>NDepend analysis done. Duration: 00:10</Info>
+  <Info>Building the report (standard).</Info>
+</InfoWarnings>

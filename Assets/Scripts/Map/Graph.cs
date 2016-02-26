@@ -62,7 +62,7 @@ public class Graph {
         {
             //JOSEPH: put the adjacent nodes of the element in the queue in a dictionary.
             //        Then, take out the element out of the queue.
-            Dictionary<Node, double> adjacentNode = nodes.Dequeue().getAdjacentNodes();
+            Dictionary<Node, float> adjacentNode = nodes.Dequeue().getAdjacentNodes();
 
             foreach (Node v in adjacentNode.Keys)
             {
@@ -124,7 +124,7 @@ public class Graph {
         {
             //JOSEPH: put the adjacent nodes of the element in the queue in a dictionary.
             //        Then, take out the element out of the queue.
-            Dictionary<Node, double> adjacentNodes = nodes.Dequeue().getAdjacentNodes();
+            Dictionary<Node, float> adjacentNodes = nodes.Dequeue().getAdjacentNodes();
 
             foreach (Node v in adjacentNodes.Keys)
             {
@@ -213,7 +213,7 @@ public class Graph {
         // previous Dictionary: helps us to get the previous node
         var previous = new Dictionary<Node, Node>();
         // distances Dictionary: helps us to get the distances registered for each paths
-        var distances = new Dictionary<Node, double>();
+        var distances = new Dictionary<Node, float>();
         // the nodes list : helps us to keep track of all the nodes in the graph, so that 
         // they can be easily sorted later.
         var nodes = new List<Node>();
@@ -267,11 +267,11 @@ public class Graph {
                 break;
             }
 
-            Dictionary<Node, double> neighbors = smallest.getAdjacentNodes();
-            foreach (KeyValuePair<Node, double> neighbor in neighbors)
+            Dictionary<Node, float> neighbors = smallest.getAdjacentNodes();
+            foreach (KeyValuePair<Node, float> neighbor in neighbors)
             {
                 // distance of the current node + adjacent node
-                double alt = distances[smallest] + neighbor.Value;
+                float alt = distances[smallest] + neighbor.Value;
                 // then compare with the distance of the other adjacent node
                 if (alt < distances[neighbor.Key])
                 {
