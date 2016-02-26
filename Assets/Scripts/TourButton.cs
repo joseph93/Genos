@@ -28,5 +28,15 @@ namespace Assets.Scripts
         {
             SceneManager.LoadScene("F2");
         }
+
+        public void loadFloor2Next()
+        {
+            SceneManager.LoadScene("F2 next");
+        }
+
+        public void backToOverview()
+        {
+            SceneManager.LoadScene("F2");
+        }
     }
 }

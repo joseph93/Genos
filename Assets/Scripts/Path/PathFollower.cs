@@ -16,15 +16,17 @@ public class PathFollower : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        float dist = Vector3.Distance(path[currentPoint].position, transform.position);
+	    if (currentPoint < 5)
+	    {
+	        float dist = Vector3.Distance(path[currentPoint].position, transform.position);
 
-        transform.position = Vector3.MoveTowards(transform.position, path[currentPoint].position, Time.deltaTime*speed);
+	        transform.position = Vector3.MoveTowards(transform.position, path[currentPoint].position, Time.deltaTime*speed);
 
-        //Nipper goes to next point
-        if (dist <= reachDist)
-            currentPoint++;
-
-        /*      
+	        //Nipper goes to next point
+	        if (dist <= reachDist)
+	            currentPoint++;
+	    }
+	    /*      
         //Nipper goes back to initial point
                 if (currentPoint >= path.Length)
                     currentPoint = 0;
