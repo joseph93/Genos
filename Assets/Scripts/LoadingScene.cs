@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+
+//Ihcene: This loads the main screen automatically
 public class LoadingScene : MonoBehaviour {
 
 	// Use this for initialization

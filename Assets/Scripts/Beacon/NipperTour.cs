@@ -38,6 +38,7 @@ namespace Assets.Scripts {
             iBeaconReceiver.BluetoothStateChangedEvent -= OnBluetoothStateChanged;
         }
 
+        //Reviewer Ihcene: Update was fixed, for the rendering of the beacon, for each frames
         // Update is called once per frame
         void Update()
         {
