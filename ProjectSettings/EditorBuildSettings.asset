@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
   - enabled: 0
     path: Assets/Scenes/BadMenu(dont use).unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoadingPage.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TourSelection.unity
   - enabled: 1
     path: Assets/Scenes/F2.unity

@@ -12,6 +12,8 @@ namespace Assets.Scripts {
         public PointOfInterest[] PointOfInterests;
         private List<PointOfInterest> nodeList = new List<PointOfInterest>();
         private Vector2 scrolldistance;
+        public Camera mainCam;
+        private bool detected = false;
 
         //JOSEPH: Initialize the node list.
         void Awake()
@@ -43,20 +45,7 @@ namespace Assets.Scripts {
         void Update()
         {
             //StartCoroutine(searchForDistanceOfBeacon());
-            foreach (Beacon b in myBeacons)
-            {
-               if (0.00 < b.accuracy && b.accuracy < 2.00)
-                {
-                    foreach (PointOfInterest poi in nodeList)
-                    {
-                        poi.enableSpriteRenderer();
-                    }
-                }
-                if (b.accuracy > 2.00)
-                {
-                   
-                }
-            }
+            StartCoroutine(searchForDistanceOfBeacon());
         }
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
@@ -85,32 +74,24 @@ namespace Assets.Scripts {
             }
         }
 
-        /*public void DisplayPointOfInterest()
-        {
-            Instantiate(poiIBeacon, new Vector3(poi.x, poi.y, -7), Quaternion.identity);
-            // nipper.transform.SetParent(transform);
-        }
-
-        public void DisappearIcon()
-        {
-            Destroy(GameObject.FindGameObjectWithTag("Icon"));
-        }
+       
 
         public IEnumerator searchForDistanceOfBeacon()
         {
             yield return new WaitForSeconds(1);
             foreach (Beacon b in myBeacons)
             {
-                if (0.00 < b.accuracy && b.accuracy < 2.00)
-                {
-                    DisplayPointOfInterest();
-                }
-                if (b.accuracy > 2.00)
-                {
-                    DisappearIcon();
-                }
+                foreach(PointOfInterest poi in nodeList)
+                    {
+                        if (!detected)
+                        {
+                            poi.enableSpriteRenderer();
+                            mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
+                            detected = true;
+                        }
+                    }
             }
-        }*/
+        }
 
         private void OnBeaconRangeChanged(List<Beacon> beacons)
         {
