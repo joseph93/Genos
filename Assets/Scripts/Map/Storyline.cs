@@ -5,6 +5,8 @@ using System.Text;
 
 namespace Assets.Scripts
 {
+
+    //Ihcene : StoryLine will only be available with the NipperTour
     public class Storyline
     {
         public string name { get; set; }

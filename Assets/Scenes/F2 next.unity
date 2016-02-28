@@ -532,11 +532,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 436964, guid: 5c89eb821fd96ca4cac37308786dc693, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 436964, guid: 5c89eb821fd96ca4cac37308786dc693, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.67
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 436964, guid: 5c89eb821fd96ca4cac37308786dc693, type: 2}
       propertyPath: m_LocalPosition.z
@@ -576,7 +576,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2055200, guid: 5c89eb821fd96ca4cac37308786dc693, type: 2}
       propertyPath: orthographic size
-      value: 3.5
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: 11487324, guid: 5c89eb821fd96ca4cac37308786dc693, type: 2}
       propertyPath: moveSensitivityX

@@ -12,7 +12,7 @@ public class PathFollower : MonoBehaviour {
     void Start () {
 
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -44,12 +44,14 @@ public class PathFollower : MonoBehaviour {
             }
         }
 
-        //Draw the gizmos spheres
+        //Draw gizmos spheres
         if (path.Length > 0) { 
             for(int i = 0; i < path.Length; i++) {
                 if(path[i] != null) {
-                    Gizmos.DrawSphere(path[i].position, reachDist);				
-				}
+                    float radius = 0.2f;
+                    Gizmos.DrawWireSphere(path[i].position, radius);
+                    //Gizmos.DrawSphere(path[i].position, reachDist);				
+                }
             }
         }
 
