@@ -12,7 +12,7 @@ namespace Assets.Scripts {
         public PointOfInterest[] PointOfInterests;
         private List<PointOfInterest> nodeList = new List<PointOfInterest>();
         private Vector2 scrolldistance;
-<<<<<<< HEAD
+
         public Node[] ArrayOfNodes;
         private List<Node> path = new List<Node>();
         private Node n5;
@@ -32,10 +32,8 @@ namespace Assets.Scripts {
      
         public TrailRenderer trail;
 
-=======
         public Camera mainCam;
         private bool detected = false;
->>>>>>> 88769c386d9c464beda79236e006e05ea0826ea5
 
         //JOSEPH: Initialize the node list.
         void Awake()
@@ -97,7 +95,7 @@ namespace Assets.Scripts {
         void Update()
         {
             //StartCoroutine(searchForDistanceOfBeacon());
-<<<<<<< HEAD
+
             foreach (Beacon b in myBeacons)
             {
                if (0.00 < b.accuracy && b.accuracy < 2.00)
@@ -136,14 +134,11 @@ namespace Assets.Scripts {
 
             //    }
 
-=======
+
             StartCoroutine(searchForDistanceOfBeacon());
-<<<<<<< HEAD
+
 
             
-=======
->>>>>>> 88769c386d9c464beda79236e006e05ea0826ea5
->>>>>>> e389a0abea6d9b0cd320be42d052c73c99bc100d
         }
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)

@@ -36,7 +36,7 @@ namespace Assets.Scripts
 
         public void loadFloor2Next()
         {
-            SceneManager.LoadScene("F2 next");
+            SceneManager.LoadScene("F2-next");
             Vibration.Vibrate(1000);
         }
 
