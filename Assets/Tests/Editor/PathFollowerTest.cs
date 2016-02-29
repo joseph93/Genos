@@ -2,7 +2,7 @@
 using UnityEditor;
 using NUnit.Framework;
 
-public class PathFollowerTest {
+public class xPathFollowerTest {
 
     [Test]
     //Test if point distance is less than the final distance before updating the scene

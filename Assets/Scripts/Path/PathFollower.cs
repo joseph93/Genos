@@ -19,7 +19,7 @@ public class PathFollower : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	    if (currentPoint < 100)
+	    if (currentPoint < path.Length)
 	    {
 	        float dist = Vector3.Distance(path[currentPoint].position, transform.position);
 
@@ -28,12 +28,7 @@ public class PathFollower : MonoBehaviour {
 	        //Nipper goes to next point
 	        if (dist <= reachDist)
 	            currentPoint++;
-	    }
-	    /*      
-        //Nipper goes back to initial point
-                if (currentPoint >= path.Length)
-                    currentPoint = 0;
-        */  
+	    } 
     }
 
     void OnDrawGizmos() {

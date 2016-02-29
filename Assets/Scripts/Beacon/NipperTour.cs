@@ -7,39 +7,21 @@ namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
     {
         private List<Beacon> myBeacons = new List<Beacon>();
-<<<<<<< HEAD
         private Map map;
-=======
-        public PointOfInterest[] PointOfInterests;
-        private List<PointOfInterest> nodeList = new List<PointOfInterest>();
-        private Vector2 scrolldistance;
->>>>>>> 42cb9eef07718cc2400897a67846fc0af9903aef
-
         public Node[] ArrayOfNodes;
-        private List<Node> path = new List<Node>();
 
-       
+        public float speed = 5.0f;
+        public float reachDist = 0.2f;
+        public int currentPoint;
+        private List<Node> path;
 
         public Camera mainCam;
-<<<<<<< HEAD
         private bool detected;
-=======
-        private bool detected = false;
->>>>>>> 42cb9eef07718cc2400897a67846fc0af9903aef
 
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-            map = new Map();
-            Storyline nipperTour = new Storyline("Nipper Tour", 4);
             
-            for (int i = 0; i < ArrayOfNodes.Length; i++)
-            {
-                nipperTour.addNode(ArrayOfNodes[i].GetComponentInChildren<Node>());
-                // Debug.Log("Beacon id for poi " + nodeList[i].id + " is " + nodeList[i].beacon.m_uuid);
-            }
-            map.addStoryline(nipperTour);
-
         }
         // Use this for initialization
         void Start()
@@ -49,6 +31,31 @@ namespace Assets.Scripts {
             iBeaconReceiver.BluetoothStateChangedEvent += OnBluetoothStateChanged;
             iBeaconReceiver.CheckBluetoothLEStatus();
             Debug.Log("Listening for beacons");
+            map = new Map();
+            Storyline nipperTour = new Storyline("Nipper Tour", 4);
+
+            foreach (Node n in ArrayOfNodes)
+            {
+                nipperTour.addNode(n);
+                Debug.Log("Testing: " + n.id);
+            }
+            map.addStoryline(nipperTour);
+            Node n1 = ArrayOfNodes[0].GetComponent<Node>();
+            Node n2 = ArrayOfNodes[1].GetComponent<Node>();
+            Node n3 = ArrayOfNodes[2].GetComponent<Node>();
+            Node n4 = ArrayOfNodes[3].GetComponent<Node>();
+            n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 10.0f } });
+            n2.addAdjacentNode(new Dictionary<Node, float>() { { n3, 1.0f } });
+            n3.addAdjacentNode(new Dictionary<Node, float>() { { n4, 3.0f } });
+            map.initializeGraph();
+
+            transform.position = new Vector3(n1.x, n1.y, 5);
+            path = map.getGraph().shortest_path(n1, n4);
+            path.Reverse();
+            foreach (Node n in path)
+            {
+                Debug.Log("Reached node " + n.id);
+            }
         }
 
         void OnDestroy()
@@ -61,55 +68,16 @@ namespace Assets.Scripts {
         // Update is called once per frame
         void Update()
         {
-<<<<<<< HEAD
             StartCoroutine(searchForDistanceOfBeacon(0.3f));
-=======
-            //StartCoroutine(searchForDistanceOfBeacon());
-
-            foreach (Beacon b in myBeacons)
+            if (currentPoint < path.Count)
             {
-               if (0.00 < b.accuracy && b.accuracy < 2.00)
-                {
-                    foreach (PointOfInterest poi in nodeList)
-                    {
-                        poi.enableSpriteRenderer();
-                    }
-                }
-                if (b.accuracy > 2.00)
-                {
-                   
-                }
+                float dist = Vector3.Distance(path[currentPoint].getPosition(), transform.position);
+                transform.position = Vector3.MoveTowards(transform.position, path[currentPoint].getPosition(),
+                    Time.deltaTime * speed);
+
+                if (dist <= reachDist)
+                    currentPoint++;
             }
-
-       
-            //added from pathfollower
-        //    if (currentPoint < 5)
-        //    {
-             //   float dist = Vector3.Distance(pathRenderer[currentPoint].position, transform.position); //Vector3.Distance(a,b) is the same as (a-b).magnitude
-             //   transform.position = Vector3.MoveTowards(transform.position, pathRenderer[currentPoint].position, Time.deltaTime * speed); //Vector3 MoveTowards(Vector3 current, Vector3 target, float maxDistanceDelta); 
-
-                for (int i = 0; i < path.Count; i++)
-                {
-                    float dist = Vector3.Distance(path[i].getPosition(), transform.position);
-                    transform.position = Vector3.MoveTowards(transform.position, path[i].getPosition(), Time.deltaTime * speed);
-               
-                //Nipper goes to next point
-                //   if (dist <= reachDist)
-                //      currentPoint++;
-                   
-                 }
-
-           
-
-
-            //    }
-
-
-            StartCoroutine(searchForDistanceOfBeacon());
-
-
-            
->>>>>>> 42cb9eef07718cc2400897a67846fc0af9903aef
         }
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)

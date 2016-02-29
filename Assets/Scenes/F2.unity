@@ -1313,6 +1313,7 @@ GameObject:
   - 23: {fileID: 1456107484}
   - 114: {fileID: 1456107483}
   - 96: {fileID: 1456107482}
+  - 114: {fileID: 1456107487}
   m_Layer: 0
   m_Name: CurrentObject
   m_TagString: Untagged
@@ -1443,8 +1444,6 @@ Transform:
   - {fileID: 783957090}
   m_Father: {fileID: 0}
   m_RootOrder: 4
-<<<<<<< HEAD
-=======
 --- !u!114 &1456107487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1470,7 +1469,6 @@ MonoBehaviour:
   pathRender: []
   trail: {fileID: 0}
   mainCam: {fileID: 0}
->>>>>>> 42cb9eef07718cc2400897a67846fc0af9903aef
 --- !u!1 &1477518712
 GameObject:
   m_ObjectHideFlags: 0

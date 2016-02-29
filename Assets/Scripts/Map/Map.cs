@@ -42,6 +42,21 @@ namespace Assets.Scripts
             storylines.Add(sl);
         }
 
+        public void initializeGraph()
+        {
+            List<Node> nodeList = storylines[0].GetNodes();
+            foreach (Node n in nodeList)
+            {
+                mapGraph.InsertNewVertex(n);
+            }
+            
+        }
+
+        public void addNode(Node n)
+        {
+            mapGraph.InsertNewVertex(n);
+        }
+
         public Graph getGraph()
         {
             return mapGraph;

@@ -37,10 +37,7 @@ namespace Assets.Scripts
         public void loadFloor2Next()
         {
             SceneManager.LoadScene("F2-next");
-<<<<<<< HEAD
-=======
             Vibration.Vibrate(1000);
->>>>>>> 42cb9eef07718cc2400897a67846fc0af9903aef
         }
 
         public void backToOverview()
