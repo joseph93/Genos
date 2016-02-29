@@ -19,7 +19,7 @@ public class PathFollower : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	    if (currentPoint < 5)
+	    if (currentPoint < 100)
 	    {
 	        float dist = Vector3.Distance(path[currentPoint].position, transform.position);
 
