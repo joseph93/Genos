@@ -41,5 +41,10 @@ namespace Assets.Scripts
         {
             SceneManager.LoadScene("F2");
         }
+
+        public void changeSceneToQuit()
+        {
+            SceneManager.LoadScene("Quit");
+        }
     }
 }
