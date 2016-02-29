@@ -10,16 +10,16 @@ namespace Assets.Scripts {
         public Sprite floor3;
         public Text floorNumber;
 
+        void Start()
+        {
+
+        }
+
         public void loadFloor2()
         {
             GetComponent<SpriteRenderer>().sprite = floor2;
             Destroy(GameObject.FindGameObjectWithTag("Player"));
             floorNumber.text = "Floor 2";
-        }
-
-        void Start()
-        {
-            
         }
 
         public void loadFloor3()

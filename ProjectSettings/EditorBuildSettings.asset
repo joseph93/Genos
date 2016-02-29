@@ -14,7 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
   - enabled: 1
-    path: Assets/Scenes/TourSelection.unity
+    path: Assets/Scenes/ListOfStoryines.unity
+  - enabled: 1
+    path: Assets/Scenes/Quit.unity
   - enabled: 1
     path: Assets/Scenes/F2.unity
   - enabled: 0
@@ -25,5 +27,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Floor3Scene.unity
   - enabled: 1
     path: Assets/Scenes/F2 next.unity
-  - enabled: 0
-    path: Assets/Scenes/F3.unity
+  - enabled: 1
+    path: Assets/Scenes/Quit.unity
