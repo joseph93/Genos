@@ -1,13 +1,13 @@
-﻿
-using System;
+﻿using UnityEngine;
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts;
 
-public class Graph {
-
-	// Use this for initialization
+public class Graph : MonoBehaviour
+{
+    // Use this for initialization
 
     private Dictionary<int, Node> Vertices { get; set; }
 

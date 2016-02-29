@@ -45,5 +45,10 @@ namespace Assets.Scripts
             SceneManager.LoadScene("F2");
             Vibration.Vibrate(1000);
         }
+
+        public void changeSceneToQuit()
+        {
+            SceneManager.LoadScene("Quit");
+        }
     }
 }

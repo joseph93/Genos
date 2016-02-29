@@ -88,4 +88,9 @@ public class Node : MonoBehaviour {
     {
         return adjacentNodes.Keys.Any(key => n.getID() == key.getID());
     }
+
+    public Vector3 getPosition()
+    {
+        return transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+    }
 }
