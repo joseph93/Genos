@@ -34,7 +34,7 @@ namespace Assets.Scripts
 
         public void loadFloor2Next()
         {
-            SceneManager.LoadScene("F2 next");
+            SceneManager.LoadScene("F2-next");
         }
 
         public void backToOverview()

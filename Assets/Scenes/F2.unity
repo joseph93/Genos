@@ -1082,7 +1082,6 @@ GameObject:
   - 23: {fileID: 1456107484}
   - 114: {fileID: 1456107483}
   - 96: {fileID: 1456107482}
-  - 114: {fileID: 1456107487}
   m_Layer: 0
   m_Name: CurrentObject
   m_TagString: Untagged
@@ -1143,7 +1142,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1456107481}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6304afdef9fedc4b84a55088be223cb, type: 3}
   m_Name: 
@@ -1209,30 +1208,6 @@ Transform:
   - {fileID: 783957090}
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!114 &1456107487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1456107481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51dc8797f4aafc844aac5ccf8e92a373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PointOfInterests: []
-  ArrayOfNodes:
-  - {fileID: 876627177}
-  - {fileID: 411316188}
-  - {fileID: 718860718}
-  - {fileID: 208275130}
-  - {fileID: 1617526836}
-  speed: 5
-  reachDist: 0.2
-  currentPoint: 0
-  sizePath: 0
-  pathRender: []
-  trail: {fileID: 0}
 --- !u!1 &1477518712
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,14 +22,19 @@ namespace Assets.Scripts
             nodes = new List<Node>();
         }
 
-        public void addPointOfInterest(Node poi)
+        public void addNode(Node poi)
         {
             nodes.Add(poi);
         }
 
-        public void removePointOfInterest(Node poi)
+        public void removeNode(Node poi)
         {
             nodes.Remove(poi);
+        }
+
+        public List<Node> GetNodes()
+        {
+            return nodes;
         }
 
         

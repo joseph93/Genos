@@ -83,31 +83,7 @@ public class Graph : MonoBehaviour
         InitializeVertices();
         return BFS(Vertices.First().Value, vertexToFind);
     }
-
-
-    /*private List<Node> GetChildrenOfVertex(Node headVertex)
-    {
-        List<Node> vertices = new List<Node>();
-
-
-        Dictionary<Node, Edge> adjacentNodes = headVertex.getAdjacentNodes();
-
-        foreach (Node key in adjacentNodes.Keys)
-        {
-          vertices.Add(key);
-        }
-
-        Node v = headVertex.getNext();
-
-        while (v != null)
-        {
-            vertices.Add(v);
-            v = v.getNext();
-        }
-        return vertices;
-    }*/
-
-
+   
 
     public Node BFS(Node startVertex, Node vertexToFind)
     {
@@ -180,30 +156,6 @@ public class Graph : MonoBehaviour
             Vertices.Add(vertex.getID(), vertex);
         }
     }
-
-    //JOSEPH: I'm not sure how edges work here.
-    /* public Edge InsertDirectEdge(Node startingNode, Node endNode, int weightEdge)
-     {
-         //Create the vertex A on the vertex list
-         if (!ExistKey(startingNode.getID()))
-         {
-             InsertNewVertex(startingNode);
-         }
-         //Create the vertex B on the vertex list
-         if (!ExistKey(endNode.getID()))
-         {
-            InsertNewVertex(endNode);
-         }
-
-         //Add the vertex B on the vertex A position on the Dictionary, as the second element of the list
-         Node vertexB = new Node(endNode);
-        // vertexB.Weight = weightEdge;
-         vertexB.setNext(Vertices[startingNode.getID()].getNext());
-         Vertices[startingNode.getID()].setNext(vertexB);
-         Edge edge = new Edge(startingNode, endNode, weightEdge);
-
-         return edge;
-     }*/
 
 
     // REVIEWED by Joseph Atallah

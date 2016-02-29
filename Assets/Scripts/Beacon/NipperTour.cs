@@ -2,78 +2,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
     {
-        private bool scanning = true;
         private List<Beacon> myBeacons = new List<Beacon>();
-        public PointOfInterest[] PointOfInterests;
-        private List<PointOfInterest> nodeList = new List<PointOfInterest>();
-        private Vector2 scrolldistance;
-<<<<<<< HEAD
+        private Map map;
+
         public Node[] ArrayOfNodes;
         private List<Node> path = new List<Node>();
-        private Node n5;
-        private Node n2;
-        private Node n1;
 
+       
 
-        //added from pathfollower
-        //public Transform[] pathRenderer;
-        public float speed = 5.0f;
-        public float reachDist = 0.2f; //radius
-        public int currentPoint = 0;
-        public int sizePath = 7;
-
-        public static GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Node");
-        public Transform[] pathRender = new Transform[gameObjects.Length];
-     
-        public TrailRenderer trail;
-
-=======
         public Camera mainCam;
-        private bool detected = false;
->>>>>>> 88769c386d9c464beda79236e006e05ea0826ea5
+        private bool detected;
 
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-            for (int i = 0; i < PointOfInterests.Length; i++)
+            map = new Map();
+            Storyline nipperTour = new Storyline("Nipper Tour", 4);
+            
+            for (int i = 0; i < ArrayOfNodes.Length; i++)
             {
-                nodeList.Add(PointOfInterests[i].GetComponent<PointOfInterest>());
+                nipperTour.addNode(ArrayOfNodes[i].GetComponentInChildren<Node>());
                 // Debug.Log("Beacon id for poi " + nodeList[i].id + " is " + nodeList[i].beacon.m_uuid);
-}
-                //added
-                // Initializing Gameobjects
-                n1 = ArrayOfNodes[0].GetComponent<Node>();
-                n2 = ArrayOfNodes[1].GetComponent<Node>();
-                n5 = ArrayOfNodes[2].GetComponent<Node>();
-                Graph g = new Graph();
-                path = g.shortest_path(n1, n5);
-
-
-            for (int i = 0; i < gameObjects.Length; i++)
-            {
-                pathRender[i] = gameObjects[i].transform;
             }
-
-
-            for (int i = 0; i < path.Count; i++)
-            {
-
-                    
-
-                // Debug.Log(path[i].id);
-                // ici ca va me retourner le id de tous les Nodes pour le shortest path EXCEPT the first node, exemple : 2,5 ou bien 5. 
-                //(you need to consider this when drawing the path)
-
-                // path[i].x = pathRenderer[currentPoint].position.x;
-                // path[i].y = pathRenderer[currentPoint].position.y;
-
-            }
-
+            map.addStoryline(nipperTour);
 
         }
         // Use this for initialization
@@ -96,49 +51,7 @@ namespace Assets.Scripts {
         // Update is called once per frame
         void Update()
         {
-            //StartCoroutine(searchForDistanceOfBeacon());
-<<<<<<< HEAD
-            foreach (Beacon b in myBeacons)
-            {
-               if (0.00 < b.accuracy && b.accuracy < 2.00)
-                {
-                    foreach (PointOfInterest poi in nodeList)
-                    {
-                        poi.enableSpriteRenderer();
-                    }
-                }
-                if (b.accuracy > 2.00)
-                {
-                   
-                }
-            }
-
-       
-            //added from pathfollower
-        //    if (currentPoint < 5)
-        //    {
-             //   float dist = Vector3.Distance(pathRenderer[currentPoint].position, transform.position); //Vector3.Distance(a,b) is the same as (a-b).magnitude
-             //   transform.position = Vector3.MoveTowards(transform.position, pathRenderer[currentPoint].position, Time.deltaTime * speed); //Vector3 MoveTowards(Vector3 current, Vector3 target, float maxDistanceDelta); 
-
-                for (int i = 0; i < path.Count; i++)
-                {
-                    float dist = Vector3.Distance(path[i].getPosition(), transform.position);
-                    transform.position = Vector3.MoveTowards(transform.position, path[i].getPosition(), Time.deltaTime * speed);
-               
-                //Nipper goes to next point
-                //   if (dist <= reachDist)
-                //      currentPoint++;
-                   
-                 }
-
-           
-
-
-            //    }
-
-=======
-            StartCoroutine(searchForDistanceOfBeacon());
->>>>>>> 88769c386d9c464beda79236e006e05ea0826ea5
+            StartCoroutine(searchForDistanceOfBeacon(0.3f));
         }
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
@@ -169,12 +82,16 @@ namespace Assets.Scripts {
 
        
 
-        public IEnumerator searchForDistanceOfBeacon()
+        public IEnumerator searchForDistanceOfBeacon(float seconds)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(seconds);
             foreach (Beacon b in myBeacons)
             {
-                foreach(PointOfInterest poi in nodeList)
+                if (b.accuracy < 2.00)
+                {
+                    List<Storyline> storylines = map.GetStorylines();
+                    List<Node> nodeList = storylines[0].GetNodes();
+                    foreach (PointOfInterest poi in nodeList)
                     {
                         if (!detected)
                         {
@@ -183,6 +100,7 @@ namespace Assets.Scripts {
                             detected = true;
                         }
                     }
+                }
             }
         }
 

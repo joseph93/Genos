@@ -6,8 +6,8 @@ public class PathFollower : MonoBehaviour {
     public Transform[] path;
     public float speed = 5.0f;
     public float reachDist = 0.2f;
-    public int currentPoint = 0;
-    public int sizeOfPath = PathFollower.Length;
+    public int currentPoint;
+    public int sizeOfPath = Length;
 
     public static int Length { get; private set; }
 

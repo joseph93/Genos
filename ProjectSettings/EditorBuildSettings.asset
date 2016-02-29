@@ -4,33 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/MainMenu.unity
-  - enabled: 0
-    path: Assets/Scenes/BadMenu(dont use).unity
-  - enabled: 0
-    path: Assets/Scenes/LoadingPage.unity
-  - enabled: 0
-    path: Assets/Scenes/Menu.unity
-<<<<<<< HEAD
-  - enabled: 1
-    path: Assets/Scenes/ListOfStoryines.unity
-  - enabled: 1
-    path: Assets/Scenes/Quit.unity
-=======
-  - enabled: 0
-    path: Assets/Scenes/TourSelection.unity
->>>>>>> 88769c386d9c464beda79236e006e05ea0826ea5
-  - enabled: 1
-    path: Assets/Scenes/F2.unity
-  - enabled: 0
-    path: Assets/Scenes/Search iBeacon.unity
-  - enabled: 0
-    path: Assets/Scenes/Floor2Scene.unity
-  - enabled: 0
-    path: Assets/Scenes/Floor3Scene.unity
-  - enabled: 1
-    path: Assets/Scenes/F2 next.unity
-  - enabled: 1
-    path: Assets/Scenes/Quit.unity
+  m_Scenes: []
