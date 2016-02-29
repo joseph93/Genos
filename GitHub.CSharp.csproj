@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Beacon\Beacon.cs" />
     <Compile Include="Assets\Scripts\Beacon\NipperTour.cs" />
+    <Compile Include="Assets\Scripts\Beacon\Vibration.cs" />
     <Compile Include="Assets\Scripts\Beacon\iBeaconReceiver.cs" />
     <Compile Include="Assets\Scripts\Beacon\iBeaconRegion.cs" />
     <Compile Include="Assets\Scripts\Beacon\iBeaconServer.cs" />
@@ -104,7 +105,10 @@
     <Compile Include="Assets\Scripts\Map\StoryPoint.cs" />
     <Compile Include="Assets\Scripts\Map\Storyline.cs" />
     <Compile Include="Assets\Scripts\Path\PathFollower.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\Path\ShortestPathScript.cs" />
+=======
+>>>>>>> 42cb9eef07718cc2400897a67846fc0af9903aef
     <Compile Include="Assets\Scripts\Quit\QuitSpash.cs" />
     <Compile Include="Assets\Scripts\TourButton.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />

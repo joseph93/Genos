@@ -276,6 +276,9 @@
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\Beacon.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\NipperTour.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\iBeaconReceiver.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\iBeaconRegion.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\iBeaconServer.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\iBeaconServerExample.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Camera\TouchScreenCamera.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\DrawLine.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\FloorManager.cs</File>
@@ -291,9 +294,6 @@
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Path\PathFollower.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\TourButton.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Source\iBeacon\Editor\PostProcessBuildTrigger.cs</File>
-    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Source\iBeacon\iBeaconRegion.cs</File>
-    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Source\iBeacon\iBeaconServer.cs</File>
-    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Source\iBeacon\iBeaconServerExample.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Tests\Editor\PathFollowerTest.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Tests\Editor\TouchScreenCameraTest.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\UnityTestTools\Assertions\AssertionComponent.cs</File>

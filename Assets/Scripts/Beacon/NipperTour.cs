@@ -7,7 +7,13 @@ namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
     {
         private List<Beacon> myBeacons = new List<Beacon>();
+<<<<<<< HEAD
         private Map map;
+=======
+        public PointOfInterest[] PointOfInterests;
+        private List<PointOfInterest> nodeList = new List<PointOfInterest>();
+        private Vector2 scrolldistance;
+>>>>>>> 42cb9eef07718cc2400897a67846fc0af9903aef
 
         public Node[] ArrayOfNodes;
         private List<Node> path = new List<Node>();
@@ -15,7 +21,11 @@ namespace Assets.Scripts {
        
 
         public Camera mainCam;
+<<<<<<< HEAD
         private bool detected;
+=======
+        private bool detected = false;
+>>>>>>> 42cb9eef07718cc2400897a67846fc0af9903aef
 
         //JOSEPH: Initialize the node list.
         void Awake()
@@ -51,7 +61,55 @@ namespace Assets.Scripts {
         // Update is called once per frame
         void Update()
         {
+<<<<<<< HEAD
             StartCoroutine(searchForDistanceOfBeacon(0.3f));
+=======
+            //StartCoroutine(searchForDistanceOfBeacon());
+
+            foreach (Beacon b in myBeacons)
+            {
+               if (0.00 < b.accuracy && b.accuracy < 2.00)
+                {
+                    foreach (PointOfInterest poi in nodeList)
+                    {
+                        poi.enableSpriteRenderer();
+                    }
+                }
+                if (b.accuracy > 2.00)
+                {
+                   
+                }
+            }
+
+       
+            //added from pathfollower
+        //    if (currentPoint < 5)
+        //    {
+             //   float dist = Vector3.Distance(pathRenderer[currentPoint].position, transform.position); //Vector3.Distance(a,b) is the same as (a-b).magnitude
+             //   transform.position = Vector3.MoveTowards(transform.position, pathRenderer[currentPoint].position, Time.deltaTime * speed); //Vector3 MoveTowards(Vector3 current, Vector3 target, float maxDistanceDelta); 
+
+                for (int i = 0; i < path.Count; i++)
+                {
+                    float dist = Vector3.Distance(path[i].getPosition(), transform.position);
+                    transform.position = Vector3.MoveTowards(transform.position, path[i].getPosition(), Time.deltaTime * speed);
+               
+                //Nipper goes to next point
+                //   if (dist <= reachDist)
+                //      currentPoint++;
+                   
+                 }
+
+           
+
+
+            //    }
+
+
+            StartCoroutine(searchForDistanceOfBeacon());
+
+
+            
+>>>>>>> 42cb9eef07718cc2400897a67846fc0af9903aef
         }
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
@@ -97,8 +155,9 @@ namespace Assets.Scripts {
                         {
                             poi.enableSpriteRenderer();
                             mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
+                            Vibration.Vibrate(1000);
                             detected = true;
-                        }
+                    }
                     }
                 }
             }

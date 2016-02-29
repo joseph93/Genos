@@ -4,4 +4,22 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
+<<<<<<< HEAD
   m_Scenes: []
+=======
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/F2.unity
+  - enabled: 1
+    path: Assets/Scenes/F2-next.unity
+  - enabled: 0
+    path: Assets/Scenes/ListOfStorylines.unity
+  - enabled: 0
+    path: Assets/Scenes/LoadingPage.unity
+  - enabled: 0
+    path: Assets/Scenes/Menu.unity
+  - enabled: 1
+    path: Assets/Scenes/Quit.unity
+  - enabled: 0
+    path: Assets/Scenes/TourSelection.unity
+>>>>>>> 42cb9eef07718cc2400897a67846fc0af9903aef
