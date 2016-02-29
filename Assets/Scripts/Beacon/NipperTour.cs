@@ -12,7 +12,7 @@ namespace Assets.Scripts {
         public PointOfInterest[] PointOfInterests;
         private List<PointOfInterest> nodeList = new List<PointOfInterest>();
         private Vector2 scrolldistance;
-<<<<<<< HEAD
+
         public Node[] ArrayOfNodes;
         private List<Node> path = new List<Node>();
         private Node n5;
@@ -32,10 +32,8 @@ namespace Assets.Scripts {
      
         public TrailRenderer trail;
 
-=======
         public Camera mainCam;
         private bool detected = false;
->>>>>>> 88769c386d9c464beda79236e006e05ea0826ea5
 
         //JOSEPH: Initialize the node list.
         void Awake()
@@ -97,7 +95,7 @@ namespace Assets.Scripts {
         void Update()
         {
             //StartCoroutine(searchForDistanceOfBeacon());
-<<<<<<< HEAD
+
             foreach (Beacon b in myBeacons)
             {
                if (0.00 < b.accuracy && b.accuracy < 2.00)
@@ -136,9 +134,11 @@ namespace Assets.Scripts {
 
             //    }
 
-=======
+
             StartCoroutine(searchForDistanceOfBeacon());
->>>>>>> 88769c386d9c464beda79236e006e05ea0826ea5
+
+
+            
         }
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
@@ -180,8 +180,9 @@ namespace Assets.Scripts {
                         {
                             poi.enableSpriteRenderer();
                             mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
+                            Vibration.Vibrate(1000);
                             detected = true;
-                        }
+                    }
                     }
             }
         }
