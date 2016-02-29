@@ -46,6 +46,8 @@ namespace Assets.Scripts {
         {
             //StartCoroutine(searchForDistanceOfBeacon());
             StartCoroutine(searchForDistanceOfBeacon());
+
+            
         }
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
@@ -87,8 +89,9 @@ namespace Assets.Scripts {
                         {
                             poi.enableSpriteRenderer();
                             mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
+                            Vibration.Vibrate(1000);
                             detected = true;
-                        }
+                    }
                     }
             }
         }

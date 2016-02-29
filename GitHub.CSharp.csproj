@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Beacon\Beacon.cs" />
     <Compile Include="Assets\Scripts\Beacon\NipperTour.cs" />
+    <Compile Include="Assets\Scripts\Beacon\Vibration.cs" />
     <Compile Include="Assets\Scripts\Beacon\iBeaconReceiver.cs" />
     <Compile Include="Assets\Scripts\Beacon\iBeaconRegion.cs" />
     <Compile Include="Assets\Scripts\Beacon\iBeaconServer.cs" />
