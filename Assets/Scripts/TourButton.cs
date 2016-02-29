@@ -25,21 +25,25 @@ namespace Assets.Scripts
         public void changeSceneToTour()
         {
             SceneManager.LoadScene("TourSelection");
+            Vibration.Vibrate(1000);
         }
 
         public void changeSceneToFloor()
         {
             SceneManager.LoadScene("F2");
+            Vibration.Vibrate(1000);
         }
 
         public void loadFloor2Next()
         {
-            SceneManager.LoadScene("F2 next");
+            SceneManager.LoadScene("F2-next");
+            Vibration.Vibrate(1000);
         }
 
         public void backToOverview()
         {
             SceneManager.LoadScene("F2");
+            Vibration.Vibrate(1000);
         }
 
         public void changeSceneToQuit()
