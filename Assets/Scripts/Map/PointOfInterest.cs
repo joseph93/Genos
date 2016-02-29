@@ -14,6 +14,7 @@ namespace Assets.Scripts
         public iBeaconServer beacon { get; set; }
         public GameObject BeaconGameObject;
         private bool visited;
+        public bool detected { get; set; }
 
         void Awake()
         {
@@ -24,11 +25,13 @@ namespace Assets.Scripts
             this.name = name;
             description = "";
             visited = false;
+            detected = false;
         }
 
         public void enableSpriteRenderer()
         {
             GetComponent<Renderer>().enabled = true;
+            detected = true;
         }
 
         public iBeaconServer getBeacon()
