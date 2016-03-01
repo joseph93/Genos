@@ -28,11 +28,11 @@ namespace Assets.Scripts
                 g.InsertNewVertex(n4);
                 g.InsertNewVertex(n5);
 
-                n1.addAdjacentNode(new Dictionary<Node, double>() { { n2, 4 }, { n3, 2 } });
-                n2.addAdjacentNode(new Dictionary<Node, double>() { { n3, 3 }, { n5, 3 }, { n4, 2 } });
-                n3.addAdjacentNode(new Dictionary<Node, double>() { { n4, 4 }, { n5, 5 }, { n2, 1 } });
-                n4.addAdjacentNode(new Dictionary<Node, double>() { });
-                n5.addAdjacentNode(new Dictionary<Node, double>() { { n4, 1 } });
+                n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 4 }, { n3, 2 } });
+                n2.addAdjacentNode(new Dictionary<Node, float>() { { n3, 3 }, { n5, 3 }, { n4, 2 } });
+                n3.addAdjacentNode(new Dictionary<Node, float>() { { n4, 4 }, { n5, 5 }, { n2, 1 } });
+                n4.addAdjacentNode(new Dictionary<Node, float>() { });
+                n5.addAdjacentNode(new Dictionary<Node, float>() { { n4, 1 } });
 
                 List<Node> result = new List<Node>() { n4, n2, n3 };
 
@@ -61,11 +61,11 @@ namespace Assets.Scripts
                 g.InsertNewVertex(n3);
                 g.InsertNewVertex(n4);
                 g.InsertNewVertex(n5);
-                n1.addAdjacentNode(new Dictionary<Node, double>() { { n2, 4 }, { n3, 2 } });
-                n2.addAdjacentNode(new Dictionary<Node, double>() { { n3, 3 }, { n5, 3 }, { n4, 2 } });
-                n3.addAdjacentNode(new Dictionary<Node, double>() { { n4, 4 }, { n5, 5 }, { n2, 1 } });
-                n4.addAdjacentNode(new Dictionary<Node, double>() { });
-                n5.addAdjacentNode(new Dictionary<Node, double>() { { n4, 1 } });
+                n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 4 }, { n3, 2 } });
+                n2.addAdjacentNode(new Dictionary<Node, float>() { { n3, 3 }, { n5, 3 }, { n4, 2 } });
+                n3.addAdjacentNode(new Dictionary<Node, float>() { { n4, 4 }, { n5, 5 }, { n2, 1 } });
+                n4.addAdjacentNode(new Dictionary<Node, float>() { });
+                n5.addAdjacentNode(new Dictionary<Node, float>() { { n4, 1 } });
                 Assert.Equal(n4, g.BFS(n1, n4));
             }
             catch (SecurityException e)
@@ -91,11 +91,11 @@ namespace Assets.Scripts
                 g.InsertNewVertex(n3);
                 g.InsertNewVertex(n4);
                 g.InsertNewVertex(n5);
-                n1.addAdjacentNode(new Dictionary<Node, double>() {{n2, 4}, {n3, 2}});
-                n2.addAdjacentNode(new Dictionary<Node, double>() {{n3, 3}, {n5, 3}, {n4, 2}});
-                n3.addAdjacentNode(new Dictionary<Node, double>() {{n4, 4}, {n5, 5}, {n2, 1}});
-                n4.addAdjacentNode(new Dictionary<Node, double>() {});
-                n5.addAdjacentNode(new Dictionary<Node, double>() {{n4, 1}});
+                n1.addAdjacentNode(new Dictionary<Node, float>() {{n2, 4}, {n3, 2}});
+                n2.addAdjacentNode(new Dictionary<Node, float>() {{n3, 3}, {n5, 3}, {n4, 2}});
+                n3.addAdjacentNode(new Dictionary<Node, float>() {{n4, 4}, {n5, 5}, {n2, 1}});
+                n4.addAdjacentNode(new Dictionary<Node, float>() {});
+                n5.addAdjacentNode(new Dictionary<Node, float>() {{n4, 1}});
                 g.BFS(n1);
                 State status = n4.getState();
                 Assert.Equal(State.Visited, status);

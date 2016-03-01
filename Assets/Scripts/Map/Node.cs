@@ -28,10 +28,7 @@ public class Node : MonoBehaviour {
 
     void Update()
     {
-        if (Application.isEditor)
-        {
-            transform.position = new Vector3(x, y, transform.position.z);
-        }
+        
     }
 
     public Node(Node n)
