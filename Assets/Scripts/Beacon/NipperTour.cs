@@ -8,6 +8,7 @@ namespace Assets.Scripts {
     {
         private List<Beacon> myBeacons = new List<Beacon>();
         private Map map;
+        public GameObject[] icons;
         public Node[] ArrayOfNodes;
 
         public float speed = 5.0f;
@@ -37,25 +38,28 @@ namespace Assets.Scripts {
             foreach (Node n in ArrayOfNodes)
             {
                 nipperTour.addNode(n);
-                Debug.Log("Testing: " + n.id);
+                Debug.Log("Adding in Nipper Tour node " + n.id);
             }
             map.addStoryline(nipperTour);
-            Node n1 = ArrayOfNodes[0].GetComponent<Node>();
-            Node n2 = ArrayOfNodes[1].GetComponent<Node>();
-            Node n3 = ArrayOfNodes[2].GetComponent<Node>();
-            Node n4 = ArrayOfNodes[3].GetComponent<Node>();
+            Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
+            Node n2 = ArrayOfNodes[1].GetComponentInChildren<Node>();
+            Node n3 = ArrayOfNodes[2].GetComponentInChildren<Node>();
+            Node n4 = ArrayOfNodes[3].GetComponentInChildren<Node>();
+
+            List<Storyline> storylines = map.GetStorylines();
+            List<Node> nodeList = storylines[0].GetNodes();
+            foreach (PointOfInterest poi in nodeList)
+            {
+                Debug.Log("Name of poi1: " + poi.poiName);
+            }
+
             n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 10.0f } });
             n2.addAdjacentNode(new Dictionary<Node, float>() { { n3, 1.0f } });
             n3.addAdjacentNode(new Dictionary<Node, float>() { { n4, 3.0f } });
-            map.initializeGraph();
+            map.initializeGraph(0);
 
+            //JOSEPH: Set the path creator to the start node of ShortestPath (n1 in this case, will be changed after)
             transform.position = new Vector3(n1.x, n1.y, 5);
-            path = map.getGraph().shortest_path(n1, n4);
-            path.Reverse();
-            foreach (Node n in path)
-            {
-                Debug.Log("Reached node " + n.id);
-            }
         }
 
         void OnDestroy()
@@ -68,15 +72,31 @@ namespace Assets.Scripts {
         // Update is called once per frame
         void Update()
         {
-            StartCoroutine(searchForDistanceOfBeacon(0.3f));
-            if (currentPoint < path.Count)
+            StartCoroutine(searchForDistanceOfBeacon(0.05f));
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                float dist = Vector3.Distance(path[currentPoint].getPosition(), transform.position);
-                transform.position = Vector3.MoveTowards(transform.position, path[currentPoint].getPosition(),
-                    Time.deltaTime * speed);
+                    //Ray ray = GetComponent<Camera>().ScreenPointToRay(touch.position);
+                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
+                    if (hit.collider != null)
+                    {
+                        Debug.Log("touched it.");
+                            //Node endNode = recipient.GetComponent<Node>();
+                            //Debug.Log("Node hit: " + endNode.id);
+                        
+                        /*path = map.getGraph().shortest_path(ArrayOfNodes[0], endNode);
+                        path.Reverse();
+                        if (currentPoint < path.Count)
+                        {
+                            float dist = Vector3.Distance(path[currentPoint].getPosition(), transform.position);
+                            transform.position = Vector3.MoveTowards(transform.position,
+                                path[currentPoint].getPosition(),
+                                Time.deltaTime*speed);
 
-                if (dist <= reachDist)
-                    currentPoint++;
+                            if (dist <= reachDist)
+                                currentPoint++;
+                        }*/
+                    }
+                
             }
         }
 
@@ -119,13 +139,17 @@ namespace Assets.Scripts {
                     List<Node> nodeList = storylines[0].GetNodes();
                     foreach (PointOfInterest poi in nodeList)
                     {
-                        if (!detected)
+                        if (!poi.isDetected())
                         {
-                            poi.enableSpriteRenderer();
-                            mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
-                            Vibration.Vibrate(1000);
-                            detected = true;
-                    }
+                            if (poi.getBeacon().m_uuid.ToLower().Equals(b.UUID.ToLower()))
+                            {
+                                poi.makeIconBigger();
+                                mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
+                                Vibration.Vibrate(1000);
+                                //Debug.Log("The beacon in beacon list is beacon " + b.UUID);
+                                //Debug.Log("The beacon of the poi is beacon " + poi.getBeacon().m_uuid);
+                            }
+                        }
                     }
                 }
             }

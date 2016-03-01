@@ -9,7 +9,7 @@ namespace Assets.Scripts
     //Ihcene : StoryLine will only be available with the NipperTour
     public class Storyline
     {
-        public string name { get; set; }
+        public string storyName { get; set; }
         public string description { get; set; }
         public int floorsCovered { get; set; }
         public int walkingTimeInMinutes { get; set; }
@@ -17,7 +17,7 @@ namespace Assets.Scripts
 
         public Storyline(string name, int fc)
         {
-            this.name = name;
+            this.storyName = name;
             floorsCovered = fc;
             nodes = new List<Node>();
         }

@@ -42,9 +42,9 @@ namespace Assets.Scripts
             storylines.Add(sl);
         }
 
-        public void initializeGraph()
+        public void initializeGraph(int i)
         {
-            List<Node> nodeList = storylines[0].GetNodes();
+            List<Node> nodeList = storylines[i].GetNodes();
             foreach (Node n in nodeList)
             {
                 mapGraph.InsertNewVertex(n);

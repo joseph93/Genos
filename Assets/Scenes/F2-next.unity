@@ -230,11 +230,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 515735133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 3, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!114 &515735135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dc8797f4aafc844aac5ccf8e92a373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icons:
+  - {fileID: 526941052}
+  - {fileID: 1634164756}
+  - {fileID: 2046840605}
+  - {fileID: 947255326}
   ArrayOfNodes:
   - {fileID: 526941053}
   - {fileID: 1634164757}
@@ -311,11 +316,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.26
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.35
+      value: 2.85
       objectReference: {fileID: 0}
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_LocalPosition.z
@@ -353,6 +358,15 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 11448150, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
@@ -376,7 +390,7 @@ MonoBehaviour:
   floorNumber: 2
   x: -2
   y: 3.35
-  name: First
+  poiName: First
   BeaconGameObject: {fileID: 749764241}
 --- !u!1001 &749764240
 Prefab:
@@ -415,7 +429,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 476804, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11433270, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
       propertyPath: m_uuid
@@ -556,6 +570,15 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 11448150, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
@@ -579,8 +602,8 @@ MonoBehaviour:
   floorNumber: 2
   x: 1.44
   y: -0.69
-  name: Fourth
-  BeaconGameObject: {fileID: 749764241}
+  poiName: Fourth
+  BeaconGameObject: {fileID: 1876923238}
 --- !u!1001 &977555383
 Prefab:
   m_ObjectHideFlags: 0
@@ -1362,11 +1385,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.2
+      value: -2.23
       objectReference: {fileID: 0}
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.37
+      value: -1.16
       objectReference: {fileID: 0}
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1408,6 +1431,27 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 11448150, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
@@ -1431,8 +1475,8 @@ MonoBehaviour:
   floorNumber: 2
   x: -2.05
   y: -1.01
-  name: Second
-  BeaconGameObject: {fileID: 749764241}
+  poiName: Second
+  BeaconGameObject: {fileID: 1876923238}
 --- !u!1 &1827582410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1550,64 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1827582410}
+--- !u!1001 &1876923237
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 476804, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 133.3877
+      objectReference: {fileID: 0}
+    - target: {fileID: 476804, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 249.57321
+      objectReference: {fileID: 0}
+    - target: {fileID: 476804, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476804, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476804, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476804, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476804, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 476804, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433270, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_uuid
+      value: fc60df5b-1fd9-4243-adac-f555c5a4ec2e
+      objectReference: {fileID: 0}
+    - target: {fileID: 179602, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_Name
+      value: IBeacon 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433270, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+      propertyPath: m_generate
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1876923238 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 179602, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
+  m_PrefabInternal: {fileID: 1876923237}
 --- !u!114 &1894885266 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11424690, guid: 8ec12c0a6f263c4478fb379c8872da01,
@@ -1572,7 +1674,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1988644483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,11 +1809,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.2
+      value: -0.2899933
       objectReference: {fileID: 0}
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.09
+      value: -0.83000183
       objectReference: {fileID: 0}
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1735,7 +1837,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_Enabled
@@ -1753,6 +1855,15 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 11448150, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
@@ -1776,5 +1887,5 @@ MonoBehaviour:
   floorNumber: 2
   x: -0.17
   y: -0.79
-  name: Third
-  BeaconGameObject: {fileID: 749764241}
+  poiName: Third
+  BeaconGameObject: {fileID: 1876923238}
