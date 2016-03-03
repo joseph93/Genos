@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 494822}
   - 212: {fileID: 21227250}
+  - 114: {fileID: 11448150}
   m_Layer: 0
   m_Name: POI Icon
   m_TagString: Icon
@@ -23,18 +24,35 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: 1.16, z: -7}
-  m_LocalScale: {x: 0.47522706, y: 0.44679528, z: 1}
+  m_LocalPosition: {x: 0.3, y: 2, z: -7}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11448150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d066f091a0bf1f439f817bb8a70d052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  floorNumber: 1
+  x: 0.3
+  y: 2
+  name: First
+  BeaconGameObject: {fileID: 179602, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
 --- !u!212 &21227250
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145172}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
