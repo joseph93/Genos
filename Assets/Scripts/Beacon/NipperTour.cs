@@ -2,7 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+<<<<<<< HEAD
 using UnityEngine.Events;
+=======
+using UnityEngine.SceneManagement;
+>>>>>>> 9a8b4dc2f6d7b4952dfd8014fb9c274d9fadab76
 
 namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
@@ -22,10 +26,17 @@ namespace Assets.Scripts {
         //JOSEPH: Initialize the node list.
         void Awake()
         {
+<<<<<<< HEAD
             modalWindow = ModalWindow.Instance();
 
             myOkAction = new UnityAction(modalWindow.closePanel);
             myCancelAction = new UnityAction(modalWindow.closePanel);
+=======
+            //added
+            //to know last index of last scene loaded
+            //FloorManager.setLastScene(Application.loadedLevelName);
+            //SceneManager.GetActiveScene(); 
+>>>>>>> 9a8b4dc2f6d7b4952dfd8014fb9c274d9fadab76
         }
         // Use this for initialization
         void Start()
@@ -107,11 +118,20 @@ namespace Assets.Scripts {
             switch (newstate)
             {
                 case BluetoothLowEnergyState.POWERED_ON:
+                    //added
+                    //SceneManager.UnloadScene("Bluetooth");
+                   // FloorManager.setLastScene(Application.loadedLevelName);
+                    //SceneManager.LoadScene(FloorManager.getLastScene());
+
                     iBeaconReceiver.Init();
                     Debug.Log("It is on, go searching");
                     break;
                 case BluetoothLowEnergyState.POWERED_OFF:
                     //iBeaconReceiver.EnableBluetooth();
+
+                    //added
+                    SceneManager.LoadScene("Bluetooth");
+
                     Debug.Log("It is off, switch it on");
                     break;
                 case BluetoothLowEnergyState.UNAUTHORIZED:
