@@ -91,14 +91,87 @@ namespace Assets.Scripts
                 g.InsertNewVertex(n3);
                 g.InsertNewVertex(n4);
                 g.InsertNewVertex(n5);
-                n1.addAdjacentNode(new Dictionary<Node, float>() {{n2, 4}, {n3, 2}});
-                n2.addAdjacentNode(new Dictionary<Node, float>() {{n3, 3}, {n5, 3}, {n4, 2}});
-                n3.addAdjacentNode(new Dictionary<Node, float>() {{n4, 4}, {n5, 5}, {n2, 1}});
-                n4.addAdjacentNode(new Dictionary<Node, float>() {});
-                n5.addAdjacentNode(new Dictionary<Node, float>() {{n4, 1}});
+                n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 4 }, { n3, 2 } });
+                n2.addAdjacentNode(new Dictionary<Node, float>() { { n3, 3 }, { n5, 3 }, { n4, 2 } });
+                n3.addAdjacentNode(new Dictionary<Node, float>() { { n4, 4 }, { n5, 5 }, { n2, 1 } });
+                n4.addAdjacentNode(new Dictionary<Node, float>() { });
+                n5.addAdjacentNode(new Dictionary<Node, float>() { { n4, 1 } });
                 g.BFS(n1);
                 State status = n4.getState();
                 Assert.Equal(State.Visited, status);
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine("Security Exception:\n\n{0}", e.Message);
+            }
+        }
+
+        [Fact()]
+        public void BFSTestOneNodeVerticesIsNull()
+        {
+            try
+            {
+                Graph g = new Graph();
+                Node n1 = new Node(1, 0, 0, 1);
+                State status = n1.getState();
+
+                Assert.Equal(State.UnVisited, status);
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine("Security Exception:\n\n{0}", e.Message);
+            }
+        }
+
+        [Fact()]
+        public void BFSTestOneNodeNoPath()
+        {
+            try
+            {
+                Graph g = new Graph();
+                Node n1 = new Node(1, 0, 0, 1);
+                g.InsertNewVertex(n1);
+
+                State status = n1.getState();
+
+                Assert.Equal(State.UnVisited, status);
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine("Security Exception:\n\n{0}", e.Message);
+            }
+        }
+
+        [Fact()]
+        public void BFSTestTwoNodesVerticesIsNull()
+        {
+            try
+            {
+                Graph g = new Graph();
+                Node n1 = new Node(1, 0, 0, 1);
+                Node n2 = new Node(2, 0, 0, 1);
+
+                Assert.Equal(null, g.BFS(n1, n2));
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine("Security Exception:\n\n{0}", e.Message);
+            }
+        }
+
+        [Fact()]
+        public void BFSTestTwoNodesNoPath()
+        {
+            try
+            {
+                Graph g = new Graph();
+                Node n1 = new Node(1, 0, 0, 1);
+                Node n2 = new Node(2, 0, 0, 1);
+
+                g.InsertNewVertex(n1);
+                g.InsertNewVertex(n2);
+
+                Assert.Equal(null, g.BFS(n1, n2));
             }
             catch (SecurityException e)
             {

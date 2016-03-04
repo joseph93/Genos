@@ -2,15 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-<<<<<<< HEAD
 using UnityEngine.Events;
-=======
 using UnityEngine.SceneManagement;
->>>>>>> 9a8b4dc2f6d7b4952dfd8014fb9c274d9fadab76
 
 namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
     {
+        
         private List<Beacon> myBeacons = new List<Beacon>();
         private Map map;
         public Node[] ArrayOfNodes;
@@ -26,17 +24,14 @@ namespace Assets.Scripts {
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-<<<<<<< HEAD
             modalWindow = ModalWindow.Instance();
 
             myOkAction = new UnityAction(modalWindow.closePanel);
             myCancelAction = new UnityAction(modalWindow.closePanel);
-=======
             //added
             //to know last index of last scene loaded
             //FloorManager.setLastScene(Application.loadedLevelName);
             //SceneManager.GetActiveScene(); 
->>>>>>> 9a8b4dc2f6d7b4952dfd8014fb9c274d9fadab76
         }
         // Use this for initialization
         void Start()
