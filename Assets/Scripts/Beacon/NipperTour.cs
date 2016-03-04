@@ -106,6 +106,9 @@ namespace Assets.Scripts {
             switch (newstate)
             {
                 case BluetoothLowEnergyState.POWERED_ON:
+                    //added
+                    SceneManager.UnloadScene("Bluetooth");
+
                     iBeaconReceiver.Init();
                     Debug.Log("It is on, go searching");
                     break;
