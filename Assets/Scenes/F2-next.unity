@@ -206,6 +206,27 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 33695140}
+--- !u!1 &99561230 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 196096, guid: 8ec12c0a6f263c4478fb379c8872da01, type: 2}
+  m_PrefabInternal: {fileID: 977555383}
+--- !u!114 &99561231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 99561230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51dc8797f4aafc844aac5ccf8e92a373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrayOfNodes:
+  - {fileID: 526941053}
+  - {fileID: 1634164757}
+  - {fileID: 2046840606}
+  - {fileID: 947255327}
+  mainCam: {fileID: 1102128377}
 --- !u!1 &515735133
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,8 +235,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 515735134}
-  - 114: {fileID: 515735135}
   - 96: {fileID: 515735136}
+  - 114: {fileID: 515735135}
   m_Layer: 0
   m_Name: PathCreator
   m_TagString: Untagged
@@ -230,11 +251,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 515735133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalPosition: {x: -2.19, y: 2.91, z: 5}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &515735135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,23 +264,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 515735133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51dc8797f4aafc844aac5ccf8e92a373, type: 3}
+  m_Script: {fileID: 11500000, guid: b06bdb6a2ca2fdc4aa9c23cf3cd6c694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icons:
-  - {fileID: 526941052}
-  - {fileID: 1634164756}
-  - {fileID: 2046840605}
-  - {fileID: 947255326}
-  ArrayOfNodes:
-  - {fileID: 526941053}
-  - {fileID: 1634164757}
-  - {fileID: 2046840606}
-  - {fileID: 947255327}
+  NipperTour: {fileID: 99561230}
   speed: 5
   reachDist: 0.2
   currentPoint: 0
-  mainCam: {fileID: 1102128377}
 --- !u!96 &515735136
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -346,52 +357,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 11471904, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: BeaconGameObject
       value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-    - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e,
-        type: 3}
-    m_RemovedComponents:
-    - {fileID: 11448150, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      objectReference: {fileID: 749764241}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &526941052 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 145172, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
-  m_PrefabInternal: {fileID: 526941051}
---- !u!114 &526941053
+--- !u!114 &526941053 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 526941052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 11471904, guid: 4f49b33169665a54fa0d321a1b0e2885,
+    type: 2}
+  m_PrefabInternal: {fileID: 526941051}
   m_Script: {fileID: 11500000, guid: 4d066f091a0bf1f439f817bb8a70d052, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  floorNumber: 2
-  x: -2
-  y: 3.35
-  poiName: First
-  BeaconGameObject: {fileID: 749764241}
 --- !u!1001 &749764240
 Prefab:
   m_ObjectHideFlags: 0
@@ -552,7 +530,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 494822, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 21227250, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
       propertyPath: m_Enabled
@@ -579,8 +557,19 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e,
         type: 3}
+    - target: {fileID: 11471904, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 11448150, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+    - {fileID: 0}
+    - {fileID: 11471904, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+    - {fileID: 6124148, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &947255326 stripped
@@ -600,10 +589,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   floorNumber: 2
-  x: 1.44
-  y: -0.69
+  x: 1.41
+  y: -0.99
   poiName: Fourth
   BeaconGameObject: {fileID: 1876923238}
+--- !u!61 &947255328
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 947255326}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.76, y: 2.52}
 --- !u!1001 &977555383
 Prefab:
   m_ObjectHideFlags: 0
@@ -1452,8 +1455,19 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e,
         type: 3}
+    - target: {fileID: 11471904, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 11448150, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+    - {fileID: 0}
+    - {fileID: 11471904, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+    - {fileID: 6124148, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1634164756 stripped
@@ -1473,10 +1487,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   floorNumber: 2
-  x: -2.05
-  y: -1.01
+  x: -2.23
+  y: -1.16
   poiName: Second
   BeaconGameObject: {fileID: 1876923238}
+--- !u!61 &1634164758
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1634164756}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.76, y: 2.52}
 --- !u!1 &1827582410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,8 +1892,23 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e,
         type: 3}
+    - target: {fileID: 11471904, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BypassEffects
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 11448150, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+    - {fileID: 0}
+    - {fileID: 11471904, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+    - {fileID: 6124148, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 4f49b33169665a54fa0d321a1b0e2885, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2046840605 stripped
@@ -1885,7 +1928,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   floorNumber: 2
-  x: -0.17
-  y: -0.79
+  x: -0.2899933
+  y: -0.83000183
   poiName: Third
   BeaconGameObject: {fileID: 1876923238}
+--- !u!61 &2046840607
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2046840605}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.76, y: 2.52}
