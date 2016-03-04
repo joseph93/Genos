@@ -8,16 +8,10 @@ namespace Assets.Scripts {
     {
         private List<Beacon> myBeacons = new List<Beacon>();
         private Map map;
-        public GameObject[] icons;
         public Node[] ArrayOfNodes;
-
-        public float speed = 5.0f;
-        public float reachDist = 0.2f;
-        public int currentPoint;
         private List<Node> path;
-
+        
         public Camera mainCam;
-        private bool detected;
 
         //JOSEPH: Initialize the node list.
         void Awake()
@@ -38,7 +32,6 @@ namespace Assets.Scripts {
             foreach (Node n in ArrayOfNodes)
             {
                 nipperTour.addNode(n);
-                Debug.Log("Adding in Nipper Tour node " + n.id);
             }
             map.addStoryline(nipperTour);
             Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
@@ -46,20 +39,14 @@ namespace Assets.Scripts {
             Node n3 = ArrayOfNodes[2].GetComponentInChildren<Node>();
             Node n4 = ArrayOfNodes[3].GetComponentInChildren<Node>();
 
-            List<Storyline> storylines = map.GetStorylines();
-            List<Node> nodeList = storylines[0].GetNodes();
-            foreach (PointOfInterest poi in nodeList)
-            {
-                Debug.Log("Name of poi1: " + poi.poiName);
-            }
-
-            n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 10.0f } });
-            n2.addAdjacentNode(new Dictionary<Node, float>() { { n3, 1.0f } });
+            n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 0.5f } });
+            n2.addAdjacentNode(new Dictionary<Node, float>() { { n3, 2.0f } });
             n3.addAdjacentNode(new Dictionary<Node, float>() { { n4, 3.0f } });
-            map.initializeGraph(0);
-
-            //JOSEPH: Set the path creator to the start node of ShortestPath (n1 in this case, will be changed after)
-            transform.position = new Vector3(n1.x, n1.y, 5);
+            map.addNode(n1);
+            map.addNode(n2);
+            map.addNode(n3);
+            map.addNode(n4);
+            
         }
 
         void OnDestroy()
@@ -72,32 +59,37 @@ namespace Assets.Scripts {
         // Update is called once per frame
         void Update()
         {
+
             StartCoroutine(searchForDistanceOfBeacon(0.05f));
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                    //Ray ray = GetComponent<Camera>().ScreenPointToRay(touch.position);
-                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-                    if (hit.collider != null)
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
+                if (hit.collider != null)
+                {
+                    GameObject recipient = hit.transform.gameObject;
+                    Node touchedNode = recipient.GetComponent<Node>();
+                    List<Storyline> storylines = map.GetStorylines();
+                    List<Node> nodeList = storylines[0].GetNodes();
+                    foreach (Node n in nodeList)
                     {
-                        Debug.Log("touched it.");
-                            //Node endNode = recipient.GetComponent<Node>();
-                            //Debug.Log("Node hit: " + endNode.id);
-                        
-                        /*path = map.getGraph().shortest_path(ArrayOfNodes[0], endNode);
-                        path.Reverse();
-                        if (currentPoint < path.Count)
+                        if (touchedNode.id == n.id)
                         {
-                            float dist = Vector3.Distance(path[currentPoint].getPosition(), transform.position);
-                            transform.position = Vector3.MoveTowards(transform.position,
-                                path[currentPoint].getPosition(),
-                                Time.deltaTime*speed);
+                            touchedNode = n;
+                        }
 
-                            if (dist <= reachDist)
-                                currentPoint++;
-                        }*/
                     }
-                
+
+                    path = map.getGraph().shortest_path(nodeList[0], touchedNode);
+                    path.Reverse();
+                    foreach (Node n in path)
+                    {
+                        Debug.Log("Node traversed: " + n.id);
+                    }
+                }
+
             }
+
+          
         }
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
@@ -126,17 +118,34 @@ namespace Assets.Scripts {
             }
         }
 
-       
+        public List<Node> returnPathWithTouch()
+        {
+            return path;
+        } 
 
         public IEnumerator searchForDistanceOfBeacon(float seconds)
         {
             yield return new WaitForSeconds(seconds);
             foreach (Beacon b in myBeacons)
             {
+                List<Storyline> storylines = map.GetStorylines();
+                List<Node> nodeList = storylines[0].GetNodes();
+                if (b.accuracy > 2.00 && b.accuracy < 6.00)
+                {
+                    foreach (PointOfInterest poi in nodeList)
+                    {
+                        if (!poi.isDetected())
+                        {
+                            if (poi.getBeacon().m_uuid.ToLower().Equals(b.UUID.ToLower()))
+                            {
+                                poi.playBeforeSound();
+                            }
+                        }
+                    }
+                }
                 if (b.accuracy < 2.00)
                 {
-                    List<Storyline> storylines = map.GetStorylines();
-                    List<Node> nodeList = storylines[0].GetNodes();
+                    
                     foreach (PointOfInterest poi in nodeList)
                     {
                         if (!poi.isDetected())
@@ -146,8 +155,7 @@ namespace Assets.Scripts {
                                 poi.makeIconBigger();
                                 mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
                                 Vibration.Vibrate(1000);
-                                //Debug.Log("The beacon in beacon list is beacon " + b.UUID);
-                                //Debug.Log("The beacon of the poi is beacon " + poi.getBeacon().m_uuid);
+                                poi.popUpSound();
                             }
                         }
                     }

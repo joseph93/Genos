@@ -11,14 +11,22 @@ namespace Assets.Scripts
     {
         private string description;
         public string poiName;
+
         public iBeaconServer beacon { get; set; }
         public GameObject BeaconGameObject;
+        private AudioSource[] sounds;
+        private AudioSource popUp;
+        private AudioSource beforeSound;
+
         private bool visited;
         private bool detected;
 
         void Awake()
         {
             beacon = BeaconGameObject.GetComponent<iBeaconServer>();
+            sounds = GetComponents<AudioSource>();
+            popUp = sounds[0];
+            beforeSound = sounds[1];
         }
         public PointOfInterest(int id, int x, int y, int floorNumber, string poiName) : base(id, x, y, floorNumber)
         {
@@ -32,6 +40,16 @@ namespace Assets.Scripts
         {
             transform.localScale = new Vector3(0.5f, 0.5f, 1);
             detected = true;
+        }
+
+        public void popUpSound()
+        {
+            popUp.Play();
+        }
+
+        public void playBeforeSound()
+        {
+            beforeSound.Play();
         }
 
         public bool isDetected()
