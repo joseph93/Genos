@@ -102,6 +102,7 @@
     <Compile Include="Assets\Scripts\Path\PathFollower.cs" />
     <Compile Include="Assets\Scripts\Path\ShortestPathCreator.cs" />
     <Compile Include="Assets\Scripts\Quit\QuitSpash.cs" />
+    <Compile Include="Assets\Scripts\Quit\XQuitButton.cs" />
     <Compile Include="Assets\Scripts\TestModalWindow.cs" />
     <Compile Include="Assets\Scripts\TourButton.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
