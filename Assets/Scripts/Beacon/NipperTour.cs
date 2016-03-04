@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
@@ -16,7 +17,10 @@ namespace Assets.Scripts {
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-            
+            //added
+            //to know last index of last scene loaded
+            //FloorManager.setLastScene(Application.loadedLevelName);
+            //SceneManager.GetActiveScene(); 
         }
         // Use this for initialization
         void Start()
@@ -99,11 +103,20 @@ namespace Assets.Scripts {
             switch (newstate)
             {
                 case BluetoothLowEnergyState.POWERED_ON:
+                    //added
+                    //SceneManager.UnloadScene("Bluetooth");
+                   // FloorManager.setLastScene(Application.loadedLevelName);
+                    //SceneManager.LoadScene(FloorManager.getLastScene());
+
                     iBeaconReceiver.Init();
                     Debug.Log("It is on, go searching");
                     break;
                 case BluetoothLowEnergyState.POWERED_OFF:
                     //iBeaconReceiver.EnableBluetooth();
+
+                    //added
+                    SceneManager.LoadScene("Bluetooth");
+
                     Debug.Log("It is off, switch it on");
                     break;
                 case BluetoothLowEnergyState.UNAUTHORIZED:

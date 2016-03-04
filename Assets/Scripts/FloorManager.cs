@@ -10,6 +10,10 @@ namespace Assets.Scripts {
         public Sprite floor3;
         public Text floorNumber;
 
+        //to save last floor scene
+        private static string lastFloorScene;
+
+
         void Start()
         {
 
@@ -29,6 +33,21 @@ namespace Assets.Scripts {
             floorNumber.text = "Floor 3";
         }
 
-       
+        
+
+        public static void setLastScene(string scene)
+        {
+            lastFloorScene = scene;
+        }
+
+        public static string getLastScene()
+        {
+            return lastFloorScene;
+        }
+
+        public static void changeToPreviousScene()
+        {
+            Application.LoadLevel(lastFloorScene);
+        }
     }
 }

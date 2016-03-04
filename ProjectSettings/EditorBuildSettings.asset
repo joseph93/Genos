@@ -9,3 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/F2.unity
   - enabled: 1
     path: Assets/Scenes/F2-next.unity
+  - enabled: 1
+    path: Assets/Scenes/Bluetooth.unity
+  - enabled: 1
+    path: Assets/Scenes/Quit.unity
