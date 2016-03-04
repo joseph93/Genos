@@ -23,7 +23,10 @@ namespace Assets.Scripts {
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-            
+            //added
+            //to know last index of last scene loaded
+            //FloorManager.setLastScene(Application.loadedLevelName);
+            //SceneManager.GetActiveScene(); 
         }
         // Use this for initialization
         void Start()
@@ -107,7 +110,9 @@ namespace Assets.Scripts {
             {
                 case BluetoothLowEnergyState.POWERED_ON:
                     //added
-                    SceneManager.UnloadScene("Bluetooth");
+                    //SceneManager.UnloadScene("Bluetooth");
+                   // FloorManager.setLastScene(Application.loadedLevelName);
+                    //SceneManager.LoadScene(FloorManager.getLastScene());
 
                     iBeaconReceiver.Init();
                     Debug.Log("It is on, go searching");

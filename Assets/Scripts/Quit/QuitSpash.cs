@@ -22,7 +22,8 @@ public class QuitSpash : MonoBehaviour {
     public void OnClickNo()
     {
         Application.CancelQuit();
-        SceneManager.LoadScene("F2");
+        //changed scene F2 to F2-next
+        SceneManager.LoadScene("F2-next");
     }
     public void OnclickNo_Storyline()
     {
