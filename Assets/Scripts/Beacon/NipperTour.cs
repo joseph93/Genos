@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
@@ -110,6 +111,10 @@ namespace Assets.Scripts {
                     break;
                 case BluetoothLowEnergyState.POWERED_OFF:
                     //iBeaconReceiver.EnableBluetooth();
+
+                    //added
+                    SceneManager.LoadScene("Bluetooth");
+
                     Debug.Log("It is off, switch it on");
                     break;
                 case BluetoothLowEnergyState.UNAUTHORIZED:
