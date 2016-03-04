@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Events;
 
 namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
@@ -13,10 +14,18 @@ namespace Assets.Scripts {
         
         public Camera mainCam;
 
+        private ModalWindow modalWindow;
+
+        private UnityAction myOkAction;
+        private UnityAction myCancelAction;
+
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-            
+            modalWindow = ModalWindow.Instance();
+
+            myOkAction = new UnityAction(modalWindow.closePanel);
+            myCancelAction = new UnityAction(modalWindow.closePanel);
         }
         // Use this for initialization
         void Start()
@@ -92,7 +101,6 @@ namespace Assets.Scripts {
           
         }
 
-      
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
         {
@@ -158,6 +166,7 @@ namespace Assets.Scripts {
                                 mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
                                 Vibration.Vibrate(1000);
                                 poi.popUpSound();
+                                modalWindow.Choice("Here is the building of 1920, and here are the bathrooms of the 1936 building.", myOkAction, myCancelAction);
                             }
                         }
                     }
