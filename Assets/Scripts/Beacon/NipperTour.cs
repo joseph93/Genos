@@ -92,6 +92,8 @@ namespace Assets.Scripts {
           
         }
 
+      
+
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
         {
             switch (newstate)
