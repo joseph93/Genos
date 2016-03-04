@@ -28,7 +28,8 @@ public class Node : MonoBehaviour {
 
     void Update()
     {
-        
+        x = transform.position.x;
+        y = transform.position.y;
     }
 
     public Node(Node n)
