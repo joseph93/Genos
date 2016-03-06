@@ -24,8 +24,8 @@ namespace Assets.Scripts
             g.InsertNewVertex(n2);
             g.InsertNewVertex(n3);
 
-            n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 4 } });
-            n2.addAdjacentNode(new Dictionary<Node, float>() { { n1, 3 } });
+            n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 4 } });
+            n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n1, 3 } });
             Assert.True(n1.hasAdjacentNode(n2),
                 "This tests if hasAdjacentNode returns true if a node is adjacent to a given one.");
         }

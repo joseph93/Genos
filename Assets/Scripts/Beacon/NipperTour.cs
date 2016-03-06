@@ -54,9 +54,9 @@ namespace Assets.Scripts {
             Node n3 = ArrayOfNodes[2].GetComponentInChildren<Node>();
             Node n4 = ArrayOfNodes[3].GetComponentInChildren<Node>();
 
-            n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 6.0f } });
-            n2.addAdjacentNode(new Dictionary<Node, float>() { { n3, 2.0f } });
-            n3.addAdjacentNode(new Dictionary<Node, float>() { { n4, 3.0f } });
+            n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 6.0f } });
+            n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 2.0f } });
+            n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 3.0f } });
 
             //Add all the nodes that are in the Nipper Tour storyline in the map.
             map.initializeGraph(0);
