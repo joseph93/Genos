@@ -5,16 +5,17 @@ using System.Collections;
 
 public class XQuitButton : MonoBehaviour {
 
-    private QuitSpash quitSpash;
+    private ModalWindow modalWindow;
 
+    public Sprite iconImage;
     private UnityAction yesAction;
     private UnityAction noAction;
 
     void Awake()
     {
-        quitSpash = QuitSpash.Instance();
+        modalWindow = ModalWindow.Instance();
         yesAction = new UnityAction(ApplicationQuit);
-        noAction = new UnityAction(quitSpash.closeQuitPanel);
+        noAction = new UnityAction(modalWindow.closePanel);
 
     }
 
@@ -25,7 +26,7 @@ public class XQuitButton : MonoBehaviour {
 
     public void DisplayQuitPanel()
     {
-        quitSpash.quitChoice("Do you want to quit the application?", yesAction, noAction);
+        modalWindow.Choice("Do you want to quit the application?", iconImage, yesAction, noAction);
 
     }
 

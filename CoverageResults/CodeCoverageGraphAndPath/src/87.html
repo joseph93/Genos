@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\beacon\ibeaconreceiver.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+
+namespace Assets.Scripts { 
+public enum BluetoothLowEnergyState {
+	UNKNOWN,
+	RESETTING,
+	UNSUPPORTED,
+	UNAUTHORIZED,
+	POWERED_OFF,
+	POWERED_ON
+}
+
+    [ExecuteInEditMode]
+    public class iBeaconReceiver : MonoBehaviour
+    {
+        //Reviewer Ihcene: Not sure if the list of beacons is taken into consideration within our structure
+        public delegate void BeaconRangeChanged(List&lt;Beacon&gt; beacons);
+
+        public static event BeaconRangeChanged BeaconRangeChangedEvent;
+
+        public delegate void BluetoothStateChanged(BluetoothLowEnergyState state);
+
+        public static event BluetoothStateChanged BluetoothStateChangedEvent;
+        public iBeaconRegion[] regions;
+        public string NSLocationUsageDescription;
+        public bool updateDescription;
+        public static bool btenabled = false;
+
+#if UNITY_ANDROID
+        private static AndroidJavaObject plugin;
+#endif
+
+        private static iBeaconReceiver m_instance;
+
+        // assign variables to statics
+        void Awake()
+        {
+            m_instance = this;
+        }
+
+#if UNITY_IOS	
+	[DllImport (&quot;__Internal&quot;)]
+	private static extern void InitReceiver(string regions, bool shouldLog);
+
+	[DllImport (&quot;__Internal&quot;)]
+	private static extern void StopIOSScan();
+
+	[DllImport (&quot;__Internal&quot;)]
+	private static extern void EnableIOSBluetooth();
+
+	[DllImport (&quot;__Internal&quot;)]
+	private static extern int GetIOSBluetoothState();
+#endif
+
+        void Start()
+        {
+        }
+
+        public static void Init()
+        {
+#if !UNITY_EDITOR
+		#if UNITY_IOS
+		InitReceiver(iBeaconRegion.regionsToString(m_instance.regions),true);
+		#elif UNITY_ANDROID
+		GetPlugin().Call(&quot;Init&quot;,true);
+		#endif
+		#endif
+        }
+
+        public static void Stop()
+        {
+#if !UNITY_EDITOR
+#if UNITY_IOS
+		StopIOSScan();
+#elif UNITY_ANDROID
+		GetPlugin().Call(&quot;Stop&quot;);
+#endif
+#endif
+        }
+
+        public static void Scan()
+        {
+#if !UNITY_EDITOR
+#if UNITY_IOS
+		InitReceiver(iBeaconRegion.regionsToString(m_instance.regions),true);
+#elif UNITY_ANDROID
+		GetPlugin().Call(&quot;Scan&quot;);
+#endif
+#endif
+        }
+
+        public static void CheckBluetoothLEStatus()
+        {
+#if !UNITY_EDITOR
+#if UNITY_ANDROID
+		if (!GetPlugin().Call&lt;bool&gt;(&quot;IsBLEFeatured&quot;)) {
+			if (BluetoothStateChangedEvent != null)
+				BluetoothStateChangedEvent(BluetoothLowEnergyState.UNSUPPORTED);
+		} else {
+			if (!GetPlugin().Call&lt;bool&gt;(&quot;IsBluetoothAvailable&quot;)) {
+				if (BluetoothStateChangedEvent != null)
+					BluetoothStateChangedEvent(BluetoothLowEnergyState.UNKNOWN);
+			} else {
+				if (!GetPlugin().Call&lt;bool&gt;(&quot;IsBluetoothTurnedOn&quot;)) {
+					if (BluetoothStateChangedEvent != null)
+						BluetoothStateChangedEvent(BluetoothLowEnergyState.POWERED_OFF);
+					btenabled = false;
+				} else {
+					if (BluetoothStateChangedEvent != null)
+						BluetoothStateChangedEvent(BluetoothLowEnergyState.POWERED_ON);
+					btenabled = true;
+				}
+			}
+		}
+#elif UNITY_IOS
+		int bletest = GetIOSBluetoothState();
+		if (BluetoothStateChangedEvent != null)
+			BluetoothStateChangedEvent((BluetoothLowEnergyState)bletest);
+		btenabled = (bletest == 5);
+#endif
+#endif
+        }
+
+        public void ReportBluetoothStateChange(string newstate)
+        {
+            if (BluetoothStateChangedEvent != null)
+                BluetoothStateChangedEvent((BluetoothLowEnergyState) int.Parse(newstate));
+            btenabled = (int.Parse(newstate) == 5);
+        }
+
+        public static void EnableBluetooth()
+        {
+#if !UNITY_EDITOR
+#if UNITY_ANDROID
+		GetPlugin().Call(&quot;EnableBluetooth&quot;);
+#elif UNITY_IOS
+		EnableIOSBluetooth();
+#endif
+#endif
+        }
+
+#if UNITY_ANDROID
+        public static AndroidJavaObject GetPlugin()
+        {
+            if (plugin == null)
+            {
+                plugin = new AndroidJavaObject(&quot;com.kaasa.ibeacon.BeaconService&quot;);
+            }
+            return plugin;
+        }
+#endif
+
+        public void RangeBeacons(string beacons)
+        {
+            if (!string.IsNullOrEmpty(beacons))
+            {
+                string beaconsClean = beacons.Remove(beacons.Length - 1); // Get rid of last ;
+                string[] beaconsArr = beaconsClean.Split(&#39;;&#39;);
+                List&lt;Beacon&gt; tempbeacons = new List&lt;Beacon&gt;();
+                foreach (string beacon in beaconsArr)
+                {
+                    string[] beaconArr = beacon.Split(&#39;,&#39;);
+                    string uuid = beaconArr[0];
+                    int major = int.Parse(beaconArr[1]);
+                    int minor = int.Parse(beaconArr[2]);
+                    int range = int.Parse(beaconArr[3]);
+                    int strenght = int.Parse(beaconArr[4]);
+                    double accuracy = double.Parse(beaconArr[5]);
+                    int rssi = int.Parse(beaconArr[6]);
+                    Beacon bTmp = new Beacon(uuid, major, minor, range, strenght, accuracy, rssi);
+                    tempbeacons.Add(bTmp);
+                }
+                if (BeaconRangeChangedEvent != null)
+                    BeaconRangeChangedEvent(tempbeacons);
+            }
+        }
+
+        //Reviewer Ihcene : very good - the update for the frames per second was fixed
+        void Update()
+        {
+            if (updateDescription)
+            {
+                PlayerPrefs.SetString(&quot;NSLocationUsageDescription&quot;, NSLocationUsageDescription);
+                updateDescription = false;
+            }
+        }
+        
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[40,9,40,10,0],[41,13,41,31,0],[42,9,42,10,0],[59,9,59,10,0],[60,9,60,10,0],[63,9,63,10,0],[71,9,71,10,0],[74,9,74,10,0],[82,9,82,10,0],[85,9,85,10,0],[93,9,93,10,0],[96,9,96,10,0],[125,9,125,10,0],[128,9,128,10,0],[129,13,129,52,0],[130,17,130,91,0],[131,13,131,52,0],[132,9,132,10,0],[135,9,135,10,0],[143,9,143,10,0],[147,9,147,10,0],[148,13,148,32,0],[149,13,149,14,0],[150,17,150,83,0],[151,13,151,14,0],[152,13,152,27,0],[153,9,153,10,0],[157,9,157,10,0],[158,13,158,48,0],[159,13,159,14,0],[160,17,160,74,0],[161,17,161,63,0],[162,17,162,63,0],[163,17,163,24,0],[163,43,163,53,0],[163,26,163,39,0],[164,17,164,18,0],[165,21,165,60,0],[166,21,166,48,0],[167,21,167,57,0],[168,21,168,57,0],[169,21,169,57,0],[170,21,170,60,0],[171,21,171,66,0],[172,21,172,56,0],[173,21,173,99,0],[174,21,174,43,0],[175,17,175,18,0],[163,40,163,42,0],[176,17,176,53,0],[177,21,177,58,0],[178,13,178,14,0],[179,9,179,10,0],[183,9,183,10,0],[184,13,184,35,0],[185,13,185,14,0],[186,17,186,97,0],[187,17,187,43,0],[188,13,188,14,0],[189,9,189,10,0],[30,9,30,46,0]]);
+    </script>
+  </body>
+</html>

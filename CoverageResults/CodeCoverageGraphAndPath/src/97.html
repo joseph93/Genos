@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\map\storyline.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Assets.Scripts
+{
+
+    //Ihcene : StoryLine will only be available with the NipperTour
+    public class Storyline
+    {
+        public string storyName { get; set; }
+        public string description { get; set; }
+        public int floorsCovered { get; set; }
+        public int walkingTimeInMinutes { get; set; }
+        public List&lt;Node&gt; nodes { get; set; }
+
+        public Storyline(string name, int fc)
+        {
+            this.storyName = name;
+            floorsCovered = fc;
+            nodes = new List&lt;Node&gt;();
+        }
+
+        public void addNode(Node poi)
+        {
+            nodes.Add(poi);
+        }
+
+        public void removeNode(Node poi)
+        {
+            nodes.Remove(poi);
+        }
+
+        public List&lt;Node&gt; GetNodes()
+        {
+            return nodes;
+        }
+
+        
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,35,12,39,0],[12,40,12,44,0],[13,37,13,41,0],[13,42,13,46,0],[14,36,14,40,0],[14,41,14,45,0],[15,43,15,47,0],[15,48,15,52,0],[16,35,16,39,0],[16,40,16,44,0],[18,9,18,46,0],[19,9,19,10,0],[20,13,20,35,0],[21,13,21,32,0],[22,13,22,38,0],[23,9,23,10,0],[26,9,26,10,0],[27,13,27,28,0],[28,9,28,10,0],[31,9,31,10,0],[32,13,32,31,0],[33,9,33,10,0],[36,9,36,10,0],[37,13,37,26,0],[38,9,38,10,0]]);
+    </script>
+  </body>
+</html>

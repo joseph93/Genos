@@ -26,7 +26,7 @@
   <BuildComparisonSetting ProjectMode="DontCompare" BuildMode="MostRecentAnalysisResultAvailable" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="1" FocusOnRecentRulesViolations="False" />
   <BaselineInUISetting ProjectMode="DontCompare" BuildMode="MostRecentAnalysisResultAvailable" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="1" FocusOnRecentRulesViolations="False" />
   <CoverageFiles CoverageDir="" UncoverableAttribute="">
-    <CoverageFile>C:\Users\Joseph\Documents\GitHub\CoverageResults\Joseph_JOSEPH-PC 2016-02-29 06_11_39.coveragexml</CoverageFile>
+    <CoverageFile>C:\Users\Joseph\Documents\GitHub\CoverageResults\CodeCoverageGraph.xml</CoverageFile>
   </CoverageFiles>
   <TrendMetrics UseCustomLog="False" LogRecurrence="3" LogLabel="2" UseCustomDir="False" CustomDir="">
     <Chart Name="Lines of Code" ShowInReport="True">

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\testresultrenderer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class TestResultRenderer
+{
+    private static class Styles
+    {
+        public static readonly GUIStyle SucceedLabelStyle;
+        public static readonly GUIStyle FailedLabelStyle;
+        public static readonly GUIStyle FailedMessagesStyle;
+
+        static Styles()
+        {
+            SucceedLabelStyle = new GUIStyle(&quot;label&quot;);
+            SucceedLabelStyle.normal.textColor = Color.green;
+            SucceedLabelStyle.fontSize = 48;
+
+            FailedLabelStyle = new GUIStyle(&quot;label&quot;);
+            FailedLabelStyle.normal.textColor = Color.red;
+            FailedLabelStyle.fontSize = 32;
+
+            FailedMessagesStyle = new GUIStyle(&quot;label&quot;);
+            FailedMessagesStyle.wordWrap = false;
+            FailedMessagesStyle.richText = true;
+        }
+    }
+    private readonly Dictionary&lt;string, List&lt;ITestResult&gt;&gt; m_TestCollection = new Dictionary&lt;string, List&lt;ITestResult&gt;&gt;();
+
+    private bool m_ShowResults;
+    Vector2 m_ScrollPosition;
+    private int m_FailureCount;
+
+    public void ShowResults()
+    {
+        m_ShowResults = true;
+        Cursor.visible = true;
+    }
+
+    public void AddResults(string sceneName, ITestResult result)
+    {
+        if (!m_TestCollection.ContainsKey(sceneName))
+            m_TestCollection.Add(sceneName, new List&lt;ITestResult&gt;());
+        m_TestCollection[sceneName].Add(result);
+        if (result.Executed &amp;&amp; !result.IsSuccess)
+            m_FailureCount++;
+    }
+
+    public void Draw()
+    {
+        if (!m_ShowResults) return;
+        if (m_TestCollection.Count == 0)
+        {
+            GUILayout.Label(&quot;All test succeeded&quot;, Styles.SucceedLabelStyle, GUILayout.Width(600));
+        }
+        else
+        {
+            int count = m_TestCollection.Sum (testGroup =&gt; testGroup.Value.Count);
+            GUILayout.Label(count + &quot; tests failed!&quot;, Styles.FailedLabelStyle);
+
+            m_ScrollPosition = GUILayout.BeginScrollView(m_ScrollPosition, GUILayout.ExpandWidth(true));
+            var text = &quot;&quot;;
+            foreach (var testGroup in m_TestCollection)
+            {
+                text += &quot;&lt;b&gt;&lt;size=18&gt;&quot; + testGroup.Key + &quot;&lt;/size&gt;&lt;/b&gt;\n&quot;;
+                text += string.Join(&quot;\n&quot;, testGroup.Value
+                                    .Where(result =&gt; !result.IsSuccess)
+                                    .Select(result =&gt; result.Name + &quot; &quot; + result.ResultState + &quot;\n&quot; + result.Message)
+                                    .ToArray());
+            }
+            GUILayout.TextArea(text, Styles.FailedMessagesStyle);
+            GUILayout.EndScrollView();
+        }
+        if (GUILayout.Button(&quot;Close&quot;))
+            Application.Quit();
+    }
+
+    public int FailureCount()
+    {
+        return m_FailureCount;
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[36,5,36,6,0],[37,9,37,30,0],[38,9,38,31,0],[39,5,39,6,0],[42,5,42,6,0],[43,9,43,54,0],[44,13,44,70,0],[45,9,45,49,0],[46,9,46,50,0],[47,13,47,30,0],[48,5,48,6,0],[51,5,51,6,0],[52,9,52,28,0],[52,29,52,36,0],[53,9,53,41,0],[54,9,54,10,0],[55,13,55,99,0],[56,9,56,10,0],[58,9,58,10,0],[59,13,59,60,0],[59,81,59,83,0],[60,13,60,80,0],[62,13,62,105,0],[63,13,63,27,0],[64,13,64,20,0],[64,39,64,55,0],[64,22,64,35,0],[65,13,65,14,0],[66,17,66,74,0],[67,17,68,54,0],[68,71,69,55,0],[69,117,70,49,0],[71,13,71,14,0],[64,36,64,38,0],[72,13,72,66,0],[73,13,73,39,0],[74,9,74,10,0],[75,9,75,39,0],[76,13,76,32,0],[77,5,77,6,0],[80,5,80,6,0],[81,9,81,31,0],[82,5,82,6,0],[29,5,29,123,0],[15,9,15,10,0],[16,13,16,55,0],[17,13,17,62,0],[18,13,18,45,0],[20,13,20,54,0],[21,13,21,59,0],[22,13,22,44,0],[24,13,24,57,0],[25,13,25,50,0],[26,13,26,49,0],[27,9,27,10,0],[59,60,59,81,0],[68,54,68,71,0],[69,55,69,117,0]]);
+    </script>
+  </body>
+</html>

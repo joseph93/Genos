@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHub.CSharp", "GitHub.CSh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHub.CSharp.Editor", "GitHub.CSharp.Editor.csproj", "{54014F24-41E1-57E3-3515-1DF9C0B9DA9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHub.CSharpTests", "GitHub.CSharpTests4\GitHub.CSharpTests.csproj", "{B10DD673-FE7E-4A21-B40B-D0B0888EC02F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHub.CSharpTests", "GitHub.CSharpTests\GitHub.CSharpTests.csproj", "{9DC78DBB-C657-4A5B-906E-FCF897F88478}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,10 @@ Global
 		{54014F24-41E1-57E3-3515-1DF9C0B9DA9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54014F24-41E1-57E3-3515-1DF9C0B9DA9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54014F24-41E1-57E3-3515-1DF9C0B9DA9D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B10DD673-FE7E-4A21-B40B-D0B0888EC02F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B10DD673-FE7E-4A21-B40B-D0B0888EC02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B10DD673-FE7E-4A21-B40B-D0B0888EC02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B10DD673-FE7E-4A21-B40B-D0B0888EC02F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DC78DBB-C657-4A5B-906E-FCF897F88478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC78DBB-C657-4A5B-906E-FCF897F88478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC78DBB-C657-4A5B-906E-FCF897F88478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC78DBB-C657-4A5B-906E-FCF897F88478}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

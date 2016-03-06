@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\editor\integrationtestsrunnerwindow.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using UnityEditor;
+using UnityEngine;
+using UnityTest.IntegrationTestRunner;
+
+namespace UnityTest
+{
+    [Serializable]
+    public class IntegrationTestsRunnerWindow : EditorWindow, IHasCustomMenu
+    {
+        #region GUI Contents
+        private readonly GUIContent m_GUICreateNewTest = new GUIContent(&quot;Create&quot;, &quot;Create new test&quot;);
+        private readonly GUIContent m_GUIRunSelectedTests = new GUIContent(&quot;Run Selected&quot;, &quot;Run selected test(s)&quot;);
+        private readonly GUIContent m_GUIRunAllTests = new GUIContent(&quot;Run All&quot;, &quot;Run all tests&quot;);
+        private readonly GUIContent m_GUIBlockUI = new GUIContent(&quot;Block UI when running&quot;, &quot;Block UI when running tests&quot;);
+        private readonly GUIContent m_GUIPauseOnFailure = new GUIContent(&quot;Pause on test failure&quot;);
+        #endregion
+
+        #region runner steerign vars
+        private static IntegrationTestsRunnerWindow s_Instance;
+        [SerializeField] private List&lt;GameObject&gt; m_TestsToRun;
+        [SerializeField] private List&lt;string&gt; m_DynamicTestsToRun;
+        [SerializeField] private bool m_ReadyToRun;
+        private bool m_IsBuilding;
+        public static bool selectedInHierarchy;
+        private float m_HorizontalSplitBarPosition = 200;
+        private Vector2 m_TestInfoScroll, m_TestListScroll;
+        private IntegrationTestRendererBase[] m_TestLines;
+        private string m_CurrectSceneName;
+        private TestFilterSettings m_FilterSettings;
+        
+        Vector2 m_resultTextSize;
+        string m_resultText;
+        GameObject m_lastSelectedGO;
+        int m_resultTestMaxLength = 15000;
+
+        [SerializeField] private GameObject m_SelectedLine;
+        [SerializeField] private List&lt;TestResult&gt; m_ResultList = new List&lt;TestResult&gt;();
+        [SerializeField] private List&lt;GameObject&gt; m_FoldMarkers = new List&lt;GameObject&gt;();
+
+        private IntegrationTestsRunnerSettings m_Settings;
+
+        #endregion
+
+
+        static IntegrationTestsRunnerWindow()
+        {
+            InitBackgroundRunners();
+        }
+
+        private static void InitBackgroundRunners()
+        {
+            EditorApplication.hierarchyWindowItemOnGUI -= OnHierarchyWindowItemDraw;
+            EditorApplication.hierarchyWindowItemOnGUI += OnHierarchyWindowItemDraw;
+            EditorApplication.hierarchyWindowChanged -= OnHierarchyChangeUpdate;
+            EditorApplication.hierarchyWindowChanged += OnHierarchyChangeUpdate;
+            EditorApplication.update -= BackgroundSceneChangeWatch;
+            EditorApplication.update += BackgroundSceneChangeWatch;
+            EditorApplication.playmodeStateChanged -= OnPlaymodeStateChanged;
+            EditorApplication.playmodeStateChanged += OnPlaymodeStateChanged;
+        }
+
+        private static void OnPlaymodeStateChanged()
+        {
+            if (s_Instance &amp;&amp; EditorApplication.isPlaying  == EditorApplication.isPlayingOrWillChangePlaymode)
+                s_Instance.RebuildTestList();
+        }
+
+        public void OnDestroy()
+        {
+            EditorApplication.hierarchyWindowItemOnGUI -= OnHierarchyWindowItemDraw;
+            EditorApplication.update -= BackgroundSceneChangeWatch;
+            EditorApplication.hierarchyWindowChanged -= OnHierarchyChangeUpdate;
+            EditorApplication.playmodeStateChanged -= OnPlaymodeStateChanged;
+
+            TestComponent.DestroyAllDynamicTests();
+        }
+
+        private static void BackgroundSceneChangeWatch()
+        {
+            if (!s_Instance) return;
+            if (s_Instance.m_CurrectSceneName != null &amp;&amp; s_Instance.m_CurrectSceneName == EditorApplication.currentScene) return;
+            if (EditorApplication.isPlayingOrWillChangePlaymode) return;
+            TestComponent.DestroyAllDynamicTests();
+            s_Instance.m_CurrectSceneName = EditorApplication.currentScene;
+            s_Instance.m_ResultList.Clear();
+            s_Instance.RebuildTestList();
+        }
+
+        public void OnEnable()
+        {
+            titleContent = new GUIContent(&quot;Integration Tests&quot;);
+            s_Instance = this;
+
+            m_Settings = ProjectSettingsBase.Load&lt;IntegrationTestsRunnerSettings&gt;();
+            m_FilterSettings = new TestFilterSettings(&quot;UnityTest.IntegrationTestsRunnerWindow&quot;);
+
+            InitBackgroundRunners();
+            if (!EditorApplication.isPlayingOrWillChangePlaymode &amp;&amp; !m_ReadyToRun) RebuildTestList();
+        }
+
+        public void OnSelectionChange()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode
+                || Selection.objects == null
+                || Selection.objects.Length == 0) return;
+
+            if (Selection.gameObjects.Length == 1)
+            {
+                var go = Selection.gameObjects.Single();
+                var temp = go.transform;
+                while (temp != null)
+                {
+                    var tc = temp.GetComponent&lt;TestComponent&gt;();
+                    if (tc != null) break;
+                    temp = temp.parent;
+                }
+
+                if (temp != null)
+                {
+                    SelectInHierarchy(temp.gameObject);
+                    Selection.activeGameObject = temp.gameObject;
+                    m_SelectedLine = temp.gameObject;
+                }
+            }
+        }
+
+        public static void OnHierarchyChangeUpdate()
+        {
+            if (!s_Instance || s_Instance.m_TestLines == null || EditorApplication.isPlayingOrWillChangePlaymode) return;
+
+            // create a test runner if it doesn&#39;t exist
+            TestRunner.GetTestRunner();
+
+            // make tests are not places under a go that is not a test itself
+            foreach (var test in TestComponent.FindAllTestsOnScene())
+            {
+                if (test.gameObject.transform.parent != null &amp;&amp; test.gameObject.transform.parent.gameObject.GetComponent&lt;TestComponent&gt;() == null)
+                {
+                    test.gameObject.transform.parent = null;
+                    Debug.LogWarning(&quot;Tests need to be on top of the hierarchy or directly under another test.&quot;);
+                }
+            }
+            if (selectedInHierarchy) selectedInHierarchy = false;
+            else s_Instance.RebuildTestList();
+        }
+        
+        public static TestResult GetResultForTest(TestComponent tc)
+        {
+            if(!s_Instance) return new TestResult(tc);
+            return s_Instance.m_ResultList.FirstOrDefault(r =&gt; r.GameObject == tc.gameObject);
+        }
+
+        public static void OnHierarchyWindowItemDraw(int id, Rect rect)
+        {
+            var o = EditorUtility.InstanceIDToObject(id);
+            if (o is GameObject)
+            {
+                var go = o as GameObject;
+
+                if (Event.current.type == EventType.MouseDown
+                    &amp;&amp; Event.current.button == 0
+                    &amp;&amp; rect.Contains(Event.current.mousePosition))
+                {
+                    var temp = go.transform;
+                    while (temp != null)
+                    {
+                        var c = temp.GetComponent&lt;TestComponent&gt;();
+                        if (c != null) break;
+                        temp = temp.parent;
+                    }
+                    if (temp != null) SelectInHierarchy(temp.gameObject);
+                }
+            }
+        }
+
+        private static void SelectInHierarchy(GameObject gameObject)
+        {
+            if (!s_Instance) return;
+            if (gameObject == s_Instance.m_SelectedLine &amp;&amp; gameObject.activeInHierarchy) return;
+            if (EditorApplication.isPlayingOrWillChangePlaymode) return;
+            if (!gameObject.activeSelf)
+            {
+                selectedInHierarchy = true;
+                gameObject.SetActive(true);
+            }
+
+            var tests = TestComponent.FindAllTestsOnScene();
+            var skipList = gameObject.GetComponentsInChildren(typeof(TestComponent), true).ToList();
+            tests.RemoveAll(skipList.Contains);
+            foreach (var test in tests)
+            {
+                var enable = test.GetComponentsInChildren(typeof(TestComponent), true).Any(c =&gt; c.gameObject == gameObject);
+                if (test.gameObject.activeSelf != enable) test.gameObject.SetActive(enable);
+            }
+        }
+
+        private void RunTests(IList&lt;ITestComponent&gt; tests)
+        {
+            if (!tests.Any() || EditorApplication.isCompiling || EditorApplication.isPlayingOrWillChangePlaymode)
+                return;
+            FocusWindowIfItsOpen(GetType());
+
+            var testComponents = tests.Where(t =&gt; t is TestComponent).Cast&lt;TestComponent&gt;().ToList();
+            var dynaminTests = testComponents.Where(t =&gt; t.dynamic).ToList();
+            m_DynamicTestsToRun = dynaminTests.Select(c =&gt; c.dynamicTypeName).ToList();
+            testComponents.RemoveAll(dynaminTests.Contains);
+
+            m_TestsToRun = testComponents.Select( tc =&gt; tc.gameObject ).ToList();
+
+            m_ReadyToRun = true;
+            TestComponent.DisableAllTests();
+
+            EditorApplication.isPlaying = true;
+        }
+
+        public void Update()
+        {
+            if (m_ReadyToRun &amp;&amp; EditorApplication.isPlaying)
+            {
+                m_ReadyToRun = false;
+                var testRunner = TestRunner.GetTestRunner();
+                testRunner.TestRunnerCallback.Add(new RunnerCallback(this));
+                var testComponents = m_TestsToRun.Select(go =&gt; go.GetComponent&lt;TestComponent&gt;()).ToList();
+                testRunner.InitRunner(testComponents, m_DynamicTestsToRun);
+            }
+        }
+        
+        private void RebuildTestList()
+        {
+            m_TestLines = null;
+            if (!TestComponent.AnyTestsOnScene() 
+                &amp;&amp; !TestComponent.AnyDynamicTestForCurrentScene()) return;
+
+            if (!EditorApplication.isPlayingOrWillChangePlaymode)
+            {
+                var dynamicTestsOnScene = TestComponent.FindAllDynamicTestsOnScene();
+                var dynamicTestTypes = TestComponent.GetTypesWithHelpAttribute(EditorApplication.currentScene);
+
+                foreach (var dynamicTestType in dynamicTestTypes)
+                {
+                    var existingTests = dynamicTestsOnScene.Where(component =&gt; component.dynamicTypeName == dynamicTestType.AssemblyQualifiedName);
+                    if (existingTests.Any())
+                    {
+                        var testComponent = existingTests.Single();
+                        foreach (var c in testComponent.gameObject.GetComponents&lt;Component&gt;())
+                        {
+                            var type = Type.GetType(testComponent.dynamicTypeName);
+                            if (c is TestComponent || c is Transform || type.IsInstanceOfType(c)) continue;
+                            DestroyImmediate(c);
+                        }
+                        dynamicTestsOnScene.Remove(existingTests.Single());
+                        continue;
+                    }
+                    TestComponent.CreateDynamicTest(dynamicTestType);
+                }
+
+                foreach (var testComponent in dynamicTestsOnScene)
+                    DestroyImmediate(testComponent.gameObject);
+            }
+
+            var topTestList = TestComponent.FindAllTopTestsOnScene();
+
+            var newResultList = new List&lt;TestResult&gt;();
+            m_TestLines = ParseTestList(topTestList, newResultList);
+
+            var oldDynamicResults = m_ResultList.Where(result =&gt; result.dynamicTest);
+            foreach (var oldResult in m_ResultList)
+            {
+                var result = newResultList.Find(r =&gt; r.Id == oldResult.Id);
+                if (result == null) continue;
+                result.Update(oldResult);
+            }
+            newResultList.AddRange(oldDynamicResults.Where(r =&gt; !newResultList.Contains(r)));
+            m_ResultList = newResultList;
+
+            IntegrationTestRendererBase.RunTest = RunTests;
+            IntegrationTestGroupLine.FoldMarkers = m_FoldMarkers;
+            IntegrationTestLine.Results = m_ResultList;
+            
+            m_FilterSettings.UpdateCounters(m_ResultList.Cast&lt;ITestResult&gt;());
+
+            m_FoldMarkers.RemoveAll(o =&gt; o == null);
+
+            selectedInHierarchy = true;
+            Repaint();
+        }
+
+
+        private IntegrationTestRendererBase[] ParseTestList(List&lt;TestComponent&gt; testList, List&lt;TestResult&gt; results)
+        {
+            var tempList = new List&lt;IntegrationTestRendererBase&gt;();
+            foreach (var testObject in testList)
+            {
+                if (!testObject.IsTestGroup())
+                {
+                    var result = new TestResult(testObject);
+                    if (results != null)
+                        results.Add(result);
+                    tempList.Add(new IntegrationTestLine(testObject.gameObject, result));
+                    continue;
+                }
+                var group = new IntegrationTestGroupLine(testObject.gameObject);
+                var children = testObject.gameObject.GetComponentsInChildren(typeof(TestComponent), true).Cast&lt;TestComponent&gt;().ToList();
+                children = children.Where(c =&gt; c.gameObject.transform.parent == testObject.gameObject.transform).ToList();
+                group.AddChildren(ParseTestList(children, results));
+                tempList.Add(group);
+            }
+            tempList.Sort();
+            return tempList.ToArray();
+        }
+
+        public void OnGUI()
+        {
+            if (BuildPipeline.isBuildingPlayer)
+            {
+                m_IsBuilding = true;
+            }
+            else if (m_IsBuilding)
+            {
+                m_IsBuilding = false;
+                Repaint();
+            }
+
+            PrintHeadPanel();
+
+            EditorGUILayout.BeginVertical(Styles.testList);
+            m_TestListScroll = EditorGUILayout.BeginScrollView(m_TestListScroll);
+            bool repaint = PrintTestList(m_TestLines);
+            GUILayout.FlexibleSpace();
+            EditorGUILayout.EndScrollView();
+            EditorGUILayout.EndVertical();
+
+            RenderDetails();
+
+            if (repaint) Repaint();
+        }
+
+        public void PrintHeadPanel()
+        {
+            EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
+            EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
+            if (GUILayout.Button(m_GUIRunAllTests, EditorStyles.toolbarButton))
+            {
+                RunTests(TestComponent.FindAllTestsOnScene().Cast&lt;ITestComponent&gt;().ToList());
+            }
+            EditorGUI.BeginDisabledGroup(!Selection.gameObjects.Any (t =&gt; t.GetComponent(typeof(ITestComponent))));
+            if (GUILayout.Button(m_GUIRunSelectedTests, EditorStyles.toolbarButton))
+            {
+                RunTests(Selection.gameObjects.Select(t =&gt; t.GetComponent(typeof(TestComponent))).Cast&lt;ITestComponent&gt;().ToList());
+            }
+            EditorGUI.EndDisabledGroup();
+            if (GUILayout.Button(m_GUICreateNewTest, EditorStyles.toolbarButton))
+            {
+                var test = TestComponent.CreateTest();
+                if (Selection.gameObjects.Length == 1
+                    &amp;&amp; Selection.activeGameObject != null
+                    &amp;&amp; Selection.activeGameObject.GetComponent&lt;TestComponent&gt;())
+                {
+                    test.transform.parent = Selection.activeGameObject.transform.parent;
+                }
+                Selection.activeGameObject = test;
+                RebuildTestList();
+            }
+            EditorGUI.EndDisabledGroup();
+            
+            GUILayout.FlexibleSpace ();
+            
+            m_FilterSettings.OnGUI ();
+            
+            EditorGUILayout.EndHorizontal ();
+        }
+        
+        public void AddItemsToMenu(GenericMenu menu)
+        {
+            menu.AddItem(m_GUIBlockUI, m_Settings.blockUIWhenRunning, m_Settings.ToggleBlockUIWhenRunning);
+            menu.AddItem(m_GUIPauseOnFailure, m_Settings.pauseOnTestFailure, m_Settings.TogglePauseOnTestFailure);
+        }
+        
+        private bool PrintTestList(IntegrationTestRendererBase[] renderedLines)
+        {
+            if (renderedLines == null) return false;
+
+            var filter = m_FilterSettings.BuildRenderingOptions();
+
+            bool repaint = false;
+            foreach (var renderedLine in renderedLines)
+            {
+                repaint |= renderedLine.Render(filter);
+            }
+            return repaint;
+        }
+
+        private void RenderDetails()
+        {
+            var ctrlId = GUIUtility.GetControlID(FocusType.Passive);
+
+            Rect rect = GUILayoutUtility.GetLastRect();
+            rect.y = rect.height + rect.y - 1;
+            rect.height = 3;
+
+            EditorGUIUtility.AddCursorRect(rect, MouseCursor.ResizeVertical);
+            var e = Event.current;
+            switch (e.type)
+            {
+                case EventType.MouseDown:
+                    if (GUIUtility.hotControl == 0 &amp;&amp; rect.Contains(e.mousePosition))
+                        GUIUtility.hotControl = ctrlId;
+                    break;
+                case EventType.MouseDrag:
+                    if (GUIUtility.hotControl == ctrlId)
+                    {
+                        m_HorizontalSplitBarPosition -= e.delta.y;
+                        if (m_HorizontalSplitBarPosition &lt; 20) m_HorizontalSplitBarPosition = 20;
+                        Repaint();
+                    }
+                    break;
+                case EventType.MouseUp:
+                    if (GUIUtility.hotControl == ctrlId)
+                        GUIUtility.hotControl = 0;
+                    break;
+            }
+
+            m_TestInfoScroll = EditorGUILayout.BeginScrollView(m_TestInfoScroll, GUILayout.MinHeight(m_HorizontalSplitBarPosition));
+
+            if (m_SelectedLine != null)
+                UpdateResultText(m_SelectedLine);
+
+            EditorGUILayout.SelectableLabel(m_resultText, Styles.info, 
+                                            GUILayout.ExpandHeight(true), 
+                                            GUILayout.ExpandWidth(true), 
+                                            GUILayout.MinWidth(m_resultTextSize.x), 
+                                            GUILayout.MinHeight(m_resultTextSize.y));
+            EditorGUILayout.EndScrollView();
+        }
+
+        private void UpdateResultText(GameObject go)
+        {
+            if(go == m_lastSelectedGO) return;
+            m_lastSelectedGO = go;
+            var result = m_ResultList.Find(r =&gt; r.GameObject == go);
+            if (result == null)
+            {
+                m_resultText = string.Empty;
+                m_resultTextSize = Styles.info.CalcSize(new GUIContent(string.Empty));
+                return;
+            }
+            var sb = new StringBuilder(result.Name.Trim());
+            if (!string.IsNullOrEmpty(result.messages))
+            {
+                sb.Append(&quot;\n---\n&quot;);
+                sb.Append(result.messages.Trim());
+            }
+            if (!string.IsNullOrEmpty(result.stacktrace))
+            {
+                sb.Append(&quot;\n---\n&quot;);
+                sb.Append(result.stacktrace.Trim());
+            }
+            if(sb.Length&gt;m_resultTestMaxLength)
+            {
+                sb.Length = m_resultTestMaxLength;
+                sb.AppendFormat(&quot;...\n\n---MESSAGE TRUNCATED AT {0} CHARACTERS---&quot;, m_resultTestMaxLength);
+            }
+            m_resultText = sb.ToString().Trim();
+            m_resultTextSize = Styles.info.CalcSize(new GUIContent(m_resultText));
+        }
+
+        public void OnInspectorUpdate()
+        {
+            if (focusedWindow != this) Repaint();
+        }
+
+        private void SetCurrentTest(TestComponent tc)
+        {
+            foreach (var line in m_TestLines)
+                line.SetCurrentTest(tc);
+        }
+
+        class RunnerCallback : ITestRunnerCallback
+        {
+            private readonly IntegrationTestsRunnerWindow m_Window;
+            private int m_TestNumber;
+            private int m_CurrentTestNumber;
+
+            private readonly bool m_ConsoleErrorOnPauseValue;
+            private readonly bool m_RunInBackground;
+            private TestComponent m_CurrentTest;
+
+            public RunnerCallback(IntegrationTestsRunnerWindow window)
+            {
+                m_Window = window;
+
+                m_ConsoleErrorOnPauseValue = GuiHelper.GetConsoleErrorPause();
+                GuiHelper.SetConsoleErrorPause(false);
+                m_RunInBackground = PlayerSettings.runInBackground;
+                PlayerSettings.runInBackground = true;
+            }
+
+            public void RunStarted(string platform, List&lt;TestComponent&gt; testsToRun)
+            {
+                EditorApplication.update += OnEditorUpdate;
+                m_TestNumber = testsToRun.Count;
+                foreach (var test in testsToRun)
+                {
+                    var result = m_Window.m_ResultList.Find(r =&gt; r.TestComponent == test);
+                    if (result != null) result.Reset();
+                }
+            }
+
+            public void RunFinished(List&lt;TestResult&gt; testResults)
+            {
+                m_Window.SetCurrentTest(null);
+                m_CurrentTest = null;
+                EditorApplication.update -= OnEditorUpdate;
+                EditorApplication.isPlaying = false;
+                EditorUtility.ClearProgressBar();
+                GuiHelper.SetConsoleErrorPause(m_ConsoleErrorOnPauseValue);
+                PlayerSettings.runInBackground = m_RunInBackground;
+            }
+
+            public void AllScenesFinished()
+            {
+
+            }
+
+            public void TestStarted(TestResult test)
+            {
+                m_Window.SetCurrentTest(test.TestComponent);
+                m_CurrentTest = test.TestComponent;
+            }
+
+
+            public void TestFinished(TestResult test)
+            {
+                m_CurrentTestNumber++;
+
+                var result = m_Window.m_ResultList.Find(r =&gt; r.Id == test.Id);
+                if (result != null)
+                    result.Update(test);
+                else
+                    m_Window.m_ResultList.Add(test);
+                    
+                if(test.IsFailure &amp;&amp; m_Window.m_Settings.pauseOnTestFailure)
+                {
+                    EditorUtility.ClearProgressBar();
+                    EditorApplication.isPaused = true;
+                }
+            }
+
+            public void TestRunInterrupted(List&lt;ITestComponent&gt; testsNotRun)
+            {
+                Debug.Log(&quot;Test run interrupted&quot;);
+                RunFinished(new List&lt;TestResult&gt;());
+            }
+
+            private void OnEditorUpdate()
+            {
+                if(!EditorApplication.isPlaying) 
+                {
+                    TestRunInterrupted(null);
+                    return;
+                }
+
+                if (m_Window.m_Settings.blockUIWhenRunning 
+                    &amp;&amp; m_CurrentTest != null 
+                    &amp;&amp; !EditorApplication.isPaused 
+                    &amp;&amp; EditorUtility.DisplayCancelableProgressBar(&quot;Integration Test Runner&quot;,
+                                                                  &quot;Running &quot; + m_CurrentTest.Name,
+                                                                  (float)m_CurrentTestNumber / m_TestNumber))
+                {
+                    TestRunInterrupted(null);
+                }
+            }
+        }
+
+        [MenuItem(&quot;Unity Test Tools/Integration Test Runner %#&amp;t&quot;)]
+        public static IntegrationTestsRunnerWindow ShowWindow()
+        {
+            var w = GetWindow(typeof(IntegrationTestsRunnerWindow));
+            w.Show();
+            return w as IntegrationTestsRunnerWindow;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[51,9,51,10,0],[52,13,52,37,0],[53,9,53,10,0],[56,9,56,10,0],[57,13,57,85,0],[58,13,58,85,0],[59,13,59,81,0],[60,13,60,81,0],[61,13,61,68,0],[62,13,62,68,0],[63,13,63,78,0],[64,13,64,78,0],[65,9,65,10,0],[68,9,68,10,0],[69,13,69,111,0],[70,17,70,46,0],[71,9,71,10,0],[74,9,74,10,0],[75,13,75,85,0],[76,13,76,68,0],[77,13,77,81,0],[78,13,78,78,0],[80,13,80,52,0],[81,9,81,10,0],[84,9,84,10,0],[85,13,85,29,0],[85,30,85,37,0],[86,13,86,122,0],[86,123,86,130,0],[87,13,87,65,0],[87,66,87,73,0],[88,13,88,52,0],[89,13,89,76,0],[90,13,90,45,0],[91,13,91,42,0],[92,9,92,10,0],[95,9,95,10,0],[96,13,96,64,0],[97,13,97,31,0],[99,13,99,85,0],[100,13,100,97,0],[102,13,102,37,0],[103,13,103,83,0],[103,84,103,102,0],[104,9,104,10,0],[107,9,107,10,0],[108,13,110,50,0],[110,51,110,58,0],[112,13,112,51,0],[113,13,113,14,0],[114,17,114,57,0],[115,17,115,41,0],[117,17,117,18,0],[118,21,118,65,0],[119,21,119,36,0],[119,37,119,43,0],[120,21,120,40,0],[121,17,121,18,0],[116,17,116,37,0],[123,17,123,34,0],[124,17,124,18,0],[125,21,125,56,0],[126,21,126,66,0],[127,21,127,54,0],[128,17,128,18,0],[129,13,129,14,0],[130,9,130,10,0],[133,9,133,10,0],[134,13,134,114,0],[134,115,134,122,0],[137,13,137,40,0],[140,13,140,20,0],[140,34,140,69,0],[140,22,140,30,0],[141,13,141,14,0],[142,17,142,147,0],[143,17,143,18,0],[144,21,144,61,0],[145,21,145,114,0],[146,17,146,18,0],[147,13,147,14,0],[140,31,140,33,0],[148,13,148,37,0],[148,38,148,66,0],[149,18,149,47,0],[150,9,150,10,0],[153,9,153,10,0],[154,13,154,28,0],[154,29,154,55,0],[155,13,155,64,0],[155,93,155,95,0],[156,9,156,10,0],[159,9,159,10,0],[160,13,160,58,0],[161,13,161,33,0],[162,13,162,14,0],[163,17,163,42,0],[165,17,167,67,0],[168,17,168,18,0],[169,21,169,45,0],[171,21,171,22,0],[172,25,172,68,0],[173,25,173,39,0],[173,40,173,46,0],[174,25,174,44,0],[175,21,175,22,0],[170,21,170,41,0],[176,21,176,38,0],[176,39,176,74,0],[177,17,177,18,0],[178,13,178,14,0],[179,9,179,10,0],[182,9,182,10,0],[183,13,183,29,0],[183,30,183,37,0],[184,13,184,89,0],[184,90,184,97,0],[185,13,185,65,0],[185,66,185,73,0],[186,13,186,40,0],[187,13,187,14,0],[188,17,188,44,0],[189,17,189,44,0],[190,13,190,14,0],[192,13,192,61,0],[193,13,193,101,0],[194,13,194,48,0],[195,13,195,20,0],[195,34,195,39,0],[195,22,195,30,0],[196,13,196,14,0],[197,17,197,97,0],[197,123,197,125,0],[198,17,198,58,0],[198,59,198,93,0],[199,13,199,14,0],[195,31,195,33,0],[200,9,200,10,0],[203,9,203,10,0],[204,13,204,114,0],[205,17,205,24,0],[206,13,206,45,0],[208,13,208,51,0],[208,69,208,102,0],[209,13,209,58,0],[209,67,209,78,0],[210,13,210,60,0],[210,77,210,88,0],[211,13,211,61,0],[213,13,213,57,0],[213,70,213,82,0],[215,13,215,33,0],[216,13,216,45,0],[218,13,218,48,0],[219,9,219,10,0],[222,9,222,10,0],[223,13,223,61,0],[224,13,224,14,0],[225,17,225,38,0],[226,17,226,61,0],[227,17,227,77,0],[228,17,228,64,0],[228,96,228,107,0],[229,17,229,76,0],[230,13,230,14,0],[231,9,231,10,0],[234,9,234,10,0],[235,13,235,32,0],[236,13,237,67,0],[237,68,237,75,0],[239,13,239,66,0],[240,13,240,14,0],[241,17,241,86,0],[242,17,242,112,0],[244,17,244,24,0],[244,49,244,65,0],[244,26,244,45,0],[245,17,245,18,0],[246,21,246,80,0],[246,146,246,148,0],[247,21,247,45,0],[248,21,248,22,0],[249,25,249,68,0],[250,25,250,32,0],[250,43,250,94,0],[250,34,250,39,0],[251,25,251,26,0],[252,29,252,84,0],[253,29,253,98,0],[253,99,253,108,0],[254,29,254,49,0],[255,25,255,26,0],[250,40,250,42,0],[256,25,256,76,0],[257,25,257,34,0],[259,21,259,70,0],[260,17,260,18,0],[244,46,244,48,0],[262,17,262,24,0],[262,47,262,66,0],[262,26,262,43,0],[263,21,263,64,0],[262,44,262,46,0],[264,13,264,14,0],[266,13,266,70,0],[268,13,268,56,0],[269,13,269,69,0],[271,13,271,66,0],[271,84,271,86,0],[272,13,272,20,0],[272,39,272,51,0],[272,22,272,35,0],[273,13,273,14,0],[274,17,274,54,0],[274,74,274,76,0],[275,17,275,36,0],[275,37,275,46,0],[276,17,276,42,0],[277,13,277,14,0],[272,36,272,38,0],[278,13,278,65,0],[278,91,278,94,0],[279,13,279,42,0],[281,13,281,60,0],[282,13,282,66,0],[283,13,283,56,0],[285,13,285,79,0],[287,13,287,42,0],[287,51,287,53,0],[289,13,289,40,0],[290,13,290,23,0],[291,9,291,10,0],[295,9,295,10,0],[296,13,296,68,0],[297,13,297,20,0],[297,40,297,48,0],[297,22,297,36,0],[298,13,298,14,0],[299,17,299,47,0],[300,17,300,18,0],[301,21,301,61,0],[302,21,302,41,0],[303,25,303,45,0],[304,21,304,90,0],[305,21,305,30,0],[307,17,307,81,0],[308,17,308,138,0],[309,17,309,48,0],[309,112,309,123,0],[310,17,310,69,0],[311,17,311,37,0],[312,13,312,14,0],[297,37,297,39,0],[313,13,313,29,0],[314,13,314,39,0],[315,9,315,10,0],[318,9,318,10,0],[319,13,319,48,0],[320,13,320,14,0],[321,17,321,37,0],[322,13,322,14,0],[323,18,323,35,0],[324,13,324,14,0],[325,17,325,38,0],[326,17,326,27,0],[327,13,327,14,0],[329,13,329,30,0],[331,13,331,60,0],[332,13,332,82,0],[333,13,333,55,0],[334,13,334,39,0],[335,13,335,45,0],[336,13,336,43,0],[338,13,338,29,0],[340,13,340,25,0],[340,26,340,36,0],[341,9,341,10,0],[344,9,344,10,0],[345,13,345,67,0],[346,13,346,91,0],[347,13,347,80,0],[348,13,348,14,0],[349,17,349,95,0],[350,13,350,14,0],[351,13,351,75,0],[351,113,351,116,0],[352,13,352,85,0],[353,13,353,14,0],[354,17,354,60,0],[354,97,354,132,0],[355,13,355,14,0],[356,13,356,42,0],[357,13,357,82,0],[358,13,358,14,0],[359,17,359,55,0],[360,17,362,81,0],[363,17,363,18,0],[364,21,364,89,0],[365,17,365,18,0],[366,17,366,51,0],[367,17,367,35,0],[368,13,368,14,0],[369,13,369,42,0],[371,13,371,40,0],[373,13,373,39,0],[375,13,375,46,0],[376,9,376,10,0],[379,9,379,10,0],[380,13,380,108,0],[381,13,381,115,0],[382,9,382,10,0],[385,9,385,10,0],[386,13,386,39,0],[386,40,386,53,0],[388,13,388,67,0],[390,13,390,34,0],[391,13,391,20,0],[391,42,391,55,0],[391,22,391,38,0],[392,13,392,14,0],[393,17,393,56,0],[394,13,394,14,0],[391,39,391,41,0],[395,13,395,28,0],[396,9,396,10,0],[399,9,399,10,0],[400,13,400,69,0],[402,13,402,56,0],[403,13,403,47,0],[404,13,404,29,0],[406,13,406,78,0],[407,13,407,35,0],[408,13,408,28,0],[411,21,411,86,0],[412,25,412,56,0],[413,21,413,27,0],[415,21,415,57,0],[416,21,416,22,0],[417,25,417,67,0],[418,25,418,63,0],[418,64,418,98,0],[419,25,419,35,0],[420,21,420,22,0],[421,21,421,27,0],[423,21,423,57,0],[424,25,424,51,0],[425,21,425,27,0],[428,13,428,133,0],[430,13,430,40,0],[431,17,431,50,0],[433,13,437,86,0],[438,13,438,45,0],[439,9,439,10,0],[442,9,442,10,0],[443,13,443,39,0],[443,40,443,47,0],[444,13,444,35,0],[445,13,445,49,0],[445,67,445,69,0],[446,13,446,32,0],[447,13,447,14,0],[448,17,448,45,0],[449,17,449,87,0],[450,17,450,24,0],[452,13,452,60,0],[453,13,453,56,0],[454,13,454,14,0],[455,17,455,38,0],[456,17,456,51,0],[457,13,457,14,0],[458,13,458,58,0],[459,13,459,14,0],[460,17,460,38,0],[461,17,461,53,0],[462,13,462,14,0],[463,13,463,48,0],[464,13,464,14,0],[465,17,465,51,0],[466,17,466,108,0],[467,13,467,14,0],[468,13,468,49,0],[469,13,469,83,0],[470,9,470,10,0],[473,9,473,10,0],[474,13,474,39,0],[474,40,474,50,0],[475,9,475,10,0],[478,9,478,10,0],[479,13,479,20,0],[479,34,479,45,0],[479,22,479,30,0],[480,17,480,41,0],[479,31,479,33,0],[481,9,481,10,0],[582,9,582,10,0],[583,13,583,69,0],[584,13,584,22,0],[585,13,585,54,0],[586,9,586,10,0],[16,9,16,102,0],[17,9,17,116,0],[18,9,18,99,0],[19,9,19,123,0],[20,9,20,99,0],[30,9,30,58,0],[39,9,39,43,0],[42,26,42,89,0],[43,26,43,90,0],[493,13,493,71,0],[494,13,494,14,0],[495,17,495,35,0],[497,17,497,79,0],[498,17,498,55,0],[499,17,499,68,0],[500,17,500,55,0],[501,13,501,14,0],[504,13,504,14,0],[505,17,505,60,0],[506,17,506,49,0],[507,17,507,24,0],[507,38,507,48,0],[507,26,507,34,0],[508,17,508,18,0],[509,21,509,66,0],[509,89,509,91,0],[510,21,510,40,0],[510,41,510,56,0],[511,17,511,18,0],[507,35,507,37,0],[512,13,512,14,0],[515,13,515,14,0],[516,17,516,47,0],[517,17,517,38,0],[518,17,518,60,0],[519,17,519,53,0],[520,17,520,50,0],[521,17,521,76,0],[522,17,522,68,0],[523,13,523,14,0],[526,13,526,14,0],[528,13,528,14,0],[531,13,531,14,0],[532,17,532,61,0],[533,17,533,52,0],[534,13,534,14,0],[538,13,538,14,0],[539,17,539,39,0],[541,17,541,62,0],[541,77,541,79,0],[542,17,542,36,0],[543,21,543,41,0],[545,21,545,53,0],[547,17,547,77,0],[548,17,548,18,0],[549,21,549,54,0],[550,21,550,55,0],[551,17,551,18,0],[552,13,552,14,0],[555,13,555,14,0],[556,17,556,51,0],[557,17,557,53,0],[558,13,558,14,0],[561,13,561,14,0],[562,17,562,49,0],[563,17,563,18,0],[564,21,564,46,0],[565,21,565,28,0],[568,17,573,110,0],[574,17,574,18,0],[575,21,575,46,0],[576,17,576,18,0],[577,13,577,14,0],[155,64,155,93,0],[197,97,197,123,0],[208,51,208,69,0],[209,58,209,67,0],[210,60,210,77,0],[213,57,213,70,0],[228,64,228,96,0],[271,66,271,84,0],[287,42,287,51,0],[351,75,351,113,0],[354,60,354,97,0],[246,80,246,146,0],[274,54,274,74,0],[278,65,278,91,0],[309,48,309,112,0],[445,49,445,67,0],[509,66,509,89,0],[541,62,541,77,0]]);
+    </script>
+  </body>
+</html>

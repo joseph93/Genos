@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\beacon\vibration.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+
+
+
+public static class Vibration
+{
+
+#if UNITY_ANDROID &amp;&amp; !UNITY_EDITOR
+    public static AndroidJavaClass unityPlayer = new AndroidJavaClass(&quot;com.unity3d.player.UnityPlayer&quot;);
+    public static AndroidJavaObject currentActivity = unityPlayer.GetStatic&lt;AndroidJavaObject&gt;(&quot;currentActivity&quot;);
+    public static AndroidJavaObject vibrator = currentActivity.Call&lt;AndroidJavaObject&gt;(&quot;getSystemService&quot;, &quot;vibrator&quot;);
+#else
+    public static AndroidJavaClass unityPlayer;
+    public static AndroidJavaObject currentActivity;
+    public static AndroidJavaObject vibrator;
+#endif
+
+    public static void Vibrate()
+    {
+        if (isAndroid())
+            vibrator.Call(&quot;vibrate&quot;);
+        else
+            Handheld.Vibrate();
+    }
+
+
+    public static void Vibrate(long milliseconds)
+    {
+        if (isAndroid())
+            vibrator.Call(&quot;vibrate&quot;, milliseconds);
+        else
+            Handheld.Vibrate();
+    }
+
+    public static void Vibrate(long[] pattern, int repeat)
+    {
+        if (isAndroid())
+            vibrator.Call(&quot;vibrate&quot;, pattern, repeat);
+        else
+            Handheld.Vibrate();
+    }
+
+    public static bool HasVibrator()
+    {
+        return isAndroid();
+    }
+
+    public static void Cancel()
+    {
+        if (isAndroid())
+            vibrator.Call(&quot;cancel&quot;);
+    }
+
+    private static bool isAndroid()
+    {
+#if UNITY_ANDROID &amp;&amp; !UNITY_EDITOR
+	return true;
+#else
+        return false;
+#endif
+    }
+}
+
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,5,20,6,0],[21,9,21,25,0],[22,13,22,38,0],[24,13,24,32,0],[25,5,25,6,0],[29,5,29,6,0],[30,9,30,25,0],[31,13,31,52,0],[33,13,33,32,0],[34,5,34,6,0],[37,5,37,6,0],[38,9,38,25,0],[39,13,39,55,0],[41,13,41,32,0],[42,5,42,6,0],[45,5,45,6,0],[46,9,46,28,0],[47,5,47,6,0],[50,5,50,6,0],[51,9,51,25,0],[52,13,52,37,0],[53,5,53,6,0],[56,5,56,6,0],[60,9,60,22,0],[62,5,62,6,0]]);
+    </script>
+  </body>
+</html>

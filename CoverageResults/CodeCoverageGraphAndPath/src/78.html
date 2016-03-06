@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\testcomponent.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+namespace UnityTest
+{
+    public interface ITestComponent : IComparable&lt;ITestComponent&gt;
+    {
+        void EnableTest(bool enable);
+        bool IsTestGroup();
+        GameObject gameObject { get; }
+        string Name { get; }
+        ITestComponent GetTestGroup();
+        bool IsExceptionExpected(string exceptionType);
+        bool ShouldSucceedOnException();
+        double GetTimeout();
+        bool IsIgnored();
+        bool ShouldSucceedOnAssertions();
+        bool IsExludedOnThisPlatform();
+    }
+
+    public class TestComponent : MonoBehaviour, ITestComponent
+    {
+        public static ITestComponent NullTestComponent = new NullTestComponentImpl();
+
+        public float timeout = 5;
+        public bool ignored = false;
+        public bool succeedAfterAllAssertionsAreExecuted = false;
+        public bool expectException = false;
+        public string expectedExceptionList = &quot;&quot;;
+        public bool succeedWhenExceptionIsThrown = false;
+        public IncludedPlatforms includedPlatforms = (IncludedPlatforms) ~0L;
+        public string[] platformsToIgnore = null;
+
+        public bool dynamic;
+        public string dynamicTypeName;
+
+        public bool IsExludedOnThisPlatform()
+        {
+            return platformsToIgnore != null &amp;&amp; platformsToIgnore.Any(platform =&gt; platform == Application.platform.ToString());
+        }
+
+        static bool IsAssignableFrom(Type a, Type b)
+        {
+#if !UNITY_METRO
+            return a.IsAssignableFrom(b);
+#else
+            return false;
+#endif
+        }
+
+        public bool IsExceptionExpected(string exception)
+		{
+			exception = exception.Trim();
+            if (!expectException) 
+				return false;
+			if(string.IsNullOrEmpty(expectedExceptionList.Trim())) 
+				return true;
+            foreach (var expectedException in expectedExceptionList.Split(&#39;,&#39;).Select(e =&gt; e.Trim()))
+            {
+                if (exception == expectedException) 
+					return true;
+                var exceptionType = Type.GetType(exception) ?? GetTypeByName(exception);
+                var expectedExceptionType = Type.GetType(expectedException) ?? GetTypeByName(expectedException);
+                if (exceptionType != null &amp;&amp; expectedExceptionType != null &amp;&amp; IsAssignableFrom(expectedExceptionType, exceptionType))
+                    return true;
+            }
+            return false;
+        }
+
+        public bool ShouldSucceedOnException()
+        {
+            return succeedWhenExceptionIsThrown;
+        }
+
+        public double GetTimeout()
+        {
+            return timeout;
+        }
+
+        public bool IsIgnored()
+        {
+            return ignored;
+        }
+
+        public bool ShouldSucceedOnAssertions()
+        {
+            return succeedAfterAllAssertionsAreExecuted;
+        }
+
+        private static Type GetTypeByName(string className)
+        {
+#if !UNITY_METRO
+            return AppDomain.CurrentDomain.GetAssemblies().SelectMany(a =&gt; a.GetTypes()).FirstOrDefault(type =&gt; type.Name == className);
+#else
+            return null;
+#endif
+        }
+
+        public void OnValidate()
+        {
+            if (timeout &lt; 0.01f) timeout = 0.01f;
+        }
+
+        // Legacy
+        [Flags]
+        public enum IncludedPlatforms
+        {
+            WindowsEditor       = 1 &lt;&lt; 0,
+                OSXEditor           = 1 &lt;&lt; 1,
+                WindowsPlayer       = 1 &lt;&lt; 2,
+                OSXPlayer           = 1 &lt;&lt; 3,
+                LinuxPlayer         = 1 &lt;&lt; 4,
+                MetroPlayerX86      = 1 &lt;&lt; 5,
+                MetroPlayerX64      = 1 &lt;&lt; 6,
+                MetroPlayerARM      = 1 &lt;&lt; 7,
+                WindowsWebPlayer    = 1 &lt;&lt; 8,
+                OSXWebPlayer        = 1 &lt;&lt; 9,
+                Android             = 1 &lt;&lt; 10,
+// ReSharper disable once InconsistentNaming
+                IPhonePlayer        = 1 &lt;&lt; 11,
+                TizenPlayer         = 1 &lt;&lt; 12,
+                WP8Player           = 1 &lt;&lt; 13,
+                BB10Player          = 1 &lt;&lt; 14,
+                NaCl                = 1 &lt;&lt; 15,
+                PS3                 = 1 &lt;&lt; 16,
+                XBOX360             = 1 &lt;&lt; 17,
+                WiiPlayer           = 1 &lt;&lt; 18,
+                PSP2                = 1 &lt;&lt; 19,
+                PS4                 = 1 &lt;&lt; 20,
+                PSMPlayer           = 1 &lt;&lt; 21,
+                XboxOne             = 1 &lt;&lt; 22,
+        }
+
+        #region ITestComponent implementation
+
+        public void EnableTest(bool enable)
+        {
+            if (enable &amp;&amp; dynamic)
+            {
+                Type t = Type.GetType(dynamicTypeName);
+                var s = gameObject.GetComponent(t) as MonoBehaviour;
+                if (s != null)
+                    DestroyImmediate(s);
+
+                gameObject.AddComponent(t);
+            }
+
+            if (gameObject.activeSelf != enable) gameObject.SetActive(enable);
+        }
+
+        public int CompareTo(ITestComponent obj)
+        {
+            if (obj == NullTestComponent)
+                return 1;
+            var result = gameObject.name.CompareTo(obj.gameObject.name);
+            if (result == 0)
+                result = gameObject.GetInstanceID().CompareTo(obj.gameObject.GetInstanceID());
+            return result;
+        }
+
+        public bool IsTestGroup()
+        {
+            for (int i = 0; i &lt; gameObject.transform.childCount; i++)
+            {
+                var childTc = gameObject.transform.GetChild(i).GetComponent(typeof(TestComponent));
+                if (childTc != null)
+                    return true;
+            }
+            return false;
+        }
+
+        public string Name { get { return gameObject == null ? &quot;&quot; : gameObject.name; } }
+
+        public ITestComponent GetTestGroup()
+        {
+            var parent = gameObject.transform.parent;
+            if (parent == null)
+                return NullTestComponent;
+            return parent.GetComponent&lt;TestComponent&gt;();
+        }
+
+        public override bool Equals(object o)
+        {
+            if (o is TestComponent)
+                return this == (o as TestComponent);
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public static bool operator ==(TestComponent a, TestComponent b)
+        {
+            if (ReferenceEquals(a, b))
+                return true;
+            if (((object)a == null) || ((object)b == null))
+                return false;
+            if (a.dynamic &amp;&amp; b.dynamic)
+                return a.dynamicTypeName == b.dynamicTypeName;
+            if (a.dynamic || b.dynamic)
+                return false;
+            return a.gameObject == b.gameObject;
+        }
+
+        public static bool operator !=(TestComponent a, TestComponent b)
+        {
+            return !(a == b);
+        }
+
+        #endregion
+
+        #region Static helpers
+
+        public static TestComponent CreateDynamicTest(Type type)
+        {
+            var go = CreateTest(type.Name);
+            go.hideFlags |= HideFlags.DontSave;
+            go.SetActive(false);
+
+            var tc = go.GetComponent&lt;TestComponent&gt;();
+            tc.dynamic = true;
+            tc.dynamicTypeName = type.AssemblyQualifiedName;
+
+#if !UNITY_METRO
+            foreach (var typeAttribute in type.GetCustomAttributes(false))
+            {
+                if (typeAttribute is IntegrationTest.TimeoutAttribute)
+                    tc.timeout = (typeAttribute as IntegrationTest.TimeoutAttribute).timeout;
+                else if (typeAttribute is IntegrationTest.IgnoreAttribute)
+                    tc.ignored = true;
+                else if (typeAttribute is IntegrationTest.SucceedWithAssertions)
+                    tc.succeedAfterAllAssertionsAreExecuted = true;
+                else if (typeAttribute is IntegrationTest.ExcludePlatformAttribute)
+                    tc.platformsToIgnore = (typeAttribute as IntegrationTest.ExcludePlatformAttribute).platformsToExclude;
+                else if (typeAttribute is IntegrationTest.ExpectExceptions)
+                {
+                    var attribute = (typeAttribute as IntegrationTest.ExpectExceptions);
+                    tc.expectException = true;
+                    tc.expectedExceptionList = string.Join(&quot;,&quot;, attribute.exceptionTypeNames);
+                    tc.succeedWhenExceptionIsThrown = attribute.succeedOnException;
+                }
+            }
+            go.AddComponent(type);
+#endif  // if !UNITY_METRO
+            return tc;
+        }
+
+        public static GameObject CreateTest()
+        {
+            return CreateTest(&quot;New Test&quot;);
+        }
+
+        private static GameObject CreateTest(string name)
+        {
+            var go = new GameObject(name);
+            go.AddComponent&lt;TestComponent&gt;();
+#if UNITY_EDITOR
+            Undo.RegisterCreatedObjectUndo(go, &quot;Created test&quot;);
+#endif
+            return go;
+        }
+
+        public static List&lt;TestComponent&gt; FindAllTestsOnScene()
+        {
+            var tests = Resources.FindObjectsOfTypeAll (typeof(TestComponent)).Cast&lt;TestComponent&gt; ();
+#if UNITY_EDITOR
+            tests = tests.Where( t =&gt; {var p = PrefabUtility.GetPrefabType(t); return p != PrefabType.Prefab &amp;&amp; p != PrefabType.ModelPrefab;} );
+
+#endif
+            return tests.ToList ();
+        }
+
+        public static List&lt;TestComponent&gt; FindAllTopTestsOnScene()
+        {
+            return FindAllTestsOnScene().Where(component =&gt; component.gameObject.transform.parent == null).ToList();
+        }
+
+        public static List&lt;TestComponent&gt; FindAllDynamicTestsOnScene()
+        {
+            return FindAllTestsOnScene().Where(t =&gt; t.dynamic).ToList();
+        }
+
+        public static void DestroyAllDynamicTests()
+        {
+            foreach (var dynamicTestComponent in FindAllDynamicTestsOnScene())
+                DestroyImmediate(dynamicTestComponent.gameObject);
+        }
+
+        public static void DisableAllTests()
+        {
+            foreach (var t in FindAllTestsOnScene()) t.EnableTest(false);
+        }
+
+        public static bool AnyTestsOnScene()
+        {
+            return FindAllTestsOnScene().Any();
+        }
+
+        public static bool AnyDynamicTestForCurrentScene()
+        {
+#if UNITY_EDITOR
+                return TestComponent.GetTypesWithHelpAttribute(EditorApplication.currentScene).Any();
+#else
+                return TestComponent.GetTypesWithHelpAttribute(Application.loadedLevelName).Any();
+#endif
+        }
+
+        #endregion
+
+        private sealed class NullTestComponentImpl : ITestComponent
+        {
+            public int CompareTo(ITestComponent other)
+            {
+                if (other == this) return 0;
+                return -1;
+            }
+
+            public void EnableTest(bool enable)
+            {
+            }
+
+            public bool IsTestGroup()
+            {
+                throw new NotImplementedException();
+            }
+
+            public GameObject gameObject { get; private set; }
+            public string Name { get { return &quot;&quot;; } }
+
+            public ITestComponent GetTestGroup()
+            {
+                return null;
+            }
+
+            public bool IsExceptionExpected(string exceptionType)
+            {
+                throw new NotImplementedException();
+            }
+
+            public bool ShouldSucceedOnException()
+            {
+                throw new NotImplementedException();
+            }
+
+            public double GetTimeout()
+            {
+                throw new NotImplementedException();
+            }
+
+            public bool IsIgnored()
+            {
+                throw new NotImplementedException();
+            }
+
+            public bool ShouldSucceedOnAssertions()
+            {
+                throw new NotImplementedException();
+            }
+
+            public bool IsExludedOnThisPlatform()
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public static IEnumerable&lt;Type&gt; GetTypesWithHelpAttribute(string sceneName)
+        {
+#if !UNITY_METRO
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                Type[] types = null;
+
+                try
+                {
+                    types = assembly.GetTypes();
+                }
+                catch (ReflectionTypeLoadException ex)
+                {
+                    Debug.LogError(&quot;Failed to load types from: &quot; + assembly.FullName);
+                    foreach (Exception loadEx in ex.LoaderExceptions)
+                        Debug.LogException(loadEx);
+                }
+
+                if (types == null)
+                    continue;
+
+                foreach (Type type in types)
+                {
+                    var attributes = type.GetCustomAttributes(typeof(IntegrationTest.DynamicTestAttribute), true);
+                    if (attributes.Length == 1)
+                    {
+                        var a = attributes.Single() as IntegrationTest.DynamicTestAttribute;
+                        if (a.IncludeOnScene(sceneName)) yield return type;
+                    }
+                }
+            }
+#else   // if !UNITY_METRO
+            yield break;
+#endif  // if !UNITY_METRO
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[45,9,45,10,0],[46,13,46,83,0],[46,126,46,128,0],[47,9,47,10,0],[50,9,50,10,0],[52,13,52,42,0],[56,9,56,10,0],[59,3,59,4,0],[60,4,60,33,0],[61,13,61,34,0],[62,5,62,18,0],[63,4,63,58,0],[64,5,64,17,0],[65,13,65,20,0],[65,47,65,92,0],[65,100,65,101,0],[65,22,65,43,0],[66,13,66,14,0],[67,17,67,52,0],[68,6,68,18,0],[69,17,69,89,0],[70,17,70,113,0],[71,17,71,134,0],[72,21,72,33,0],[73,13,73,14,0],[65,44,65,46,0],[74,13,74,26,0],[75,9,75,10,0],[78,9,78,10,0],[79,13,79,49,0],[80,9,80,10,0],[83,9,83,10,0],[84,13,84,28,0],[85,9,85,10,0],[88,9,88,10,0],[89,13,89,28,0],[90,9,90,10,0],[93,9,93,10,0],[94,13,94,57,0],[95,9,95,10,0],[98,9,98,10,0],[100,13,100,76,0],[100,88,100,113,0],[100,135,100,137,0],[104,9,104,10,0],[107,9,107,10,0],[108,13,108,33,0],[108,34,108,50,0],[109,9,109,10,0],[144,9,144,10,0],[145,13,145,35,0],[146,13,146,14,0],[147,17,147,56,0],[148,17,148,69,0],[149,17,149,31,0],[150,21,150,41,0],[152,17,152,44,0],[153,13,153,14,0],[155,13,155,49,0],[155,50,155,79,0],[156,9,156,10,0],[159,9,159,10,0],[160,13,160,42,0],[161,17,161,26,0],[162,13,162,73,0],[163,13,163,29,0],[164,17,164,95,0],[165,13,165,27,0],[166,9,166,10,0],[169,9,169,10,0],[170,18,170,27,0],[171,13,171,14,0],[172,17,172,100,0],[173,17,173,37,0],[174,21,174,33,0],[175,13,175,14,0],[170,66,170,69,0],[170,29,170,64,0],[176,13,176,26,0],[177,9,177,10,0],[179,34,179,35,0],[179,36,179,85,0],[179,86,179,87,0],[182,9,182,10,0],[183,13,183,54,0],[184,13,184,32,0],[185,17,185,42,0],[186,13,186,57,0],[187,9,187,10,0],[190,9,190,10,0],[191,13,191,36,0],[192,17,192,53,0],[193,13,193,26,0],[194,9,194,10,0],[197,9,197,10,0],[198,13,198,39,0],[199,9,199,10,0],[202,9,202,10,0],[203,13,203,39,0],[204,17,204,29,0],[205,13,205,60,0],[206,17,206,30,0],[207,13,207,40,0],[208,17,208,63,0],[209,13,209,40,0],[210,17,210,30,0],[211,13,211,49,0],[212,9,212,10,0],[215,9,215,10,0],[216,13,216,30,0],[217,9,217,10,0],[224,9,224,10,0],[225,13,225,44,0],[226,13,226,48,0],[227,13,227,33,0],[229,13,229,55,0],[230,13,230,31,0],[231,13,231,61,0],[234,13,234,20,0],[234,43,234,74,0],[234,22,234,39,0],[235,13,235,14,0],[236,17,236,71,0],[237,21,237,94,0],[238,22,238,75,0],[239,21,239,39,0],[240,22,240,81,0],[241,21,241,68,0],[242,22,242,84,0],[243,21,243,123,0],[244,22,244,76,0],[245,17,245,18,0],[246,21,246,89,0],[247,21,247,47,0],[248,21,248,95,0],[249,21,249,84,0],[250,17,250,18,0],[251,13,251,14,0],[234,40,234,42,0],[252,13,252,35,0],[254,13,254,23,0],[255,9,255,10,0],[258,9,258,10,0],[259,13,259,43,0],[260,9,260,10,0],[263,9,263,10,0],[264,13,264,43,0],[265,13,265,46,0],[267,13,267,64,0],[269,13,269,23,0],[270,9,270,10,0],[273,9,273,10,0],[274,13,274,103,0],[276,13,276,39,0],[276,79,276,80,0],[276,142,276,145,0],[279,13,279,36,0],[280,9,280,10,0],[283,9,283,10,0],[284,13,284,61,0],[284,106,284,117,0],[285,9,285,10,0],[288,9,288,10,0],[289,13,289,53,0],[289,62,289,73,0],[290,9,290,10,0],[293,9,293,10,0],[294,13,294,20,0],[294,50,294,78,0],[294,22,294,46,0],[295,17,295,67,0],[294,47,294,49,0],[296,9,296,10,0],[299,9,299,10,0],[300,13,300,20,0],[300,31,300,52,0],[300,22,300,27,0],[300,54,300,74,0],[300,28,300,30,0],[301,9,301,10,0],[304,9,304,10,0],[305,13,305,48,0],[306,9,306,10,0],[309,9,309,10,0],[311,17,311,102,0],[315,9,315,10,0],[32,9,32,34,0],[33,9,33,37,0],[34,9,34,66,0],[35,9,35,45,0],[36,9,36,50,0],[37,9,37,58,0],[38,9,38,78,0],[39,9,39,50,0],[30,9,30,86,0],[322,13,322,14,0],[323,17,323,35,0],[323,36,323,45,0],[324,17,324,27,0],[325,13,325,14,0],[328,13,328,14,0],[329,13,329,14,0],[332,13,332,14,0],[333,17,333,53,0],[336,44,336,48,0],[336,49,336,61,0],[337,38,337,39,0],[337,40,337,50,0],[337,51,337,52,0],[340,13,340,14,0],[341,17,341,29,0],[342,13,342,14,0],[345,13,345,14,0],[346,17,346,53,0],[350,13,350,14,0],[351,17,351,53,0],[355,13,355,14,0],[356,17,356,53,0],[360,13,360,14,0],[361,17,361,53,0],[365,13,365,14,0],[366,17,366,53,0],[370,13,370,14,0],[371,17,371,53,0],[46,83,46,126,0],[65,92,65,100,0],[100,76,100,88,0],[276,39,276,40,0],[276,40,276,79,0],[276,80,276,141,0],[276,141,276,142,0],[284,61,284,106,0],[289,53,289,62,0],[100,113,100,135,0],[376,9,376,10,0],[378,13,378,20,0],[378,38,378,77,0],[378,22,378,34,0],[379,13,379,14,0],[380,17,380,37,0],[383,17,383,18,0],[384,21,384,49,0],[385,17,385,18,0],[386,17,386,55,0],[387,17,387,18,0],[388,21,388,87,0],[389,21,389,28,0],[389,50,389,69,0],[389,30,389,46,0],[390,25,390,52,0],[389,47,389,49,0],[391,17,391,18,0],[393,17,393,35,0],[394,21,394,30,0],[396,17,396,24,0],[396,39,396,44,0],[396,26,396,35,0],[397,17,397,18,0],[398,21,398,115,0],[399,21,399,48,0],[400,21,400,22,0],[401,25,401,93,0],[402,25,402,57,0],[402,58,402,76,0],[403,21,403,22,0],[404,17,404,18,0],[396,36,396,38,0],[405,13,405,14,0],[378,35,378,37,0],[409,9,409,10,0]]);
+    </script>
+  </body>
+</html>

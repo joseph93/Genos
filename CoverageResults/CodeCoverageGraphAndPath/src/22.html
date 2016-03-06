@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\common\editor\testfiltersettings.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+using System.Linq;
+
+namespace UnityTest
+{
+    public class TestFilterSettings
+    {
+        public bool ShowSucceeded;
+        public bool ShowFailed;
+        public bool ShowIgnored;
+        public bool ShowNotRun;
+        
+        public string FilterByName;
+        public int FilterByCategory;
+        
+        private GUIContent _succeededBtn;
+        private GUIContent _failedBtn;
+        private GUIContent _ignoredBtn;
+        private GUIContent _notRunBtn;
+        
+        public string[] AvailableCategories;
+        
+        private readonly string _prefsKey;
+        
+        public TestFilterSettings(string prefsKey)
+        {
+            _prefsKey = prefsKey;
+            Load();
+            UpdateCounters(Enumerable.Empty&lt;ITestResult&gt;());
+        }
+            
+        public void Load()
+        {
+            ShowSucceeded = EditorPrefs.GetBool(_prefsKey + &quot;.ShowSucceeded&quot;, true);
+            ShowFailed = EditorPrefs.GetBool(_prefsKey + &quot;.ShowFailed&quot;, true);
+            ShowIgnored = EditorPrefs.GetBool(_prefsKey + &quot;.ShowIgnored&quot;, true);
+            ShowNotRun = EditorPrefs.GetBool(_prefsKey + &quot;.ShowNotRun&quot;, true);
+            FilterByName = EditorPrefs.GetString(_prefsKey + &quot;.FilterByName&quot;, string.Empty);
+            FilterByCategory = EditorPrefs.GetInt(_prefsKey + &quot;.FilterByCategory&quot;, 0);
+        }
+        
+        public void Save()
+        {
+            EditorPrefs.SetBool(_prefsKey + &quot;.ShowSucceeded&quot;, ShowSucceeded);
+            EditorPrefs.SetBool(_prefsKey + &quot;.ShowFailed&quot;, ShowFailed);
+            EditorPrefs.SetBool(_prefsKey + &quot;.ShowIgnored&quot;, ShowIgnored);
+            EditorPrefs.SetBool(_prefsKey + &quot;.ShowNotRun&quot;, ShowNotRun);
+            EditorPrefs.SetString(_prefsKey + &quot;.FilterByName&quot;, FilterByName);
+            EditorPrefs.SetInt(_prefsKey + &quot;.FilterByCategory&quot;, FilterByCategory);
+        }
+        
+        public void UpdateCounters(IEnumerable&lt;ITestResult&gt; results)
+        {
+            var summary = new ResultSummarizer(results);
+            
+            _succeededBtn = new GUIContent(summary.Passed.ToString(), Icons.SuccessImg, &quot;Show tests that succeeded&quot;);
+            _failedBtn = new GUIContent((summary.Errors + summary.Failures + summary.Inconclusive).ToString(), Icons.FailImg, &quot;Show tests that failed&quot;);
+            _ignoredBtn = new GUIContent((summary.Ignored + summary.NotRunnable).ToString(), Icons.IgnoreImg, &quot;Show tests that are ignored&quot;);
+            _notRunBtn = new GUIContent((summary.TestsNotRun - summary.Ignored - summary.NotRunnable).ToString(), Icons.UnknownImg, &quot;Show tests that didn&#39;t run&quot;);
+        }
+        
+        public string[] GetSelectedCategories()
+        {
+            if(AvailableCategories == null) return new string[0];
+            
+            return AvailableCategories.Where ((c, i) =&gt; (FilterByCategory &amp; (1 &lt;&lt; i)) != 0).ToArray();
+        }
+        
+        public void OnGUI()
+        {
+            EditorGUI.BeginChangeCheck();
+            
+            FilterByName = GUILayout.TextField(FilterByName, &quot;ToolbarSeachTextField&quot;, GUILayout.MinWidth(100), GUILayout.MaxWidth(250), GUILayout.ExpandWidth(true));
+            if(GUILayout.Button (GUIContent.none, string.IsNullOrEmpty(FilterByName) ? &quot;ToolbarSeachCancelButtonEmpty&quot; : &quot;ToolbarSeachCancelButton&quot;))
+                FilterByName = string.Empty;
+            
+            if (AvailableCategories != null &amp;&amp; AvailableCategories.Length &gt; 0)
+                FilterByCategory = EditorGUILayout.MaskField(FilterByCategory, AvailableCategories, EditorStyles.toolbarDropDown, GUILayout.MaxWidth(90));
+            
+            ShowSucceeded = GUILayout.Toggle(ShowSucceeded, _succeededBtn, EditorStyles.toolbarButton);
+            ShowFailed = GUILayout.Toggle(ShowFailed, _failedBtn, EditorStyles.toolbarButton);
+            ShowIgnored = GUILayout.Toggle(ShowIgnored, _ignoredBtn, EditorStyles.toolbarButton);
+            ShowNotRun = GUILayout.Toggle(ShowNotRun, _notRunBtn, EditorStyles.toolbarButton);
+            
+            if(EditorGUI.EndChangeCheck()) Save ();
+        }
+        
+        public RenderingOptions BuildRenderingOptions()
+        {
+            var options = new RenderingOptions();
+            options.showSucceeded = ShowSucceeded;
+            options.showFailed = ShowFailed;
+            options.showIgnored = ShowIgnored;
+            options.showNotRunned = ShowNotRun;
+            options.nameFilter = FilterByName;
+            options.categories = GetSelectedCategories();
+            return options;
+        }
+    }
+    
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[28,9,28,51,0],[29,9,29,10,0],[30,13,30,34,0],[31,13,31,20,0],[32,13,32,61,0],[33,9,33,10,0],[36,9,36,10,0],[37,13,37,85,0],[38,13,38,79,0],[39,13,39,81,0],[40,13,40,79,0],[41,13,41,93,0],[42,13,42,87,0],[43,9,43,10,0],[46,9,46,10,0],[47,13,47,78,0],[48,13,48,72,0],[49,13,49,74,0],[50,13,50,72,0],[51,13,51,78,0],[52,13,52,83,0],[53,9,53,10,0],[56,9,56,10,0],[57,13,57,57,0],[59,13,59,118,0],[60,13,60,153,0],[61,13,61,142,0],[62,13,62,163,0],[63,9,63,10,0],[66,9,66,10,0],[67,13,67,44,0],[67,45,67,66,0],[69,13,69,57,0],[69,91,69,103,0],[70,9,70,10,0],[73,9,73,10,0],[74,13,74,42,0],[76,13,76,166,0],[77,13,77,150,0],[78,17,78,45,0],[80,13,80,79,0],[81,17,81,155,0],[83,13,83,104,0],[84,13,84,95,0],[85,13,85,98,0],[86,13,86,95,0],[88,13,88,43,0],[88,44,88,52,0],[89,9,89,10,0],[92,9,92,10,0],[93,13,93,50,0],[94,13,94,51,0],[95,13,95,45,0],[96,13,96,47,0],[97,13,97,48,0],[98,13,98,47,0],[99,13,99,58,0],[100,13,100,28,0],[101,9,101,10,0],[69,57,69,91,0]]);
+    </script>
+  </body>
+</html>

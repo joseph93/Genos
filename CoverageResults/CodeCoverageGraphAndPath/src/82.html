@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testingassets\calltesting.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class CallTesting : MonoBehaviour
+    {
+        public enum Functions
+        {
+            CallAfterSeconds,
+            CallAfterFrames,
+            Start,
+            Update,
+            FixedUpdate,
+            LateUpdate,
+            OnDestroy,
+            OnEnable,
+            OnDisable,
+            OnControllerColliderHit,
+            OnParticleCollision,
+            OnJointBreak,
+            OnBecameInvisible,
+            OnBecameVisible,
+            OnTriggerEnter,
+            OnTriggerExit,
+            OnTriggerStay,
+            OnCollisionEnter,
+            OnCollisionExit,
+            OnCollisionStay,
+            OnTriggerEnter2D,
+            OnTriggerExit2D,
+            OnTriggerStay2D,
+            OnCollisionEnter2D,
+            OnCollisionExit2D,
+            OnCollisionStay2D,
+        }
+
+        public enum Method
+        {
+            Pass,
+            Fail
+        }
+
+        public int afterFrames = 0;
+        public float afterSeconds = 0.0f;
+        public Functions callOnMethod = Functions.Start;
+
+        public Method methodToCall;
+        private int m_StartFrame;
+        private float m_StartTime;
+
+        private void TryToCallTesting(Functions invokingMethod)
+        {
+            if (invokingMethod == callOnMethod)
+            {
+                if (methodToCall == Method.Pass)
+                    IntegrationTest.Pass(gameObject);
+                else
+                    IntegrationTest.Fail(gameObject);
+
+                afterFrames = 0;
+                afterSeconds = 0.0f;
+                m_StartTime = float.PositiveInfinity;
+                m_StartFrame = int.MinValue;
+            }
+        }
+
+        public void Start()
+        {
+            m_StartTime = Time.time;
+            m_StartFrame = afterFrames;
+            TryToCallTesting(Functions.Start);
+        }
+
+        public void Update()
+        {
+            TryToCallTesting(Functions.Update);
+            CallAfterSeconds();
+            CallAfterFrames();
+        }
+
+        private void CallAfterFrames()
+        {
+            if (afterFrames &gt; 0 &amp;&amp; (m_StartFrame + afterFrames) &lt;= Time.frameCount)
+                TryToCallTesting(Functions.CallAfterFrames);
+        }
+
+        private void CallAfterSeconds()
+        {
+            if ((m_StartTime + afterSeconds) &lt;= Time.time)
+                TryToCallTesting(Functions.CallAfterSeconds);
+        }
+
+        public void OnDisable()
+        {
+            TryToCallTesting(Functions.OnDisable);
+        }
+
+        public void OnEnable()
+        {
+            TryToCallTesting(Functions.OnEnable);
+        }
+
+        public void OnDestroy()
+        {
+            TryToCallTesting(Functions.OnDestroy);
+        }
+
+        public void FixedUpdate()
+        {
+            TryToCallTesting(Functions.FixedUpdate);
+        }
+
+        public void LateUpdate()
+        {
+            TryToCallTesting(Functions.LateUpdate);
+        }
+
+        public void OnControllerColliderHit()
+        {
+            TryToCallTesting(Functions.OnControllerColliderHit);
+        }
+
+        public void OnParticleCollision()
+        {
+            TryToCallTesting(Functions.OnParticleCollision);
+        }
+
+        public void OnJointBreak()
+        {
+            TryToCallTesting(Functions.OnJointBreak);
+        }
+
+        public void OnBecameInvisible()
+        {
+            TryToCallTesting(Functions.OnBecameInvisible);
+        }
+
+        public void OnBecameVisible()
+        {
+            TryToCallTesting(Functions.OnBecameVisible);
+        }
+
+        public void OnTriggerEnter()
+        {
+            TryToCallTesting(Functions.OnTriggerEnter);
+        }
+
+        public void OnTriggerExit()
+        {
+            TryToCallTesting(Functions.OnTriggerExit);
+        }
+
+        public void OnTriggerStay()
+        {
+            TryToCallTesting(Functions.OnTriggerStay);
+        }
+        public void OnCollisionEnter()
+        {
+            TryToCallTesting(Functions.OnCollisionEnter);
+        }
+
+        public void OnCollisionExit()
+        {
+            TryToCallTesting(Functions.OnCollisionExit);
+        }
+
+        public void OnCollisionStay()
+        {
+            TryToCallTesting(Functions.OnCollisionStay);
+        }
+
+        public void OnTriggerEnter2D()
+        {
+            TryToCallTesting(Functions.OnTriggerEnter2D);
+        }
+
+        public void OnTriggerExit2D()
+        {
+            TryToCallTesting(Functions.OnTriggerExit2D);
+        }
+
+        public void OnTriggerStay2D()
+        {
+            TryToCallTesting(Functions.OnTriggerStay2D);
+        }
+
+        public void OnCollisionEnter2D()
+        {
+            TryToCallTesting(Functions.OnCollisionEnter2D);
+        }
+
+        public void OnCollisionExit2D()
+        {
+            TryToCallTesting(Functions.OnCollisionExit2D);
+        }
+
+        public void OnCollisionStay2D()
+        {
+            TryToCallTesting(Functions.OnCollisionStay2D);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[54,9,54,10,0],[55,13,55,48,0],[56,13,56,14,0],[57,17,57,49,0],[58,21,58,54,0],[60,21,60,54,0],[62,17,62,33,0],[63,17,63,37,0],[64,17,64,54,0],[65,17,65,45,0],[66,13,66,14,0],[67,9,67,10,0],[70,9,70,10,0],[71,13,71,37,0],[72,13,72,40,0],[73,13,73,47,0],[74,9,74,10,0],[77,9,77,10,0],[78,13,78,48,0],[79,13,79,32,0],[80,13,80,31,0],[81,9,81,10,0],[84,9,84,10,0],[85,13,85,84,0],[86,17,86,61,0],[87,9,87,10,0],[90,9,90,10,0],[91,13,91,59,0],[92,17,92,62,0],[93,9,93,10,0],[96,9,96,10,0],[97,13,97,51,0],[98,9,98,10,0],[101,9,101,10,0],[102,13,102,50,0],[103,9,103,10,0],[106,9,106,10,0],[107,13,107,51,0],[108,9,108,10,0],[111,9,111,10,0],[112,13,112,53,0],[113,9,113,10,0],[116,9,116,10,0],[117,13,117,52,0],[118,9,118,10,0],[121,9,121,10,0],[122,13,122,65,0],[123,9,123,10,0],[126,9,126,10,0],[127,13,127,61,0],[128,9,128,10,0],[131,9,131,10,0],[132,13,132,54,0],[133,9,133,10,0],[136,9,136,10,0],[137,13,137,59,0],[138,9,138,10,0],[141,9,141,10,0],[142,13,142,57,0],[143,9,143,10,0],[146,9,146,10,0],[147,13,147,56,0],[148,9,148,10,0],[151,9,151,10,0],[152,13,152,55,0],[153,9,153,10,0],[156,9,156,10,0],[157,13,157,55,0],[158,9,158,10,0],[160,9,160,10,0],[161,13,161,58,0],[162,9,162,10,0],[165,9,165,10,0],[166,13,166,57,0],[167,9,167,10,0],[170,9,170,10,0],[171,13,171,57,0],[172,9,172,10,0],[175,9,175,10,0],[176,13,176,58,0],[177,9,177,10,0],[180,9,180,10,0],[181,13,181,57,0],[182,9,182,10,0],[185,9,185,10,0],[186,13,186,57,0],[187,9,187,10,0],[190,9,190,10,0],[191,13,191,60,0],[192,9,192,10,0],[195,9,195,10,0],[196,13,196,59,0],[197,9,197,10,0],[200,9,200,10,0],[201,13,201,59,0],[202,9,202,10,0],[45,9,45,36,0],[46,9,46,42,0],[47,9,47,57,0]]);
+    </script>
+  </body>
+</html>

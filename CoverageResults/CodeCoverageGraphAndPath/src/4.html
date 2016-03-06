@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\editor\platformrunner\platformrunnerconfiguration.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using UnityEditor;
+using UnityEngine;
+
+[Serializable]
+public class PlatformRunnerConfiguration
+{
+    public List&lt;string&gt; buildScenes;
+    public List&lt;string&gt; testScenes;
+    public BuildTarget buildTarget;
+    public bool runInEditor;
+    public string projectName = EditorApplication.currentScene;
+
+    public string resultsDir = null;
+    public bool sendResultsOverNetwork;
+    public List&lt;string&gt; ipList;
+    public int port;
+
+    public PlatformRunnerConfiguration(BuildTarget buildTarget)
+    {
+        this.buildTarget = buildTarget;
+        projectName = EditorApplication.currentScene;
+    }
+
+    public PlatformRunnerConfiguration()
+        : this(BuildTarget.StandaloneWindows)
+    {
+    }
+
+    public string GetTempPath()
+    {
+        if (string.IsNullOrEmpty(projectName))
+            projectName = Path.GetTempFileName();
+
+        var path = Path.Combine(&quot;Temp&quot;, projectName);
+        switch (buildTarget)
+        {
+            case BuildTarget.StandaloneWindows:
+            case BuildTarget.StandaloneWindows64:
+                return path + &quot;.exe&quot;;
+            case BuildTarget.StandaloneOSXIntel:
+                return path + &quot;.app&quot;;
+            case BuildTarget.Android:
+                return path + &quot;.apk&quot;;
+            default:
+                if (buildTarget.ToString() == &quot;BlackBerry&quot; || buildTarget.ToString() == &quot;BB10&quot;)
+                    return path + &quot;.bar&quot;;
+                return path;
+        }
+    }
+
+    public string[] GetConnectionIPs()
+    {
+        return ipList.Select(ip =&gt; ip + &quot;:&quot; + port).ToArray();
+    }
+
+    public static int TryToGetFreePort()
+    {
+        var port = -1;
+        try
+        {
+            var l = new TcpListener(IPAddress.Any, 0);
+            l.Start();
+            port = ((IPEndPoint)l.Server.LocalEndPoint).Port;
+            l.Stop();
+        }
+        catch (SocketException e)
+        {
+            Debug.LogException(e);
+        }
+        return port;
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,5,17,64,0],[19,5,19,37,0],[24,5,24,64,0],[25,5,25,6,0],[26,9,26,40,0],[27,9,27,54,0],[28,5,28,6,0],[31,11,31,46,0],[32,5,32,6,0],[33,5,33,6,0],[36,5,36,6,0],[37,9,37,47,0],[38,13,38,50,0],[40,9,40,54,0],[41,9,41,29,0],[45,17,45,38,0],[47,17,47,38,0],[49,17,49,38,0],[51,17,51,96,0],[52,21,52,42,0],[53,17,53,29,0],[55,5,55,6,0],[58,5,58,6,0],[59,9,59,36,0],[59,51,59,63,0],[60,5,60,6,0],[63,5,63,6,0],[64,9,64,23,0],[66,9,66,10,0],[67,13,67,55,0],[68,13,68,23,0],[69,13,69,62,0],[70,13,70,22,0],[71,9,71,10,0],[72,9,72,34,0],[73,9,73,10,0],[74,13,74,35,0],[75,9,75,10,0],[76,9,76,21,0],[77,5,77,6,0],[59,36,59,51,0]]);
+    </script>
+  </body>
+</html>

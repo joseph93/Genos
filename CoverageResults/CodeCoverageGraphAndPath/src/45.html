@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\path\pathfollower.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+
+public class PathFollower : MonoBehaviour {
+
+    public Transform[] path;
+    public float speed = 5.0f;
+    public float reachDist = 0.2f;
+    public int currentPoint;
+    public int sizeOfPath = Length;
+
+    public static int Length { get; private set; }
+
+    // Use this for initialization
+    void Start () {
+  
+    }
+
+	// Update is called once per frame
+	void Update () {
+
+	    if (currentPoint &lt; path.Length)
+	    {
+	        float dist = Vector3.Distance(path[currentPoint].position, transform.position);
+
+	        transform.position = Vector3.MoveTowards(transform.position, path[currentPoint].position, Time.deltaTime*speed);
+
+	        //Nipper goes to next point
+	        if (dist &lt;= reachDist)
+	            currentPoint++;
+	    } 
+    }
+
+    void OnDrawGizmos() {
+
+        //Draw gizmos lines
+        for (int i = 0; i &lt; path.Length; i++) {
+            Vector3 pos = path[i].position; //current point PointB
+            if (i &gt; 0) {
+                Vector3 prev = path[i - 1].position; //previous point PointA
+                Gizmos.DrawLine(prev, pos);
+            }
+        }
+
+        //Draw gizmos spheres
+        if (path.Length &gt; 0) { 
+            for(int i = 0; i &lt; path.Length; i++) {
+                if(path[i] != null) {
+                    float radius = 0.2f;
+                    Gizmos.DrawWireSphere(path[i].position, radius);
+                    //Gizmos.DrawSphere(path[i].position, reachDist);				
+                }
+            }
+        }
+
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,32,12,36,0],[12,37,12,49,0],[15,19,15,20,0],[17,5,17,6,0],[20,17,20,18,0],[22,6,22,37,0],[23,6,23,7,0],[24,10,24,89,0],[26,10,26,122,0],[29,10,29,32,0],[30,14,30,29,0],[31,6,31,7,0],[32,5,32,6,0],[34,25,34,26,0],[37,14,37,23,0],[37,47,37,48,0],[38,13,38,44,0],[39,13,39,23,0],[39,24,39,25,0],[40,17,40,53,0],[41,17,41,44,0],[42,13,42,14,0],[43,9,43,10,0],[37,42,37,45,0],[37,25,37,40,0],[46,9,46,29,0],[46,30,46,31,0],[47,17,47,26,0],[47,50,47,51,0],[48,17,48,36,0],[48,37,48,38,0],[49,21,49,41,0],[50,21,50,69,0],[52,17,52,18,0],[53,13,53,14,0],[47,45,47,48,0],[47,28,47,43,0],[54,9,54,10,0],[57,5,57,6,0],[7,5,7,31,0],[8,5,8,35,0],[10,5,10,36,0]]);
+    </script>
+  </body>
+</html>

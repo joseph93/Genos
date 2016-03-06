@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\comparers\intcomparer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class IntComparer : ComparerBaseGeneric&lt;int&gt;
+    {
+        public enum CompareType
+        {
+            Equal,
+            NotEqual,
+            Greater,
+            GreaterOrEqual,
+            Less,
+            LessOrEqual
+        };
+
+        public CompareType compareType;
+
+        protected override bool Compare(int a, int b)
+        {
+            switch (compareType)
+            {
+                case CompareType.Equal:
+                    return a == b;
+                case CompareType.NotEqual:
+                    return a != b;
+                case CompareType.Greater:
+                    return a &gt; b;
+                case CompareType.GreaterOrEqual:
+                    return a &gt;= b;
+                case CompareType.Less:
+                    return a &lt; b;
+                case CompareType.LessOrEqual:
+                    return a &lt;= b;
+            }
+            throw new Exception();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[22,9,22,10,0],[23,13,23,33,0],[26,21,26,35,0],[28,21,28,35,0],[30,21,30,34,0],[32,21,32,35,0],[34,21,34,34,0],[36,21,36,35,0],[38,13,38,35,0],[39,9,39,10,0]]);
+    </script>
+  </body>
+</html>

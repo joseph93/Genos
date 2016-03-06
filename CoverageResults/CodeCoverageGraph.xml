@@ -1,0 +1,1506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root CoveredStatements="76" TotalStatements="6124" CoveragePercent="1" ReportType="Xml" DotCoverVersion="10.0.2">
+  <Project Name="GitHub.CSharp" CoveredStatements="0" TotalStatements="3135" CoveragePercent="0">
+    <Namespace Name="Assets.Scripts" CoveredStatements="0" TotalStatements="495" CoveragePercent="0">
+      <Type Name="Beacon" CoveredStatements="0" TotalStatements="59" CoveragePercent="0">
+        <Constructor Name="Beacon(string,int,int,int,int,double,int)" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        <Property Name="UUID:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Method Name="CompareTo(Beacon):int" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="CompareTo(object):int" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="Equals(Beacon,Beacon):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Equals(Beacon):bool" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="Equals(object):bool" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="GetHashCode(Beacon):int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetHashCode():int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="op_Equality(Beacon,Beacon):bool" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="op_Inequality(Beacon,Beacon):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="ToString():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="Edge" CoveredStatements="0" TotalStatements="19" CoveragePercent="0">
+        <Constructor Name="Edge(Node,Node,int,float)" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Property Name="edgeWeight:float" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Property Name="endNode:Node" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Property Name="floorNumber:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Property Name="startingNode:Node" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+      </Type>
+      <Type Name="FloorManager" CoveredStatements="0" TotalStatements="21" CoveragePercent="0">
+        <Method Name="changeToPreviousScene():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="getLastScene():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="loadFloor2():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="loadFloor3():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="setLastScene(string):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+      </Type>
+      <Type Name="iBeaconReceiver" CoveredStatements="0" TotalStatements="61" CoveragePercent="0">
+        <Type Name="BeaconRangeChanged" CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+        <Type Name="BluetoothStateChanged" CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+        <Constructor Name="iBeaconReceiver()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Event Name="BeaconRangeChangedEvent:BeaconRangeChanged" CoveredStatements="0" TotalStatements="0" CoveragePercent="0">
+          <EventAdder CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+          <EventRemover CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+        </Event>
+        <Event Name="BluetoothStateChangedEvent:BluetoothStateChanged" CoveredStatements="0" TotalStatements="0" CoveragePercent="0">
+          <EventAdder CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+          <EventRemover CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+        </Event>
+        <Method Name="Awake():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="CheckBluetoothLEStatus():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="EnableBluetooth():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="GetPlugin():AndroidJavaObject" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="Init():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="RangeBeacons(string):void" CoveredStatements="0" TotalStatements="26" CoveragePercent="0" />
+        <Method Name="ReportBluetoothStateChange(string):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="Scan():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="Stop():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+      </Type>
+      <Type Name="iBeaconRegion" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+        <Method Name="regionsToString(iBeaconRegion[]):string" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Method Name="ToString():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="iBeaconServer" CoveredStatements="0" TotalStatements="26" CoveragePercent="0">
+        <Method Name="Awake():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Equals(Beacon):bool" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="Init():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="StopTransmit():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="Transmit():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+      </Type>
+      <Type Name="iBeaconServerExample" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+      </Type>
+      <Type Name="LabeledNode" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+        <Constructor Name="LabeledNode(int,int,int,int,Label)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Property Name="label:Label" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+      </Type>
+      <Type Name="Map" CoveredStatements="0" TotalStatements="40" CoveragePercent="0">
+        <Constructor Name="Map()" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="addNode(Node):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="addStoryline(Storyline):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Awake():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="displayShortestPath():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="getGraph():Graph" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetStorylines():List&lt;Storyline&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="initializeGraph(int):void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+      </Type>
+      <Type Name="NipperTour" CoveredStatements="0" TotalStatements="160" CoveragePercent="0">
+        <Constructor Name="NipperTour()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Method Name="Awake():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="OnBeaconRangeChanged(List&lt;Beacon&gt;):void" CoveredStatements="0" TotalStatements="25" CoveragePercent="0" />
+        <Method Name="OnBluetoothStateChanged(BluetoothLowEnergyState):void" CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+        <Method Name="OnDestroy():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="returnPathWithTouch():List&lt;Node&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="searchForDistanceOfBeacon(float):IEnumerator" CoveredStatements="0" TotalStatements="47" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():bool" CoveredStatements="0" TotalStatements="47" CoveragePercent="0" />
+        </Method>
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="27" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="33" CoveragePercent="0" />
+      </Type>
+      <Type Name="PointOfInterest" CoveredStatements="0" TotalStatements="31" CoveragePercent="0">
+        <Constructor Name="PointOfInterest(int,int,int,int,string)" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Property Name="beacon:iBeaconServer" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Method Name="Awake():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="getBeacon():iBeaconServer" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="isDetected():bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="makeIconBigger():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="playBeforeSound():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="popUpSound():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="Storyline" CoveredStatements="0" TotalStatements="25" CoveragePercent="0">
+        <Constructor Name="Storyline(string,int)" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Property Name="description:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Property Name="floorsCovered:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Property Name="nodes:List&lt;Node&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Property Name="storyName:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Property Name="walkingTimeInMinutes:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Method Name="addNode(Node):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetNodes():List&lt;Node&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="removeNode(Node):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="StoryPoint" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+        <Constructor Name="StoryPoint(int,int,int,int,string)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="TourButton" CoveredStatements="0" TotalStatements="23" CoveragePercent="0">
+        <Method Name="backToOverview():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="changeSceneToFloor():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="changeSceneToQuit():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="changeSceneToTour():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="loadFloor2Next():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+      </Type>
+    </Namespace>
+    <Namespace Name="Assets.Scripts.Path" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+      <Type Name="ShortestPathCreator" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+        <Constructor Name="ShortestPathCreator()" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+      </Type>
+    </Namespace>
+    <Namespace Name="UnityTest" CoveredStatements="0" TotalStatements="1721" CoveragePercent="0">
+      <Type Name="ActionBase" CoveredStatements="0" TotalStatements="67" CoveragePercent="0">
+        <Constructor Name="ActionBase()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Property Name="UseCache:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Method Name="Compare():bool" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="CreateCopy(GameObject,GameObject):ActionBase" CoveredStatements="0" TotalStatements="18" CoveragePercent="0" />
+        <Method Name="Fail(AssertionComponent):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetAccepatbleTypesForA():Type[]" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetConfigurationDescription():string" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="16" CoveragePercent="0" />
+          <AnonymousMethod Name="(FieldInfo):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetDepthOfSearch():int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetExcludedFieldNames():string[]" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetFailureMessage():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetFields(Type):IEnumerable&lt;FieldInfo&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetParameterType():Type" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="ActionBaseGeneric&lt;T&gt;" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+        <Property Name="UseCache:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Method Name="Compare(object):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetAccepatbleTypesForA():Type[]" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetParameterType():Type" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="AssertionComponent" CoveredStatements="0" TotalStatements="235" CoveragePercent="0">
+        <Constructor Name="AssertionComponent()" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Property Name="Action:ActionBase" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        </Property>
+        <Property Name="Component:AssertionComponent" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="TimeCheckRepeat:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertySetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="TimeCheckRepeatFrequency:float" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertySetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="TimeCheckStartAfter:float" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertySetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="UpdateCheckRepeat:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertySetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="UpdateCheckRepeatFrequency:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertySetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="UpdateCheckStartOnFrame:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertySetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Method Name="Awake():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="CheckAssertionFor(CheckMethod):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="CheckPeriodically():IEnumerator" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():bool" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        </Method>
+        <Method Name="Create&lt;T&gt;(CheckMethod,GameObject,string):T" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Create&lt;T&gt;(out IAssertionComponentConfigurator,CheckMethod,GameObject,string):T" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Create&lt;T&gt;(CheckMethod,GameObject,string,GameObject,string):T" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Create&lt;T&gt;(out IAssertionComponentConfigurator,CheckMethod,GameObject,string,GameObject,string):T" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="Create&lt;T&gt;(CheckMethod,GameObject,string,object):T" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Create&lt;T&gt;(out IAssertionComponentConfigurator,CheckMethod,GameObject,string,object):T" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="CreateAssertionComponent&lt;T&gt;(out IAssertionComponentConfigurator,CheckMethod,GameObject,string):T" CoveredStatements="0" TotalStatements="24" CoveragePercent="0" />
+        <Method Name="FixedUpdate():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetCreationLocation():string" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="GetFailureReferenceObject():Object" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="IsCheckMethodSelected(CheckMethod):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="LateUpdate():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnBecameInvisible():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnBecameVisible():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionEnter():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionEnter2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionExit():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionExit2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionStay():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionStay2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnComponentCopy():void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+          <AnonymousMethod Name="(Object):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="OnControllerColliderHit():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnDestroy():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnDisable():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnEnable():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnJointBreak():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnParticleCollision():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerEnter():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerEnter2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerExit():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerExit2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerStay():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerStay2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnValidate():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="ShouldCheckOnFrame():bool" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      </Type>
+      <Type Name="AssertionException" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+        <Constructor Name="AssertionException(AssertionComponent)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Property Name="StackTrace:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+      </Type>
+      <Type Name="Assertions" CoveredStatements="0" TotalStatements="27" CoveragePercent="0">
+        <Method Name="CheckAssertions():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="CheckAssertions(AssertionComponent):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="CheckAssertions(GameObject):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="CheckAssertions(AssertionComponent[]):void" CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+      </Type>
+      <Type Name="BoolComparer" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+        <Method Name="Compare(bool,bool):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="CallTesting" CoveredStatements="0" TotalStatements="99" CoveragePercent="0">
+        <Constructor Name="CallTesting()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="CallAfterFrames():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="CallAfterSeconds():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="FixedUpdate():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="LateUpdate():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnBecameInvisible():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnBecameVisible():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionEnter():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionEnter2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionExit():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionExit2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionStay():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnCollisionStay2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnControllerColliderHit():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnDestroy():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnDisable():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnEnable():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnJointBreak():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnParticleCollision():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerEnter():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerEnter2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerExit():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerExit2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerStay():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnTriggerStay2D():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="TryToCallTesting(Functions):void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      </Type>
+      <Type Name="ColliderComparer" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+        <Method Name="Compare(Bounds,Bounds):bool" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      </Type>
+      <Type Name="ComparerBase" CoveredStatements="0" TotalStatements="41" CoveragePercent="0">
+        <Constructor Name="ComparerBase()" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Property Name="ConstValue:object" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Method Name="Compare(object):bool" CoveredStatements="0" TotalStatements="20" CoveragePercent="0" />
+        <Method Name="GetAccepatbleTypesForB():Type[]" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetDefaultConstValue():object" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="GetFailureMessage():string" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+      </Type>
+      <Type Name="ComparerBaseGeneric&lt;T&gt;" CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+      <Type Name="ComparerBaseGeneric&lt;T1,T2&gt;" CoveredStatements="0" TotalStatements="29" CoveragePercent="0">
+        <Constructor Name="ComparerBaseGeneric()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Property Name="ConstValue:object" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="UseCache:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Method Name="Compare(object,object):bool" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="GetAccepatbleTypesForA():Type[]" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetAccepatbleTypesForB():Type[]" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetDefaultConstValue():object" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="IsValueType(Type):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="CustomComponent" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+        <Constructor Name="CustomComponent()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Property Name="MyFloatProp:float" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+      </Type>
+      <Type Name="DTOFormatter" CoveredStatements="0" TotalStatements="114" CoveragePercent="0">
+        <Type Name="Reader" CoveredStatements="0" TotalStatements="46" CoveragePercent="0">
+          <Constructor Name="Reader(Stream)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+          <Method Name="ReadConvertedNumber(int):byte[]" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+          <Method Name="Transfer(ref ResultDTO.MessageType):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref TestResultState):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref byte):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref bool):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref int):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref float):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref double):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref string):void" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+        </Type>
+        <Type Name="Writer" CoveredStatements="0" TotalStatements="36" CoveragePercent="0">
+          <Constructor Name="Writer(Stream)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+          <Method Name="Transfer(ref ResultDTO.MessageType):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref TestResultState):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref byte):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref bool):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref int):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref float):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref double):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Transfer(ref string):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+          <Method Name="WriteConvertedNumber(byte[]):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        </Type>
+        <Method Name="Deserialize(Stream):object" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="Serialize(Stream,ResultDTO):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Transfer(ResultDTO,ITransferInterface):void" CoveredStatements="0" TotalStatements="24" CoveragePercent="0" />
+      </Type>
+      <Type Name="FloatComparer" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+        <Constructor Name="FloatComparer()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Method Name="Compare(float,float):bool" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="GetDepthOfSearch():int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="GeneralComparer" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+        <Method Name="Compare(object,object):bool" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+      </Type>
+      <Type Name="IntComparer" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+        <Method Name="Compare(int,int):bool" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+      </Type>
+      <Type Name="InvalidPathException" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+        <Constructor Name="InvalidPathException(string)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="IsRenderedByCamera" CoveredStatements="0" TotalStatements="8" CoveragePercent="0">
+        <Method Name="Compare(Renderer,Camera):bool" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+      </Type>
+      <Type Name="MemberResolver" CoveredStatements="0" TotalStatements="136" CoveragePercent="0">
+        <Constructor Name="MemberResolver(GameObject,string)" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="GetBaseObject():object" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="GetCallstack():MemberInfo[]" CoveredStatements="0" TotalStatements="27" CoveragePercent="0" />
+        <Method Name="GetField(Type,string):FieldInfo" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetGetMethod(PropertyInfo):MethodInfo" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetMemberType():Type" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        <Method Name="GetProperty(Type,string):PropertyInfo" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetValue(bool):object" CoveredStatements="0" TotalStatements="32" CoveragePercent="0" />
+        <Method Name="GetValueFromMember(object,MemberInfo):object" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="IsValueType(Type):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="TryGetMemberType(GameObject,string,out Type):bool" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="TryGetValue(GameObject,string,out object):bool" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="ValidatePath(string):void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+      </Type>
+      <Type Name="NetworkResultSender" CoveredStatements="0" TotalStatements="31" CoveragePercent="0">
+        <Constructor Name="NetworkResultSender(string,int)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="AllScenesFinished():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Ping():bool" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="RunFinished(List&lt;TestResult&gt;):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="RunStarted(string,List&lt;TestComponent&gt;):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="SendDTO(ResultDTO):bool" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="TestFinished(TestResult):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="TestRunInterrupted(List&lt;ITestComponent&gt;):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="TestStarted(TestResult):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="ResultDTO" CoveredStatements="0" TotalStatements="49" CoveragePercent="0">
+        <Constructor Name="ResultDTO(MessageType)" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="CreateAllScenesFinished():ResultDTO" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="CreatePing():ResultDTO" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="CreateRunFinished(List&lt;TestResult&gt;):ResultDTO" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="CreateRunStarted():ResultDTO" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="CreateTestFinished(TestResult):ResultDTO" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="CreateTestStarted(TestResult):ResultDTO" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="GetSerializableTestResult(TestResult):ITestResult" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+      </Type>
+      <Type Name="SerializableTestResult" CoveredStatements="0" TotalStatements="33" CoveragePercent="0">
+        <Property Name="Duration:double" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Executed:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="FullName:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Id:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="IsIgnored:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="IsSuccess:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Logs:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Message:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Name:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="ResultState:TestResultState" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="StackTrace:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+      </Type>
+      <Type Name="StringComparer" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+        <Constructor Name="StringComparer()" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="Compare(string,string):bool" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+      </Type>
+      <Type Name="TestComponent" CoveredStatements="0" TotalStatements="262" CoveragePercent="0">
+        <Type Name="NullTestComponentImpl" CoveredStatements="0" TotalStatements="29" CoveragePercent="0">
+          <Property Name="gameObject:GameObject" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </Property>
+          <Property Name="Name:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          </Property>
+          <Method Name="CompareTo(ITestComponent):int" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+          <Method Name="EnableTest(bool):void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+          <Method Name="GetTestGroup():ITestComponent" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="GetTimeout():double" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+          <Method Name="IsExceptionExpected(string):bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+          <Method Name="IsExludedOnThisPlatform():bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+          <Method Name="IsIgnored():bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+          <Method Name="IsTestGroup():bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+          <Method Name="ShouldSucceedOnAssertions():bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+          <Method Name="ShouldSucceedOnException():bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        </Type>
+        <Constructor Name="TestComponent()" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Constructor Name="TestComponent()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Property Name="Name:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Method Name="AnyDynamicTestForCurrentScene():bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="AnyTestsOnScene():bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="CompareTo(ITestComponent):int" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="CreateDynamicTest(Type):TestComponent" CoveredStatements="0" TotalStatements="31" CoveragePercent="0" />
+        <Method Name="CreateTest():GameObject" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="CreateTest(string):GameObject" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="DestroyAllDynamicTests():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="DisableAllTests():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="EnableTest(bool):void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Method Name="Equals(object):bool" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="FindAllDynamicTestsOnScene():List&lt;TestComponent&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="FindAllTestsOnScene():List&lt;TestComponent&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestComponent):bool" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        </Method>
+        <Method Name="FindAllTopTestsOnScene():List&lt;TestComponent&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetHashCode():int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetTestGroup():ITestComponent" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="GetTimeout():double" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetTypeByName(string):Type" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(Assembly):IEnumerable&lt;Type&gt;" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(Type):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetTypesWithHelpAttribute(string):IEnumerable&lt;Type&gt;" CoveredStatements="0" TotalStatements="36" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():bool" CoveredStatements="0" TotalStatements="36" CoveragePercent="0" />
+        </Method>
+        <Method Name="IsAssignableFrom(Type,Type):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="IsExceptionExpected(string):bool" CoveredStatements="0" TotalStatements="21" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="20" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="IsExludedOnThisPlatform():bool" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="IsIgnored():bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="IsTestGroup():bool" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        <Method Name="OnValidate():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="op_Equality(TestComponent,TestComponent):bool" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        <Method Name="op_Inequality(TestComponent,TestComponent):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="ShouldSucceedOnAssertions():bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="ShouldSucceedOnException():bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="TestResult" CoveredStatements="0" TotalStatements="99" CoveragePercent="0">
+        <Constructor Name="TestResult(TestComponent)" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Property Name="Duration:double" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Executed:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="FullName:string" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+        </Property>
+        <Property Name="GameObject:GameObject" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Id:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="IsFailure:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="IsIgnored:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="IsSuccess:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="IsTimeout:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Logs:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Message:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Name:string" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        </Property>
+        <Property Name="ResultState:TestResultState" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        </Property>
+        <Property Name="StackTrace:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Method Name="CompareTo(TestResult):int" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="Equals(object):bool" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="GetHashCode():int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Reset():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="Update(TestResult):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      </Type>
+      <Type Name="TestRunner" CoveredStatements="0" TotalStatements="309" CoveragePercent="0">
+        <Constructor Name="TestRunner()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Constructor Name="TestRunner()" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Property Name="isInitializedByRunner:bool" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        </Property>
+        <Method Name="Awake():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="Create():GameObject" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="FinishTest(TestResult.ResultType):void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="FinishTestRun():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="GetTestRunner():TestRunner" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+        <Method Name="InitRunner(List&lt;TestComponent&gt;,List&lt;string&gt;):void" CoveredStatements="0" TotalStatements="26" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="24" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestComponent):TestResult" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):ITestComponent" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="IsBatchMode():bool" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="LoadNextLevelOrQuit():void" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+        <Method Name="LogHandler(string,string,LogType):void" CoveredStatements="0" TotalStatements="40" CoveragePercent="0" />
+        <Method Name="LogMessage(string):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="OnDestroy():void" CoveredStatements="0" TotalStatements="16" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="OnGUI():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="ParseListForGroups(IEnumerable&lt;TestComponent&gt;):IEnumerable&lt;TestComponent&gt;" CoveredStatements="0" TotalStatements="24" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="23" CoveragePercent="0" />
+          <AnonymousMethod Name="(Component):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="PrintResultToLog():void" CoveredStatements="0" TotalStatements="24" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="Start():void" CoveredStatements="0" TotalStatements="20" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="19" CoveragePercent="0" />
+          <AnonymousMethod Name="(Type):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="StartNewTest():void" CoveredStatements="0" TotalStatements="18" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="StateMachine():IEnumerator" CoveredStatements="0" TotalStatements="51" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():bool" CoveredStatements="0" TotalStatements="51" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="49" CoveragePercent="0" />
+            <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+      </Type>
+      <Type Name="TestRunnerConfigurator" CoveredStatements="0" TotalStatements="55" CoveragePercent="0">
+        <Constructor Name="TestRunnerConfigurator()" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Constructor Name="TestRunnerConfigurator()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Property Name="isBatchRun:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Property Name="sendResultsOverNetwork:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Method Name="CheckForBatchMode():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="CheckForSendingResultsOverNetwork():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+        <Method Name="GetAvailableNetworkIPs():List&lt;string&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetIntegrationTestScenes(int):string" CoveredStatements="0" TotalStatements="16" CoveragePercent="0" />
+        <Method Name="GetTextFromTempFile(string):string" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="GetTextFromTextAsset(string):string" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="ResolveNetworkConnection():ITestRunnerCallback" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="TransformComparer" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+        <Method Name="Compare(Transform,Transform):bool" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+      </Type>
+      <Type Name="ValueDoesNotChange" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+        <Method Name="Compare(object):bool" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+      </Type>
+      <Type Name="Vector2Comparer" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+        <Constructor Name="Vector2Comparer()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Method Name="Compare(Vector2,Vector2):bool" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="GetDepthOfSearch():int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="Vector3Comparer" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+        <Constructor Name="Vector3Comparer()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Method Name="Compare(Vector3,Vector3):bool" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      </Type>
+      <Type Name="Vector4Comparer" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+        <Method Name="Compare(Vector4,Vector4):bool" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="GetDepthOfSearch():int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="VectorComparerBase&lt;T&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+        <Method Name="AreVectorMagnitudeEqual(float,float,double):bool" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+      </Type>
+    </Namespace>
+    <Namespace Name="UnityTest.IntegrationTestRunner" CoveredStatements="0" TotalStatements="148" CoveragePercent="0">
+      <Type Name="IntegrationTestsProvider" CoveredStatements="0" TotalStatements="87" CoveragePercent="0">
+        <Constructor Name="IntegrationTestsProvider(IEnumerable&lt;ITestComponent&gt;)" CoveredStatements="0" TotalStatements="20" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="19" CoveragePercent="0" />
+          <AnonymousMethod Name="(ITestComponent):ITestComponent" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Constructor>
+        <Method Name="AddTestToList(ITestComponent):void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="AnyTestsLeft():bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="FindInnerTestGroup(ITestComponent):ITestComponent" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+        <Method Name="FindNextTestGroup(ITestComponent):ITestComponent" CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+        <Method Name="FinishTest(ITestComponent):void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="GetNextTest():ITestComponent" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="GetRemainingTests():List&lt;ITestComponent&gt;" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+      </Type>
+      <Type Name="TestRunnerCallbackList" CoveredStatements="0" TotalStatements="61" CoveragePercent="0">
+        <Constructor Name="TestRunnerCallbackList()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Method Name="Add(ITestRunnerCallback):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="AllScenesFinished():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="Remove(ITestRunnerCallback):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="RunFinished(List&lt;TestResult&gt;):void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="RunStarted(string,List&lt;TestComponent&gt;):void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="TestFinished(TestResult):void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="TestRunInterrupted(List&lt;ITestComponent&gt;):void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="TestStarted(TestResult):void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+      </Type>
+    </Namespace>
+    <Type Name="BringToFront" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+      <Method Name="onEnable():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+    </Type>
+    <Type Name="CodeBasedAssertionExample" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+      <Constructor Name="CodeBasedAssertionExample()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+      <Method Name="Awake():void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+    </Type>
+    <Type Name="DisplayManager" CoveredStatements="0" TotalStatements="35" CoveragePercent="0">
+      <Method Name="DisplayMessage(string):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      <Method Name="FadeAlpha():IEnumerator" CoveredStatements="0" TotalStatements="14" CoveragePercent="0">
+        <InternalCompiledMethod Name="MoveNext():bool" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+      </Method>
+      <Method Name="Instance():DisplayManager" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+      <Method Name="SetAlpha():void" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+    </Type>
+    <Type Name="DrawLine" CoveredStatements="0" TotalStatements="31" CoveragePercent="0">
+      <Constructor Name="DrawLine()" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+      <Method Name="Start():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+      <Method Name="Update():void" CoveredStatements="0" TotalStatements="18" CoveragePercent="0" />
+    </Type>
+    <Type Name="DynamicIntegrationTest" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+      <Method Name="Start():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+    </Type>
+    <Type Name="GameScore" CoveredStatements="0" TotalStatements="59" CoveragePercent="0">
+      <Constructor Name="GameScore()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Property Name="Deaths:int" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+        <PropertyGetter CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      </Property>
+      <Property Name="GameTime:float" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+        <PropertyGetter CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      </Property>
+      <Property Name="Instance:GameScore" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+        <PropertyGetter CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+      </Property>
+      <Property Name="KillTypes:ICollection&lt;string&gt;" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+        <PropertyGetter CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      </Property>
+      <Method Name="GetKills(string):int" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      <Method Name="OnApplicationQuit():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="OnLevelWasLoaded(int):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      <Method Name="RegisterDeath(GameObject):void" CoveredStatements="0" TotalStatements="16" CoveragePercent="0" />
+    </Type>
+    <Type Name="Graph" CoveredStatements="0" TotalStatements="155" CoveragePercent="0">
+      <Constructor Name="Graph()" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      <Property Name="Vertices:Dictionary&lt;int,Node&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+        <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+      </Property>
+      <Method Name="BFS(Node):void" CoveredStatements="0" TotalStatements="24" CoveragePercent="0" />
+      <Method Name="BFS(Node,Node):Node" CoveredStatements="0" TotalStatements="27" CoveragePercent="0" />
+      <Method Name="Contains(int):bool" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      <Method Name="ExistKey(int):bool" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      <Method Name="FindByKey(int):Node" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+      <Method Name="GetFirstElementOfTheList(int):Node" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+        <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <AnonymousMethod Name="(KeyValuePair&lt;int,Node&gt;):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <AnonymousMethod Name="(KeyValuePair&lt;int,Node&gt;):Node" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+      </Method>
+      <Method Name="InitializeBFS(Node):Node" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      <Method Name="InitializeVertices():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+      <Method Name="InsertNewVertex(Node):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      <Method Name="shortest_path(Node,Node):List&lt;Node&gt;" CoveredStatements="0" TotalStatements="53" CoveragePercent="0">
+        <OwnCoverage CoveredStatements="0" TotalStatements="52" CoveragePercent="0" />
+        <AnonymousMethod Name="(Node,Node):int" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+      </Method>
+    </Type>
+    <Type Name="IntegrationTest" CoveredStatements="0" TotalStatements="92" CoveragePercent="0">
+      <Type Name="DynamicTestAttribute" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+        <Constructor Name="DynamicTestAttribute(string)" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="IncludeOnScene(string):bool" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      </Type>
+      <Type Name="ExcludePlatformAttribute" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+        <Constructor Name="ExcludePlatformAttribute(params RuntimePlatform[])" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+          <AnonymousMethod Name="(RuntimePlatform):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Constructor>
+      </Type>
+      <Type Name="ExpectExceptions" CoveredStatements="0" TotalStatements="21" CoveragePercent="0">
+        <Constructor Name="ExpectExceptions()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Constructor Name="ExpectExceptions(bool)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Constructor Name="ExpectExceptions(bool,params string[])" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Constructor Name="ExpectExceptions(bool,params Type[])" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(Type):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Constructor>
+        <Constructor Name="ExpectExceptions(params string[])" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Constructor Name="ExpectExceptions(params Type[])" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="IgnoreAttribute" CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+      <Type Name="SucceedWithAssertions" CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+      <Type Name="TimeoutAttribute" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+        <Constructor Name="TimeoutAttribute(float)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      </Type>
+      <Method Name="Assert(bool):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Assert(GameObject,bool):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Assert(bool,string):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      <Method Name="Assert(GameObject,bool,string):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      <Method Name="Fail(string):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      <Method Name="Fail(GameObject,string):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      <Method Name="Fail():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Fail(GameObject):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="FindTestObject(GameObject):GameObject" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+      <Method Name="LogResult(string):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="LogResult(GameObject,string):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Pass():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Pass(GameObject):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+    </Type>
+    <Type Name="IntegrationTestAttribute" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+      <Constructor Name="IntegrationTestAttribute(string)" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      <Method Name="IncludeOnScene(string):bool" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+    </Type>
+    <Type Name="LoadingScene" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+      <Method Name="loadingScreen():IEnumerator" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+        <InternalCompiledMethod Name="MoveNext():bool" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      </Method>
+      <Method Name="Start():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Update():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+    </Type>
+    <Type Name="ModalWindow" CoveredStatements="0" TotalStatements="25" CoveragePercent="0">
+      <Method Name="Choice(string,UnityAction,UnityAction):void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+      <Method Name="closePanel():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Instance():ModalWindow" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+    </Type>
+    <Type Name="Node" CoveredStatements="0" TotalStatements="52" CoveragePercent="0">
+      <Constructor Name="Node(int,int,int,int)" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+      <Constructor Name="Node(Node)" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+      <Method Name="addAdjacentNode(Dictionary&lt;Node,float&gt;):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="getAdjacentNodes():Dictionary&lt;Node,float&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="GetFloorNumber():int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="getID():int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="getPosition():Vector3" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="getState():State" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="hasAdjacentNode(Node):bool" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+        <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <AnonymousMethod Name="(Node):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+      </Method>
+      <Method Name="IsVisited():bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="setID(int):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="setState(State):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Update():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+    </Type>
+    <Type Name="PathFollower" CoveredStatements="0" TotalStatements="42" CoveragePercent="0">
+      <Constructor Name="PathFollower()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Property Name="Length:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+        <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+      </Property>
+      <Method Name="OnDrawGizmos():void" CoveredStatements="0" TotalStatements="26" CoveragePercent="0" />
+      <Method Name="Start():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+      <Method Name="Update():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+    </Type>
+    <Type Name="QuitSpash" CoveredStatements="0" TotalStatements="27" CoveragePercent="0">
+      <Method Name="closeQuitPanel():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Instance():QuitSpash" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+      <Method Name="quitChoice(string,UnityAction,UnityAction):void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+    </Type>
+    <Type Name="TestModalWindow" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+      <Method Name="Awake():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      <Method Name="TestCancelFunction():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="TestOC():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="TestOkFunction():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+    </Type>
+    <Type Name="TestResultRenderer" CoveredStatements="0" TotalStatements="55" CoveragePercent="0">
+      <Type Name="Styles" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+        <Constructor Name="Styles()" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+      </Type>
+      <Constructor Name="TestResultRenderer()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+      <Method Name="AddResults(string,ITestResult):void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+      <Method Name="Draw():void" CoveredStatements="0" TotalStatements="29" CoveragePercent="0">
+        <OwnCoverage CoveredStatements="0" TotalStatements="26" CoveragePercent="0" />
+        <AnonymousMethod Name="(KeyValuePair&lt;string,List&lt;ITestResult&gt;&gt;):int" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <AnonymousMethod Name="(ITestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <AnonymousMethod Name="(ITestResult):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+      </Method>
+      <Method Name="FailureCount():int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="ShowResults():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+    </Type>
+    <Type Name="ThrowCustomException" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+      <Type Name="CustomException" CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+      <Method Name="Start():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+    </Type>
+    <Type Name="TouchScreenCamera" CoveredStatements="0" TotalStatements="90" CoveragePercent="0">
+      <Constructor Name="TouchScreenCamera()" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+      <Method Name="CalculateLevelBounds():void" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+      <Method Name="LateUpdate():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      <Method Name="OnDrawGizmos():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Start():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+      <Method Name="Update():void" CoveredStatements="0" TotalStatements="51" CoveragePercent="0" />
+    </Type>
+    <Type Name="Vibration" CoveredStatements="0" TotalStatements="25" CoveragePercent="0">
+      <Method Name="Cancel():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      <Method Name="HasVibrator():bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="isAndroid():bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Vibrate():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      <Method Name="Vibrate(long):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      <Method Name="Vibrate(long[],int):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+    </Type>
+    <Type Name="XQuitButton" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+      <Method Name="ApplicationQuit():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="Awake():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      <Method Name="DisplayQuitPanel():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+    </Type>
+  </Project>
+  <Project Name="GitHub.CSharp.Editor" CoveredStatements="76" TotalStatements="2989" CoveragePercent="3">
+    <Namespace Name="Assets.Scripts" CoveredStatements="64" TotalStatements="145" CoveragePercent="44">
+      <Type Name="GraphTests" CoveredStatements="56" TotalStatements="129" CoveragePercent="43">
+        <Method Name="BFSTestOneNodeIsVisited():void" CoveredStatements="8" TotalStatements="27" CoveragePercent="30" />
+        <Method Name="BFSTestOneNodeNoPath():void" CoveredStatements="8" TotalStatements="13" CoveragePercent="62" />
+        <Method Name="BFSTestOneNodeVerticesIsNull():void" CoveredStatements="8" TotalStatements="12" CoveragePercent="67" />
+        <Method Name="BFSTestTwoNodes():void" CoveredStatements="8" TotalStatements="25" CoveragePercent="32" />
+        <Method Name="BFSTestTwoNodesNoPath():void" CoveredStatements="8" TotalStatements="14" CoveragePercent="57" />
+        <Method Name="BFSTestTwoNodesVerticesIsNull():void" CoveredStatements="8" TotalStatements="12" CoveragePercent="67" />
+        <Method Name="shortest_pathTest():void" CoveredStatements="8" TotalStatements="26" CoveragePercent="31" />
+      </Type>
+      <Type Name="NodeTests" CoveredStatements="8" TotalStatements="16" CoveragePercent="50">
+        <Method Name="hasAdjacentNodeTest():void" CoveredStatements="8" TotalStatements="16" CoveragePercent="50" />
+      </Type>
+    </Namespace>
+    <Namespace Name="UnityTest" CoveredStatements="0" TotalStatements="2486" CoveragePercent="0">
+      <Type Name="AssertionComponentEditor" CoveredStatements="0" TotalStatements="165" CoveragePercent="0">
+        <Constructor Name="AssertionComponentEditor()" CoveredStatements="0" TotalStatements="18" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+          <AnonymousMethod Name="(Type):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(Type):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(Type[]):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Constructor>
+        <Constructor Name="AssertionComponentEditor()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Method Name="DrawComparerSelection(AssertionComponent):bool" CoveredStatements="0" TotalStatements="28" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="20" CoveragePercent="0" />
+          <AnonymousMethod Name="(Type):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(Type):void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        </Method>
+        <Method Name="DrawCompareToType(ComparerBase):void" CoveredStatements="0" TotalStatements="18" CoveragePercent="0" />
+        <Method Name="DrawConstCompareField(ComparerBase):void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+        <Method Name="DrawCustomFields(AssertionComponent):void" CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+        <Method Name="DrawObjectCompareField(ComparerBase):void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(GameObject):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        </Method>
+        <Method Name="DrawOptionsForAfterPeriodOfTime(AssertionComponent):void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+        <Method Name="DrawOptionsForOnUpdate(AssertionComponent):void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+        <Method Name="OnInspectorGUI():void" CoveredStatements="0" TotalStatements="35" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="27" CoveragePercent="0" />
+          <AnonymousMethod Name="(GameObject):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="AssertionExplorerWindow" CoveredStatements="0" TotalStatements="95" CoveragePercent="0">
+        <Constructor Name="AssertionExplorerWindow()" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+        <Method Name="DrawMenuPanel():void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+        <Method Name="FilterResults(List&lt;AssertionComponent&gt;,string):IEnumerable&lt;AssertionComponent&gt;" CoveredStatements="0" TotalStatements="24" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="16" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetResultRendere():IListRenderer" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="OnDidOpenScene():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnFocus():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnGUI():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="OnHierarchyChange():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnInspectorUpdate():void" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="Reload():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="ReloadAssertionList():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="ShowWindow():AssertionExplorerWindow" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      </Type>
+      <Type Name="AssertionListRenderer&lt;T&gt;" CoveredStatements="0" TotalStatements="159" CoveragePercent="0">
+        <Type Name="Styles" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <Constructor Name="Styles()" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        </Type>
+        <Method Name="GetFoldoutDisplayName(T):string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetStringKey(T):string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="PrintAssertionLineDetails(AssertionComponent):void" CoveredStatements="0" TotalStatements="20" CoveragePercent="0" />
+        <Method Name="PrintFoldedAssertionLine(AssertionComponent):void" CoveredStatements="0" TotalStatements="44" CoveragePercent="0" />
+        <Method Name="PrintFoldout(bool,T):bool" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="PrintPath(GameObject,string):void" CoveredStatements="0" TotalStatements="18" CoveragePercent="0" />
+        <Method Name="Render(IEnumerable&lt;AssertionComponent&gt;,List&lt;string&gt;):void" CoveredStatements="0" TotalStatements="60" CoveragePercent="0" />
+      </Type>
+      <Type Name="Batch" CoveredStatements="0" TotalStatements="123" CoveragePercent="0">
+        <Constructor Name="Batch()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="BuildAndRun(BuildTarget,List&lt;string&gt;,List&lt;string&gt;):void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Method Name="CheckActiveBuildTarget():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="FindTestScenesInProject():List&lt;string&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="GetParameterArgument(string):string" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Method Name="GetSceneListFromParam(string):List&lt;string&gt;" CoveredStatements="0" TotalStatements="28" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="27" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetTargetPlatform():Nullable&lt;BuildTarget&gt;" CoveredStatements="0" TotalStatements="22" CoveragePercent="0" />
+        <Method Name="RunInEditor(List&lt;string&gt;,List&lt;string&gt;):void" CoveredStatements="0" TotalStatements="18" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):EditorBuildSettingsScene" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="RunIntegrationTests():void" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="RunIntegrationTests(Nullable&lt;BuildTarget&gt;):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="RunIntegrationTests(Nullable&lt;BuildTarget&gt;,List&lt;string&gt;,List&lt;string&gt;):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      </Type>
+      <Type Name="DropDownControl&lt;T&gt;" CoveredStatements="0" TotalStatements="55" CoveragePercent="0">
+        <Constructor Name="DropDownControl()" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+          <AnonymousMethod Name="(T):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(T):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(T[]):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Constructor>
+        <Method Name="Draw(T,T[],Action&lt;T&gt;):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="Draw(string,T,T[],Action&lt;T&gt;):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="():T[]" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="Draw(string,T,Func&lt;T[]&gt;,Action&lt;T&gt;):void" CoveredStatements="0" TotalStatements="24" CoveragePercent="0" />
+        <Method Name="PrintMenu(T[]):void" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+          <AnonymousMethod Name="():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="EditorReferencesUtil" CoveredStatements="0" TotalStatements="71" CoveragePercent="0">
+        <Property Name="AllScenes:List&lt;Object&gt;" CoveredStatements="0" TotalStatements="14" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+        </Property>
+        <Method Name="ADependsOnB(Object,Object):bool" CoveredStatements="0" TotalStatements="16" CoveragePercent="0" />
+        <Method Name="CleanPathSeparators(string):string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="DirSearch(DirectoryInfo,string):List&lt;FileInfo&gt;" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="FindScenesWhichContainAsset(string):List&lt;Object&gt;" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+          <AnonymousMethod Name="(Object):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetAssetPathFromFileNameAndExtension(string):string" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+        <Method Name="GetRelativeAssetPathFromFullPath(string):string" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+      </Type>
+      <Type Name="GroupByComparerRenderer" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+        <Method Name="GetStringKey(Type):string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GroupResult(IEnumerable&lt;AssertionComponent&gt;):IEnumerable&lt;IGrouping&lt;Type,AssertionComponent&gt;&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):Type" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="GroupByExecutionMethodRenderer" CoveredStatements="0" TotalStatements="18" CoveragePercent="0">
+        <Type Name="CheckFunctionAssertionPair" CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+        <Method Name="GroupResult(IEnumerable&lt;AssertionComponent&gt;):IEnumerable&lt;IGrouping&lt;CheckMethod,AssertionComponent&gt;&gt;" CoveredStatements="0" TotalStatements="18" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):CheckFunctionAssertionPair" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(CheckFunctionAssertionPair):CheckMethod" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(CheckFunctionAssertionPair):AssertionComponent" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="GroupByGoRenderer" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+        <Method Name="GetFoldoutDisplayName(GameObject):string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GroupResult(IEnumerable&lt;AssertionComponent&gt;):IEnumerable&lt;IGrouping&lt;GameObject,AssertionComponent&gt;&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):GameObject" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="PrintFoldout(bool,GameObject):bool" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      </Type>
+      <Type Name="GroupByNothingRenderer" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+        <Method Name="GetStringKey(string):string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GroupResult(IEnumerable&lt;AssertionComponent&gt;):IEnumerable&lt;IGrouping&lt;string,AssertionComponent&gt;&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="GroupByTestsRenderer" CoveredStatements="0" TotalStatements="16" CoveragePercent="0">
+        <Method Name="GetFoldoutDisplayName(GameObject):string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GroupResult(IEnumerable&lt;AssertionComponent&gt;):IEnumerable&lt;IGrouping&lt;GameObject,AssertionComponent&gt;&gt;" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(AssertionComponent):GameObject" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="GuiHelper" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+        <Method Name="GetConsoleErrorPause():bool" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="SetConsoleErrorPause(bool):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      </Type>
+      <Type Name="Icons" CoveredStatements="0" TotalStatements="23" CoveragePercent="0">
+        <Constructor Name="Icons()" CoveredStatements="0" TotalStatements="20" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="19" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Constructor>
+        <Method Name="LoadTexture(string):Texture2D" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="IntegrationTestGroupLine" CoveredStatements="0" TotalStatements="66" CoveragePercent="0">
+        <Constructor Name="IntegrationTestGroupLine(GameObject)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Property Name="Folded:bool" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+            <AnonymousMethod Name="(GameObject):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </PropertySetter>
+        </Property>
+        <Method Name="AddChildren(IntegrationTestRendererBase[]):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="DrawLine(Rect,GUIContent,bool,RenderingOptions):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="GetResult():TestResult.ResultType" CoveredStatements="0" TotalStatements="23" CoveragePercent="0" />
+        <Method Name="IsVisible(RenderingOptions):bool" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(IntegrationTestRendererBase):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="Render(int,RenderingOptions):void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="SetCurrentTest(TestComponent):bool" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+      </Type>
+      <Type Name="IntegrationTestLine" CoveredStatements="0" TotalStatements="38" CoveragePercent="0">
+        <Constructor Name="IntegrationTestLine(GameObject,TestResult)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="DrawLine(Rect,GUIContent,bool,RenderingOptions):void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Method Name="GetResult():TestResult.ResultType" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="IsVisible(RenderingOptions):bool" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+        <Method Name="SetCurrentTest(TestComponent):bool" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      </Type>
+      <Type Name="IntegrationTestRendererBase" CoveredStatements="0" TotalStatements="109" CoveragePercent="0">
+        <Constructor Name="IntegrationTestRendererBase(GameObject)" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Constructor Name="IntegrationTestRendererBase()" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="CompareTo(IntegrationTestRendererBase):int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="DrawContextMenu(TestComponent):void" CoveredStatements="0" TotalStatements="20" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+          <AnonymousMethod Name="(object):void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(GameObject):Component" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AnonymousMethod>
+          <AnonymousMethod Name="(object):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(object):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(GameObject):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetIconForResult(TestResult.ResultType):Texture" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="OnContextClick(Rect):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="OnLeftMouseButtonClick(Rect):void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="OnSelect():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+          <AnonymousMethod Name="(GameObject):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="RemoveTests(GameObject[]):void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="Render(RenderingOptions):bool" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="Render(int,RenderingOptions):void" CoveredStatements="0" TotalStatements="23" CoveragePercent="0" />
+      </Type>
+      <Type Name="IntegrationTestsHierarchyAnnotation" CoveredStatements="0" TotalStatements="24" CoveragePercent="0">
+        <Constructor Name="IntegrationTestsHierarchyAnnotation()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="DoAnnotationGUI(int,Rect):void" CoveredStatements="0" TotalStatements="21" CoveragePercent="0" />
+      </Type>
+      <Type Name="IntegrationTestsRunnerSettings" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+        <Constructor Name="IntegrationTestsRunnerSettings()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Method Name="ToggleBlockUIWhenRunning():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="TogglePauseOnTestFailure():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      </Type>
+      <Type Name="IntegrationTestsRunnerWindow" CoveredStatements="0" TotalStatements="472" CoveragePercent="0">
+        <Type Name="RunnerCallback" CoveredStatements="0" TotalStatements="64" CoveragePercent="0">
+          <Constructor Name="RunnerCallback(IntegrationTestsRunnerWindow)" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+          <Method Name="AllScenesFinished():void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+          <Method Name="OnEditorUpdate():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+          <Method Name="RunFinished(List&lt;TestResult&gt;):void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+          <Method Name="RunStarted(string,List&lt;TestComponent&gt;):void" CoveredStatements="0" TotalStatements="14" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+            <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </Method>
+          <Method Name="TestFinished(TestResult):void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+            <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </Method>
+          <Method Name="TestRunInterrupted(List&lt;ITestComponent&gt;):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+          <Method Name="TestStarted(TestResult):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        </Type>
+        <Constructor Name="IntegrationTestsRunnerWindow()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Constructor Name="IntegrationTestsRunnerWindow()" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="AddItemsToMenu(GenericMenu):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="BackgroundSceneChangeWatch():void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Method Name="GetResultForTest(TestComponent):TestResult" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="InitBackgroundRunners():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="OnDestroy():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="OnEnable():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="OnGUI():void" CoveredStatements="0" TotalStatements="21" CoveragePercent="0" />
+        <Method Name="OnHierarchyChangeUpdate():void" CoveredStatements="0" TotalStatements="19" CoveragePercent="0" />
+        <Method Name="OnHierarchyWindowItemDraw(int,Rect):void" CoveredStatements="0" TotalStatements="20" CoveragePercent="0" />
+        <Method Name="OnInspectorUpdate():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="OnPlaymodeStateChanged():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="OnSelectionChange():void" CoveredStatements="0" TotalStatements="22" CoveragePercent="0" />
+        <Method Name="ParseTestList(List&lt;TestComponent&gt;,List&lt;TestResult&gt;):IntegrationTestRendererBase[]" CoveredStatements="0" TotalStatements="24" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="23" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="PrintHeadPanel():void" CoveredStatements="0" TotalStatements="30" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="28" CoveragePercent="0" />
+          <AnonymousMethod Name="(GameObject):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(GameObject):Component" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="PrintTestList(IntegrationTestRendererBase[]):bool" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+        <Method Name="RebuildTestList():void" CoveredStatements="0" TotalStatements="66" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="61" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(GameObject):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="RenderDetails():void" CoveredStatements="0" TotalStatements="28" CoveragePercent="0" />
+        <Method Name="RunTests(IList&lt;ITestComponent&gt;):void" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+          <AnonymousMethod Name="(ITestComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestComponent):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestComponent):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestComponent):GameObject" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="SelectInHierarchy(GameObject):void" CoveredStatements="0" TotalStatements="26" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="25" CoveragePercent="0" />
+          <AnonymousMethod Name="(Component):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="SetCurrentTest(TestComponent):void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="ShowWindow():IntegrationTestsRunnerWindow" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+          <AnonymousMethod Name="(GameObject):TestComponent" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="UpdateResultText(GameObject):void" CoveredStatements="0" TotalStatements="30" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="29" CoveragePercent="0" />
+          <AnonymousMethod Name="(TestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="NetworkResultsReceiver" CoveredStatements="0" TotalStatements="186" CoveragePercent="0">
+        <Constructor Name="NetworkResultsReceiver()" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="AcceptCallback(TcpClient):void" CoveredStatements="0" TotalStatements="57" CoveragePercent="0" />
+        <Method Name="EnableServer():void" CoveredStatements="0" TotalStatements="21" CoveragePercent="0" />
+        <Method Name="OnDisable():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="OnEnable():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="OnGUI():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        <Method Name="SetConfiguration(PlatformRunnerConfiguration):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="StartReceiver(PlatformRunnerConfiguration):void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="StopReceiver():void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Method Name="Update():void" CoveredStatements="0" TotalStatements="44" CoveragePercent="0" />
+        <Method Name="WriteResultsToLog(ResultDTO,List&lt;ITestResult&gt;):void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+          <AnonymousMethod Name="(ITestResult):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="PlatformRunnerSettings" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+        <Constructor Name="PlatformRunnerSettings()" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" />
+      </Type>
+      <Type Name="PlayerSettingConfigurator" CoveredStatements="0" TotalStatements="42" CoveragePercent="0">
+        <Constructor Name="PlayerSettingConfigurator(bool)" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Property Name="resourcesPath:string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Method Name="AddConfigurationFile(string,string):void" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="ChangeSettingsForIntegrationTests():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="RemoveAllConfigurationFiles():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        <Method Name="RevertSettingsChanges():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+      </Type>
+      <Type Name="ProjectSettingsBase" CoveredStatements="0" TotalStatements="19" CoveragePercent="0">
+        <Constructor Name="ProjectSettingsBase()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Method Name="Load&lt;T&gt;():T" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="Save():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="PropertyPathSelector" CoveredStatements="0" TotalStatements="143" CoveragePercent="0">
+        <Constructor Name="PropertyPathSelector(string)" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Constructor>
+        <Method Name="DoesPropertyExist(GameObject,string):SelectedPathError" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        <Method Name="Draw(GameObject,ActionBase,string,Type[],Action&lt;GameObject&gt;,Action&lt;string&gt;):void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        <Method Name="DrawListOfMethods(GameObject,ActionBase,string,Type[],DropDownControl&lt;string&gt;):string" CoveredStatements="0" TotalStatements="38" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="27" CoveragePercent="0" />
+          <AnonymousMethod Name="():string[]" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="DrawManualPropertyEditField(GameObject,string,Type[],DropDownControl&lt;string&gt;):string" CoveredStatements="0" TotalStatements="61" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="45" CoveragePercent="0" />
+          <AnonymousMethod Name="():string[]" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetFieldsAndProperties(GameObject,ActionBase,string,Type[]):List&lt;string&gt;" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+          <AnonymousMethod Name="(string,string):int" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="PropertyResolver" CoveredStatements="0" TotalStatements="169" CoveragePercent="0">
+        <Constructor Name="PropertyResolver()" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Property Name="AllowedTypes:Type[]" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Property Name="ExcludedFieldNames:string[]" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Property Name="ExcludedTypes:Type[]" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+        <Method Name="GetAllComponents(GameObject):Type[]" CoveredStatements="0" TotalStatements="16" CoveragePercent="0" />
+        <Method Name="GetFieldsAndPropertiesFromGameObject(GameObject,int,string):IList&lt;string&gt;" CoveredStatements="0" TotalStatements="36" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="32" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(Type):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetFieldsAndPropertiesUnderPath(GameObject,string):IList&lt;string&gt;" CoveredStatements="0" TotalStatements="56" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="54" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(PropertyInfo):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetMemberFieldType(MemberInfo):Type" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="GetPropertiesAndFieldsFromType(Type,int):string[]" CoveredStatements="0" TotalStatements="30" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="26" CoveragePercent="0" />
+          <AnonymousMethod Name="(FieldInfo):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(PropertyInfo):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(Type):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="IsTypeOrNameNotExcluded(Type,string):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="PropertyPathIsValid(string):bool" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+      </Type>
+      <Type Name="RenderingOptions" CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+      <Type Name="ResultSummarizer" CoveredStatements="0" TotalStatements="75" CoveragePercent="0">
+        <Constructor Name="ResultSummarizer(IEnumerable&lt;ITestResult&gt;)" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Property Name="Duration:double" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Errors:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Failures:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Ignored:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Inconclusive:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="NotRunnable:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Passed:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="ResultCount:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Skipped:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="Success:bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="TestsNotRun:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Property Name="TestsRun:int" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Method Name="Summarize(ITestResult):void" CoveredStatements="0" TotalStatements="31" CoveragePercent="0" />
+      </Type>
+      <Type Name="StackTraceFilter" CoveredStatements="0" TotalStatements="28" CoveragePercent="0">
+        <Method Name="Filter(string):string" CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+        <Method Name="FilterLine(string):bool" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+      </Type>
+      <Type Name="Styles" CoveredStatements="0" TotalStatements="19" CoveragePercent="0">
+        <Constructor Name="Styles()" CoveredStatements="0" TotalStatements="19" CoveragePercent="0" />
+      </Type>
+      <Type Name="TestComponentEditor" CoveredStatements="0" TotalStatements="89" CoveragePercent="0">
+        <Constructor Name="TestComponentEditor()" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="GetFlagList(string[],string[]):int" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetListOfIgnoredPlatforms(string[],int):string[]" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Method Name="OnEnable():void" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="OnInspectorGUI():void" CoveredStatements="0" TotalStatements="51" CoveragePercent="0" />
+      </Type>
+      <Type Name="TestFilterSettings" CoveredStatements="0" TotalStatements="59" CoveragePercent="0">
+        <Constructor Name="TestFilterSettings(string)" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="BuildRenderingOptions():RenderingOptions" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="GetSelectedCategories():string[]" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+          <AnonymousMethod Name="(string,int):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="Load():void" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="OnGUI():void" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+        <Method Name="Save():void" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="UpdateCounters(IEnumerable&lt;ITestResult&gt;):void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+      </Type>
+      <Type Name="XmlResultWriter" CoveredStatements="0" TotalStatements="173" CoveragePercent="0">
+        <Constructor Name="XmlResultWriter(string,string,ITestResult[])" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="EnvironmentGetCurrentDirectory():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetEnvironmentMachineName():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetEnvironmentOSVersion():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetEnvironmentOSVersionPlatform():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetEnvironmentUserDomainName():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetEnvironmentUserName():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetEnvironmentVersion():string" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="GetTestResult():string" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Method Name="InitializeXmlFile(string,ResultSummarizer):void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <Method Name="StartTestElement(ITestResult):void" CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+        <Method Name="TerminateXmlFile():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="WriteCData(string):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Method Name="WriteClosingElement(string):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="WriteCultureInfo():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="WriteEnvironment(string):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="WriteFailureElement(ITestResult):void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        <Method Name="WriteHeader():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="WriteIndend():void" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="WriteOpeningElement(string):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="WriteOpeningElement(string,Dictionary&lt;string,string&gt;):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="WriteOpeningElement(string,Dictionary&lt;string,string&gt;,bool):void" CoveredStatements="0" TotalStatements="19" CoveragePercent="0" />
+        <Method Name="WriteReasonElement(ITestResult):void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="WriteResultElement(ITestResult):void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+        <Method Name="WriteTestSuite(string,ResultSummarizer):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="WriteToFile(string,string):void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+      </Type>
+    </Namespace>
+    <Namespace Name="UnityTest.IntegrationTests" CoveredStatements="0" TotalStatements="291" CoveragePercent="0">
+      <Type Name="PlatformRunner" CoveredStatements="0" TotalStatements="71" CoveragePercent="0">
+        <Property Name="defaultBuildTarget:BuildTarget" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Property>
+        <Method Name="BuildAndRunCurrentScene():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="BuildAndRunInPlayer(PlatformRunnerConfiguration):void" CoveredStatements="0" TotalStatements="39" CoveragePercent="0" />
+        <Method Name="GetDefaultBuildTarget():BuildTarget" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+        <Method Name="RunInPlayer():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      </Type>
+      <Type Name="PlatformRunnerSettingsWindow" CoveredStatements="0" TotalStatements="220" CoveragePercent="0">
+        <Constructor Name="PlatformRunnerSettingsWindow()" CoveredStatements="0" TotalStatements="23" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="22" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Constructor>
+        <Method Name="BuildAndRun():void" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+        <Method Name="DrawSetting():void" CoveredStatements="0" TotalStatements="40" CoveragePercent="0" />
+        <Method Name="DrawVerticalSceneList(ref List&lt;string&gt;,ref string):void" CoveredStatements="0" TotalStatements="27" CoveragePercent="0" />
+        <Method Name="GetScenesWithTestComponents(List&lt;string&gt;):List&lt;string&gt;" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+          <AnonymousMethod Name="(string):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+        <Method Name="LoadFromPrefereneces():void" CoveredStatements="0" TotalStatements="22" CoveragePercent="0" />
+        <Method Name="OnDestroy():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="OnEnable():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="OnGUI():void" CoveredStatements="0" TotalStatements="70" CoveragePercent="0" />
+        <Method Name="OnLostFocus():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="SaveToPreferences():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+      </Type>
+    </Namespace>
+    <Type Name="AssertionStripper" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+      <Method Name="OnPostprocessScene():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+      <Method Name="RemoveAssertionsFromGameObjects():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+    </Type>
+    <Type Name="PlatformRunnerConfiguration" CoveredStatements="0" TotalStatements="40" CoveragePercent="0">
+      <Constructor Name="PlatformRunnerConfiguration(BuildTarget)" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+      <Constructor Name="PlatformRunnerConfiguration()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      <Method Name="GetConnectionIPs():string[]" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+        <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <AnonymousMethod Name="(string):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+      </Method>
+      <Method Name="GetTempPath():string" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+      <Method Name="TryToGetFreePort():int" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+    </Type>
+    <Type Name="TouchScreenCameraTest" CoveredStatements="0" TotalStatements="0" CoveragePercent="0" />
+    <Type Name="xPathFollowerTest" CoveredStatements="12" TotalStatements="12" CoveragePercent="100">
+      <Method Name="Update():void" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" />
+    </Type>
+  </Project>
+</Root>

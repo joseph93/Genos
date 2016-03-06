@@ -101,7 +101,7 @@ public class Graph : MonoBehaviour
             //JOSEPH: put the adjacent nodes of the element in the queue in a dictionary.
             //        Then, take out the element out of the queue.
             Dictionary<Node, float> adjacentNodes = nodes.Dequeue().getAdjacentNodes();
-
+            
             foreach (Node v in adjacentNodes.Keys)
             {
                 if (!v.IsVisited())

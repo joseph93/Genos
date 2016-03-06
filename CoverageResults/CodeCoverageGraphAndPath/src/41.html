@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\drawline.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+
+public class DrawLine : MonoBehaviour {
+
+	private LineRenderer lineRenderer;
+	private float counter;
+	private float dist;
+    //private int index = 0;
+
+	//public Transform origin;
+	//public Transform destination;
+	//public Transform middle; //cube
+
+
+
+    public Transform[] path;
+    public float speed = 5.0f;
+
+
+	public float lineDrawSpeed = 6f;
+
+	// Use this for initialization
+	void Start () {
+	
+		//lineRenderer = GetComponent&lt;LineRenderer&gt; ();
+		//lineRenderer.SetPosition (0, origin.position);
+        //lineRenderer.SetPosition(0, path[0].position);
+        //lineRenderer.SetWidth (.45f, .45f);
+
+        //dist = Vector3.Distance (origin.position, destination.position);
+         for (int i = 0; i &lt; path.Length; i++)
+         {
+            lineRenderer = GetComponent&lt;LineRenderer&gt;();
+            lineRenderer.SetPosition(0, path[0].position);
+            lineRenderer.SetWidth(.45f, .45f);
+            //dist = Vector3.Distance ( path[0].position, path[path.Length-1].position);
+            dist = Vector3.Distance(path[i].position,transform.position);
+           // transform.position = Vector3.MoveTowards(transform.position, path[i].position, Time.deltaTime * speed);
+        }
+
+
+
+    }
+	
+	// Update is called once per frame
+	void Update () {
+	
+		if (counter &lt; dist) {
+			counter += .1f / lineDrawSpeed;
+            /*
+			float x = Mathf.Lerp (0, dist, counter);
+
+			Vector3 pointA = origin.position;
+			Vector3 pointB = destination.position;
+			Vector3 pointC = middle.position;
+
+			Vector3 pointAlongLine = x * Vector3.Normalize (pointB - pointA) + pointA;
+
+
+			lineRenderer.SetPosition (1, pointAlongLine);
+            */
+
+
+           
+
+            for (int i = 0; i &lt; path.Length - 1; i++)
+            {
+                
+
+                if (path[i] != null)
+                {
+
+                    transform.position = Vector3.MoveTowards(transform.position, path[i].position, Time.deltaTime * speed);
+
+                    float x = Mathf.Lerp(0, dist, counter);
+
+                   // Vector3 pointAlongLine = x * Vector3.Normalize(path[i+1].position - path[i].position) + path[i].position;
+                    Vector3 pointAlongLine = x * Vector3.Normalize(path[i + 1].position - path[i].position) + path[i].position;
+
+
+                    lineRenderer.SetPosition(1, pointAlongLine);
+                    //lineRenderer.SetPosition(1, transform.position);
+
+
+                }
+            }
+
+
+
+
+
+            //Vector3[] positionsV3; 
+            //positionsV3 = { Vector3 p};
+            //lineRenderer.SetPositions(positionsV3);
+
+            //Vector3 pointAlongLine = x * Vector3.Normalize (pointC - pointB) + pointB;
+
+            //lineRenderer.SetPosition (1, pointAlongLine);
+        }
+	}
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[24,16,24,17,0],[32,15,32,24,0],[33,10,33,11,0],[34,13,34,57,0],[35,13,35,59,0],[36,13,36,47,0],[38,13,38,74,0],[40,9,40,10,0],[32,43,32,46,0],[32,26,32,41,0],[44,5,44,6,0],[47,17,47,18,0],[49,3,49,22,0],[49,23,49,24,0],[50,4,50,35,0],[67,18,67,27,0],[68,13,68,14,0],[71,17,71,37,0],[72,17,72,18,0],[74,21,74,124,0],[76,21,76,60,0],[79,21,79,128,0],[82,21,82,65,0],[86,17,86,18,0],[87,13,87,14,0],[67,50,67,53,0],[67,29,67,48,0],[100,9,100,10,0],[101,2,101,3,0],[18,5,18,31,0],[21,2,21,34,0]]);
+    </script>
+  </body>
+</html>

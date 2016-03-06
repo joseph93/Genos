@@ -130,7 +130,7 @@ public class TouchScreenCamera : MonoBehaviour
         }
     }
 
-    void CalculateLevelBounds()
+    public void CalculateLevelBounds()
     {
         verticalExtent = myCamera.orthographicSize;
         horizontalExtent = myCamera.orthographicSize * Screen.width / Screen.height;

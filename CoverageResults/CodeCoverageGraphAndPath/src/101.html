@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\displaymanager.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+public class DisplayManager : MonoBehaviour
+{
+
+    public Text displayText;
+    public float displayTime;
+    public float fadeTime;
+
+    private IEnumerator fadeAlpha;
+
+    private static DisplayManager displayManager;
+
+    public static DisplayManager Instance()
+    {
+        if (!displayManager)
+        {
+            displayManager = FindObjectOfType(typeof(DisplayManager)) as DisplayManager;
+            if (!displayManager)
+                Debug.LogError(&quot;There needs to be one active DisplayManager script on a GameObject in your scene.&quot;);
+        }
+
+        return displayManager;
+    }
+
+    public void DisplayMessage(string message)
+    {
+        displayText.text = message;
+        SetAlpha();
+    }
+
+    void SetAlpha()
+    {
+        if (fadeAlpha != null)
+        {
+            StopCoroutine(fadeAlpha);
+        }
+        fadeAlpha = FadeAlpha();
+        StartCoroutine(fadeAlpha);
+    }
+
+    IEnumerator FadeAlpha()
+    {
+        Color resetColor = displayText.color;
+        resetColor.a = 1;
+        displayText.color = resetColor;
+
+        yield return new WaitForSeconds(displayTime);
+
+        while (displayText.color.a &gt; 0)
+        {
+            Color displayColor = displayText.color;
+            displayColor.a -= Time.deltaTime / fadeTime;
+            displayText.color = displayColor;
+            yield return null;
+        }
+        yield return null;
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,5,17,6,0],[18,9,18,29,0],[19,9,19,10,0],[20,13,20,89,0],[21,13,21,33,0],[22,17,22,117,0],[23,9,23,10,0],[25,9,25,31,0],[26,5,26,6,0],[29,5,29,6,0],[30,9,30,36,0],[31,9,31,20,0],[32,5,32,6,0],[35,5,35,6,0],[36,9,36,31,0],[37,9,37,10,0],[38,13,38,38,0],[39,9,39,10,0],[40,9,40,33,0],[41,9,41,35,0],[42,5,42,6,0],[45,5,45,6,0],[46,9,46,46,0],[47,9,47,26,0],[48,9,48,40,0],[50,9,50,54,0],[53,9,53,10,0],[54,13,54,52,0],[55,13,55,57,0],[56,13,56,46,0],[57,13,57,31,0],[58,9,58,10,0],[52,9,52,40,0],[59,9,59,27,0],[60,5,60,6,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\map\graph.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Assets.Scripts;
+
+public class Graph : MonoBehaviour
+{
+    // Use this for initialization
+
+    private Dictionary&lt;int, Node&gt; Vertices { get; set; }
+
+    //For use on the DFS to &quot;break&quot; the recursion.
+    private bool finished;
+
+    public Graph()
+    {
+        Vertices = new Dictionary&lt;int, Node&gt;();
+
+    }
+
+
+    //Initialize all vertices with Unvisited value.
+    private void InitializeVertices()
+    {
+        foreach (KeyValuePair&lt;int, Node&gt; entry in Vertices)
+        {
+            entry.Value.setState(State.UnVisited);
+        }
+    }
+
+    //JOSEPH: Contains the id of the node?
+    public bool Contains(int vertexKey)
+    {
+        if (Vertices.ContainsKey(vertexKey))
+            return true;
+
+        return false;
+    }
+
+
+    public Node GetFirstElementOfTheList(int findKey)
+    {
+        return (from entry in Vertices where entry.Key == findKey select entry.Value).FirstOrDefault();
+    }
+
+
+    public void BFS(Node startVertex)
+    {
+
+        if (Vertices.Count == 0)
+            return;
+
+        Queue&lt;Node&gt; nodes = new Queue&lt;Node&gt;();
+        Console.WriteLine(&quot;Starting at: {0}&quot;, startVertex.getID());
+        //JOSEPH: Put the first element in the queue.
+        startVertex.setState(State.Visited);
+        nodes.Enqueue(startVertex);
+
+        while (nodes.Count != 0)
+        {
+            //JOSEPH: put the adjacent nodes of the element in the queue in a dictionary.
+            //        Then, take out the element out of the queue.
+            Dictionary&lt;Node, float&gt; adjacentNode = nodes.Dequeue().getAdjacentNodes();
+
+            foreach (Node v in adjacentNode.Keys)
+            {
+                if (!v.IsVisited())
+                {
+
+                    Console.WriteLine(&quot;Passed to {0}&quot;, v.getID());
+                    Vertices[v.getID()].setState(State.Visited);
+                    nodes.Enqueue(v);
+                }
+            }
+        }
+
+    }
+
+    public Node InitializeBFS(Node vertexToFind)
+    {
+        InitializeVertices();
+        return BFS(Vertices.First().Value, vertexToFind);
+    }
+   
+
+    public Node BFS(Node startVertex, Node vertexToFind)
+    {
+        if (Vertices.Count == 0)
+            return null;
+
+        //Starting from the first element
+        Queue&lt;Node&gt; nodes = new Queue&lt;Node&gt;();
+        Console.WriteLine(&quot;Starting at: {0}&quot;, startVertex.getID());
+        startVertex.setState(State.Visited);
+        nodes.Enqueue(startVertex);
+
+        while (nodes.Count != 0)
+        {
+            //JOSEPH: put the adjacent nodes of the element in the queue in a dictionary.
+            //        Then, take out the element out of the queue.
+            Dictionary&lt;Node, float&gt; adjacentNodes = nodes.Dequeue().getAdjacentNodes();
+            
+            foreach (Node v in adjacentNodes.Keys)
+            {
+                if (!v.IsVisited())
+                {
+                    Console.WriteLine(&quot;Passed to {0}&quot;, v.getID());
+                    //if you found the node that you wanted to find, return it and its path. 
+                    if (v.getID() == vertexToFind.getID())
+                        return v;
+                    Vertices[v.getID()].setState(State.Visited);
+                    nodes.Enqueue(v);
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+
+
+    //JOSEPH: Find a node by giving its id
+    public Node FindByKey(int nodeID)
+    {
+        foreach (KeyValuePair&lt;int, Node&gt; entry in Vertices)
+        {
+            if (entry.Key == nodeID)
+                return entry.Value;
+        }
+        return null;
+    }
+
+    //JOSEPH: does the node exist in the vertices dictionary?
+    public bool ExistKey(int v)
+    {
+        if (FindByKey(v) == null)
+            return false;
+        else
+            return true;
+    }
+
+    //JOSEPH: I&#39;m not sure how edges work here.
+    /*public void InsertUndirectedEdge(Node source, Node target, double weight)
+    {
+        if(!source.hasAdjacentNode(target))
+            source.addAdjacentNode(target, weight);
+    }*/
+
+    public void InsertNewVertex(Node vertex)
+    {
+        if (!ExistKey(vertex.getID()))
+        {
+            Vertices.Add(vertex.id, vertex);
+        }
+    }
+
+
+    // REVIEWED by Joseph Atallah
+    // IHCENE: The shortest path algorithm
+    public List&lt;Node&gt; shortest_path(Node start, Node finish)
+    {
+        // previous Dictionary: helps us to get the previous node
+        var previous = new Dictionary&lt;Node, Node&gt;();
+        // distances Dictionary: helps us to get the distances registered for each paths
+        var distances = new Dictionary&lt;Node, float&gt;();
+        // the nodes list : helps us to keep track of all the nodes in the graph, so that 
+        // they can be easily sorted later.
+        var nodes = new List&lt;Node&gt;();
+
+        // the path list : represents our shortest path between 2 nodes (final result)
+        List&lt;Node&gt; path = null;
+
+        // JOSEPH-REVIEW: KeyValuePari&lt;int,Node&gt; can be replaced by Node value in Vertices.Values.
+        foreach (Node entry in Vertices.Values)
+        {
+            // the distance between the first node and itself is equal to 0
+            if (entry.getID() == start.getID())
+            {
+                distances[entry] = 0;
+            }
+            // the distance between the first node and the other nodes is unknown, thus set to &quot;Infinity&quot;
+            else
+            {
+                distances[entry] = int.MaxValue;
+            }
+
+            nodes.Add(entry);
+        }
+
+        while (nodes.Count != 0)
+        {
+            // Then sorting the list of nodes from smallest distance to the biggest
+            // JOSEPH-REVIEW: Here the casting of int will lead to an error when comparing two values
+            // that are different by a few decimals.
+            nodes.Sort((x, y) =&gt; (int)distances[x] - (int)distances[y]);
+
+            var smallest = nodes[0];
+            nodes.Remove(smallest);
+
+            if (smallest == finish)
+            {
+                path = new List&lt;Node&gt;();
+                while (previous.ContainsKey(smallest))
+                {
+                    // insert the exact shortest path by retracing the values of each nodes inside 
+                    // the previous Dictionary
+                    path.Add(smallest);
+                    smallest = previous[smallest];
+                }
+
+                break;
+            }
+
+            if (distances[smallest] == int.MaxValue)
+            {
+                break;
+            }
+
+            Dictionary&lt;Node, float&gt; neighbors = smallest.getAdjacentNodes();
+            foreach (KeyValuePair&lt;Node, float&gt; neighbor in neighbors)
+            {
+                // distance of the current node + adjacent node
+                float alt = distances[smallest] + neighbor.Value;
+                // then compare with the distance of the other adjacent node
+                if (alt &lt; distances[neighbor.Key])
+                {
+                    distances[neighbor.Key] = alt;
+                    previous[neighbor.Key] = smallest;
+                }
+            }
+        }
+
+        return path;
+    }
+}
+    
+
+
+    
+
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,46,12,50,0],[12,51,12,55,0],[17,5,17,19,0],[18,5,18,6,0],[19,9,19,48,0],[21,5,21,6,0],[26,5,26,6,0],[27,9,27,16,0],[27,51,27,59,0],[27,18,27,47,0],[28,9,28,10,0],[29,13,29,51,0],[30,9,30,10,0],[27,48,27,50,0],[31,5,31,6,0],[35,5,35,6,0],[36,9,36,45,0],[37,13,37,25,0],[39,9,39,22,0],[40,5,40,6,0],[44,5,44,6,0],[45,9,45,46,0],[45,66,45,74,0],[45,85,45,104,0],[46,5,46,6,0],[50,5,50,6,0],[52,9,52,33,0],[53,13,53,20,0],[55,9,55,47,0],[56,9,56,68,0],[58,9,58,45,0],[59,9,59,36,0],[62,9,62,10,0],[65,13,65,87,0],[67,13,67,20,0],[67,32,67,49,0],[67,22,67,28,0],[68,13,68,14,0],[69,17,69,36,0],[70,17,70,18,0],[72,21,72,67,0],[73,21,73,65,0],[74,21,74,38,0],[75,17,75,18,0],[76,13,76,14,0],[67,29,67,31,0],[77,9,77,10,0],[61,9,61,33,0],[79,5,79,6,0],[82,5,82,6,0],[83,9,83,30,0],[84,9,84,58,0],[85,5,85,6,0],[89,5,89,6,0],[90,9,90,33,0],[91,13,91,25,0],[94,9,94,47,0],[95,9,95,68,0],[96,9,96,45,0],[97,9,97,36,0],[100,9,100,10,0],[103,13,103,88,0],[105,13,105,20,0],[105,32,105,50,0],[105,22,105,28,0],[106,13,106,14,0],[107,17,107,36,0],[108,17,108,18,0],[109,21,109,67,0],[111,21,111,59,0],[112,25,112,34,0],[113,21,113,65,0],[114,21,114,38,0],[115,17,115,18,0],[116,13,116,14,0],[105,29,105,31,0],[117,9,117,10,0],[99,9,99,33,0],[119,9,119,21,0],[120,5,120,6,0],[127,5,127,6,0],[128,9,128,16,0],[128,51,128,59,0],[128,18,128,47,0],[129,9,129,10,0],[130,13,130,37,0],[131,17,131,36,0],[132,9,132,10,0],[128,48,128,50,0],[133,9,133,21,0],[134,5,134,6,0],[138,5,138,6,0],[139,9,139,34,0],[140,13,140,26,0],[142,13,142,25,0],[143,5,143,6,0],[153,5,153,6,0],[154,9,154,39,0],[155,9,155,10,0],[156,13,156,45,0],[157,9,157,10,0],[158,5,158,6,0],[164,5,164,6,0],[166,9,166,53,0],[168,9,168,55,0],[171,9,171,38,0],[174,9,174,32,0],[177,9,177,16,0],[177,32,177,47,0],[177,18,177,28,0],[178,9,178,10,0],[180,13,180,48,0],[181,13,181,14,0],[182,17,182,38,0],[183,13,183,14,0],[186,13,186,14,0],[187,17,187,49,0],[188,13,188,14,0],[190,13,190,30,0],[191,9,191,10,0],[177,29,177,31,0],[194,9,194,10,0],[198,13,198,34,0],[198,71,198,73,0],[200,13,200,37,0],[201,13,201,36,0],[203,13,203,36,0],[204,13,204,14,0],[205,17,205,41,0],[207,17,207,18,0],[210,21,210,40,0],[211,21,211,51,0],[212,17,212,18,0],[206,17,206,55,0],[214,17,214,23,0],[217,13,217,53,0],[218,13,218,14,0],[219,17,219,23,0],[222,13,222,77,0],[223,13,223,20,0],[223,60,223,69,0],[223,22,223,56,0],[224,13,224,14,0],[226,17,226,66,0],[228,17,228,51,0],[229,17,229,18,0],[230,21,230,51,0],[231,21,231,55,0],[232,17,232,18,0],[233,13,233,14,0],[223,57,223,59,0],[234,9,234,10,0],[193,9,193,33,0],[236,9,236,21,0],[237,5,237,6,0],[45,46,45,66,0],[45,74,45,85,0],[198,34,198,71,0]]);
+    </script>
+  </body>
+</html>

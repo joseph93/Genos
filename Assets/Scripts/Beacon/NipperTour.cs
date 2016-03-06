@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
     {
+        
         private List<Beacon> myBeacons = new List<Beacon>();
         private Map map;
         public Node[] ArrayOfNodes;
@@ -14,22 +15,31 @@ namespace Assets.Scripts {
         
         public Camera mainCam;
 
+        private ModalWindow modalWindow;
+
+        public Sprite iconImage;
+        private UnityAction myOkAction;
+        private UnityAction myCancelAction;
+
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-            //added
-            //to know last index of last scene loaded
-            //FloorManager.setLastScene(Application.loadedLevelName);
-            //SceneManager.GetActiveScene(); 
+            //initialize the singleton.
+            modalWindow = ModalWindow.Instance();
+
+            myOkAction = new UnityAction(modalWindow.closePanel);
+            myCancelAction = new UnityAction(modalWindow.closePanel);
+            
         }
         // Use this for initialization
         void Start()
         {
-            //DisplayPointOfInterest();
             iBeaconReceiver.BeaconRangeChangedEvent += OnBeaconRangeChanged;
             iBeaconReceiver.BluetoothStateChangedEvent += OnBluetoothStateChanged;
             iBeaconReceiver.CheckBluetoothLEStatus();
             Debug.Log("Listening for beacons");
+
+
             map = new Map();
             Storyline nipperTour = new Storyline("Nipper Tour", 4);
 
@@ -37,19 +47,19 @@ namespace Assets.Scripts {
             {
                 nipperTour.addNode(n);
             }
+
             map.addStoryline(nipperTour);
             Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
             Node n2 = ArrayOfNodes[1].GetComponentInChildren<Node>();
             Node n3 = ArrayOfNodes[2].GetComponentInChildren<Node>();
             Node n4 = ArrayOfNodes[3].GetComponentInChildren<Node>();
 
-            n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 0.5f } });
+            n1.addAdjacentNode(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 6.0f } });
             n2.addAdjacentNode(new Dictionary<Node, float>() { { n3, 2.0f } });
             n3.addAdjacentNode(new Dictionary<Node, float>() { { n4, 3.0f } });
-            map.addNode(n1);
-            map.addNode(n2);
-            map.addNode(n3);
-            map.addNode(n4);
+
+            //Add all the nodes that are in the Nipper Tour storyline in the map.
+            map.initializeGraph(0);
             
         }
 
@@ -63,10 +73,10 @@ namespace Assets.Scripts {
         // Update is called once per frame
         void Update()
         {
-
             StartCoroutine(searchForDistanceOfBeacon(0.05f));
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
+                //JOSEPH: When you touch a point of interest on the map, it shows the shortest path from the first node of the nodeList to the touched node.
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
                 if (hit.collider != null)
                 {
@@ -85,10 +95,6 @@ namespace Assets.Scripts {
 
                     path = map.getGraph().shortest_path(nodeList[0], touchedNode);
                     path.Reverse();
-                    foreach (Node n in path)
-                    {
-                        Debug.Log("Node traversed: " + n.id);
-                    }
                 }
 
             }
@@ -96,27 +102,16 @@ namespace Assets.Scripts {
           
         }
 
-      
 
         private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
         {
             switch (newstate)
             {
                 case BluetoothLowEnergyState.POWERED_ON:
-                    //added
-                    //SceneManager.UnloadScene("Bluetooth");
-                   // FloorManager.setLastScene(Application.loadedLevelName);
-                    //SceneManager.LoadScene(FloorManager.getLastScene());
-
                     iBeaconReceiver.Init();
                     Debug.Log("It is on, go searching");
                     break;
                 case BluetoothLowEnergyState.POWERED_OFF:
-                    //iBeaconReceiver.EnableBluetooth();
-
-                    //added
-                    SceneManager.LoadScene("Bluetooth");
-
                     Debug.Log("It is off, switch it on");
                     break;
                 case BluetoothLowEnergyState.UNAUTHORIZED:
@@ -153,6 +148,7 @@ namespace Assets.Scripts {
                         {
                             if (poi.getBeacon().m_uuid.ToLower().Equals(b.UUID.ToLower()))
                             {
+                                //JOSEPH: When you approach a beacon and you're 2 to 6 meters away (typewrite sound)
                                 poi.playBeforeSound();
                             }
                         }
@@ -167,10 +163,12 @@ namespace Assets.Scripts {
                         {
                             if (poi.getBeacon().m_uuid.ToLower().Equals(b.UUID.ToLower()))
                             {
+                                //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
                                 poi.makeIconBigger();
                                 mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
                                 Vibration.Vibrate(1000);
                                 poi.popUpSound();
+                                modalWindow.Choice("Here is the building of 1920, and here are the bathrooms of the 1936 building.", iconImage, myOkAction, myCancelAction);
                             }
                         }
                     }

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\integrationtestsprovider.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+namespace UnityTest.IntegrationTestRunner
+{
+    class IntegrationTestsProvider
+    {
+        internal Dictionary&lt;ITestComponent, HashSet&lt;ITestComponent&gt;&gt; testCollection = new Dictionary&lt;ITestComponent, HashSet&lt;ITestComponent&gt;&gt;();
+        internal ITestComponent currentTestGroup;
+        internal IEnumerable&lt;ITestComponent&gt; testToRun;
+
+        public IntegrationTestsProvider(IEnumerable&lt;ITestComponent&gt; tests)
+        {
+            testToRun = tests;
+            foreach (var test in tests.OrderBy(component =&gt; component))
+            {
+                if (test.IsTestGroup())
+                {
+                    throw new Exception(test.Name + &quot; is test a group&quot;);
+                }
+                AddTestToList(test);
+            }
+            if (currentTestGroup == null)
+            {
+                currentTestGroup = FindInnerTestGroup(TestComponent.NullTestComponent);
+            }
+        }
+
+        private void AddTestToList(ITestComponent test)
+        {
+            var group = test.GetTestGroup();
+            if (!testCollection.ContainsKey(group))
+                testCollection.Add(group, new HashSet&lt;ITestComponent&gt;());
+            testCollection[group].Add(test);
+            if (group == TestComponent.NullTestComponent) return;
+            AddTestToList(group);
+        }
+
+        public ITestComponent GetNextTest()
+        {
+            var test = testCollection[currentTestGroup].First();
+            testCollection[currentTestGroup].Remove(test);
+            test.EnableTest(true);
+            return test;
+        }
+
+        public void FinishTest(ITestComponent test)
+        {
+            try
+            {
+                test.EnableTest(false);
+                currentTestGroup = FindNextTestGroup(currentTestGroup);
+            }
+            catch (MissingReferenceException e)
+            {
+                Debug.LogException(e);
+            }
+        }
+
+        private ITestComponent FindNextTestGroup(ITestComponent testGroup)
+        {
+            if (testGroup == null) 
+                throw new Exception (&quot;No test left&quot;);
+
+            if (testCollection[testGroup].Any())
+            {
+                testGroup.EnableTest(true);
+                return FindInnerTestGroup(testGroup);
+            }
+            testCollection.Remove(testGroup);
+            testGroup.EnableTest(false);
+
+            var parentTestGroup = testGroup.GetTestGroup();
+            if (parentTestGroup == null) return null;
+
+            testCollection[parentTestGroup].Remove(testGroup);
+            return FindNextTestGroup(parentTestGroup);
+        }
+
+        private ITestComponent FindInnerTestGroup(ITestComponent group)
+        {
+            var innerGroups = testCollection[group];
+            foreach (var innerGroup in innerGroups)
+            {
+                if (!innerGroup.IsTestGroup()) continue;
+                innerGroup.EnableTest(true);
+                return FindInnerTestGroup(innerGroup);
+            }
+            return group;
+        }
+
+        public bool AnyTestsLeft()
+        {
+            return testCollection.Count != 0;
+        }
+
+        public List&lt;ITestComponent&gt; GetRemainingTests()
+        {
+            var remainingTests = new List&lt;ITestComponent&gt;();
+            foreach (var test in testCollection)
+            {
+                remainingTests.AddRange(test.Value);
+            }
+            return remainingTests;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,145,0],[14,9,14,75,0],[15,9,15,10,0],[16,13,16,31,0],[17,13,17,20,0],[17,34,17,61,0],[17,70,17,71,0],[17,22,17,30,0],[18,13,18,14,0],[19,17,19,40,0],[20,17,20,18,0],[21,21,21,73,0],[23,17,23,37,0],[24,13,24,14,0],[17,31,17,33,0],[25,13,25,42,0],[26,13,26,14,0],[27,17,27,88,0],[28,13,28,14,0],[29,9,29,10,0],[32,9,32,10,0],[33,13,33,45,0],[34,13,34,52,0],[35,17,35,74,0],[36,13,36,45,0],[37,13,37,58,0],[37,59,37,66,0],[38,13,38,34,0],[39,9,39,10,0],[42,9,42,10,0],[43,13,43,65,0],[44,13,44,59,0],[45,13,45,35,0],[46,13,46,25,0],[47,9,47,10,0],[50,9,50,10,0],[52,13,52,14,0],[53,17,53,40,0],[54,17,54,72,0],[55,13,55,14,0],[56,13,56,48,0],[57,13,57,14,0],[58,17,58,39,0],[59,13,59,14,0],[60,9,60,10,0],[63,9,63,10,0],[64,13,64,35,0],[65,17,65,54,0],[67,13,67,49,0],[68,13,68,14,0],[69,17,69,44,0],[70,17,70,54,0],[72,13,72,46,0],[73,13,73,41,0],[75,13,75,60,0],[76,13,76,41,0],[76,42,76,54,0],[78,13,78,63,0],[79,13,79,55,0],[80,9,80,10,0],[83,9,83,10,0],[84,13,84,53,0],[85,13,85,20,0],[85,40,85,51,0],[85,22,85,36,0],[86,13,86,14,0],[87,17,87,47,0],[87,48,87,57,0],[88,17,88,45,0],[89,17,89,55,0],[85,37,85,39,0],[91,13,91,26,0],[92,9,92,10,0],[95,9,95,10,0],[96,13,96,46,0],[97,9,97,10,0],[100,9,100,10,0],[101,13,101,61,0],[102,13,102,20,0],[102,34,102,48,0],[102,22,102,30,0],[103,13,103,14,0],[104,17,104,53,0],[105,13,105,14,0],[102,31,102,33,0],[106,13,106,35,0],[107,9,107,10,0],[17,61,17,70,0]]);
+    </script>
+  </body>
+</html>

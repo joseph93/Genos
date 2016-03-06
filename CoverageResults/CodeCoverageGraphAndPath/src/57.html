@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\comparers\actionbase.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public abstract class ActionBase : ScriptableObject
+    {
+        public GameObject go;
+        protected object m_ObjVal;
+
+        private MemberResolver m_MemberResolver;
+
+        public string thisPropertyPath = &quot;&quot;;
+        public virtual Type[] GetAccepatbleTypesForA()
+        {
+            return null;
+        }
+        public virtual int GetDepthOfSearch() { return 2; }
+
+        public virtual string[] GetExcludedFieldNames()
+        {
+            return new string[] { };
+        }
+
+        public bool Compare()
+        {
+            if (m_MemberResolver == null)
+                m_MemberResolver = new MemberResolver(go, thisPropertyPath);
+            m_ObjVal = m_MemberResolver.GetValue(UseCache);
+            var result = Compare(m_ObjVal);
+            return result;
+        }
+
+        protected abstract bool Compare(object objVal);
+
+        virtual protected bool UseCache { get { return false; } }
+
+        public virtual Type GetParameterType() { return typeof(object); }
+
+        public virtual string GetConfigurationDescription()
+        {
+            string result = &quot;&quot;;
+#if !UNITY_METRO
+            foreach (var prop in GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly)
+                     .Where(info =&gt; info.FieldType.IsSerializable))
+            {
+                var value = prop.GetValue(this);
+                if (value is double)
+                    value = ((double)value).ToString(&quot;0.########&quot;);
+                if (value is float)
+                    value = ((float)value).ToString(&quot;0.########&quot;);
+                result += value + &quot; &quot;;
+            }
+#endif  // if !UNITY_METRO
+            return result;
+        }
+
+        IEnumerable&lt;FieldInfo&gt; GetFields(Type type)
+        {
+#if !UNITY_METRO
+            return type.GetFields(BindingFlags.Public | BindingFlags.Instance);
+#else
+            return null;
+#endif
+        }
+
+        public ActionBase CreateCopy(GameObject oldGameObject, GameObject newGameObject)
+        {
+#if !UNITY_METRO
+            var newObj = CreateInstance(GetType()) as ActionBase;
+#else
+            var newObj = (ActionBase) this.MemberwiseClone();
+#endif
+            var fields = GetFields(GetType());
+            foreach (var field in fields)
+            {
+                var value = field.GetValue(this);
+                if (value is GameObject)
+                {
+                    if (value as GameObject == oldGameObject)
+                        value = newGameObject;
+                }
+                field.SetValue(newObj, value);
+            }
+            return newObj;
+        }
+
+        public virtual void Fail(AssertionComponent assertion)
+        {
+            Debug.LogException(new AssertionException(assertion), assertion.GetFailureReferenceObject());
+        }
+
+        public virtual string GetFailureMessage()
+        {
+            return GetType().Name + &quot; assertion failed.\n(&quot; + go + &quot;).&quot; + thisPropertyPath + &quot; failed. Value: &quot; + m_ObjVal;
+        }
+    }
+
+    public abstract class ActionBaseGeneric&lt;T&gt; : ActionBase
+    {
+        protected override bool Compare(object objVal)
+        {
+            return Compare((T)objVal);
+        }
+        protected abstract bool Compare(T objVal);
+
+        public override Type[] GetAccepatbleTypesForA()
+        {
+            return new[] { typeof(T) };
+        }
+
+        public override Type GetParameterType()
+        {
+            return typeof(T);
+        }
+        protected override bool UseCache { get { return true; } }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,9,18,10,0],[19,13,19,25,0],[20,9,20,10,0],[21,47,21,48,0],[21,49,21,58,0],[21,59,21,60,0],[24,9,24,10,0],[25,13,25,37,0],[26,9,26,10,0],[29,9,29,10,0],[30,13,30,42,0],[31,17,31,77,0],[32,13,32,60,0],[33,13,33,44,0],[34,13,34,27,0],[35,9,35,10,0],[39,47,39,48,0],[39,49,39,62,0],[39,63,39,64,0],[41,48,41,49,0],[41,50,41,72,0],[41,73,41,74,0],[44,9,44,10,0],[45,13,45,32,0],[47,13,47,20,0],[47,34,48,37,0],[48,66,48,67,0],[47,22,47,30,0],[49,13,49,14,0],[50,17,50,49,0],[51,17,51,37,0],[52,21,52,68,0],[53,17,53,36,0],[54,21,54,67,0],[55,17,55,39,0],[56,13,56,14,0],[47,31,47,33,0],[58,13,58,27,0],[59,9,59,10,0],[62,9,62,10,0],[64,13,64,80,0],[68,9,68,10,0],[71,9,71,10,0],[73,13,73,66,0],[77,13,77,47,0],[78,13,78,20,0],[78,35,78,41,0],[78,22,78,31,0],[79,13,79,14,0],[80,17,80,50,0],[81,17,81,41,0],[82,17,82,18,0],[83,21,83,62,0],[84,25,84,47,0],[85,17,85,18,0],[86,17,86,47,0],[87,13,87,14,0],[78,32,78,34,0],[88,13,88,27,0],[89,9,89,10,0],[92,9,92,10,0],[93,13,93,106,0],[94,9,94,10,0],[97,9,97,10,0],[98,13,98,124,0],[99,9,99,10,0],[16,9,16,45,0],[105,9,105,10,0],[106,13,106,39,0],[107,9,107,10,0],[111,9,111,10,0],[112,13,112,40,0],[113,9,113,10,0],[116,9,116,10,0],[117,13,117,30,0],[118,9,118,10,0],[119,48,119,49,0],[119,50,119,62,0],[119,63,119,64,0],[48,37,48,66,0]]);
+    </script>
+  </body>
+</html>
