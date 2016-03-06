@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\comparers\vectorcomparerbase.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public abstract class VectorComparerBase&lt;T&gt; : ComparerBaseGeneric&lt;T&gt;
+    {
+        protected bool AreVectorMagnitudeEqual(float a, float b, double floatingPointError)
+        {
+            if (Math.Abs(a) &lt; floatingPointError &amp;&amp; Math.Abs(b) &lt; floatingPointError)
+                return true;
+            if (Math.Abs(a - b) &lt; floatingPointError)
+                return true;
+            return false;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,10,0],[11,13,11,86,0],[12,17,12,29,0],[13,13,13,54,0],[14,17,14,29,0],[15,13,15,26,0],[16,9,16,10,0]]);
+    </script>
+  </body>
+</html>

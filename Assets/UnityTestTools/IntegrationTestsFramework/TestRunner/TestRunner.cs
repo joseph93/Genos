@@ -8,6 +8,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityTest.IntegrationTestRunner;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 namespace UnityTest
 {
@@ -309,7 +310,7 @@ namespace UnityTest
             string testScene = m_Configurator.GetIntegrationTestScenes (TestSceneNumber);
 
             if (testScene != null)
-                Application.LoadLevel(Path.GetFileNameWithoutExtension(testScene));
+                SceneManager.LoadScene(Path.GetFileNameWithoutExtension(testScene));
             else
             {
                 TestRunnerCallback.AllScenesFinished();

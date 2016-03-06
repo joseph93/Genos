@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\editor\groupbyexecutionmethodrenderer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class GroupByExecutionMethodRenderer : AssertionListRenderer&lt;CheckMethod&gt;
+    {
+        protected override IEnumerable&lt;IGrouping&lt;CheckMethod, AssertionComponent&gt;&gt; GroupResult(IEnumerable&lt;AssertionComponent&gt; assertionComponents)
+        {
+            var enumVals = Enum.GetValues(typeof(CheckMethod)).Cast&lt;CheckMethod&gt;();
+            var pairs = new List&lt;CheckFunctionAssertionPair&gt;();
+
+            foreach (var checkMethod in enumVals)
+            {
+                var components = assertionComponents.Where(c =&gt; (c.checkMethods &amp; checkMethod) == checkMethod);
+                var componentPairs = components.Select(a =&gt; new CheckFunctionAssertionPair {checkMethod = checkMethod, assertionComponent = a});
+                pairs.AddRange(componentPairs);
+            }
+            return pairs.GroupBy(pair =&gt; pair.checkMethod,
+                                 pair =&gt; pair.assertionComponent);
+        }
+
+        private class CheckFunctionAssertionPair
+        {
+            public AssertionComponent assertionComponent;
+            public CheckMethod checkMethod;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,9,11,10,0],[12,13,12,84,0],[13,13,13,64,0],[15,13,15,20,0],[15,41,15,49,0],[15,22,15,37,0],[16,13,16,14,0],[17,17,17,65,0],[17,110,17,112,0],[18,17,18,61,0],[18,143,18,145,0],[19,17,19,48,0],[20,13,20,14,0],[15,38,15,40,0],[21,13,21,42,0],[21,58,22,42,0],[22,65,22,67,0],[23,9,23,10,0],[17,65,17,110,0],[18,61,18,143,0],[21,42,21,58,0],[22,42,22,65,0]]);
+    </script>
+  </body>
+</html>

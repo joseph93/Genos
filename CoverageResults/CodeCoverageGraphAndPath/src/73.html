@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\memberresolver.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class MemberResolver
+    {
+        private object m_CallingObjectRef;
+        private MemberInfo[] m_Callstack;
+        private readonly GameObject m_GameObject;
+        private readonly string m_Path;
+
+        public MemberResolver(GameObject gameObject, string path)
+        {
+            path = path.Trim();
+            ValidatePath(path);
+
+            m_GameObject = gameObject;
+            m_Path = path.Trim();
+        }
+
+        public object GetValue(bool useCache)
+        {
+            if (useCache &amp;&amp; m_CallingObjectRef != null)
+            {
+                object val = m_CallingObjectRef;
+                for (int i = 0; i &lt; m_Callstack.Length; i++)
+                    val = GetValueFromMember(val, m_Callstack[i]);
+                return val;
+            }
+
+            object result = GetBaseObject();
+            var fullCallStack = GetCallstack();
+
+            m_CallingObjectRef = result;
+            var tempCallstack = new List&lt;MemberInfo&gt;();
+            for (int i = 0; i &lt; fullCallStack.Length; i++)
+            {
+                var member = fullCallStack[i];
+                result = GetValueFromMember(result, member);
+                tempCallstack.Add(member);
+				if (result == null) return null;
+				var type = result.GetType();
+
+				//String is not a value type but we don&#39;t want to cache it
+				if (!IsValueType(type) &amp;&amp; type != typeof(System.String))
+                {
+                    tempCallstack.Clear();
+                    m_CallingObjectRef = result;
+                }
+            }
+            m_Callstack = tempCallstack.ToArray();
+            return result;
+        }
+
+        public Type GetMemberType()
+        {
+            var callstack = GetCallstack();
+            if (callstack.Length == 0) return GetBaseObject().GetType();
+
+            var member = callstack[callstack.Length - 1];
+            if (member is FieldInfo)
+                return (member as FieldInfo).FieldType;
+            if (member is MethodInfo)
+                return (member as MethodInfo).ReturnType;
+            return null;
+        }
+
+        #region Static wrappers
+        public static bool TryGetMemberType(GameObject gameObject, string path, out Type value)
+        {
+            try
+            {
+                var mr = new MemberResolver(gameObject, path);
+                value = mr.GetMemberType();
+                return true;
+            }
+            catch (InvalidPathException)
+            {
+                value = null;
+                return false;
+            }
+        }
+
+        public static bool TryGetValue(GameObject gameObject, string path, out object value)
+        {
+            try
+            {
+                var mr = new MemberResolver(gameObject, path);
+                value = mr.GetValue(false);
+                return true;
+            }
+            catch (InvalidPathException)
+            {
+                value = null;
+                return false;
+            }
+        }
+        #endregion
+
+        private object GetValueFromMember(object obj, MemberInfo memberInfo)
+        {
+            if (memberInfo is FieldInfo)
+                return (memberInfo as FieldInfo).GetValue(obj);
+            if (memberInfo is MethodInfo)
+                return (memberInfo as MethodInfo).Invoke(obj, null);
+            throw new InvalidPathException(memberInfo.Name);
+        }
+
+        private object GetBaseObject()
+        {
+            if (string.IsNullOrEmpty(m_Path)) return m_GameObject;
+            var firstElement = m_Path.Split(&#39;.&#39;)[0];
+            var comp = m_GameObject.GetComponent(firstElement);
+            if (comp != null)
+                return comp;
+            return m_GameObject;
+        }
+
+        private MemberInfo[] GetCallstack()
+        {
+            if (m_Path == &quot;&quot;) return new MemberInfo[0];
+            var propsQueue = new Queue&lt;string&gt;(m_Path.Split(&#39;.&#39;));
+
+            Type type = GetBaseObject().GetType();
+            if (type != typeof(GameObject))
+                propsQueue.Dequeue();
+
+            PropertyInfo propertyTemp;
+            FieldInfo fieldTemp;
+            var list = new List&lt;MemberInfo&gt;();
+            while (propsQueue.Count != 0)
+            {
+                var nameToFind = propsQueue.Dequeue();
+                fieldTemp = GetField(type, nameToFind);
+                if (fieldTemp != null)
+                {
+                    type = fieldTemp.FieldType;
+                    list.Add(fieldTemp);
+                    continue;
+                }
+                propertyTemp = GetProperty(type, nameToFind);
+                if (propertyTemp != null)
+                {
+                    type = propertyTemp.PropertyType;
+                    var getMethod = GetGetMethod(propertyTemp);
+                    list.Add(getMethod);
+                    continue;
+                }
+                throw new InvalidPathException(nameToFind);
+            }
+            return list.ToArray();
+        }
+
+        private void ValidatePath(string path)
+        {
+            bool invalid = false;
+            if (path.StartsWith(&quot;.&quot;) || path.EndsWith(&quot;.&quot;))
+                invalid = true;
+            if (path.IndexOf(&quot;..&quot;) &gt;= 0)
+                invalid = true;
+            if (Regex.IsMatch(path, @&quot;\s&quot;))
+                invalid = true;
+
+            if (invalid)
+                throw new InvalidPathException(path);
+        }
+
+        private static bool IsValueType(Type type)
+        {
+            #if !UNITY_METRO
+            return type.IsValueType;
+            #else
+            return false;
+            #endif
+        }
+
+        private static FieldInfo GetField(Type type, string fieldName)
+        {
+            #if !UNITY_METRO
+            return type.GetField(fieldName);
+            #else
+            return null;
+            #endif
+        }
+
+        private static PropertyInfo GetProperty(Type type, string propertyName)
+        {
+            #if !UNITY_METRO
+            return type.GetProperty(propertyName);
+            #else
+            return null;
+            #endif
+        }
+
+        private static MethodInfo GetGetMethod(PropertyInfo propertyInfo)
+        {
+            #if !UNITY_METRO
+            return propertyInfo.GetGetMethod();
+            #else
+            return null;
+            #endif
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,9,16,66,0],[17,9,17,10,0],[18,13,18,32,0],[19,13,19,32,0],[21,13,21,39,0],[22,13,22,34,0],[23,9,23,10,0],[26,9,26,10,0],[27,13,27,56,0],[28,13,28,14,0],[29,17,29,49,0],[30,22,30,31,0],[31,21,31,67,0],[30,57,30,60,0],[30,33,30,55,0],[32,17,32,28,0],[35,13,35,45,0],[36,13,36,48,0],[38,13,38,41,0],[39,13,39,56,0],[40,18,40,27,0],[41,13,41,14,0],[42,17,42,47,0],[43,17,43,61,0],[44,17,44,43,0],[45,5,45,24,0],[45,25,45,37,0],[46,5,46,33,0],[49,5,49,61,0],[50,17,50,18,0],[51,21,51,43,0],[52,21,52,49,0],[53,17,53,18,0],[54,13,54,14,0],[40,55,40,58,0],[40,29,40,53,0],[55,13,55,51,0],[56,13,56,27,0],[57,9,57,10,0],[60,9,60,10,0],[61,13,61,44,0],[62,13,62,39,0],[62,40,62,73,0],[64,13,64,58,0],[65,13,65,37,0],[66,17,66,56,0],[67,13,67,38,0],[68,17,68,58,0],[69,13,69,25,0],[70,9,70,10,0],[74,9,74,10,0],[76,13,76,14,0],[77,17,77,63,0],[78,17,78,44,0],[79,17,79,29,0],[81,13,81,41,0],[82,13,82,14,0],[83,17,83,30,0],[84,17,84,30,0],[86,9,86,10,0],[89,9,89,10,0],[91,13,91,14,0],[92,17,92,63,0],[93,17,93,44,0],[94,17,94,29,0],[96,13,96,41,0],[97,13,97,14,0],[98,17,98,30,0],[99,17,99,30,0],[101,9,101,10,0],[105,9,105,10,0],[106,13,106,41,0],[107,17,107,64,0],[108,13,108,42,0],[109,17,109,69,0],[110,13,110,61,0],[111,9,111,10,0],[114,9,114,10,0],[115,13,115,46,0],[115,47,115,67,0],[116,13,116,53,0],[117,13,117,64,0],[118,13,118,30,0],[119,17,119,29,0],[120,13,120,33,0],[121,9,121,10,0],[124,9,124,10,0],[125,13,125,30,0],[125,31,125,56,0],[126,13,126,67,0],[128,13,128,51,0],[129,13,129,44,0],[130,17,130,38,0],[134,13,134,47,0],[136,13,136,14,0],[137,17,137,55,0],[138,17,138,56,0],[139,17,139,39,0],[140,17,140,18,0],[141,21,141,48,0],[142,21,142,41,0],[143,21,143,30,0],[145,17,145,62,0],[146,17,146,42,0],[147,17,147,18,0],[148,21,148,54,0],[149,21,149,64,0],[150,21,150,41,0],[151,21,151,30,0],[153,17,153,60,0],[135,13,135,42,0],[155,13,155,35,0],[156,9,156,10,0],[159,9,159,10,0],[160,13,160,34,0],[161,13,161,60,0],[162,17,162,32,0],[163,13,163,41,0],[164,17,164,32,0],[165,13,165,44,0],[166,17,166,32,0],[168,13,168,25,0],[169,17,169,54,0],[170,9,170,10,0],[173,9,173,10,0],[175,13,175,37,0],[179,9,179,10,0],[182,9,182,10,0],[184,13,184,45,0],[188,9,188,10,0],[191,9,191,10,0],[193,13,193,51,0],[197,9,197,10,0],[200,9,200,10,0],[202,13,202,48,0],[206,9,206,10,0]]);
+    </script>
+  </body>
+</html>

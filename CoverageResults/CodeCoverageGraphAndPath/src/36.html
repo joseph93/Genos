@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\editor\testcomponenteditor.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
+using Object = UnityEngine.Object;
+
+namespace UnityTest
+{
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(TestComponent))]
+    public class TestComponentEditor : Editor
+    {
+        private SerializedProperty m_ExpectException;
+        private SerializedProperty m_ExpectedExceptionList;
+        private SerializedProperty m_Ignored;
+        private SerializedProperty m_SucceedAssertions;
+        private SerializedProperty m_SucceedWhenExceptionIsThrown;
+        private SerializedProperty m_Timeout;
+
+        #region GUI Contens
+
+        private readonly GUIContent m_GUIExpectException = new GUIContent(&quot;Expect exception&quot;, &quot;Should the test expect an exception&quot;);
+        private readonly GUIContent m_GUIExpectExceptionList = new GUIContent(&quot;Expected exception list&quot;, &quot;A comma separated list of exception types which will not fail the test when thrown&quot;);
+        private readonly GUIContent m_GUIIgnore = new GUIContent(&quot;Ignore&quot;, &quot;Ignore the tests in runs&quot;);
+        private readonly GUIContent m_GUIIncludePlatforms = new GUIContent(&quot;Included platforms&quot;, &quot;Platform on which the test should run&quot;);
+        private readonly GUIContent m_GUISuccedOnAssertions = new GUIContent(&quot;Succeed on assertions&quot;, &quot;Succeed after all assertions are executed&quot;);
+        private readonly GUIContent m_GUISucceedWhenExceptionIsThrown = new GUIContent(&quot;Succeed when exception is thrown&quot;, &quot;Should the test succeed when an expected exception is thrown&quot;);
+        private readonly GUIContent m_GUITestName = new GUIContent(&quot;Test name&quot;, &quot;Name of the test (is equal to the GameObject name)&quot;);
+        private readonly GUIContent m_GUITimeout = new GUIContent(&quot;Timeout&quot;, &quot;Number of seconds after which the test will timeout&quot;);
+
+        #endregion
+
+        public void OnEnable()
+        {
+            m_Timeout = serializedObject.FindProperty(&quot;timeout&quot;);
+            m_Ignored = serializedObject.FindProperty(&quot;ignored&quot;);
+            m_SucceedAssertions = serializedObject.FindProperty(&quot;succeedAfterAllAssertionsAreExecuted&quot;);
+            m_ExpectException = serializedObject.FindProperty(&quot;expectException&quot;);
+            m_ExpectedExceptionList = serializedObject.FindProperty(&quot;expectedExceptionList&quot;);
+            m_SucceedWhenExceptionIsThrown = serializedObject.FindProperty(&quot;succeedWhenExceptionIsThrown&quot;);
+        }
+
+        public override void OnInspectorGUI()
+        {
+            var component = (TestComponent)target;
+
+            if (component.dynamic)
+            {
+				if(GUILayout.Button(&quot;Reload dynamic tests&quot;))
+				{
+					TestComponent.DestroyAllDynamicTests();
+	                Selection.objects = new Object[0];
+	                IntegrationTestsRunnerWindow.selectedInHierarchy = false;
+	                GUIUtility.ExitGUI();
+	                return;
+				}
+				EditorGUILayout.HelpBox(&quot;This is a test generated from code. No changes in the component will be persisted.&quot;, MessageType.Info);
+            }
+
+            if (component.IsTestGroup())
+            {
+                EditorGUI.BeginChangeCheck();
+                var newGroupName = EditorGUILayout.TextField(m_GUITestName, component.name);
+                if (EditorGUI.EndChangeCheck()) component.name = newGroupName;
+
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            serializedObject.Update();
+
+            EditorGUI.BeginDisabledGroup(serializedObject.isEditingMultipleObjects);
+
+            EditorGUI.BeginChangeCheck();
+            var newName = EditorGUILayout.TextField(m_GUITestName, component.name);
+            if (EditorGUI.EndChangeCheck()) component.name = newName;
+
+            if (component.platformsToIgnore == null)
+            {
+                component.platformsToIgnore = GetListOfIgnoredPlatforms(Enum.GetNames(typeof(TestComponent.IncludedPlatforms)), (int)component.includedPlatforms);
+            }
+
+            var enumList = Enum.GetNames(typeof(RuntimePlatform));
+            var flags = GetFlagList(enumList, component.platformsToIgnore);
+            flags = EditorGUILayout.MaskField(m_GUIIncludePlatforms, flags, enumList, EditorStyles.popup);
+            var newList = GetListOfIgnoredPlatforms(enumList, flags);
+            if (!component.dynamic)
+                component.platformsToIgnore = newList;
+            EditorGUI.EndDisabledGroup();
+
+            EditorGUILayout.PropertyField(m_Timeout, m_GUITimeout);
+            EditorGUILayout.PropertyField(m_Ignored, m_GUIIgnore);
+            EditorGUILayout.PropertyField(m_SucceedAssertions, m_GUISuccedOnAssertions);
+            EditorGUILayout.PropertyField(m_ExpectException, m_GUIExpectException);
+
+            EditorGUI.BeginDisabledGroup(!m_ExpectException.boolValue);
+            EditorGUILayout.PropertyField(m_ExpectedExceptionList, m_GUIExpectExceptionList);
+            EditorGUILayout.PropertyField(m_SucceedWhenExceptionIsThrown, m_GUISucceedWhenExceptionIsThrown);
+            EditorGUI.EndDisabledGroup();
+
+            if (!component.dynamic)
+                serializedObject.ApplyModifiedProperties();
+            if(GUI.changed)
+                EditorApplication.MarkSceneDirty();
+        }
+
+        private string[] GetListOfIgnoredPlatforms(string[] enumList, int flags)
+        {
+            var notSelectedPlatforms = new List&lt;string&gt;();
+            for (int i = 0; i &lt; enumList.Length; i++)
+            {
+                var sel = (flags &amp; (1 &lt;&lt; i)) != 0;
+                if (!sel) notSelectedPlatforms.Add(enumList[i]);
+            }
+            return notSelectedPlatforms.ToArray();
+        }
+
+        private int GetFlagList(string[] enumList, string[] platformsToIgnore)
+        {
+            int flags = ~0;
+            for (int i = 0; i &lt; enumList.Length; i++)
+                if (platformsToIgnore != null &amp;&amp; platformsToIgnore.Any(s =&gt; s == enumList[i]))
+                    flags &amp;= ~(1 &lt;&lt; i);
+            return flags;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[35,9,35,10,0],[36,13,36,66,0],[37,13,37,66,0],[38,13,38,105,0],[39,13,39,82,0],[40,13,40,94,0],[41,13,41,108,0],[42,9,42,10,0],[45,9,45,10,0],[46,13,46,51,0],[48,13,48,35,0],[49,13,49,14,0],[50,5,50,49,0],[51,5,51,6,0],[52,6,52,45,0],[53,18,53,52,0],[54,18,54,75,0],[55,18,55,39,0],[56,18,56,25,0],[58,5,58,133,0],[59,13,59,14,0],[61,13,61,41,0],[62,13,62,14,0],[63,17,63,46,0],[64,17,64,93,0],[65,17,65,48,0],[65,49,65,79,0],[67,17,67,60,0],[68,17,68,24,0],[71,13,71,39,0],[73,13,73,85,0],[75,13,75,42,0],[76,13,76,84,0],[77,13,77,44,0],[77,45,77,70,0],[79,13,79,53,0],[80,13,80,14,0],[81,17,81,163,0],[82,13,82,14,0],[84,13,84,67,0],[85,13,85,76,0],[86,13,86,107,0],[87,13,87,70,0],[88,13,88,36,0],[89,17,89,55,0],[90,13,90,42,0],[92,13,92,68,0],[93,13,93,67,0],[94,13,94,89,0],[95,13,95,84,0],[97,13,97,72,0],[98,13,98,94,0],[99,13,99,110,0],[100,13,100,42,0],[102,13,102,36,0],[103,17,103,60,0],[104,13,104,28,0],[105,17,105,52,0],[106,9,106,10,0],[109,9,109,10,0],[110,13,110,59,0],[111,18,111,27,0],[112,13,112,14,0],[113,17,113,51,0],[114,17,114,26,0],[114,27,114,65,0],[115,13,115,14,0],[111,50,111,53,0],[111,29,111,48,0],[116,13,116,51,0],[117,9,117,10,0],[120,9,120,10,0],[121,13,121,28,0],[122,18,122,27,0],[123,17,123,77,0],[123,93,123,95,0],[124,21,124,40,0],[122,50,122,53,0],[122,29,122,48,0],[125,13,125,26,0],[126,9,126,10,0],[23,9,23,134,0],[24,9,24,192,0],[25,9,25,104,0],[26,9,26,139,0],[27,9,27,148,0],[28,9,28,188,0],[29,9,29,135,0],[30,9,30,133,0],[123,77,123,93,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\beacon\ibeaconserver.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Runtime.InteropServices;
+using System;
+
+namespace Assets.Scripts
+{
+
+    [ExecuteInEditMode]
+    public class iBeaconServer : MonoBehaviour
+    {
+#if UNITY_IOS	
+	[DllImport (&quot;__Internal&quot;)]
+	private static extern void InitBeaconServer(string uuid, string region, bool shouldLog, int major, int minor);
+	
+	[DllImport (&quot;__Internal&quot;)]
+	private static extern void Transmit(bool transmit);
+#endif
+
+        public bool m_generate;
+        public string m_uuid;
+        public string m_identifier;
+        public int m_major;
+        public int m_minor;
+
+        private static iBeaconServer m_instance;
+
+        void Awake()
+        {
+            m_instance = this;
+        }
+
+        // Use this for initialization
+        void Start()
+        {
+        }
+
+        public static void Init()
+        {
+#if UNITY_IOS	
+		InitBeaconServer(m_instance.m_uuid,m_instance.m_identifier,true,m_instance.m_major,m_instance.m_minor);	
+#endif
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Application.isEditor)
+            {
+                if (m_generate)
+                {
+                    m_generate = false;
+                    m_uuid = System.Guid.NewGuid().ToString();
+                }
+            }
+        }
+
+        public static void Transmit()
+        {
+#if UNITY_IOS	
+		Transmit(true);
+#endif
+        }
+
+        public static void StopTransmit()
+        {
+#if UNITY_IOS	
+		Transmit(false);
+#endif
+        }
+
+        public bool Equals(Beacon a)
+        {
+            if (a == null)
+                return false;
+            return a.UUID.ToLower().Equals(m_uuid.ToLower());
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[28,9,28,10,0],[29,13,29,31,0],[30,9,30,10,0],[34,9,34,10,0],[35,9,35,10,0],[38,9,38,10,0],[42,9,42,10,0],[46,9,46,10,0],[47,13,47,38,0],[48,13,48,14,0],[49,17,49,32,0],[50,17,50,18,0],[51,21,51,40,0],[52,21,52,63,0],[53,17,53,18,0],[54,13,54,14,0],[55,9,55,10,0],[58,9,58,10,0],[62,9,62,10,0],[65,9,65,10,0],[69,9,69,10,0],[72,9,72,10,0],[73,13,73,27,0],[74,17,74,30,0],[75,13,75,62,0],[76,9,76,10,0]]);
+    </script>
+  </body>
+</html>

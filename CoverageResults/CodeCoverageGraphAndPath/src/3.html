@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\editor\assertionstripper.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEditor.Callbacks;
+using UnityEngine;
+using UnityTest;
+using Object = UnityEngine.Object;
+
+public class AssertionStripper
+{
+    [PostProcessScene]
+    public static void OnPostprocessScene()
+    {
+        if (Debug.isDebugBuild) return;
+        RemoveAssertionsFromGameObjects();
+    }
+
+    private static void RemoveAssertionsFromGameObjects()
+    {
+        var allAssertions = Resources.FindObjectsOfTypeAll(typeof(AssertionComponent)) as AssertionComponent[];
+        foreach (var assertion in allAssertions)
+        {
+            Object.DestroyImmediate(assertion);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,5,12,6,0],[13,9,13,32,0],[13,33,13,40,0],[14,9,14,43,0],[15,5,15,6,0],[18,5,18,6,0],[19,9,19,112,0],[20,9,20,16,0],[20,35,20,48,0],[20,18,20,31,0],[21,9,21,10,0],[22,13,22,48,0],[23,9,23,10,0],[20,32,20,34,0],[24,5,24,6,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\comparers\isrenderedbycamera.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class IsRenderedByCamera : ComparerBaseGeneric&lt;Renderer, Camera&gt;
+    {
+        public enum CompareType
+        {
+            IsVisible,
+            IsNotVisible,
+        };
+
+        public CompareType compareType;
+
+        protected override bool Compare(Renderer renderer, Camera camera)
+        {
+            var planes = GeometryUtility.CalculateFrustumPlanes(camera);
+            var isVisible = GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+            switch (compareType)
+            {
+                case CompareType.IsVisible:
+                    return isVisible;
+                case CompareType.IsNotVisible:
+                    return !isVisible;
+            }
+            throw new Exception();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,9,18,10,0],[19,13,19,73,0],[20,13,20,85,0],[21,13,21,33,0],[24,21,24,38,0],[26,21,26,39,0],[28,13,28,35,0],[29,9,29,10,0]]);
+    </script>
+  </body>
+</html>

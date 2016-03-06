@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Assets.Scripts;
 
 
@@ -77,9 +78,16 @@ public class Node : MonoBehaviour {
         return adjacentNodes;
     } 
 
-    public void addAdjacentNode(Dictionary<Node, float> aN)
+    //JOSEPH: Refactored - adds a dictionary of the adjacent nodes for this node
+    public void addListOfAdjacentNodes(Dictionary<Node, float> aN)
     {
         adjacentNodes = aN;
+    }
+
+    //JOSEPH: Added - Adds an adjacent node to the dictionary
+    public void addAdjacentNode(Node adjacentNode, float weight)
+    {
+        adjacentNodes.Add(adjacentNode, weight);
     }
 
     public bool hasAdjacentNode(Node n)

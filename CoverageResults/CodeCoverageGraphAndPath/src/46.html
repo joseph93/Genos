@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\quit\quitspash.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using System.Collections;
+using UnityEngine.SceneManagement;
+
+public class QuitSpash : MonoBehaviour {
+
+    public Text text;
+    public Image icon;
+    public Button yes;
+    public Button no;
+    public GameObject quitPanelObject;
+
+    private static QuitSpash quitSpash;
+
+    public static QuitSpash Instance()
+    {
+        if (!quitSpash)
+        {
+            quitSpash = FindObjectOfType(typeof(QuitSpash)) as QuitSpash;
+            if (!quitSpash)
+            {
+                Debug.Log(&quot;Error not created.&quot;);
+            }
+        }
+        return quitSpash;
+    }
+
+    public void quitChoice(string question, UnityAction yesEvent, UnityAction noEvent)
+    {
+        quitPanelObject.SetActive(true);
+        yes.onClick.RemoveAllListeners();
+        yes.onClick.AddListener(yesEvent);
+        yes.onClick.AddListener(closeQuitPanel);
+
+        no.onClick.RemoveAllListeners();
+        no.onClick.AddListener(noEvent);
+        no.onClick.AddListener(closeQuitPanel);
+
+        icon.gameObject.SetActive(true);
+        yes.gameObject.SetActive(true);
+        no.gameObject.SetActive(true);
+
+        text.text = question;
+    }
+
+    public void closeQuitPanel()
+    {
+        quitPanelObject.SetActive(false);
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,5,18,6,0],[19,9,19,24,0],[20,9,20,10,0],[21,13,21,74,0],[22,13,22,28,0],[23,13,23,14,0],[24,17,24,49,0],[25,13,25,14,0],[26,9,26,10,0],[27,9,27,26,0],[28,5,28,6,0],[31,5,31,6,0],[32,9,32,41,0],[33,9,33,42,0],[34,9,34,43,0],[35,9,35,49,0],[37,9,37,41,0],[38,9,38,41,0],[39,9,39,48,0],[41,9,41,41,0],[42,9,42,40,0],[43,9,43,39,0],[45,9,45,30,0],[46,5,46,6,0],[49,5,49,6,0],[50,9,50,42,0],[51,5,51,6,0]]);
+    </script>
+  </body>
+</html>

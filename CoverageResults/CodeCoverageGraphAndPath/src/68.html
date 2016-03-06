@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\comparers\vector2comparer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class Vector2Comparer : VectorComparerBase&lt;Vector2&gt;
+    {
+        public enum CompareType
+        {
+            MagnitudeEquals,
+            MagnitudeNotEquals
+        }
+
+        public CompareType compareType;
+        public float floatingPointError = 0.0001f;
+
+        protected override bool Compare(Vector2 a, Vector2 b)
+        {
+            switch (compareType)
+            {
+                case CompareType.MagnitudeEquals:
+                    return AreVectorMagnitudeEqual(a.magnitude,
+                                                   b.magnitude, floatingPointError);
+                case CompareType.MagnitudeNotEquals:
+                    return !AreVectorMagnitudeEqual(a.magnitude,
+                                                    b.magnitude, floatingPointError);
+            }
+            throw new Exception();
+        }
+        public override int GetDepthOfSearch()
+        {
+            return 3;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,9,19,10,0],[20,13,20,33,0],[23,21,24,85,0],[26,21,27,86,0],[29,13,29,35,0],[30,9,30,10,0],[32,9,32,10,0],[33,13,33,22,0],[34,9,34,10,0],[16,9,16,51,0]]);
+    </script>
+  </body>
+</html>

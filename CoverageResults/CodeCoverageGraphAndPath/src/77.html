@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\resultdto.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest
+{
+    [Serializable]
+    public class ResultDTO
+    {
+        public MessageType messageType;
+        public int levelCount;
+        public int loadedLevel;
+        public string loadedLevelName;
+        public string testName;
+        public float testTimeout;
+        public ITestResult testResult;
+
+        private ResultDTO(MessageType messageType)
+        {
+            this.messageType = messageType;
+            levelCount = Application.levelCount;
+            loadedLevel = Application.loadedLevel;
+            loadedLevelName = Application.loadedLevelName;
+        }
+
+        public enum MessageType : byte
+        {
+            Ping,
+            RunStarted,
+            RunFinished,
+            TestStarted,
+            TestFinished,
+            RunInterrupted,
+            AllScenesFinished
+        }
+
+        public static ResultDTO CreatePing()
+        {
+            var dto = new ResultDTO(MessageType.Ping);
+            return dto;
+        }
+
+        public static ResultDTO CreateRunStarted()
+        {
+            var dto = new ResultDTO(MessageType.RunStarted);
+            return dto;
+        }
+
+        public static ResultDTO CreateRunFinished(List&lt;TestResult&gt; testResults)
+        {
+            var dto = new ResultDTO(MessageType.RunFinished);
+            return dto;
+        }
+
+        public static ResultDTO CreateTestStarted(TestResult test)
+        {
+            var dto = new ResultDTO(MessageType.TestStarted);
+            dto.testName = test.FullName;
+            dto.testTimeout = test.TestComponent.timeout;
+            return dto;
+        }
+
+        public static ResultDTO CreateTestFinished(TestResult test)
+        {
+            var dto = new ResultDTO(MessageType.TestFinished);
+            dto.testName = test.FullName;
+            dto.testResult = GetSerializableTestResult(test);
+            return dto;
+        }
+
+        public static ResultDTO CreateAllScenesFinished()
+        {
+            var dto = new ResultDTO(MessageType.AllScenesFinished);
+            return dto;
+        }
+
+        private static ITestResult GetSerializableTestResult(TestResult test)
+        {
+            var str = new SerializableTestResult();
+
+            str.resultState = test.ResultState;
+            str.message = test.messages;
+            str.executed = test.Executed;
+            str.name = test.Name;
+            str.fullName = test.FullName;
+            str.id = test.id;
+            str.isSuccess = test.IsSuccess;
+            str.duration = test.duration;
+            str.stackTrace = test.stacktrace;
+            str.isIgnored = test.IsIgnored;
+
+            return str;
+        }
+    }
+
+    #region SerializableTestResult
+    [Serializable]
+    internal class SerializableTestResult : ITestResult
+    {
+        public TestResultState resultState;
+        public string message;
+        public bool executed;
+        public string name;
+        public string fullName;
+        public string id;
+        public bool isSuccess;
+        public double duration;
+        public string stackTrace;
+        public bool isIgnored;
+
+        public TestResultState ResultState
+        {
+            get { return resultState; }
+        }
+
+        public string Message
+        {
+            get { return message; }
+        }
+
+        public string Logs
+        {
+            get { return null; }
+        }
+
+        public bool Executed
+        {
+            get { return executed; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+        }
+
+        public string FullName
+        {
+            get { return fullName; }
+        }
+
+        public string Id
+        {
+            get { return id; }
+        }
+
+        public bool IsSuccess
+        {
+            get { return isSuccess; }
+        }
+
+        public double Duration
+        {
+            get { return duration; }
+        }
+
+        public string StackTrace
+        {
+            get { return stackTrace; }
+        }
+        
+        public bool IsIgnored 
+        {
+            get { return isIgnored; }
+        }
+    }
+    #endregion
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,9,18,51,0],[19,9,19,10,0],[20,13,20,44,0],[21,13,21,49,0],[22,13,22,51,0],[23,13,23,59,0],[24,9,24,10,0],[38,9,38,10,0],[39,13,39,55,0],[40,13,40,24,0],[41,9,41,10,0],[44,9,44,10,0],[45,13,45,61,0],[46,13,46,24,0],[47,9,47,10,0],[50,9,50,10,0],[51,13,51,62,0],[52,13,52,24,0],[53,9,53,10,0],[56,9,56,10,0],[57,13,57,62,0],[58,13,58,42,0],[59,13,59,58,0],[60,13,60,24,0],[61,9,61,10,0],[64,9,64,10,0],[65,13,65,63,0],[66,13,66,42,0],[67,13,67,62,0],[68,13,68,24,0],[69,9,69,10,0],[72,9,72,10,0],[73,13,73,68,0],[74,13,74,24,0],[75,9,75,10,0],[78,9,78,10,0],[79,13,79,52,0],[81,13,81,48,0],[82,13,82,41,0],[83,13,83,42,0],[84,13,84,34,0],[85,13,85,42,0],[86,13,86,30,0],[87,13,87,44,0],[88,13,88,42,0],[89,13,89,46,0],[90,13,90,44,0],[92,13,92,24,0],[93,9,93,10,0],[113,17,113,18,0],[113,19,113,38,0],[113,39,113,40,0],[118,17,118,18,0],[118,19,118,34,0],[118,35,118,36,0],[123,17,123,18,0],[123,19,123,31,0],[123,32,123,33,0],[128,17,128,18,0],[128,19,128,35,0],[128,36,128,37,0],[133,17,133,18,0],[133,19,133,31,0],[133,32,133,33,0],[138,17,138,18,0],[138,19,138,35,0],[138,36,138,37,0],[143,17,143,18,0],[143,19,143,29,0],[143,30,143,31,0],[148,17,148,18,0],[148,19,148,36,0],[148,37,148,38,0],[153,17,153,18,0],[153,19,153,35,0],[153,36,153,37,0],[158,17,158,18,0],[158,19,158,37,0],[158,38,158,39,0],[163,17,163,18,0],[163,19,163,36,0],[163,37,163,38,0]]);
+    </script>
+  </body>
+</html>

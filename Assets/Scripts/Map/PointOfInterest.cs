@@ -38,7 +38,7 @@ namespace Assets.Scripts
 
         public void makeIconBigger()
         {
-            transform.localScale = new Vector3(0.5f, 0.5f, 1);
+            transform.localScale = new Vector3(0.1f, 0.1f, 1);
             detected = true;
         }
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\map\labelednode.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Assets.Scripts
+{
+    public class LabeledNode : Node
+    {
+        public enum Label
+        {
+            RAMP,
+            STAIRS,
+            ELEVATOR,
+            NONE,
+            WASHROOM,
+            EXIT,
+            ENTRANCE,
+            EMERGENCY
+        }
+
+        private Label label { get; set; }
+
+        public LabeledNode(int id, int x, int y, int floorNumber, Label label) : base(id, x, y, floorNumber)
+        {
+            this.label = label;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[22,31,22,35,0],[22,36,22,40,0],[24,82,24,109,0],[25,9,25,10,0],[26,13,26,32,0],[27,9,27,10,0]]);
+    </script>
+  </body>
+</html>

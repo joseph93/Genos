@@ -1,5 +1,11 @@
-projectKey=Nippertrails:Sprint2
+projectKey=sonarqube_project_key
 serverUrl=http://localhost:9000
+<<<<<<< HEAD
 dashboardUrl=http://localhost:9000/dashboard/index/Nippertrails:Sprint2
 ceTaskId=AVNJJQbRQ6LSyAVMGbUO
 ceTaskUrl=http://localhost:9000/api/ce/task?id=AVNJJQbRQ6LSyAVMGbUO
+=======
+dashboardUrl=http://localhost:9000/dashboard/index/sonarqube_project_key
+ceTaskId=AVNIxjLa9DN1HIImizde
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVNIxjLa9DN1HIImizde
+>>>>>>> 98a41fde4b7d6b9e60a30aacb6a607e8bff66414

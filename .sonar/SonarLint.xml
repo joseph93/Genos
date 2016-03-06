@@ -273,6 +273,7 @@
     </Rule>
   </Rules>
   <Files>
+<<<<<<< HEAD
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\Beacon.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\NipperTour.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\Vibration.cs</File>
@@ -302,5 +303,127 @@
     <File>C:\Users\IhceneCh\Documents\GitHub\GitHub.CSharpTests4\Assets\Scripts\Map\GraphTests.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\GitHub.CSharpTests4\Assets\Scripts\Map\NodeTests.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\GitHub.CSharpTests4\Properties\AssemblyInfo.cs</File>
+=======
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Beacon\Beacon.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Beacon\NipperTour.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Beacon\Vibration.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Beacon\iBeaconReceiver.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Beacon\iBeaconRegion.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Beacon\iBeaconServer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Beacon\iBeaconServerExample.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\BringToFront.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Camera\TouchScreenCamera.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\DisplayManager.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\DrawLine.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\FloorManager.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\LoadingScene.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\Edge.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\Graph.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\LabeledNode.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\Map.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\Node.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\PointOfInterest.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\StoryPoint.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Map\Storyline.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\ModalWindow.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Path\PathFollower.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Path\ShortestPathCreator.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Quit\QuitSpash.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\Quit\XQuitButton.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\TestModalWindow.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Scripts\TourButton.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Source\iBeacon\Editor\PostProcessBuildTrigger.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Tests\Editor\GraphTests.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Tests\Editor\NodeTests.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Tests\Editor\PathFollowerTest.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\Tests\Editor\TouchScreenCameraTest.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\AssertionComponent.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\AssertionException.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Assertions.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\CheckMethod.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\ActionBase.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\BoolComparer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\ColliderComparer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\ComparerBase.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\FloatComparer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\GeneralComparer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\IntComparer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\IsRenderedByCamera.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\StringComparer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\TransformComparer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\ValueDoesNotChange.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\Vector2Comparer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\Vector3Comparer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\Vector4Comparer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Comparers\VectorComparerBase.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\AssertionComponentEditor.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\AssertionExplorerWindow.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\AssertionListRenderer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\AssertionStripper.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\DropDownControl.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\GroupByComparerRenderer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\GroupByExecutionMethodRenderer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\GroupByGORenderer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\GroupByNothingRenderer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\GroupByTestsRenderer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\PropertyPathSelector.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\Editor\PropertyResolver.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\InvalidPathException.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Assertions\MemberResolver.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\Editor\Icons.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\Editor\ProjectSettingsBase.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\Editor\ResultWriter\ResultSummarizer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\Editor\ResultWriter\StackTraceFilter.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\Editor\ResultWriter\XmlResultWriter.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\Editor\Styles.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\Editor\TestFilterSettings.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\ITestResult.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Common\TestResultState.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Scripts\GameScore.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\CodeBasedAssertionExample.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\CustomComponent.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\DynamicIntegrationTest.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\ThrowCustomException.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\DTOFormatter.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Batch.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\EditorReferencesUtil.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\GuiHelper.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\IntegrationTestsHierarchyAnnotation.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\IntegrationTestsRunnerSettings.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\IntegrationTestsRunnerWindow.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\NetworkResultsReceiver.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\PlatformRunner.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\PlatformRunnerConfiguration.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\PlatformRunnerSettings.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\PlatformRunnerSettingsWindow.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\PlayerSettingConfigurator.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\IntegrationTestGroupLine.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\IntegrationTestLine.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\IntegrationTestRendererBase.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\RenderingOptions.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\TestComponentEditor.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\ITestRunnerCallback.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\IntegrationTest.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\IntegrationTestAttribute.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\IntegrationTestsProvider.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\NetworkResultSender.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\ResultDTO.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestComponent.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestResult.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestResultRenderer.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunner.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerCallbackList.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerConfigurator.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Assets\UnityTestTools\IntegrationTestsFramework\TestingAssets\CallTesting.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\CoverageResults\CodeCoverageGraphAndPath.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\CoverageResults\CodeCoverageGraphTests.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\GitHub.CSharpTests4\Assets\Scripts\Map\GraphTests.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\GitHub.CSharpTests4\Assets\Scripts\Map\NodeTests.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\GitHub.CSharpTests4\Properties\AssemblyInfo.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\GitHub.CSharpTests4\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\GitHub.CSharpTests4\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\GitHub.CSharpTests4\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs</File>
+    <File>C:\Users\Joseph\Documents\GitHub\Properties\AssemblyInfo.cs</File>
+>>>>>>> 98a41fde4b7d6b9e60a30aacb6a607e8bff66414
   </Files>
 </AnalysisInput>

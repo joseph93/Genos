@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\editor\integrationtestshierarchyannotation.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+using UnityEditor;
+
+namespace UnityTest
+{
+
+    [InitializeOnLoad]
+    public class IntegrationTestsHierarchyAnnotation {
+    
+        static IntegrationTestsHierarchyAnnotation()
+        {
+            EditorApplication.hierarchyWindowItemOnGUI += DoAnnotationGUI;
+        }
+    
+        public static void DoAnnotationGUI(int id, Rect rect)
+        {
+            var obj = EditorUtility.InstanceIDToObject(id) as GameObject;
+            if(!obj) return;
+            
+            var tc = obj.GetComponent&lt;TestComponent&gt;();
+            if(!tc) return;
+            
+            if (!EditorApplication.isPlayingOrWillChangePlaymode
+                &amp;&amp; rect.Contains(Event.current.mousePosition)
+                &amp;&amp; Event.current.type == EventType.MouseDown
+                &amp;&amp; Event.current.button == 1)
+            {
+                IntegrationTestRendererBase.DrawContextMenu(tc);
+                Event.current.Use ();
+            }
+            
+            EditorGUIUtility.SetIconSize(new Vector2(15, 15));
+            var result = IntegrationTestsRunnerWindow.GetResultForTest(tc);
+            if (result != null)
+            {
+                var icon = result.Executed ? IntegrationTestRendererBase.GetIconForResult(result.resultType) : Icons.UnknownImg;
+                EditorGUI.LabelField(new Rect(rect.xMax - 18, rect.yMin - 2, rect.width, rect.height), new GUIContent(icon));
+            }
+            EditorGUIUtility.SetIconSize(Vector2.zero);
+        }
+    }
+
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,10,0],[13,13,13,75,0],[14,9,14,10,0],[17,9,17,10,0],[18,13,18,74,0],[19,13,19,21,0],[19,22,19,29,0],[21,13,21,56,0],[22,13,22,20,0],[22,21,22,28,0],[24,13,27,46,0],[28,13,28,14,0],[29,17,29,65,0],[30,17,30,38,0],[31,13,31,14,0],[33,13,33,63,0],[34,13,34,76,0],[35,13,35,32,0],[36,13,36,14,0],[37,17,37,129,0],[38,17,38,126,0],[39,13,39,14,0],[40,13,40,56,0],[41,9,41,10,0]]);
+    </script>
+  </body>
+</html>
