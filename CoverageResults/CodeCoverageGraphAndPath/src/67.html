@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\comparers\valuedoesnotchange.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class ValueDoesNotChange : ActionBase
+    {
+        private object m_Value;
+
+        protected override bool Compare(object a)
+        {
+            if (m_Value == null)
+                m_Value = a;
+            if (!m_Value.Equals(a))
+                return false;
+            return true;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,10,0],[13,13,13,33,0],[14,17,14,29,0],[15,13,15,36,0],[16,17,16,30,0],[17,13,17,25,0],[18,9,18,10,0]]);
+    </script>
+  </body>
+</html>

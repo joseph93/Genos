@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\loadingscene.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
+
+
+//Ihcene: This loads the main screen automatically
+public class LoadingScene : MonoBehaviour {
+
+	// Use this for initialization
+	void Start ()
+	{
+	    StartCoroutine(loadingScreen());
+	}
+
+    IEnumerator loadingScreen()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(&quot;Menu&quot;);
+    }
+
+	// Update is called once per frame
+	void Update () {
+	
+	}
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,2,11,3,0],[12,6,12,38,0],[13,2,13,3,0],[22,17,22,18,0],[24,2,24,3,0],[16,5,16,6,0],[17,9,17,44,0],[18,9,18,40,0],[19,5,19,6,0]]);
+    </script>
+  </body>
+</html>

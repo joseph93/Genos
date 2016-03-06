@@ -23,6 +23,7 @@ namespace Assets.Scripts.Path
 
         void Update()
         {
+            //JOSEPH: Get the path from the shortest_path metod in NipperTour and draw it.
             shortest_path = nipper.returnPathWithTouch();
             if (shortest_path != null)
             {

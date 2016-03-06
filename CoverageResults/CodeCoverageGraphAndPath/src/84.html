@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\testrunnercallbacklist.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest.IntegrationTestRunner
+{
+    public class TestRunnerCallbackList : ITestRunnerCallback
+    {
+        private readonly List&lt;ITestRunnerCallback&gt; m_CallbackList = new List&lt;ITestRunnerCallback&gt;();
+
+        public void Add(ITestRunnerCallback callback)
+        {
+            m_CallbackList.Add(callback);
+        }
+
+        public void Remove(ITestRunnerCallback callback)
+        {
+            m_CallbackList.Remove(callback);
+        }
+
+        public void RunStarted(string platform, List&lt;TestComponent&gt; testsToRun)
+        {
+            foreach (var unitTestRunnerCallback in m_CallbackList)
+            {
+                unitTestRunnerCallback.RunStarted(platform, testsToRun);
+            }
+        }
+
+        public void RunFinished(List&lt;TestResult&gt; testResults)
+        {
+            foreach (var unitTestRunnerCallback in m_CallbackList)
+            {
+                unitTestRunnerCallback.RunFinished(testResults);
+            }
+        }
+
+        public void AllScenesFinished()
+        {
+            foreach (var unitTestRunnerCallback in m_CallbackList)
+            {
+                unitTestRunnerCallback.AllScenesFinished();
+            }
+        }
+
+        public void TestStarted(TestResult test)
+        {
+            foreach (var unitTestRunnerCallback in m_CallbackList)
+            {
+                unitTestRunnerCallback.TestStarted(test);
+            }
+        }
+
+        public void TestFinished(TestResult test)
+        {
+            foreach (var unitTestRunnerCallback in m_CallbackList)
+            {
+                unitTestRunnerCallback.TestFinished(test);
+            }
+        }
+
+        public void TestRunInterrupted(List&lt;ITestComponent&gt; testsNotRun)
+        {
+            foreach (var unitTestRunnerCallback in m_CallbackList)
+            {
+                unitTestRunnerCallback.TestRunInterrupted(testsNotRun);
+            }
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,10,0],[13,13,13,42,0],[14,9,14,10,0],[17,9,17,10,0],[18,13,18,45,0],[19,9,19,10,0],[22,9,22,10,0],[23,13,23,20,0],[23,52,23,66,0],[23,22,23,48,0],[24,13,24,14,0],[25,17,25,73,0],[26,13,26,14,0],[23,49,23,51,0],[27,9,27,10,0],[30,9,30,10,0],[31,13,31,20,0],[31,52,31,66,0],[31,22,31,48,0],[32,13,32,14,0],[33,17,33,65,0],[34,13,34,14,0],[31,49,31,51,0],[35,9,35,10,0],[38,9,38,10,0],[39,13,39,20,0],[39,52,39,66,0],[39,22,39,48,0],[40,13,40,14,0],[41,17,41,60,0],[42,13,42,14,0],[39,49,39,51,0],[43,9,43,10,0],[46,9,46,10,0],[47,13,47,20,0],[47,52,47,66,0],[47,22,47,48,0],[48,13,48,14,0],[49,17,49,58,0],[50,13,50,14,0],[47,49,47,51,0],[51,9,51,10,0],[54,9,54,10,0],[55,13,55,20,0],[55,52,55,66,0],[55,22,55,48,0],[56,13,56,14,0],[57,17,57,59,0],[58,13,58,14,0],[55,49,55,51,0],[59,9,59,10,0],[62,9,62,10,0],[63,13,63,20,0],[63,52,63,66,0],[63,22,63,48,0],[64,13,64,14,0],[65,17,65,72,0],[66,13,66,14,0],[63,49,63,51,0],[67,9,67,10,0],[9,9,9,101,0]]);
+    </script>
+  </body>
+</html>

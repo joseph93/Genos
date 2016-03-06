@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\examples\integrationtestsframeworkexamples\dynamicintegrationtest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+[IntegrationTest.DynamicTestAttribute(&quot;ExampleIntegrationTests&quot;)]
+// [IntegrationTest.Ignore]
+[IntegrationTest.ExpectExceptions(false, typeof(ArgumentException))]
+[IntegrationTest.SucceedWithAssertions]
+[IntegrationTest.TimeoutAttribute(1)]
+[IntegrationTest.ExcludePlatformAttribute(RuntimePlatform.Android, RuntimePlatform.LinuxPlayer)]
+public class DynamicIntegrationTest : MonoBehaviour
+{
+    public void Start()
+    {
+        IntegrationTest.Pass(gameObject);
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,5,14,6,0],[15,9,15,42,0],[16,5,16,6,0]]);
+    </script>
+  </body>
+</html>

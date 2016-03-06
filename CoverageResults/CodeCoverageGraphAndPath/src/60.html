@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\comparers\comparerbase.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using Object = System.Object;
+
+namespace UnityTest
+{
+    public abstract class ComparerBase : ActionBase
+    {
+        public enum CompareToType
+        {
+            CompareToObject,
+            CompareToConstantValue,
+            CompareToNull
+        }
+
+        public CompareToType compareToType = CompareToType.CompareToObject;
+
+        public GameObject other;
+        protected object m_ObjOtherVal;
+        public string otherPropertyPath = &quot;&quot;;
+        private MemberResolver m_MemberResolverB;
+
+        protected abstract bool Compare(object a, object b);
+
+        protected override bool Compare(object objValue)
+        {
+            if (compareToType == CompareToType.CompareToConstantValue)
+            {
+                m_ObjOtherVal = ConstValue;
+            }
+            else if (compareToType == CompareToType.CompareToNull)
+            {
+                m_ObjOtherVal = null;
+            }
+            else
+            {
+                if (other == null)
+                    m_ObjOtherVal = null;
+                else
+                {
+                    if (m_MemberResolverB == null)
+                        m_MemberResolverB = new MemberResolver(other, otherPropertyPath);
+                    m_ObjOtherVal = m_MemberResolverB.GetValue(UseCache);
+                }
+            }
+            return Compare(objValue, m_ObjOtherVal);
+        }
+
+        public virtual Type[] GetAccepatbleTypesForB()
+        {
+            return null;
+        }
+
+        #region Const value
+
+        public virtual object ConstValue { get; set; }
+        public virtual object GetDefaultConstValue()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        public override string GetFailureMessage()
+        {
+            var message = GetType().Name + &quot; assertion failed.\n&quot; + go.name + &quot;.&quot; + thisPropertyPath + &quot; &quot; + compareToType;
+            switch (compareToType)
+            {
+                case CompareToType.CompareToObject:
+                    message += &quot; (&quot; + other + &quot;).&quot; + otherPropertyPath + &quot; failed.&quot;;
+                    break;
+                case CompareToType.CompareToConstantValue:
+                    message += &quot; &quot; + ConstValue + &quot; failed.&quot;;
+                    break;
+                case CompareToType.CompareToNull:
+                    message += &quot; failed.&quot;;
+                    break;
+            }
+            message += &quot; Expected: &quot; + m_ObjOtherVal + &quot; Actual: &quot; + m_ObjVal;
+            return message;
+        }
+    }
+
+    [Serializable]
+    public abstract class ComparerBaseGeneric&lt;T&gt; : ComparerBaseGeneric&lt;T, T&gt;
+    {
+    }
+
+    [Serializable]
+    public abstract class ComparerBaseGeneric&lt;T1, T2&gt; : ComparerBase
+    {
+        public T2 constantValueGeneric = default(T2);
+
+        public override Object ConstValue
+        {
+            get
+            {
+                return constantValueGeneric;
+            }
+            set
+            {
+                constantValueGeneric = (T2)value;
+            }
+        }
+
+        public override Object GetDefaultConstValue()
+        {
+            return default(T2);
+        }
+
+        static bool IsValueType(Type type)
+        {
+#if !UNITY_METRO
+            return type.IsValueType;
+#else
+            return false;
+#endif
+        }
+
+        protected override bool Compare(object a, object b)
+        {
+            var type = typeof(T2);
+            if (b == null &amp;&amp; IsValueType(type))
+            {
+                throw new ArgumentException(&quot;Null was passed to a value-type argument&quot;);
+            }
+            return Compare((T1)a, (T2)b);
+        }
+
+        protected abstract bool Compare(T1 a, T2 b);
+
+        public override Type[] GetAccepatbleTypesForA()
+        {
+            return new[] { typeof(T1) };
+        }
+
+        public override Type[] GetAccepatbleTypesForB()
+        {
+            return new[] {typeof(T2)};
+        }
+
+        protected override bool UseCache { get { return true; } }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[27,9,27,10,0],[28,13,28,71,0],[29,13,29,14,0],[30,17,30,44,0],[31,13,31,14,0],[32,18,32,67,0],[33,13,33,14,0],[34,17,34,38,0],[35,13,35,14,0],[37,13,37,14,0],[38,17,38,35,0],[39,21,39,42,0],[41,17,41,18,0],[42,21,42,51,0],[43,25,43,90,0],[44,21,44,74,0],[45,17,45,18,0],[46,13,46,14,0],[47,13,47,53,0],[48,9,48,10,0],[51,9,51,10,0],[52,13,52,25,0],[53,9,53,10,0],[57,44,57,48,0],[57,49,57,53,0],[59,9,59,10,0],[60,13,60,49,0],[66,9,66,10,0],[67,13,67,124,0],[68,13,68,35,0],[71,21,71,85,0],[72,21,72,27,0],[74,21,74,62,0],[75,21,75,27,0],[77,21,77,43,0],[78,21,78,27,0],[80,13,80,79,0],[81,13,81,28,0],[82,9,82,10,0],[17,9,17,76,0],[21,9,21,46,0],[98,13,98,14,0],[99,17,99,45,0],[100,13,100,14,0],[102,13,102,14,0],[103,17,103,50,0],[104,13,104,14,0],[108,9,108,10,0],[109,13,109,32,0],[110,9,110,10,0],[113,9,113,10,0],[115,13,115,37,0],[119,9,119,10,0],[122,9,122,10,0],[123,13,123,35,0],[124,13,124,48,0],[125,13,125,14,0],[126,17,126,89,0],[128,13,128,42,0],[129,9,129,10,0],[134,9,134,10,0],[135,13,135,41,0],[136,9,136,10,0],[139,9,139,10,0],[140,13,140,39,0],[141,9,141,10,0],[143,48,143,49,0],[143,50,143,62,0],[143,63,143,64,0],[93,9,93,54,0]]);
+    </script>
+  </body>
+</html>

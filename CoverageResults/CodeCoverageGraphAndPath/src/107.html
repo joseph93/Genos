@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\tests\editor\nodetests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Security;
+using System.Text;
+
+namespace Assets.Scripts
+{
+    public class NodeTests
+    {
+        [Test]
+        public void hasAdjacentNodeTest()
+        {
+            try
+            {
+                Graph g = new Graph();
+                Node n1 = new Node(1, 0, 0, 1);
+                Node n2 = new Node(2, 0, 0, 1);
+
+                g.InsertNewVertex(n1);
+                g.InsertNewVertex(n2);
+
+                n1.addAdjacentNode(new Dictionary&lt;Node, float&gt;() {{n2, 4}});
+                n2.addAdjacentNode(new Dictionary&lt;Node, float&gt;() {{n1, 3}});
+                Assert.True(n1.hasAdjacentNode(n2),
+                    &quot;This tests if hasAdjacentNode returns true if a node is adjacent to a given one.&quot;);
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine(&quot;Security Exception:\n\n{0}&quot;, e.Message);
+            }
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,17,19,48,0],[20,17,20,48,0],[22,17,22,39,0],[23,17,23,39,0],[25,17,25,77,0],[26,17,26,77,0],[27,17,28,105,0],[29,13,29,14,0],[15,9,15,10,1],[17,13,17,14,1],[18,17,18,39,1],[30,13,30,40,1],[31,13,31,14,1],[32,17,32,76,1],[33,13,33,14,1],[34,9,34,10,1]]);
+    </script>
+  </body>
+</html>

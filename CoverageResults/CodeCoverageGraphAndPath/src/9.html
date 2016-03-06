@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\editor\groupbycomparerrenderer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class GroupByComparerRenderer : AssertionListRenderer&lt;Type&gt;
+    {
+        protected override IEnumerable&lt;IGrouping&lt;Type, AssertionComponent&gt;&gt; GroupResult(IEnumerable&lt;AssertionComponent&gt; assertionComponents)
+        {
+            return assertionComponents.GroupBy(c =&gt; c.Action.GetType());
+        }
+
+        protected override string GetStringKey(Type key)
+        {
+            return key.Name;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,9,11,10,0],[12,13,12,53,0],[12,71,12,73,0],[13,9,13,10,0],[16,9,16,10,0],[17,13,17,29,0],[18,9,18,10,0],[12,53,12,71,0]]);
+    </script>
+  </body>
+</html>

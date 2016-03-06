@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\testmodalwindow.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using System.Collections;
+
+public class TestModalWindow : MonoBehaviour
+{
+
+    private ModalWindow modalWindow;
+    private DisplayManager displayManager;
+
+    private UnityAction myOkAction;
+    private UnityAction myCancelAction;
+
+    void Awake()
+    {
+        modalWindow = ModalWindow.Instance();
+        displayManager = DisplayManager.Instance();
+
+        myOkAction = new UnityAction(TestOkFunction);
+        myCancelAction = new UnityAction(TestCancelFunction);
+    }
+
+    //Send to the modal window to set up the buttons and functions to call
+    public void TestOC()
+    {
+        modalWindow.Choice(&quot;Here is the building of 1920, and here are the bathrooms of the 1936 building.&quot;, myOkAction, myCancelAction);
+    }
+    //These are going to be wrapped into unity actions
+
+    void TestOkFunction()
+    {
+       displayManager.DisplayMessage(&quot;One Punch!&quot;); 
+    }
+
+    void TestCancelFunction()
+    {
+        displayManager.DisplayMessage(&quot;Canceled&quot;);
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,5,16,6,0],[17,9,17,46,0],[18,9,18,52,0],[20,9,20,54,0],[21,9,21,62,0],[22,5,22,6,0],[26,5,26,6,0],[27,9,27,138,0],[28,5,28,6,0],[32,5,32,6,0],[33,8,33,52,0],[34,5,34,6,0],[37,5,37,6,0],[38,9,38,51,0],[39,5,39,6,0]]);
+    </script>
+  </body>
+</html>

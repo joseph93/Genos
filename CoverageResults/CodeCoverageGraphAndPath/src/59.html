@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\comparers\collidercomparer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class ColliderComparer : ComparerBaseGeneric&lt;Bounds&gt;
+    {
+        public enum CompareType
+        {
+            Intersects,
+            DoesNotIntersect
+        };
+
+        public CompareType compareType;
+
+        protected override bool Compare(Bounds a, Bounds b)
+        {
+            switch (compareType)
+            {
+                case CompareType.Intersects:
+                    return a.Intersects(b);
+                case CompareType.DoesNotIntersect:
+                    return !a.Intersects(b);
+            }
+            throw new Exception();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,9,18,10,0],[19,13,19,33,0],[22,21,22,44,0],[24,21,24,45,0],[26,13,26,35,0],[27,9,27,10,0]]);
+    </script>
+  </body>
+</html>

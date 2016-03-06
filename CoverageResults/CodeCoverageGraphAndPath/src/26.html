@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\editor\guihelper.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using Mono.Cecil;
+using Mono.Cecil.Cil;
+using Mono.Cecil.Mdb;
+using Mono.Collections.Generic;
+using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public static class GuiHelper
+    {
+        public static bool GetConsoleErrorPause()
+        {
+            Assembly assembly = Assembly.GetAssembly(typeof(SceneView));
+            Type type = assembly.GetType(&quot;UnityEditorInternal.LogEntries&quot;);
+            PropertyInfo method = type.GetProperty(&quot;consoleFlags&quot;);
+            var result = (int)method.GetValue(new object(), new object[] { });
+            return (result &amp; (1 &lt;&lt; 2)) != 0;
+        }
+
+        public static void SetConsoleErrorPause(bool b)
+        {
+            Assembly assembly = Assembly.GetAssembly(typeof(SceneView));
+            Type type = assembly.GetType(&quot;UnityEditorInternal.LogEntries&quot;);
+            MethodInfo method = type.GetMethod(&quot;SetConsoleFlag&quot;);
+            method.Invoke(new object(), new object[] { 1 &lt;&lt; 2, b });
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,9,19,10,0],[20,13,20,73,0],[21,13,21,76,0],[22,13,22,68,0],[23,13,23,79,0],[24,13,24,45,0],[25,9,25,10,0],[28,9,28,10,0],[29,13,29,73,0],[30,13,30,76,0],[31,13,31,66,0],[32,13,32,69,0],[33,9,33,10,0]]);
+    </script>
+  </body>
+</html>

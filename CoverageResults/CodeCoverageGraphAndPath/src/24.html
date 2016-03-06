@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\editor\batch.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
+using UnityTest.IntegrationTests;
+
+namespace UnityTest
+{
+    public static partial class Batch
+	{
+		const string k_ResultFilePathParam = &quot;-resultFilePath=&quot;;
+        private const string k_TestScenesParam = &quot;-testscenes=&quot;;
+        private const string k_OtherBuildScenesParam = &quot;-includeBuildScenes=&quot;;
+        const string k_TargetPlatformParam = &quot;-targetPlatform=&quot;;
+        const string k_ResultFileDirParam = &quot;-resultsFileDirectory=&quot;;
+
+        public static int returnCodeTestsOk = 0;
+        public static int returnCodeTestsFailed = 2;
+        public static int returnCodeRunError = 3;
+
+        public static void RunIntegrationTests()
+        {
+            var targetPlatform = GetTargetPlatform();
+            var otherBuildScenes = GetSceneListFromParam (k_OtherBuildScenesParam);
+
+            var testScenes = GetSceneListFromParam(k_TestScenesParam);
+            if (testScenes.Count == 0)
+                testScenes = FindTestScenesInProject();
+
+            RunIntegrationTests(targetPlatform, testScenes, otherBuildScenes);
+        }
+        
+        public static void RunIntegrationTests(BuildTarget ? targetPlatform)
+        {
+            var sceneList = FindTestScenesInProject();
+            RunIntegrationTests(targetPlatform, sceneList, new List&lt;string&gt;());
+        }
+
+
+        public static void RunIntegrationTests(BuildTarget? targetPlatform, List&lt;string&gt; testScenes, List&lt;string&gt; otherBuildScenes)
+        {
+            if (targetPlatform.HasValue)
+                BuildAndRun(targetPlatform.Value, testScenes, otherBuildScenes);
+            else
+                RunInEditor(testScenes,  otherBuildScenes);
+        }
+        
+        private static void BuildAndRun(BuildTarget target, List&lt;string&gt; testScenes, List&lt;string&gt; otherBuildScenes)
+        {
+            var resultFilePath = GetParameterArgument(k_ResultFileDirParam);
+
+            const int port = 0;
+            var ipList = TestRunnerConfigurator.GetAvailableNetworkIPs();
+
+            var config = new PlatformRunnerConfiguration
+            {
+                buildTarget = target,
+                buildScenes = otherBuildScenes,
+                testScenes = testScenes,
+                projectName = &quot;IntegrationTests&quot;,
+                resultsDir = resultFilePath,
+                sendResultsOverNetwork = InternalEditorUtility.inBatchMode,
+                ipList = ipList,
+                port = port
+            };
+
+            if (Application.isWebPlayer)
+            {
+                config.sendResultsOverNetwork = false;
+                Debug.Log(&quot;You can&#39;t use WebPlayer as active platform for running integration tests. Switching to Standalone&quot;);
+                EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.StandaloneWindows);
+            }
+
+            PlatformRunner.BuildAndRunInPlayer(config);
+        }
+
+        private static void RunInEditor(List&lt;string&gt; testScenes, List&lt;string&gt; otherBuildScenes)
+        {
+            CheckActiveBuildTarget();
+
+            NetworkResultsReceiver.StopReceiver();
+            if (testScenes == null || testScenes.Count == 0)
+            {
+                Debug.Log(&quot;No test scenes on the list&quot;);
+                EditorApplication.Exit(returnCodeRunError);
+                return;
+            }
+            EditorBuildSettings.scenes = (testScenes.Concat(otherBuildScenes).ToList()).Select(s =&gt; new EditorBuildSettingsScene(s, true)).ToArray();
+            EditorApplication.OpenScene(testScenes.First());
+            GuiHelper.SetConsoleErrorPause(false);
+
+            var config = new PlatformRunnerConfiguration
+            {
+                resultsDir = GetParameterArgument(k_ResultFileDirParam),
+                ipList = TestRunnerConfigurator.GetAvailableNetworkIPs(),
+                port = PlatformRunnerConfiguration.TryToGetFreePort(),
+                runInEditor = true
+            };
+
+            var settings = new PlayerSettingConfigurator(true);
+            settings.AddConfigurationFile(TestRunnerConfigurator.integrationTestsNetwork, string.Join(&quot;\n&quot;, config.GetConnectionIPs()));
+
+            NetworkResultsReceiver.StartReceiver(config);
+
+            EditorApplication.isPlaying = true;
+        }
+
+        private static string GetParameterArgument(string parameterName)
+        {
+            foreach (var arg in Environment.GetCommandLineArgs())
+            {
+                if (arg.ToLower().StartsWith(parameterName.ToLower()))
+                {
+                    return arg.Substring(parameterName.Length);
+                }
+            }
+            return null;
+        }
+
+        static void CheckActiveBuildTarget()
+        {
+            var notSupportedPlatforms = new[] { &quot;MetroPlayer&quot;, &quot;WebPlayer&quot;, &quot;WebPlayerStreamed&quot; };
+            if (notSupportedPlatforms.Contains(EditorUserBuildSettings.activeBuildTarget.ToString()))
+            {
+                Debug.Log(&quot;activeBuildTarget can not be  &quot;
+                    + EditorUserBuildSettings.activeBuildTarget + 
+                    &quot; use buildTarget parameter to open Unity.&quot;);
+            }
+        }
+
+        private static BuildTarget ? GetTargetPlatform()
+        {
+            string platformString = null;
+            BuildTarget buildTarget;
+            foreach (var arg in Environment.GetCommandLineArgs())
+            {
+                if (arg.ToLower().StartsWith(k_TargetPlatformParam.ToLower()))
+                {
+                    platformString = arg.Substring(k_ResultFilePathParam.Length);
+                    break;
+                }
+            }
+            try
+            {
+                if (platformString == null) return null;
+                buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), platformString);
+            }
+            catch
+            {
+                return null;
+            }
+            return buildTarget;
+        }
+
+        private static List&lt;string&gt; FindTestScenesInProject()
+        {
+            var integrationTestScenePattern = &quot;*Test?.unity&quot;;
+            return Directory.GetFiles(&quot;Assets&quot;, integrationTestScenePattern, SearchOption.AllDirectories).ToList();
+        }
+
+        private static List&lt;string&gt; GetSceneListFromParam(string param)
+        {
+            var sceneList = new List&lt;string&gt;();
+            foreach (var arg in Environment.GetCommandLineArgs())
+            {
+                if (arg.ToLower().StartsWith(param.ToLower()))
+                {
+                    var scenesFromParam = arg.Substring(param.Length).Split(&#39;,&#39;);
+                    foreach (var scene in scenesFromParam)
+                    {
+                        var sceneName = scene;
+                        if (!sceneName.EndsWith(&quot;.unity&quot;))
+                            sceneName += &quot;.unity&quot;;
+                        var foundScenes = Directory.GetFiles(Directory.GetCurrentDirectory(), sceneName, SearchOption.AllDirectories);
+                        if (foundScenes.Length == 1)
+                            sceneList.Add(foundScenes[0].Substring(Directory.GetCurrentDirectory().Length + 1));
+                        else
+                            Debug.Log(sceneName + &quot; not found or multiple entries found&quot;);
+                    }
+                }
+            }
+            return sceneList.Where(s =&gt; !string.IsNullOrEmpty(s)).Distinct().ToList();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[25,9,25,10,0],[26,13,26,54,0],[27,13,27,84,0],[29,13,29,71,0],[30,13,30,39,0],[31,17,31,56,0],[33,13,33,79,0],[34,9,34,10,0],[37,9,37,10,0],[38,13,38,55,0],[39,13,39,80,0],[40,9,40,10,0],[44,9,44,10,0],[45,13,45,41,0],[46,17,46,81,0],[48,17,48,60,0],[49,9,49,10,0],[52,9,52,10,0],[53,13,53,77,0],[56,13,56,74,0],[58,13,68,15,0],[70,13,70,41,0],[71,13,71,14,0],[72,17,72,55,0],[73,17,73,128,0],[74,17,74,96,0],[75,13,75,14,0],[77,13,77,56,0],[78,9,78,10,0],[81,9,81,10,0],[82,13,82,38,0],[84,13,84,51,0],[85,13,85,61,0],[86,13,86,14,0],[87,17,87,57,0],[88,17,88,60,0],[89,17,89,24,0],[91,13,91,101,0],[91,138,91,150,0],[92,13,92,61,0],[93,13,93,51,0],[95,13,101,15,0],[103,13,103,64,0],[104,13,104,137,0],[106,13,106,58,0],[108,13,108,48,0],[109,9,109,10,0],[112,9,112,10,0],[113,13,113,20,0],[113,33,113,65,0],[113,22,113,29,0],[114,13,114,14,0],[115,17,115,71,0],[116,17,116,18,0],[117,21,117,64,0],[119,13,119,14,0],[113,30,113,32,0],[120,13,120,25,0],[121,9,121,10,0],[124,9,124,10,0],[125,13,125,99,0],[126,13,126,102,0],[127,13,127,14,0],[128,17,130,66,0],[131,13,131,14,0],[132,9,132,10,0],[135,9,135,10,0],[136,13,136,42,0],[138,13,138,20,0],[138,33,138,65,0],[138,22,138,29,0],[139,13,139,14,0],[140,17,140,79,0],[141,17,141,18,0],[142,21,142,82,0],[143,21,143,27,0],[145,13,145,14,0],[138,30,138,32,0],[147,13,147,14,0],[148,17,148,44,0],[148,45,148,57,0],[149,17,149,92,0],[150,13,150,14,0],[151,13,151,18,0],[152,13,152,14,0],[153,17,153,29,0],[155,13,155,32,0],[156,9,156,10,0],[159,9,159,10,0],[160,13,160,62,0],[161,13,161,116,0],[162,9,162,10,0],[165,9,165,10,0],[166,13,166,48,0],[167,13,167,20,0],[167,33,167,65,0],[167,22,167,29,0],[168,13,168,14,0],[169,17,169,63,0],[170,17,170,18,0],[171,21,171,82,0],[172,21,172,28,0],[172,43,172,58,0],[172,30,172,39,0],[173,21,173,22,0],[174,25,174,47,0],[175,25,175,59,0],[176,29,176,51,0],[177,25,177,135,0],[178,25,178,53,0],[179,29,179,113,0],[181,29,181,91,0],[182,21,182,22,0],[172,40,172,42,0],[183,17,183,18,0],[184,13,184,14,0],[167,30,167,32,0],[185,13,185,41,0],[185,65,185,87,0],[186,9,186,10,0],[20,9,20,49,0],[21,9,21,53,0],[22,9,22,50,0],[91,101,91,138,0],[185,41,185,65,0]]);
+    </script>
+  </body>
+</html>

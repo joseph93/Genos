@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\editor\groupbynothingrenderer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class GroupByNothingRenderer : AssertionListRenderer&lt;string&gt;
+    {
+        protected override IEnumerable&lt;IGrouping&lt;string, AssertionComponent&gt;&gt; GroupResult(IEnumerable&lt;AssertionComponent&gt; assertionComponents)
+        {
+            return assertionComponents.GroupBy(c =&gt; &quot;&quot;);
+        }
+
+        protected override string GetStringKey(string key)
+        {
+            return &quot;&quot;;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,9,11,10,0],[12,13,12,53,0],[12,55,12,57,0],[13,9,13,10,0],[16,9,16,10,0],[17,13,17,23,0],[18,9,18,10,0],[12,53,12,55,0]]);
+    </script>
+  </body>
+</html>

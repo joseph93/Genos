@@ -27,8 +27,8 @@ public class ModalWindow : MonoBehaviour
 
     }
 
-    //JOSEPH: Ok/Cancel : A string, OK event, Cancel event
-    public void Choice(string descr, UnityAction okEvent, UnityAction cancelEvent)
+    //JOSEPH: Ok/Cancel : A string, an image, OK event, Cancel event
+    public void Choice(string descr, Sprite iconImage, UnityAction okEvent, UnityAction cancelEvent)
     {
         modalPanelObject.SetActive(true);
 
@@ -41,8 +41,9 @@ public class ModalWindow : MonoBehaviour
         cancelButton.onClick.AddListener(closePanel);
 
         description.text = descr;
+        this.iconImage.sprite = iconImage;
 
-        iconImage.gameObject.SetActive(true);
+        this.iconImage.gameObject.SetActive(true);
         okButton.gameObject.SetActive(true);
         cancelButton.gameObject.SetActive(true);
     }

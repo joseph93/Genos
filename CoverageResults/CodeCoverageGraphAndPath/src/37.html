@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\editor\platformrunner\platformrunner.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
+using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
+using System.Linq;
+
+namespace UnityTest.IntegrationTests
+{
+    public class PlatformRunner
+    {
+        public static BuildTarget defaultBuildTarget
+        {
+            get
+            {
+                var target = EditorPrefs.GetString(&quot;ITR-platformRunnerBuildTarget&quot;);
+                BuildTarget buildTarget;
+                try
+                {
+                    buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), target);
+                }
+                catch
+                {
+                    return GetDefaultBuildTarget();
+                }
+                return buildTarget;
+            }
+            set { EditorPrefs.SetString(&quot;ITR-platformRunnerBuildTarget&quot;, value.ToString()); }
+        }
+
+        [MenuItem(&quot;Unity Test Tools/Platform Runner/Run current scene %#&amp;r&quot;)]
+        public static void BuildAndRunCurrentScene()
+        {
+            Debug.Log(&quot;Building and running current test for &quot; + defaultBuildTarget);
+            BuildAndRunInPlayer(new PlatformRunnerConfiguration(defaultBuildTarget));
+        }
+
+        [MenuItem(&quot;Unity Test Tools/Platform Runner/Run on platform %#r&quot;)]
+        public static void RunInPlayer()
+        {
+            var w = EditorWindow.GetWindow(typeof(PlatformRunnerSettingsWindow));
+            w.Show();
+        }
+
+        public static void BuildAndRunInPlayer(PlatformRunnerConfiguration configuration)
+        {
+            NetworkResultsReceiver.StopReceiver();
+
+            var settings = new PlayerSettingConfigurator(false);
+
+            if (configuration.sendResultsOverNetwork)
+            {
+                try
+                {
+                    var l = new TcpListener(IPAddress.Any, configuration.port);
+                    l.Start();
+                    configuration.port = ((IPEndPoint)l.Server.LocalEndPoint).Port;
+                    l.Stop();
+                }
+                catch (SocketException e)
+                {
+                    Debug.LogException(e);
+                    if (InternalEditorUtility.inBatchMode)
+                        EditorApplication.Exit(Batch.returnCodeRunError);
+                }
+            }
+
+            if (InternalEditorUtility.inBatchMode)
+                settings.AddConfigurationFile(TestRunnerConfigurator.batchRunFileMarker, &quot;&quot;);
+
+            if (configuration.sendResultsOverNetwork)
+                settings.AddConfigurationFile(TestRunnerConfigurator.integrationTestsNetwork,
+                                              string.Join(&quot;\n&quot;, configuration.GetConnectionIPs()));
+
+            settings.AddConfigurationFile (TestRunnerConfigurator.testScenesToRun, string.Join (&quot;\n&quot;, configuration.testScenes.ToArray()));
+
+            settings.ChangeSettingsForIntegrationTests();
+
+            AssetDatabase.Refresh();
+
+            var result = BuildPipeline.BuildPlayer(configuration.testScenes.Concat(configuration.buildScenes).ToArray(),
+                                                   configuration.GetTempPath(),
+                                                   configuration.buildTarget,
+                                                   BuildOptions.AutoRunPlayer | BuildOptions.Development);
+
+            settings.RevertSettingsChanges();
+            settings.RemoveAllConfigurationFiles();
+
+            AssetDatabase.Refresh();
+
+            if (!string.IsNullOrEmpty(result))
+            {
+                if (InternalEditorUtility.inBatchMode)
+                    EditorApplication.Exit(Batch.returnCodeRunError);
+                return;
+            }
+
+            if (configuration.sendResultsOverNetwork)
+                NetworkResultsReceiver.StartReceiver(configuration);
+            else if (InternalEditorUtility.inBatchMode)
+                EditorApplication.Exit(Batch.returnCodeTestsOk);
+        }
+
+        private static BuildTarget GetDefaultBuildTarget()
+        {
+            switch (EditorUserBuildSettings.selectedBuildTargetGroup)
+            {
+                case BuildTargetGroup.Android:
+                    return BuildTarget.Android;
+                case BuildTargetGroup.WebPlayer:
+                    return BuildTarget.WebPlayer;
+                default:
+                {
+                    switch (Application.platform)
+                    {
+                        case RuntimePlatform.WindowsPlayer:
+                            return BuildTarget.StandaloneWindows;
+                        case RuntimePlatform.OSXPlayer:
+                            return BuildTarget.StandaloneOSXIntel;
+                        case RuntimePlatform.LinuxPlayer:
+                            return BuildTarget.StandaloneLinux;
+                    }
+                    return BuildTarget.WebPlayer;
+                }
+            }
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,13,17,14,0],[18,17,18,85,0],[21,17,21,18,0],[22,21,22,88,0],[23,17,23,18,0],[24,17,24,22,0],[25,17,25,18,0],[26,21,26,52,0],[28,17,28,36,0],[29,13,29,14,0],[30,17,30,18,0],[30,19,30,92,0],[30,93,30,94,0],[35,9,35,10,0],[36,13,36,86,0],[37,13,37,86,0],[38,9,38,10,0],[42,9,42,10,0],[43,13,43,82,0],[44,13,44,22,0],[45,9,45,10,0],[48,9,48,10,0],[49,13,49,51,0],[51,13,51,65,0],[53,13,53,54,0],[54,13,54,14,0],[56,17,56,18,0],[57,21,57,80,0],[58,21,58,31,0],[59,21,59,84,0],[60,21,60,30,0],[61,17,61,18,0],[62,17,62,42,0],[63,17,63,18,0],[64,21,64,43,0],[65,21,65,59,0],[66,25,66,74,0],[67,17,67,18,0],[68,13,68,14,0],[70,13,70,51,0],[71,17,71,94,0],[73,13,73,54,0],[74,17,75,100,0],[77,13,77,140,0],[79,13,79,58,0],[81,13,81,37,0],[83,13,86,107,0],[88,13,88,46,0],[89,13,89,52,0],[91,13,91,37,0],[93,13,93,47,0],[94,13,94,14,0],[95,17,95,55,0],[96,21,96,70,0],[97,17,97,24,0],[100,13,100,54,0],[101,17,101,69,0],[102,18,102,56,0],[103,17,103,65,0],[104,9,104,10,0],[107,9,107,10,0],[108,13,108,70,0],[111,21,111,48,0],[113,21,113,50,0],[115,17,115,18,0],[116,21,116,50,0],[119,29,119,66,0],[121,29,121,67,0],[123,29,123,64,0],[125,21,125,50,0],[128,9,128,10,0]]);
+    </script>
+  </body>
+</html>

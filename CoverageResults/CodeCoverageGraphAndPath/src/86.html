@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\beacon\nippertour.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+
+namespace Assets.Scripts {
+    public class NipperTour : MonoBehaviour
+    {
+        
+        private List&lt;Beacon&gt; myBeacons = new List&lt;Beacon&gt;();
+        private Map map;
+        public Node[] ArrayOfNodes;
+        private List&lt;Node&gt; path;
+        
+        public Camera mainCam;
+
+        private ModalWindow modalWindow;
+
+        private UnityAction myOkAction;
+        private UnityAction myCancelAction;
+
+        //JOSEPH: Initialize the node list.
+        void Awake()
+        {
+            modalWindow = ModalWindow.Instance();
+
+            myOkAction = new UnityAction(modalWindow.closePanel);
+            myCancelAction = new UnityAction(modalWindow.closePanel);
+            //added
+            //to know last index of last scene loaded
+            //FloorManager.setLastScene(Application.loadedLevelName);
+            //SceneManager.GetActiveScene(); 
+        }
+        // Use this for initialization
+        void Start()
+        {
+            //DisplayPointOfInterest();
+            iBeaconReceiver.BeaconRangeChangedEvent += OnBeaconRangeChanged;
+            iBeaconReceiver.BluetoothStateChangedEvent += OnBluetoothStateChanged;
+            iBeaconReceiver.CheckBluetoothLEStatus();
+            Debug.Log(&quot;Listening for beacons&quot;);
+            map = new Map();
+            Storyline nipperTour = new Storyline(&quot;Nipper Tour&quot;, 4);
+
+            foreach (Node n in ArrayOfNodes)
+            {
+                nipperTour.addNode(n);
+            }
+            map.addStoryline(nipperTour);
+            Node n1 = ArrayOfNodes[0].GetComponentInChildren&lt;Node&gt;();
+            Node n2 = ArrayOfNodes[1].GetComponentInChildren&lt;Node&gt;();
+            Node n3 = ArrayOfNodes[2].GetComponentInChildren&lt;Node&gt;();
+            Node n4 = ArrayOfNodes[3].GetComponentInChildren&lt;Node&gt;();
+
+            n1.addAdjacentNode(new Dictionary&lt;Node, float&gt;() { { n2, 1.0f }, { n3, 0.5f } });
+            n2.addAdjacentNode(new Dictionary&lt;Node, float&gt;() { { n3, 2.0f } });
+            n3.addAdjacentNode(new Dictionary&lt;Node, float&gt;() { { n4, 3.0f } });
+            map.addNode(n1);
+            map.addNode(n2);
+            map.addNode(n3);
+            map.addNode(n4);
+            
+        }
+
+        void OnDestroy()
+        {
+            iBeaconReceiver.BeaconRangeChangedEvent -= OnBeaconRangeChanged;
+            iBeaconReceiver.BluetoothStateChangedEvent -= OnBluetoothStateChanged;
+        }
+
+        //Reviewer Ihcene: Update was fixed, for the rendering of the beacon, for each frames
+        // Update is called once per frame
+        void Update()
+        {
+
+            StartCoroutine(searchForDistanceOfBeacon(0.05f));
+            if (Input.touchCount &gt; 0 &amp;&amp; Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
+                if (hit.collider != null)
+                {
+                    GameObject recipient = hit.transform.gameObject;
+                    Node touchedNode = recipient.GetComponent&lt;Node&gt;();
+                    List&lt;Storyline&gt; storylines = map.GetStorylines();
+                    List&lt;Node&gt; nodeList = storylines[0].GetNodes();
+                    foreach (Node n in nodeList)
+                    {
+                        if (touchedNode.id == n.id)
+                        {
+                            touchedNode = n;
+                        }
+
+                    }
+
+                    path = map.getGraph().shortest_path(nodeList[0], touchedNode);
+                    path.Reverse();
+                    foreach (Node n in path)
+                    {
+                        Debug.Log(&quot;Node traversed: &quot; + n.id);
+                    }
+                }
+
+            }
+
+          
+        }
+
+
+        private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
+        {
+            switch (newstate)
+            {
+                case BluetoothLowEnergyState.POWERED_ON:
+                    //added
+                    //SceneManager.UnloadScene(&quot;Bluetooth&quot;);
+                   // FloorManager.setLastScene(Application.loadedLevelName);
+                    //SceneManager.LoadScene(FloorManager.getLastScene());
+
+                    iBeaconReceiver.Init();
+                    Debug.Log(&quot;It is on, go searching&quot;);
+                    break;
+                case BluetoothLowEnergyState.POWERED_OFF:
+                    //iBeaconReceiver.EnableBluetooth();
+
+                    //added
+                    SceneManager.LoadScene(&quot;Bluetooth&quot;);
+
+                    Debug.Log(&quot;It is off, switch it on&quot;);
+                    break;
+                case BluetoothLowEnergyState.UNAUTHORIZED:
+                    Debug.Log(&quot;User doesn&#39;t want this app to use Bluetooth, too bad&quot;);
+                    break;
+                case BluetoothLowEnergyState.UNSUPPORTED:
+                    Debug.Log(&quot;This device doesn&#39;t support Bluetooth Low Energy, we should inform the user&quot;);
+                    break;
+                case BluetoothLowEnergyState.UNKNOWN:
+                case BluetoothLowEnergyState.RESETTING:
+                default:
+                    Debug.Log(&quot;Nothing to do at the moment&quot;);
+                    break;
+            }
+        }
+
+        public List&lt;Node&gt; returnPathWithTouch()
+        {
+            return path;
+        } 
+
+        public IEnumerator searchForDistanceOfBeacon(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            foreach (Beacon b in myBeacons)
+            {
+                List&lt;Storyline&gt; storylines = map.GetStorylines();
+                List&lt;Node&gt; nodeList = storylines[0].GetNodes();
+                if (b.accuracy &gt; 2.00 &amp;&amp; b.accuracy &lt; 6.00)
+                {
+                    foreach (PointOfInterest poi in nodeList)
+                    {
+                        if (!poi.isDetected())
+                        {
+                            if (poi.getBeacon().m_uuid.ToLower().Equals(b.UUID.ToLower()))
+                            {
+                                poi.playBeforeSound();
+                            }
+                        }
+                    }
+                }
+                if (b.accuracy &lt; 2.00)
+                {
+                    
+                    foreach (PointOfInterest poi in nodeList)
+                    {
+                        if (!poi.isDetected())
+                        {
+                            if (poi.getBeacon().m_uuid.ToLower().Equals(b.UUID.ToLower()))
+                            {
+                                poi.makeIconBigger();
+                                mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
+                                Vibration.Vibrate(1000);
+                                poi.popUpSound();
+                                modalWindow.Choice(&quot;Here is the building of 1920, and here are the bathrooms of the 1936 building.&quot;, myOkAction, myCancelAction);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void OnBeaconRangeChanged(List&lt;Beacon&gt; beacons)
+        {
+            // 
+            foreach (Beacon b in beacons)
+            {
+                if (myBeacons.Contains(b))
+                {
+                    myBeacons[myBeacons.IndexOf(b)] = b;
+                }
+                else
+                {
+                    // this beacon was not in the list before
+                    // this would be the place where the BeaconArrivedEvent would have been spawned in the the earlier versions
+                    myBeacons.Add(b);
+                }
+            }
+            foreach (Beacon b in myBeacons)
+            {
+                if (b.lastSeen.AddSeconds(10) &lt; DateTime.Now)
+                {
+                    // we delete the beacon if it was last seen more than 10 seconds ago
+                    // this would be the place where the BeaconOutOfRangeEvent would have been spawned in the earlier versions
+                    myBeacons.Remove(b);
+                }
+            }
+        }
+
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[26,9,26,10,0],[27,13,27,50,0],[29,13,29,66,0],[30,13,30,70,0],[35,9,35,10,0],[38,9,38,10,0],[40,13,40,77,0],[41,13,41,83,0],[42,13,42,54,0],[43,13,43,48,0],[44,13,44,29,0],[45,13,45,68,0],[47,13,47,20,0],[47,32,47,44,0],[47,22,47,28,0],[48,13,48,14,0],[49,17,49,39,0],[50,13,50,14,0],[47,29,47,31,0],[51,13,51,42,0],[52,13,52,70,0],[53,13,53,70,0],[54,13,54,70,0],[55,13,55,70,0],[57,13,57,94,0],[58,13,58,80,0],[59,13,59,80,0],[60,13,60,29,0],[61,13,61,29,0],[62,13,62,29,0],[63,13,63,29,0],[65,9,65,10,0],[68,9,68,10,0],[69,13,69,77,0],[70,13,70,83,0],[71,9,71,10,0],[76,9,76,10,0],[78,13,78,62,0],[79,13,79,85,0],[80,13,80,14,0],[81,17,81,130,0],[82,17,82,42,0],[83,17,83,18,0],[84,21,84,69,0],[85,21,85,71,0],[86,21,86,70,0],[87,21,87,68,0],[88,21,88,28,0],[88,40,88,48,0],[88,30,88,36,0],[89,21,89,22,0],[90,25,90,52,0],[91,25,91,26,0],[92,29,92,45,0],[93,25,93,26,0],[95,21,95,22,0],[88,37,88,39,0],[97,21,97,83,0],[98,21,98,36,0],[99,21,99,28,0],[99,40,99,44,0],[99,30,99,36,0],[100,21,100,22,0],[101,25,101,62,0],[102,21,102,22,0],[99,37,99,39,0],[103,17,103,18,0],[105,13,105,14,0],[108,9,108,10,0],[112,9,112,10,0],[113,13,113,30,0],[121,21,121,44,0],[122,21,122,57,0],[123,21,123,27,0],[128,21,128,57,0],[130,21,130,58,0],[131,21,131,27,0],[133,21,133,87,0],[134,21,134,27,0],[136,21,136,110,0],[137,21,137,27,0],[141,21,141,62,0],[142,21,142,27,0],[144,9,144,10,0],[147,9,147,10,0],[148,13,148,25,0],[149,9,149,10,0],[193,9,193,10,0],[195,13,195,20,0],[195,34,195,41,0],[195,22,195,30,0],[196,13,196,14,0],[197,17,197,43,0],[198,17,198,18,0],[199,21,199,57,0],[200,17,200,18,0],[202,17,202,18,0],[205,21,205,38,0],[206,17,206,18,0],[207,13,207,14,0],[195,31,195,33,0],[208,13,208,20,0],[208,34,208,43,0],[208,22,208,30,0],[209,13,209,14,0],[210,17,210,62,0],[211,17,211,18,0],[214,21,214,41,0],[215,17,215,18,0],[216,13,216,14,0],[208,31,208,33,0],[217,9,217,10,0],[12,9,12,61,0],[152,9,152,10,0],[153,13,153,54,0],[154,13,154,20,0],[154,34,154,43,0],[154,22,154,30,0],[155,13,155,14,0],[156,17,156,66,0],[157,17,157,64,0],[158,17,158,60,0],[159,17,159,18,0],[160,21,160,28,0],[160,53,160,61,0],[160,30,160,49,0],[161,21,161,22,0],[162,25,162,47,0],[163,25,163,26,0],[164,29,164,91,0],[165,29,165,30,0],[166,33,166,55,0],[167,29,167,30,0],[168,25,168,26,0],[169,21,169,22,0],[160,50,160,52,0],[170,17,170,18,0],[171,17,171,39,0],[172,17,172,18,0],[174,21,174,28,0],[174,53,174,61,0],[174,30,174,49,0],[175,21,175,22,0],[176,25,176,47,0],[177,25,177,26,0],[178,29,178,91,0],[179,29,179,30,0],[180,33,180,54,0],[181,33,181,93,0],[182,33,182,57,0],[183,33,183,50,0],[184,33,184,162,0],[185,29,185,30,0],[186,25,186,26,0],[187,21,187,22,0],[174,50,174,52,0],[188,17,188,18,0],[189,13,189,14,0],[154,31,154,33,0],[190,9,190,10,0]]);
+    </script>
+  </body>
+</html>

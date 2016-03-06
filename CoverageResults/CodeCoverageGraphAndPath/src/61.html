@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\comparers\floatcomparer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class FloatComparer : ComparerBaseGeneric&lt;float&gt;
+    {
+        public enum CompareTypes
+        {
+            Equal,
+            NotEqual,
+            Greater,
+            Less
+        }
+
+        public CompareTypes compareTypes;
+        public double floatingPointError = 0.0001f;
+
+        protected override bool Compare(float a, float b)
+        {
+            switch (compareTypes)
+            {
+                case CompareTypes.Equal:
+                    return Math.Abs(a - b) &lt; floatingPointError;
+                case CompareTypes.NotEqual:
+                    return Math.Abs(a - b) &gt; floatingPointError;
+                case CompareTypes.Greater:
+                    return a &gt; b;
+                case CompareTypes.Less:
+                    return a &lt; b;
+            }
+            throw new Exception();
+        }
+        public override int GetDepthOfSearch()
+        {
+            return 3;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,9,21,10,0],[22,13,22,34,0],[25,21,25,65,0],[27,21,27,65,0],[29,21,29,34,0],[31,21,31,34,0],[33,13,33,35,0],[34,9,34,10,0],[36,9,36,10,0],[37,13,37,22,0],[38,9,38,10,0],[18,9,18,52,0]]);
+    </script>
+  </body>
+</html>

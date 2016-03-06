@@ -28,7 +28,7 @@ GameObject:
   - 222: {fileID: 22218396}
   - 114: {fileID: 11489388}
   - 114: {fileID: 11456340}
-  - 114: {fileID: 11447934}
+  - 114: {fileID: 11468206}
   m_Layer: 5
   m_Name: XQuitButton
   m_TagString: Untagged
@@ -36,17 +36,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11447934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0005ee93c0b207241824ecc63d2384f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11456340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,8 +75,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11447934}
-        m_MethodName: changeSceneToQuit
+      - m_Target: {fileID: 11468206}
+        m_MethodName: DisplayQuitPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -132,6 +121,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &11468206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 319b8eef7bc2e5647bef709605008f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImage: {fileID: 21300000, guid: 3da4147b8bcda5e498e060c036e29e9d, type: 3}
 --- !u!114 &11489388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,7 +187,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 334, y: 638}
+  m_AnchoredPosition: {x: 334.00003, y: 637.9999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22449724

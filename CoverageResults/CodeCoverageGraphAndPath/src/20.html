@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\common\editor\resultwriter\xmlresultwriter.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Security;
+using System.Text;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class XmlResultWriter
+    {
+        private readonly StringBuilder m_ResultWriter = new StringBuilder();
+        private int m_Indend;
+        private readonly string m_SuiteName;
+        private readonly ITestResult[] m_Results;
+        string m_Platform;
+
+        public XmlResultWriter(string suiteName, string platform, ITestResult[] results)
+        {
+            m_SuiteName = suiteName;
+            m_Results = results;
+            m_Platform = platform;
+        }
+
+        private const string k_NUnitVersion = &quot;2.6.2-Unity&quot;;
+
+        public string GetTestResult()
+        {
+            InitializeXmlFile(m_SuiteName, new ResultSummarizer(m_Results));
+            foreach (var result in m_Results)
+            {
+                WriteResultElement(result);
+            }
+            TerminateXmlFile();
+            return m_ResultWriter.ToString();
+        }
+
+        private void InitializeXmlFile(string resultsName, ResultSummarizer summaryResults)
+        {
+            WriteHeader();
+
+            DateTime now = DateTime.Now;
+            var attributes = new Dictionary&lt;string, string&gt;
+            {
+                {&quot;name&quot;, &quot;Unity Tests&quot;},
+                {&quot;total&quot;, summaryResults.TestsRun.ToString()},
+                {&quot;errors&quot;, summaryResults.Errors.ToString()},
+                {&quot;failures&quot;, summaryResults.Failures.ToString()},
+                {&quot;not-run&quot;, summaryResults.TestsNotRun.ToString()},
+                {&quot;inconclusive&quot;, summaryResults.Inconclusive.ToString()},
+                {&quot;ignored&quot;, summaryResults.Ignored.ToString()},
+                {&quot;skipped&quot;, summaryResults.Skipped.ToString()},
+                {&quot;invalid&quot;, summaryResults.NotRunnable.ToString()},
+                {&quot;date&quot;, now.ToString(&quot;yyyy-MM-dd&quot;)},
+                {&quot;time&quot;, now.ToString(&quot;HH:mm:ss&quot;)}
+            };
+
+            WriteOpeningElement(&quot;test-results&quot;, attributes);
+
+            WriteEnvironment(m_Platform);
+            WriteCultureInfo();
+            WriteTestSuite(resultsName, summaryResults);
+            WriteOpeningElement(&quot;results&quot;);
+        }
+
+        private void WriteOpeningElement(string elementName)
+        {
+            WriteOpeningElement(elementName, new Dictionary&lt;string, string&gt;());
+        }
+
+        private void WriteOpeningElement(string elementName, Dictionary&lt;string, string&gt; attributes)
+        {
+            WriteOpeningElement(elementName, attributes, false);
+        }
+
+
+        private void WriteOpeningElement(string elementName, Dictionary&lt;string, string&gt; attributes, bool closeImmediatelly)
+        {
+            WriteIndend();
+            m_Indend++;
+            m_ResultWriter.Append(&quot;&lt;&quot;);
+            m_ResultWriter.Append(elementName);
+            foreach (var attribute in attributes)
+            {
+                m_ResultWriter.AppendFormat(&quot; {0}=\&quot;{1}\&quot;&quot;, attribute.Key, SecurityElement.Escape(attribute.Value));
+            }
+            if (closeImmediatelly)
+            {
+                m_ResultWriter.Append(&quot; /&quot;);
+                m_Indend--;
+            }
+            m_ResultWriter.AppendLine(&quot;&gt;&quot;);
+        }
+
+        private void WriteIndend()
+        {
+            for (int i = 0; i &lt; m_Indend; i++)
+            {
+                m_ResultWriter.Append(&quot;  &quot;);
+            }
+        }
+
+        private void WriteClosingElement(string elementName)
+        {
+            m_Indend--;
+            WriteIndend();
+            m_ResultWriter.AppendLine(&quot;&lt;/&quot; + elementName + &quot;&gt;&quot;);
+        }
+
+        private void WriteHeader()
+        {
+            m_ResultWriter.AppendLine(&quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;utf-8\&quot;?&gt;&quot;);
+            m_ResultWriter.AppendLine(&quot;&lt;!--This file represents the results of running a test suite--&gt;&quot;);
+        }
+
+        static string GetEnvironmentUserName()
+        {
+            return Environment.UserName;
+        }
+
+        static string GetEnvironmentMachineName()
+        {
+            return Environment.MachineName;
+        }
+
+        static string GetEnvironmentUserDomainName()
+        {
+            return Environment.UserDomainName;
+        }
+
+        static string GetEnvironmentVersion()
+        {
+            return Environment.Version.ToString();
+        }
+
+        static string GetEnvironmentOSVersion()
+        {
+            return Environment.OSVersion.ToString();
+        }
+
+        static string GetEnvironmentOSVersionPlatform()
+        {
+            return Environment.OSVersion.Platform.ToString();
+        }
+
+        static string EnvironmentGetCurrentDirectory()
+        {
+            return Environment.CurrentDirectory;
+        }
+
+        private void WriteEnvironment( string targetPlatform )
+        {
+            var attributes = new Dictionary&lt;string, string&gt;
+            {
+                {&quot;nunit-version&quot;, k_NUnitVersion},
+                {&quot;clr-version&quot;, GetEnvironmentVersion()},
+                {&quot;os-version&quot;, GetEnvironmentOSVersion()},
+                {&quot;platform&quot;, GetEnvironmentOSVersionPlatform()},
+                {&quot;cwd&quot;, EnvironmentGetCurrentDirectory()},
+                {&quot;machine-name&quot;, GetEnvironmentMachineName()},
+                {&quot;user&quot;, GetEnvironmentUserName()},
+                {&quot;user-domain&quot;, GetEnvironmentUserDomainName()},
+                {&quot;unity-version&quot;, Application.unityVersion},
+                {&quot;unity-platform&quot;, targetPlatform}
+            };
+            WriteOpeningElement(&quot;environment&quot;, attributes, true);
+        }
+
+        private void WriteCultureInfo()
+        {
+            var attributes = new Dictionary&lt;string, string&gt;
+            {
+                {&quot;current-culture&quot;, CultureInfo.CurrentCulture.ToString()},
+                {&quot;current-uiculture&quot;, CultureInfo.CurrentUICulture.ToString()}
+            };
+            WriteOpeningElement(&quot;culture-info&quot;, attributes, true);
+        }
+
+        private void WriteTestSuite(string resultsName, ResultSummarizer summaryResults)
+        {
+            var attributes = new Dictionary&lt;string, string&gt;
+            {
+                {&quot;name&quot;, resultsName},
+                {&quot;type&quot;, &quot;Assembly&quot;},
+                {&quot;executed&quot;, &quot;True&quot;},
+                {&quot;result&quot;, summaryResults.Success ? &quot;Success&quot; : &quot;Failure&quot;},
+                {&quot;success&quot;, summaryResults.Success ? &quot;True&quot; : &quot;False&quot;},
+                {&quot;time&quot;, summaryResults.Duration.ToString(&quot;#####0.000&quot;, NumberFormatInfo.InvariantInfo)}
+            };
+            WriteOpeningElement(&quot;test-suite&quot;, attributes);
+        }
+
+        private void WriteResultElement(ITestResult result)
+        {
+            StartTestElement(result);
+
+            switch (result.ResultState)
+            {
+                case TestResultState.Ignored:
+                case TestResultState.NotRunnable:
+                case TestResultState.Skipped:
+                    WriteReasonElement(result);
+                    break;
+
+                case TestResultState.Failure:
+                case TestResultState.Error:
+                case TestResultState.Cancelled:
+                    WriteFailureElement(result);
+                    break;
+                case TestResultState.Success:
+                case TestResultState.Inconclusive:
+                    if (result.Message != null)
+                        WriteReasonElement(result);
+                    break;
+            };
+
+            WriteClosingElement(&quot;test-case&quot;);
+        }
+
+        private void TerminateXmlFile()
+        {
+            WriteClosingElement(&quot;results&quot;);
+            WriteClosingElement(&quot;test-suite&quot;);
+            WriteClosingElement(&quot;test-results&quot;);
+        }
+
+        #region Element Creation Helpers
+
+        private void StartTestElement(ITestResult result)
+        {
+            var attributes = new Dictionary&lt;string, string&gt;
+            {
+                {&quot;name&quot;, result.FullName},
+                {&quot;executed&quot;, result.Executed.ToString()}
+            };
+            string resultString;
+            switch (result.ResultState)
+            {
+                case TestResultState.Cancelled:
+                    resultString = TestResultState.Failure.ToString();
+                    break;
+                default:
+                    resultString = result.ResultState.ToString();
+                    break;
+            }
+            attributes.Add(&quot;result&quot;, resultString);
+            if (result.Executed)
+            {
+                attributes.Add(&quot;success&quot;, result.IsSuccess.ToString());
+                attributes.Add(&quot;time&quot;, result.Duration.ToString(&quot;#####0.000&quot;, NumberFormatInfo.InvariantInfo));
+            }
+            WriteOpeningElement(&quot;test-case&quot;, attributes);
+        }
+
+        private void WriteReasonElement(ITestResult result)
+        {
+            WriteOpeningElement(&quot;reason&quot;);
+            WriteOpeningElement(&quot;message&quot;);
+            WriteCData(result.Message);
+            WriteClosingElement(&quot;message&quot;);
+            WriteClosingElement(&quot;reason&quot;);
+        }
+
+        private void WriteFailureElement(ITestResult result)
+        {
+            WriteOpeningElement(&quot;failure&quot;);
+            WriteOpeningElement(&quot;message&quot;);
+            WriteCData(result.Message);
+            WriteClosingElement(&quot;message&quot;);
+            WriteOpeningElement(&quot;stack-trace&quot;);
+            if (result.StackTrace != null)
+                WriteCData(StackTraceFilter.Filter(result.StackTrace));
+            WriteClosingElement(&quot;stack-trace&quot;);
+            WriteClosingElement(&quot;failure&quot;);
+        }
+
+        #endregion
+
+        private void WriteCData(string text)
+        {
+            if (string.IsNullOrEmpty(text)) 
+				return;
+            m_ResultWriter.AppendFormat(&quot;&lt;![CDATA[{0}]]&gt;&quot;, text);
+            m_ResultWriter.AppendLine();
+        }
+
+        public void WriteToFile(string resultDestiantion, string resultFileName)
+        {
+            try
+            {
+                var path = Path.Combine(resultDestiantion, resultFileName);
+                Debug.Log(&quot;Saving results in &quot; + path);
+                File.WriteAllText(path, GetTestResult(), Encoding.UTF8);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(&quot;Error while opening file&quot;);
+                Debug.LogException(e);
+            }
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[13,9,13,77,0],[19,9,19,89,0],[20,9,20,10,0],[21,13,21,37,0],[22,13,22,33,0],[23,13,23,35,0],[24,9,24,10,0],[29,9,29,10,0],[30,13,30,77,0],[31,13,31,20,0],[31,36,31,45,0],[31,22,31,32,0],[32,13,32,14,0],[33,17,33,44,0],[34,13,34,14,0],[31,33,31,35,0],[35,13,35,32,0],[36,13,36,46,0],[37,9,37,10,0],[40,9,40,10,0],[41,13,41,27,0],[43,13,43,41,0],[44,13,57,15,0],[59,13,59,61,0],[61,13,61,42,0],[62,13,62,32,0],[63,13,63,57,0],[64,13,64,44,0],[65,9,65,10,0],[68,9,68,10,0],[69,13,69,80,0],[70,9,70,10,0],[73,9,73,10,0],[74,13,74,65,0],[75,9,75,10,0],[79,9,79,10,0],[80,13,80,27,0],[81,13,81,24,0],[82,13,82,40,0],[83,13,83,48,0],[84,13,84,20,0],[84,39,84,49,0],[84,22,84,35,0],[85,13,85,14,0],[86,17,86,117,0],[87,13,87,14,0],[84,36,84,38,0],[88,13,88,35,0],[89,13,89,14,0],[90,17,90,45,0],[91,17,91,28,0],[92,13,92,14,0],[93,13,93,44,0],[94,9,94,10,0],[97,9,97,10,0],[98,18,98,27,0],[99,13,99,14,0],[100,17,100,45,0],[101,13,101,14,0],[98,43,98,46,0],[98,29,98,41,0],[102,9,102,10,0],[105,9,105,10,0],[106,13,106,24,0],[107,13,107,27,0],[108,13,108,65,0],[109,9,109,10,0],[112,9,112,10,0],[113,13,113,85,0],[114,13,114,106,0],[115,9,115,10,0],[118,9,118,10,0],[119,13,119,41,0],[120,9,120,10,0],[123,9,123,10,0],[124,13,124,44,0],[125,9,125,10,0],[128,9,128,10,0],[129,13,129,47,0],[130,9,130,10,0],[133,9,133,10,0],[134,13,134,51,0],[135,9,135,10,0],[138,9,138,10,0],[139,13,139,53,0],[140,9,140,10,0],[143,9,143,10,0],[144,13,144,62,0],[145,9,145,10,0],[148,9,148,10,0],[149,13,149,49,0],[150,9,150,10,0],[153,9,153,10,0],[154,13,166,15,0],[167,13,167,66,0],[168,9,168,10,0],[171,9,171,10,0],[172,13,176,15,0],[177,13,177,67,0],[178,9,178,10,0],[181,9,181,10,0],[182,13,190,15,0],[191,13,191,59,0],[192,9,192,10,0],[195,9,195,10,0],[196,13,196,38,0],[198,13,198,40,0],[203,21,203,48,0],[204,21,204,27,0],[209,21,209,49,0],[210,21,210,27,0],[213,21,213,48,0],[214,25,214,52,0],[215,21,215,27,0],[216,14,216,15,0],[218,13,218,46,0],[219,9,219,10,0],[222,9,222,10,0],[223,13,223,44,0],[224,13,224,47,0],[225,13,225,49,0],[226,9,226,10,0],[231,9,231,10,0],[232,13,236,15,0],[238,13,238,40,0],[241,21,241,71,0],[242,21,242,27,0],[244,21,244,66,0],[245,21,245,27,0],[247,13,247,52,0],[248,13,248,33,0],[249,13,249,14,0],[250,17,250,72,0],[251,17,251,112,0],[252,13,252,14,0],[253,13,253,58,0],[254,9,254,10,0],[257,9,257,10,0],[258,13,258,43,0],[259,13,259,44,0],[260,13,260,40,0],[261,13,261,44,0],[262,13,262,43,0],[263,9,263,10,0],[266,9,266,10,0],[267,13,267,44,0],[268,13,268,44,0],[269,13,269,40,0],[270,13,270,44,0],[271,13,271,48,0],[272,13,272,43,0],[273,17,273,72,0],[274,13,274,48,0],[275,13,275,44,0],[276,9,276,10,0],[281,9,281,10,0],[282,13,282,44,0],[283,5,283,12,0],[284,13,284,66,0],[285,13,285,41,0],[286,9,286,10,0],[289,9,289,10,0],[291,13,291,14,0],[292,17,292,76,0],[293,17,293,56,0],[294,17,294,73,0],[295,13,295,14,0],[296,13,296,32,0],[297,13,297,14,0],[298,17,298,60,0],[299,17,299,39,0],[300,13,300,14,0],[301,9,301,10,0]]);
+    </script>
+  </body>
+</html>

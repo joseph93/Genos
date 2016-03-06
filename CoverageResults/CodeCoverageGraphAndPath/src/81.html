@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\testrunnerconfigurator.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+#if !UNITY_METRO &amp;&amp; !UNITY_WEBPLAYER &amp;&amp; (UNITY_PRO_LICENSE || !(UNITY_ANDROID || UNITY_IPHONE))
+#define UTT_SOCKETS_SUPPORTED
+#endif
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using UnityEngine;
+using UnityTest.IntegrationTestRunner;
+#if UTT_SOCKETS_SUPPORTED
+using System.Net;
+using System.Net.Sockets;
+using System.Net.NetworkInformation;
+#endif
+
+#if UNITY_EDITOR
+using UnityEditorInternal;
+#endif
+
+namespace UnityTest
+{
+    public class TestRunnerConfigurator
+    {
+        public static string integrationTestsNetwork = &quot;networkconfig.txt&quot;;
+        public static string batchRunFileMarker = &quot;batchrun.txt&quot;;
+        public static string testScenesToRun = &quot;testscenes.txt&quot;;
+
+        public bool isBatchRun { get; private set; }
+
+        public bool sendResultsOverNetwork { get; private set; }
+
+#if UTT_SOCKETS_SUPPORTED
+        private readonly List&lt;IPEndPoint&gt; m_IPEndPointList = new List&lt;IPEndPoint&gt;();
+#endif
+
+        public TestRunnerConfigurator()
+        {
+            CheckForBatchMode();
+            CheckForSendingResultsOverNetwork();
+        }
+
+        public string GetIntegrationTestScenes(int testSceneNum)
+        {
+            string text;
+            if (Application.isEditor)
+                text = GetTextFromTempFile(testScenesToRun);
+            else
+                text = GetTextFromTextAsset(testScenesToRun);
+
+            List&lt;string&gt; sceneList = new List&lt;string&gt;();
+            foreach (var line in text.Split(new[] {&#39;\n&#39;}, StringSplitOptions.RemoveEmptyEntries))
+            {
+                sceneList.Add(line.ToString());
+            }
+
+            if (testSceneNum &lt; sceneList.Count)
+                return sceneList.ElementAt(testSceneNum);
+            else
+                return null;
+        }
+
+        private void CheckForSendingResultsOverNetwork()
+        {
+#if UTT_SOCKETS_SUPPORTED
+            string text;
+            if (Application.isEditor)
+                text = GetTextFromTempFile(integrationTestsNetwork);
+            else
+                text = GetTextFromTextAsset(integrationTestsNetwork);
+
+            if (text == null) return;
+
+            sendResultsOverNetwork = true;
+
+            m_IPEndPointList.Clear();
+
+            foreach (var line in text.Split(new[] {&#39;\n&#39;}, StringSplitOptions.RemoveEmptyEntries))
+            {
+                var idx = line.IndexOf(&#39;:&#39;);
+                if (idx == -1) throw new Exception(line);
+                var ip = line.Substring(0, idx);
+                var port = line.Substring(idx + 1);
+                m_IPEndPointList.Add(new IPEndPoint(IPAddress.Parse(ip), Int32.Parse(port)));
+            }
+#endif  // if UTT_SOCKETS_SUPPORTED
+        }
+
+        private static string GetTextFromTextAsset(string fileName)
+        {
+            var nameWithoutExtension = fileName.Substring(0, fileName.LastIndexOf(&#39;.&#39;));
+            var resultpathFile = Resources.Load(nameWithoutExtension) as TextAsset;
+            return resultpathFile != null ? resultpathFile.text : null;
+        }
+
+        private static string GetTextFromTempFile(string fileName)
+        {
+            string text = null;
+            try
+            {
+#if UNITY_EDITOR &amp;&amp; !UNITY_WEBPLAYER
+                text = File.ReadAllText(Path.Combine(&quot;Temp&quot;, fileName));
+#endif
+            }
+            catch
+            {
+                return null;
+            }
+            return text;
+        }
+
+        private void CheckForBatchMode()
+        {
+#if IMITATE_BATCH_MODE
+            isBatchRun = true;
+#elif UNITY_EDITOR
+            if (Application.isEditor &amp;&amp; InternalEditorUtility.inBatchMode)
+                isBatchRun = true;
+#else
+            if (GetTextFromTextAsset(batchRunFileMarker) != null) isBatchRun = true;
+#endif
+        }
+
+        public static List&lt;string&gt; GetAvailableNetworkIPs()
+        {
+#if UTT_SOCKETS_SUPPORTED
+            if (!NetworkInterface.GetIsNetworkAvailable()) 
+                return new List&lt;String&gt;{IPAddress.Loopback.ToString()};
+
+            var ipList = new List&lt;UnicastIPAddressInformation&gt;();
+            var allIpsList = new List&lt;UnicastIPAddressInformation&gt;();
+
+            foreach (var netInterface in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                if (netInterface.NetworkInterfaceType != NetworkInterfaceType.Wireless80211 &amp;&amp;
+                    netInterface.NetworkInterfaceType != NetworkInterfaceType.Ethernet)
+                    continue;
+
+                var ipAdresses = netInterface.GetIPProperties().UnicastAddresses
+                    .Where(a =&gt; a.Address.AddressFamily == AddressFamily.InterNetwork);
+                allIpsList.AddRange(ipAdresses);
+
+                if (netInterface.OperationalStatus != OperationalStatus.Up) continue;
+
+                ipList.AddRange(ipAdresses);
+            }
+
+            //On Mac 10.10 all interfaces return OperationalStatus.Unknown, thus this workaround
+            if(!ipList.Any()) return allIpsList.Select(i =&gt; i.Address.ToString()).ToList();
+
+            // sort ip list by their masks to predict which ip belongs to lan network
+            ipList.Sort((ip1, ip2) =&gt;
+                        {
+                            var mask1 = BitConverter.ToInt32(ip1.IPv4Mask.GetAddressBytes().Reverse().ToArray(), 0);
+                            var mask2 = BitConverter.ToInt32(ip2.IPv4Mask.GetAddressBytes().Reverse().ToArray(), 0);
+                            return mask2.CompareTo(mask1);
+                        });
+            if (ipList.Count == 0)
+                return new List&lt;String&gt; { IPAddress.Loopback.ToString() };
+            return ipList.Select(i =&gt; i.Address.ToString()).ToList();
+#else
+            return new List&lt;string&gt;();
+#endif  // if UTT_SOCKETS_SUPPORTED
+        }
+
+        public ITestRunnerCallback ResolveNetworkConnection()
+        {
+#if UTT_SOCKETS_SUPPORTED
+            var nrsList = m_IPEndPointList.Select(ipEndPoint =&gt; new NetworkResultSender(ipEndPoint.Address.ToString(), ipEndPoint.Port)).ToList();
+
+            var timeout = TimeSpan.FromSeconds(30);
+            DateTime startTime = DateTime.Now;
+            while ((DateTime.Now - startTime) &lt; timeout)
+            {
+                foreach (var networkResultSender in nrsList)
+                {
+                    try
+                    {
+                        if (!networkResultSender.Ping()) continue;
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogException(e);
+                        sendResultsOverNetwork = false;
+                        return null;
+                    }
+                    return networkResultSender;
+                }
+                Thread.Sleep(500);
+            }
+            Debug.LogError(&quot;Couldn&#39;t connect to the server: &quot; + string.Join(&quot;, &quot;, m_IPEndPointList.Select(ipep =&gt; ipep.Address + &quot;:&quot; + ipep.Port).ToArray()));
+            sendResultsOverNetwork = false;
+#endif  // if UTT_SOCKETS_SUPPORTED
+            return null;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[29,34,29,38,0],[29,39,29,51,0],[31,46,31,50,0],[31,51,31,63,0],[37,9,37,40,0],[38,9,38,10,0],[39,13,39,33,0],[40,13,40,49,0],[41,9,41,10,0],[44,9,44,10,0],[46,13,46,38,0],[47,17,47,61,0],[49,17,49,62,0],[51,13,51,57,0],[52,13,52,20,0],[52,34,52,97,0],[52,22,52,30,0],[53,13,53,14,0],[54,17,54,48,0],[55,13,55,14,0],[52,31,52,33,0],[57,13,57,48,0],[58,17,58,58,0],[60,17,60,29,0],[61,9,61,10,0],[64,9,64,10,0],[87,9,87,10,0],[90,9,90,10,0],[91,13,91,89,0],[92,13,92,84,0],[93,13,93,72,0],[94,9,94,10,0],[97,9,97,10,0],[98,13,98,32,0],[100,13,100,14,0],[102,17,102,73,0],[104,13,104,14,0],[105,13,105,18,0],[106,13,106,14,0],[107,17,107,29,0],[109,13,109,25,0],[110,9,110,10,0],[113,9,113,10,0],[117,13,117,75,0],[118,17,118,35,0],[122,9,122,10,0],[125,9,125,10,0],[162,13,162,39,0],[164,9,164,10,0],[167,9,167,10,0],[194,13,194,25,0],[195,9,195,10,0],[25,9,25,76,0],[26,9,26,66,0],[27,9,27,65,0]]);
+    </script>
+  </body>
+</html>

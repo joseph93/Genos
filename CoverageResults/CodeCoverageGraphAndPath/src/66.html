@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\assertions\comparers\transformcomparer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace UnityTest
+{
+    public class TransformComparer : ComparerBaseGeneric&lt;Transform&gt;
+    {
+        public enum CompareType { Equals, NotEquals }
+
+        public CompareType compareType;
+
+        protected override bool Compare(Transform a, Transform b)
+        {
+            if (compareType == CompareType.Equals)
+            {
+                return a.position == b.position;
+            }
+            if (compareType == CompareType.NotEquals)
+            {
+                return a.position != b.position;
+            }
+            throw new Exception();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,10,0],[15,13,15,51,0],[16,13,16,14,0],[17,17,17,49,0],[19,13,19,54,0],[20,13,20,14,0],[21,17,21,49,0],[23,13,23,35,0],[24,9,24,10,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\tourbutton.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
+
+namespace Assets.Scripts
+{
+
+
+    //Ihcene: This will help us load scenes for the NipperTour
+    public class TourButton : MonoBehaviour
+    {
+
+        // Use this for initialization
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void changeSceneToTour()
+        {
+            SceneManager.LoadScene(&quot;TourSelection&quot;);
+            Vibration.Vibrate(1000);
+        }
+
+        public void changeSceneToFloor()
+        {
+            SceneManager.LoadScene(&quot;F2&quot;);
+            Vibration.Vibrate(1000);
+        }
+
+        public void loadFloor2Next()
+        {
+            SceneManager.LoadScene(&quot;F2-next&quot;);
+            Vibration.Vibrate(1000);
+        }
+
+        public void backToOverview()
+        {
+            SceneManager.LoadScene(&quot;F2&quot;);
+            Vibration.Vibrate(1000);
+        }
+
+        public void changeSceneToQuit()
+        {
+            SceneManager.LoadScene(&quot;Quit&quot;);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,10,0],[17,9,17,10,0],[21,9,21,10,0],[23,9,23,10,0],[26,9,26,10,0],[27,13,27,53,0],[28,13,28,37,0],[29,9,29,10,0],[32,9,32,10,0],[33,13,33,42,0],[34,13,34,37,0],[35,9,35,10,0],[38,9,38,10,0],[39,13,39,47,0],[40,13,40,37,0],[41,9,41,10,0],[44,9,44,10,0],[45,13,45,42,0],[46,13,46,37,0],[47,9,47,10,0],[50,9,50,10,0],[51,13,51,44,0],[52,9,52,10,0]]);
+    </script>
+  </body>
+</html>

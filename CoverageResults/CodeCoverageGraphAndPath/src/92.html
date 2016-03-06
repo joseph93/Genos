@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\map\edge.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+
+namespace Assets.Scripts {
+    public class Edge : MonoBehaviour
+    {
+
+        // Use this for initialization
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        private Node startingNode { get; set; }
+        private Node endNode { get; set; }
+        private float edgeWeight { get; set; }
+        private int floorNumber { get; set; }
+
+
+        public Edge(Node n1, Node n2, int fN, float weight)
+        {
+            startingNode = n1;
+            endNode = n2;
+            floorNumber = fN;
+            edgeWeight = weight;
+        }
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,10,0],[12,9,12,10,0],[16,9,16,10,0],[18,9,18,10,0],[20,37,20,41,0],[20,42,20,46,0],[21,32,21,36,0],[21,37,21,41,0],[22,36,22,40,0],[22,41,22,45,0],[23,35,23,39,0],[23,40,23,44,0],[26,9,26,60,0],[27,9,27,10,0],[28,13,28,31,0],[29,13,29,26,0],[30,13,30,30,0],[31,13,31,33,0],[32,9,32,10,0]]);
+    </script>
+  </body>
+</html>

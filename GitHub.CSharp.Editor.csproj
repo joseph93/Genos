@@ -128,8 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Source\iBeacon\Editor\PostProcessBuildTrigger.cs" />
-    <Compile Include="Assets\Tests\Editor\PathFollowerTest.cs" />
-    <Compile Include="Assets\Tests\Editor\TouchScreenCameraTest.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionComponentEditor.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionExplorerWindow.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionListRenderer.cs" />
@@ -149,7 +147,6 @@
     <Compile Include="Assets\UnityTestTools\Common\Editor\ResultWriter\XmlResultWriter.cs" />
     <Compile Include="Assets\UnityTestTools\Common\Editor\Styles.cs" />
     <Compile Include="Assets\UnityTestTools\Common\Editor\TestFilterSettings.cs" />
-    <Compile Include="Assets\UnityTestTools\Examples\UnitTestExamples\Editor\SampleTests.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Batch.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\EditorReferencesUtil.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\GuiHelper.cs" />
@@ -198,6 +195,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

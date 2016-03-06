@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\scripts\beacon\ibeaconregion.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using UnityEngine;
+using System.Collections;
+
+namespace Assets.Scripts
+{
+
+    [System.Serializable]
+    public class iBeaconRegion
+    {
+
+        public string regionName;
+        public string UUID;
+
+        public override string ToString()
+        {
+            return UUID + &quot;:&quot; + regionName;
+        }
+
+        public static string regionsToString(iBeaconRegion[] regions)
+        {
+            string returnString = &quot;&quot;;
+            for (int i = 0; i &lt; regions.Length; i++)
+            {
+                returnString += regions[i].ToString();
+                if (i &lt; regions.Length - 1)
+                    returnString += &quot;;&quot;;
+            }
+            return returnString;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,10,0],[16,13,16,44,0],[17,9,17,10,0],[20,9,20,10,0],[21,13,21,38,0],[22,18,22,27,0],[23,13,23,14,0],[24,17,24,55,0],[25,17,25,44,0],[26,21,26,41,0],[27,13,27,14,0],[22,49,22,52,0],[22,29,22,47,0],[28,13,28,33,0],[29,9,29,10,0]]);
+    </script>
+  </body>
+</html>

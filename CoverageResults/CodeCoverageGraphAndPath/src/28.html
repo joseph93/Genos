@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joseph\documents\github\assets\unitytesttools\integrationtestsframework\testrunner\editor\integrationtestsrunnersettings.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+
+namespace UnityTest
+{
+    public class IntegrationTestsRunnerSettings : ProjectSettingsBase
+    {
+        public bool blockUIWhenRunning = true;
+        public bool pauseOnTestFailure;
+        
+        public void ToggleBlockUIWhenRunning ()
+        {
+            blockUIWhenRunning = !blockUIWhenRunning;
+            Save ();
+        }
+        
+        public void TogglePauseOnTestFailure()
+        {
+            pauseOnTestFailure = !pauseOnTestFailure;
+            Save ();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,10,0],[15,13,15,54,0],[16,13,16,21,0],[17,9,17,10,0],[20,9,20,10,0],[21,13,21,54,0],[22,13,22,21,0],[23,9,23,10,0],[10,9,10,47,0]]);
+    </script>
+  </body>
+</html>
