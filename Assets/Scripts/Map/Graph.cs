@@ -142,13 +142,6 @@ public class Graph : MonoBehaviour
             return true;
     }
 
-    //JOSEPH: I'm not sure how edges work here.
-    /*public void InsertUndirectedEdge(Node source, Node target, double weight)
-    {
-        if(!source.hasAdjacentNode(target))
-            source.addAdjacentNode(target, weight);
-    }*/
-
     public void InsertNewVertex(Node vertex)
     {
         if (!ExistKey(vertex.getID()))
