@@ -2,33 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Assets.Scripts.Observer_Pattern;
 using UnityEngine.Events;
 
 namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
     {
-        
+        private Vector2 scrolldistance;
         private List<Beacon> myBeacons = new List<Beacon>();
         private Map map;
         public Node[] ArrayOfNodes;
         private List<Node> path;
         
         public Camera mainCam;
-
-        private ModalWindow modalWindow;
-
-        public Sprite iconImage;
-        private UnityAction myOkAction;
-        private UnityAction myCancelAction;
+        
 
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-            //initialize the singleton.
-            modalWindow = ModalWindow.Instance();
-
-            myOkAction = new UnityAction(modalWindow.closePanel);
-            myCancelAction = new UnityAction(modalWindow.closePanel);
             
         }
         // Use this for initialization
@@ -54,6 +45,7 @@ namespace Assets.Scripts {
             Node n3 = ArrayOfNodes[2].GetComponentInChildren<Node>();
             Node n4 = ArrayOfNodes[3].GetComponentInChildren<Node>();
 
+
             n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 6.0f } });
             n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 2.0f } });
             n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 3.0f } });
@@ -74,6 +66,7 @@ namespace Assets.Scripts {
         void Update()
         {
             StartCoroutine(searchForDistanceOfBeacon(0.05f));
+
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 //JOSEPH: When you touch a point of interest on the map, it shows the shortest path from the first node of the nodeList to the touched node.
@@ -140,7 +133,7 @@ namespace Assets.Scripts {
             {
                 List<Storyline> storylines = map.GetStorylines();
                 List<Node> nodeList = storylines[0].GetNodes();
-                if (b.accuracy > 2.00 && b.accuracy < 6.00)
+                /*if (b.accuracy > 2.00 && b.accuracy < 6.00)
                 {
                     foreach (PointOfInterest poi in nodeList)
                     {
@@ -153,22 +146,23 @@ namespace Assets.Scripts {
                             }
                         }
                     }
-                }
+                }*/
                 if (b.accuracy < 2.00)
                 {
-                    
                     foreach (PointOfInterest poi in nodeList)
                     {
-                        if (!poi.isDetected())
+                        if (!poi.isVisited())
                         {
                             if (poi.getBeacon().m_uuid.ToLower().Equals(b.UUID.ToLower()))
                             {
+                                BeaconView bv = new BeaconView(poi);
+                                poi.setDescription("Stop at the end of the corridor before the bridge to building 18. The door to the " +
+                                                   "right was the old president’s office.The door is closed, Nipper barks and on the screen " +
+                                                   "appears a mental image from Nipper with the image of the old office, " +
+                                                   "as suggested in three drawings by thearchitects Ross and MacDonalds.");
+                                poi.setVisited(true);
                                 //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
-                                poi.makeIconBigger();
                                 mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
-                                Vibration.Vibrate(1000);
-                                poi.popUpSound();
-                                modalWindow.Choice("Here is the building of 1920, and here are the bathrooms of the 1936 building.", iconImage, myOkAction, myCancelAction);
                             }
                         }
                     }
@@ -203,6 +197,6 @@ namespace Assets.Scripts {
             }
         }
 
-
+        
     }
 }
