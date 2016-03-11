@@ -13,9 +13,15 @@ namespace Assets.Scripts {
         private Map map;
         public Node[] ArrayOfNodes;
         private List<Node> path;
+        private PointOfInterest lastVisitedPoi;
         
         public Camera mainCam;
-        
+        public GameObject pathCreator;
+
+        private RaycastHit hit;
+        private LayerMask touchInputMask;
+
+        private bool touched;
 
         //JOSEPH: Initialize the node list.
         void Awake()
@@ -69,30 +75,44 @@ namespace Assets.Scripts {
 
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
+                
                 //JOSEPH: When you touch a point of interest on the map, it shows the shortest path from the first node of the nodeList to the touched node.
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
+                
                 if (hit.collider != null)
                 {
-                    GameObject recipient = hit.transform.gameObject;
-                    Node touchedNode = recipient.GetComponent<Node>();
-                    List<Storyline> storylines = map.GetStorylines();
-                    List<Node> nodeList = storylines[0].GetNodes();
-                    foreach (Node n in nodeList)
-                    {
-                        if (touchedNode.id == n.id)
-                        {
-                            touchedNode = n;
-                        }
-
-                    }
-
-                    path = map.getGraph().shortest_path(nodeList[0], touchedNode);
-                    path.Reverse();
+                    if (touched)
+                        path.Clear();
+                    
+                    
+                        ResetTrails();
+                        GameObject recipient = hit.transform.gameObject;
+                        Node touchedNode = recipient.GetComponent<Node>();
+                        List<Storyline> storylines = map.GetStorylines();
+                        List<Node> nodeList = storylines[0].GetNodes(); 
+                            
+                        path = map.getGraph().shortest_path(nodeList[0], touchedNode);
+                        path.Reverse();
+                        touched = true;
+                    
                 }
 
             }
 
           
+        }
+
+        public void ResetTrails()
+        {
+            List<Storyline> storylines = map.GetStorylines();
+            List<Node> nodeList = storylines[0].GetNodes();
+            pathCreator.transform.position = new Vector3(nodeList[0].x, nodeList[0].y, -7);
+            Debug.Log("Trail Renderer time: " + pathCreator.GetComponent<TrailRenderer>().time);
+            Invoke("DisableTrail", 0.01f);
+            Debug.Log("Trail Renderer time: " + pathCreator.GetComponent<TrailRenderer>().time);
+            if (pathCreator.GetComponent<TrailRenderer>().time < 0f)
+                pathCreator.GetComponent<TrailRenderer>().time = 100.0f;
+            Debug.Log("Trail Renderer time: " + pathCreator.GetComponent<TrailRenderer>().time);
         }
 
 
@@ -124,7 +144,12 @@ namespace Assets.Scripts {
         public List<Node> returnPathWithTouch()
         {
             return path;
-        } 
+        }
+
+        public void DisableTrail()
+        {
+           pathCreator.GetComponent<TrailRenderer>().time = -5.0f;
+        }
 
         public IEnumerator searchForDistanceOfBeacon(float seconds)
         {
@@ -163,6 +188,7 @@ namespace Assets.Scripts {
                                 poi.setVisited(true);
                                 //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
                                 mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
+                                lastVisitedPoi = poi;
                             }
                         }
                     }
