@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using Assets.Scripts.Observer_Pattern;
+using Assets.Scripts.Path;
 using UnityEngine.Events;
 
 namespace Assets.Scripts {
@@ -83,14 +84,14 @@ namespace Assets.Scripts {
                 {
                     if (touched)
                         path.Clear();
-                    
-                    
+
                         ResetTrails();
                         GameObject recipient = hit.transform.gameObject;
                         Node touchedNode = recipient.GetComponent<Node>();
                         List<Storyline> storylines = map.GetStorylines();
-                        List<Node> nodeList = storylines[0].GetNodes(); 
-                            
+                        List<Node> nodeList = storylines[0].GetNodes();
+
+                    ShortestPathCreator.currentPoint = 0;
                         path = map.getGraph().shortest_path(nodeList[0], touchedNode);
                         path.Reverse();
                         touched = true;
@@ -106,13 +107,11 @@ namespace Assets.Scripts {
         {
             List<Storyline> storylines = map.GetStorylines();
             List<Node> nodeList = storylines[0].GetNodes();
+            TrailRenderer trail = pathCreator.GetComponent<TrailRenderer>();
+            StartCoroutine("DisableTrail", trail);
+            if (trail.time < 0)
+                trail.time = -trail.time;
             pathCreator.transform.position = new Vector3(nodeList[0].x, nodeList[0].y, -7);
-            Debug.Log("Trail Renderer time: " + pathCreator.GetComponent<TrailRenderer>().time);
-            Invoke("DisableTrail", 0.01f);
-            Debug.Log("Trail Renderer time: " + pathCreator.GetComponent<TrailRenderer>().time);
-            if (pathCreator.GetComponent<TrailRenderer>().time < 0f)
-                pathCreator.GetComponent<TrailRenderer>().time = 100.0f;
-            Debug.Log("Trail Renderer time: " + pathCreator.GetComponent<TrailRenderer>().time);
         }
 
 
@@ -146,9 +145,14 @@ namespace Assets.Scripts {
             return path;
         }
 
-        public void DisableTrail()
+        IEnumerator DisableTrail(TrailRenderer trail)
         {
-           pathCreator.GetComponent<TrailRenderer>().time = -5.0f;
+            if (trail.time < 0)
+                yield break;
+
+            yield return new WaitForSeconds(0.01f);
+
+            trail.time = -trail.time;
         }
 
         public IEnumerator searchForDistanceOfBeacon(float seconds)

@@ -12,7 +12,7 @@ namespace Assets.Scripts.Path
         private NipperTour nipper;
         public float speed = 5.0f;
         public float reachDist = 0.2f;
-        public int currentPoint;
+        public static int currentPoint;
 
         private List<Node> shortest_path;
 
@@ -27,12 +27,19 @@ namespace Assets.Scripts.Path
             shortest_path = nipper.returnPathWithTouch();
             if (shortest_path != null)
             {
-                float dist = Vector3.Distance(shortest_path[currentPoint].getPosition(), transform.position);
-                transform.position = Vector3.MoveTowards(transform.position, shortest_path[currentPoint].getPosition(),
-                    Time.deltaTime*speed);
+                if (shortest_path.Any())
+                {
+                    if (currentPoint < shortest_path.Count)
+                    {
+                        float dist = Vector3.Distance(shortest_path[currentPoint].getPosition(), transform.position);
+                        transform.position = Vector3.MoveTowards(transform.position,
+                            shortest_path[currentPoint].getPosition(),
+                            Time.deltaTime*speed);
 
-                if (dist <= reachDist)
-                    currentPoint++;
+                        if (dist <= reachDist)
+                            currentPoint++;
+                    }
+                }
             }
         }
 

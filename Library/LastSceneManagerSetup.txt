@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/F2.unity
-=======
-- path: Assets/Scenes/Intro.unity
->>>>>>> f75009173944543fe0a01e36d1ef400bdaf45bf5
+- path: Assets/Scenes/F2-next.unity
   isLoaded: 1
   isActive: 1

@@ -5,19 +5,5 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-<<<<<<< HEAD
   - enabled: 1
-    path: Assets/Scenes/LoadingPage.unity
-  - enabled: 1
-    path: Assets/Scenes/Menu.unity
-  - enabled: 1
-    path: Assets/Scenes/TourSelection.unity
-  - enabled: 1
-    path: Assets/Scenes/F2.unity
-  - enabled: 1
-=======
-  - enabled: 0
->>>>>>> f75009173944543fe0a01e36d1ef400bdaf45bf5
     path: Assets/Scenes/F2-next.unity
-  - enabled: 1
-    path: Assets/Scenes/Intro.unity
