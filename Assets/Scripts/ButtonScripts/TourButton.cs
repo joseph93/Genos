@@ -31,13 +31,17 @@ namespace Assets.Scripts
         {
             SceneManager.LoadScene("F2-next");
             Vibration.Vibrate(100);
-
-            
         }
 
-        public void backToOverview()
+        public void loadOverview()
         {
             SceneManager.LoadScene("F2");
+            Vibration.Vibrate(100);
+        }
+
+        public void loadListOfPOI()
+        {
+            SceneManager.LoadScene("ListOfPointsOfInterest");
             Vibration.Vibrate(100);
         }
 
@@ -45,5 +49,7 @@ namespace Assets.Scripts
         {
             SceneManager.LoadScene("Quit");
         }
+
+        
     }
 }
