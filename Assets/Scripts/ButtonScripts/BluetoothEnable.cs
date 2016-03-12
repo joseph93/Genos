@@ -57,11 +57,11 @@ namespace Assets.Scripts
             }
         }
 
-        public void changeSceneToFloor()
+        public void loadIntro()
         {
             if (bluetoothOn)
             {
-                SceneManager.LoadScene("F2");
+                SceneManager.LoadScene("Intro");
                 Vibration.Vibrate(100);
             }
 

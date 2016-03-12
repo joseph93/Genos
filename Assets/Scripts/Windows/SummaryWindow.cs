@@ -10,6 +10,7 @@ public class SummaryWindow : MonoBehaviour {
     public Image image1;
     public Image image2;
     public Button closeButton;
+    public Scrollbar scrollBar;
     public GameObject modalPanelObject;
 
     private static SummaryWindow summaryWindow;
@@ -41,6 +42,7 @@ public class SummaryWindow : MonoBehaviour {
         this.image1.gameObject.SetActive(false);
         this.image2.gameObject.SetActive(false);
         closeButton.gameObject.SetActive(true);
+        scrollBar.gameObject.SetActive(true);
     }
 
     //JOSEPH: Ok/Cancel : A string, an image, OK event, Cancel event
@@ -59,6 +61,7 @@ public class SummaryWindow : MonoBehaviour {
         this.image1.gameObject.SetActive(true);
         this.image2.gameObject.SetActive(false);
         closeButton.gameObject.SetActive(true);
+        scrollBar.gameObject.SetActive(true);
     }
 
     public void SummaryTwoImage(string title, string descr, Sprite image1, Sprite image2, UnityAction closeEvent)
@@ -77,6 +80,7 @@ public class SummaryWindow : MonoBehaviour {
         this.image1.gameObject.SetActive(true);
         this.image2.gameObject.SetActive(true);
         closeButton.gameObject.SetActive(true);
+        scrollBar.gameObject.SetActive(true);
     }
 
     public void closePanel()
