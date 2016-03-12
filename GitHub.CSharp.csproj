@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\Beacon\iBeaconServerExample.cs" />
     <Compile Include="Assets\Scripts\ButtonScripts\BluetoothEnable.cs" />
     <Compile Include="Assets\Scripts\ButtonScripts\FloorManager.cs" />
+    <Compile Include="Assets\Scripts\ButtonScripts\ListOfPOI.cs" />
     <Compile Include="Assets\Scripts\ButtonScripts\LoadingScene.cs" />
     <Compile Include="Assets\Scripts\ButtonScripts\TourButton.cs" />
     <Compile Include="Assets\Scripts\Camera\TouchScreenCamera.cs" />

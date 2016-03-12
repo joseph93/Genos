@@ -152,6 +152,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 252703979}
+--- !u!114 &270351775 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11444308, guid: 82afc875b95ad5643b736046615648a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 896471906}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &328882490
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +489,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 540716184}
-        m_MethodName: changeSceneToFloor
+        m_MethodName: loadIntro
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -705,12 +711,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 896471906}
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!114 &896471912 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11492516, guid: 82afc875b95ad5643b736046615648a8,
-    type: 2}
-  m_PrefabInternal: {fileID: 896471906}
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &916647905
 Prefab:
   m_ObjectHideFlags: 0
@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43def0e5b92a2c54ab208f4198d97e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: {fileID: 896471912}
+  description: {fileID: 270351775}
   iconImage: {fileID: 896471911}
   okButton: {fileID: 896471910}
   cancelButton: {fileID: 896471909}
