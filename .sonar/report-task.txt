@@ -1,5 +1,0 @@
-projectKey=Nippertrails:Sprint2
-serverUrl=http://localhost:9000
-dashboardUrl=http://localhost:9000/dashboard/index/Nippertrails:Sprint2
-ceTaskId=AVNNQMAncAjyoahyFNw_
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AVNNQMAncAjyoahyFNw_
