@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/ListOfPointsOfInterest.unity
+- path: Assets/Scenes/Lang.unity
   isLoaded: 1
   isActive: 1
