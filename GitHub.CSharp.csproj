@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\ButtonScripts\TourButton.cs" />
     <Compile Include="Assets\Scripts\Camera\TouchScreenCamera.cs" />
     <Compile Include="Assets\Scripts\Language\Language.cs" />
+    <Compile Include="Assets\Scripts\Language\xmlReader.cs" />
     <Compile Include="Assets\Scripts\Map\Edge.cs" />
     <Compile Include="Assets\Scripts\Map\Graph.cs" />
     <Compile Include="Assets\Scripts\Map\LabeledNode.cs" />
@@ -162,6 +163,7 @@
     <None Include="Assets\Fonts\thyssen_j\9JULIUST.TXT" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\Resources\Intro.txt" />
+    <None Include="Assets\Scripts\Language\xmlLanguages.xml" />
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\AngryInclude.cginc" />
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\CharacterSelfIlluminationReflective.shader" />
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\EnemySelfIlluminationReflective.shader" />

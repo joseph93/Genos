@@ -1,0 +1,16 @@
+<? xml version="1.0" encoding="utf-8" ?>
+<languages>
+	<language>
+		<Name>English</Name>
+		<button1>Play</button1>
+		<button2>Exit</button2>
+	</language>
+	
+	<language>
+		<Name>Bulgarian</Name>
+		<button1>Pffwweq</button1>
+		<button2>gwwgwwwg</button2>
+	</language>
+
+
+</languages>
