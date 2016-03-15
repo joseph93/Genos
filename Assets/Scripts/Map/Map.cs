@@ -11,10 +11,12 @@ namespace Assets.Scripts
 
         private List<Storyline> storylines;
         private Graph mapGraph;
+        private List<Node> nodes; 
 
         public Map()
         {
             storylines = new List<Storyline>();
+            nodes = new List<Node>();
             mapGraph = new Graph();
         }
 
@@ -23,11 +25,10 @@ namespace Assets.Scripts
             storylines.Add(sl);
         }
 
-        public void initializeGraph(int i)
+        public void initializeGraph()
         {
             //JOSEPH: Populate the graph with all the nodes in the storyline.
-            List<Node> nodeList = storylines[i].GetNodes();
-            foreach (Node n in nodeList)
+            foreach (Node n in nodes)
             {
                 mapGraph.InsertNewVertex(n);
             }
@@ -37,6 +38,12 @@ namespace Assets.Scripts
         public void addNode(Node n)
         {
             mapGraph.InsertNewVertex(n);
+            nodes.Add(n);
+        }
+
+        public void addNodeList(List<Node> nodeList)
+        {
+            nodes = nodeList;
         }
 
         public Graph getGraph()
@@ -52,7 +59,12 @@ namespace Assets.Scripts
         public List<Storyline> GetStorylines()
         {
             return storylines;
-        } 
+        }
+
+        public List<Node> GetNodes()
+        {
+            return nodes;
+        }
 
     }
 }

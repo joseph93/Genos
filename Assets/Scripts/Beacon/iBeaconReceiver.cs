@@ -57,6 +57,7 @@ public enum BluetoothLowEnergyState {
 
         void Start()
         {
+            btenabled = false;
         }
 
         public static void Init()

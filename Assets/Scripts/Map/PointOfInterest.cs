@@ -12,17 +12,18 @@ namespace Assets.Scripts
     public class PointOfInterest : Node
     {
         private string description;
-        public string poiName;
+        [SerializeField] private string poiName;
+        [SerializeField] private int sequentialID;
+        private bool visited;
+        public bool detected { get; set; }
+        public bool warned { get; set; }
 
         public iBeaconServer beacon { get; set; }
         public GameObject BeaconGameObject;
         private AudioSource[] sounds;
         private AudioSource popUp;
         private AudioSource beforeSound;
-
-        private bool visited;
-        private bool detected;
-
+        
         private List<Observer> observers;
         
         private PopUpWindow popUpWindow;
@@ -43,6 +44,7 @@ namespace Assets.Scripts
             observers = new List<Observer>();
             visited = false;
             detected = false;
+            warned = false;
 
             popUpWindow = PopUpWindow.Instance();
             summaryWindow = SummaryWindow.Instance();
@@ -58,11 +60,22 @@ namespace Assets.Scripts
             description = "";
             visited = false;
             detected = false;
+            warned = false;
         }
 
         public void setDescription(string descr)
         {
             description = descr;
+        }
+
+        public string getPoiName()
+        {
+            return poiName;
+        }
+
+        public int getSequentialID()
+        {
+            return sequentialID;
         }
 
         public void setVisited(bool visited)
@@ -111,11 +124,6 @@ namespace Assets.Scripts
         public bool isDetected()
         {
             return detected;
-        }
-
-        public iBeaconServer getBeacon()
-        {
-            return beacon;
         }
 
         public void attachObserver(Observer obs)

@@ -72,7 +72,7 @@ namespace Assets.Scripts
         {
             if (a == null)
                 return false;
-            return a.UUID.ToLower().Equals(m_uuid.ToLower());
+            return a.UUID.ToLower().Equals(m_uuid.ToLower()) && m_major == a.major && m_minor == a.minor;
         }
     }
 }
