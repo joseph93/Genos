@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using Assets.Scripts.Observer_Pattern;
 using Assets.Scripts.Path;
 using UnityEngine.Events;
@@ -9,12 +10,14 @@ using UnityEngine.Events;
 namespace Assets.Scripts {
     public class NipperTour : MonoBehaviour
     {
-        private Vector2 scrolldistance;
-        private List<Beacon> myBeacons = new List<Beacon>();
+        //private iBeaconHandler beaconHandler;
+        private List<Beacon> myBeacons;
         private Map map;
         public Node[] ArrayOfNodes;
+        private List<Node> nodeList;
         private List<Node> path;
-        private PointOfInterest lastVisitedPoi;
+        private List<PointOfInterest> visitedPointOfInterests;
+        private List<PointOfInterest> pointsOfInterest;  
         
         public Camera mainCam;
         public GameObject pathCreator;
@@ -24,6 +27,14 @@ namespace Assets.Scripts {
 
         private bool touched;
 
+        private ModalWindow modalWindow;
+
+        public Sprite iconImage;
+        private UnityAction yesAction;
+        private UnityAction noAction;
+
+        private iBeaconHandler bh;
+
         //JOSEPH: Initialize the node list.
         void Awake()
         {
@@ -32,11 +43,14 @@ namespace Assets.Scripts {
         // Use this for initialization
         void Start()
         {
-            iBeaconReceiver.BeaconRangeChangedEvent += OnBeaconRangeChanged;
-            iBeaconReceiver.BluetoothStateChangedEvent += OnBluetoothStateChanged;
-            iBeaconReceiver.CheckBluetoothLEStatus();
-            Debug.Log("Listening for beacons");
-
+            bh = FindObjectOfType<iBeaconHandler>();
+            
+            path = new List<Node>();
+            nodeList = new List<Node>();
+            
+            modalWindow = ModalWindow.Instance();
+            yesAction = new UnityAction(modalWindow.closePanel);
+            noAction = new UnityAction(modalWindow.closePanel);
 
             map = new Map();
             Storyline nipperTour = new Storyline("Nipper Tour", 4);
@@ -57,21 +71,30 @@ namespace Assets.Scripts {
             n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 2.0f } });
             n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 3.0f } });
 
+            map.addNodeList(nipperTour.GetNodes());
+            nodeList = map.GetNodes();
             //Add all the nodes that are in the Nipper Tour storyline in the map.
-            map.initializeGraph(0);
-            
-        }
+            map.initializeGraph();
 
-        void OnDestroy()
-        {
-            iBeaconReceiver.BeaconRangeChangedEvent -= OnBeaconRangeChanged;
-            iBeaconReceiver.BluetoothStateChangedEvent -= OnBluetoothStateChanged;
+            pointsOfInterest = new List<PointOfInterest>();
+            foreach (PointOfInterest p in nodeList)
+            {
+                pointsOfInterest.Add(p);
+                print("Adding poi with sequential ID : " + p.getSequentialID());
+            }
+
+            visitedPointOfInterests = new List<PointOfInterest>();
+
         }
+        
 
         //Reviewer Ihcene: Update was fixed, for the rendering of the beacon, for each frames
         // Update is called once per frame
         void Update()
         {
+            if(bh != null)
+                myBeacons = bh.getBeacons();
+
             StartCoroutine(searchForDistanceOfBeacon(0.05f));
 
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -88,10 +111,8 @@ namespace Assets.Scripts {
                         ResetTrails();
                         GameObject recipient = hit.transform.gameObject;
                         Node touchedNode = recipient.GetComponent<Node>();
-                        List<Storyline> storylines = map.GetStorylines();
-                        List<Node> nodeList = storylines[0].GetNodes();
 
-                    ShortestPathCreator.currentPoint = 0;
+                        ShortestPathCreator.currentPoint = 0;
                         path = map.getGraph().shortest_path(nodeList[0], touchedNode);
                         path.Reverse();
                         touched = true;
@@ -99,45 +120,15 @@ namespace Assets.Scripts {
                 }
 
             }
-
-          
-        }
+        } 
 
         public void ResetTrails()
         {
-            List<Storyline> storylines = map.GetStorylines();
-            List<Node> nodeList = storylines[0].GetNodes();
             TrailRenderer trail = pathCreator.GetComponent<TrailRenderer>();
             StartCoroutine("DisableTrail", trail);
             if (trail.time < 0)
                 trail.time = -trail.time;
             pathCreator.transform.position = new Vector3(nodeList[0].x, nodeList[0].y, -7);
-        }
-
-
-        private void OnBluetoothStateChanged(BluetoothLowEnergyState newstate)
-        {
-            switch (newstate)
-            {
-                case BluetoothLowEnergyState.POWERED_ON:
-                    iBeaconReceiver.Init();
-                    Debug.Log("It is on, go searching");
-                    break;
-                case BluetoothLowEnergyState.POWERED_OFF:
-                    Debug.Log("It is off, switch it on");
-                    break;
-                case BluetoothLowEnergyState.UNAUTHORIZED:
-                    Debug.Log("User doesn't want this app to use Bluetooth, too bad");
-                    break;
-                case BluetoothLowEnergyState.UNSUPPORTED:
-                    Debug.Log("This device doesn't support Bluetooth Low Energy, we should inform the user");
-                    break;
-                case BluetoothLowEnergyState.UNKNOWN:
-                case BluetoothLowEnergyState.RESETTING:
-                default:
-                    Debug.Log("Nothing to do at the moment");
-                    break;
-            }
         }
 
         public List<Node> returnPathWithTouch()
@@ -155,13 +146,40 @@ namespace Assets.Scripts {
             trail.time = -trail.time;
         }
 
+        public bool isInOrder(PointOfInterest poi)
+        {
+            int currentPoi = pointsOfInterest.IndexOf(poi);
+
+            PointOfInterest[] pois = pointsOfInterest.ToArray();
+            
+            for (int i = 0; i < currentPoi; i++)
+            {
+                if (!pois[i].isVisited())
+                {
+                    print("I'm checking its order");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public PointOfInterest findLastUnvisitedPoi()
+        {
+            //JOSEPH: find the last object of the visited list.
+            int lastIndex = visitedPointOfInterests.Count;
+            
+
+            PointOfInterest[] pois = pointsOfInterest.ToArray();
+
+            return pois.ElementAt(lastIndex);
+        }
+
         public IEnumerator searchForDistanceOfBeacon(float seconds)
         {
             yield return new WaitForSeconds(seconds);
             foreach (Beacon b in myBeacons)
             {
-                List<Storyline> storylines = map.GetStorylines();
-                List<Node> nodeList = storylines[0].GetNodes();
                 /*if (b.accuracy > 2.00 && b.accuracy < 6.00)
                 {
                     foreach (PointOfInterest poi in nodeList)
@@ -178,55 +196,45 @@ namespace Assets.Scripts {
                 }*/
                 if (b.accuracy < 2.00)
                 {
-                    foreach (PointOfInterest poi in nodeList)
+                    foreach (PointOfInterest poi in pointsOfInterest)
                     {
                         if (!poi.isVisited())
                         {
-                            if (poi.getBeacon().m_uuid.ToLower().Equals(b.UUID.ToLower()))
+                            if (poi.beacon.Equals(b))
                             {
-                                BeaconView bv = new BeaconView(poi);
-                                poi.setDescription("Stop at the end of the corridor before the bridge to building 18. The door to the " +
-                                                   "right was the old president’s office.The door is closed, Nipper barks and on the screen " +
-                                                   "appears a mental image from Nipper with the image of the old office, " +
-                                                   "as suggested in three drawings by thearchitects Ross and MacDonalds.");
-                                poi.setVisited(true);
-                                //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
-                                mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
-                                lastVisitedPoi = poi;
+                                if (isInOrder(poi))
+                                {
+                                    BeaconView bv = new BeaconView(poi);
+                                    poi.setDescription(
+                                        "Stop at the end of the corridor before the bridge to building 18. The door to the " +
+                                        "right was the old president’s office.The door is closed, Nipper barks and on the screen " +
+                                        "appears a mental image from Nipper with the image of the old office, " +
+                                        "as suggested in three drawings by thearchitects Ross and MacDonalds.");
+                                    poi.setVisited(true);
+                                    visitedPointOfInterests.Add(poi);
+                                    //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
+                                    mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
+                                    
+                                }
+                                else
+                                {
+                                    if (!poi.warned)
+                                    {
+                                        PointOfInterest lastUnvisitedPoi = findLastUnvisitedPoi();
+                                        //Pop up, notify the user that he missed a poi
+                                        string description = "You have missed point of interest " +
+                                                             lastUnvisitedPoi.getSequentialID() +
+                                                             ". Please go back and visit it before proceeding.";
+                                        modalWindow.Choice(description, iconImage, yesAction, noAction);
+                                        poi.warned = true;
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
         }
-
-        private void OnBeaconRangeChanged(List<Beacon> beacons)
-        {
-            // 
-            foreach (Beacon b in beacons)
-            {
-                if (myBeacons.Contains(b))
-                {
-                    myBeacons[myBeacons.IndexOf(b)] = b;
-                }
-                else
-                {
-                    // this beacon was not in the list before
-                    // this would be the place where the BeaconArrivedEvent would have been spawned in the the earlier versions
-                    myBeacons.Add(b);
-                }
-            }
-            foreach (Beacon b in myBeacons)
-            {
-                if (b.lastSeen.AddSeconds(10) < DateTime.Now)
-                {
-                    // we delete the beacon if it was last seen more than 10 seconds ago
-                    // this would be the place where the BeaconOutOfRangeEvent would have been spawned in the earlier versions
-                    myBeacons.Remove(b);
-                }
-            }
-        }
-
         
     }
 }
