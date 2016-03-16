@@ -1,0 +1,31 @@
+Id,English,Russian,French
+title,Localization Service,Сервис Локолизации,Service de Localisation
+text,"This package is designed to show the localization of text in your applications. Simple interface. Text of localization located in the .CSV file format. Works with several possible types of text output in Unity(MeshText and UIText), there is also has the opportunity to get text value of the code.","Это пакет предназначен для отображения локализации текстов в ваших приложениях. Простой интерфейс. Локализация из файла .CSV формата. Работает с несколькими возможными видами вывода текста в Unity( MeshText и UIText), так же есть возможность получить текстовое значение из кода.","Ce forfait est conçu pour montrer la localisation de texte dans vos applications. Interface simple. Texte de localisation situé dans le format de fichier .csv. Fonctionne avec plusieurs types possibles de sortie de texte dans Unity(MeshText et UIText), on a aussi la possibilité d'obtenir la valeur de texte du code."
+shorttext,"This package is designed to show the localization of text...","Это пакет предназначен для отображения локализации текстов...","Ce forfait est conçu pour montrer la localisation de texte..."
+autors,Sun Cube,Sun Cube,Sun Cube
+localization1,English,Английский,Anglaise
+localization2,Russian,Русский,Russe
+localization3,French,Французский,Français
+titleMenu,Menu,Menu,Menu
+titleLanguage,Language,lgangfa,Langage
+titleTours,Tours,tgswb,Tournées
+titleListOfPOI,Nipper Tour,Nipper Tour,Nipper Tour
+titleIntroduction,"Introduction","intrigjfo","Introduction"
+buttonNipperTour,"NipperTour","nipsgwgs","Nipper Tour"
+buttonCommingSoon,"Comming Soon...","comnfajaf","À venir..."
+buttonTours,Tours,tsgstor,Tours
+buttonSettings,Settings,Sensntks,Configurations
+buttonFinish,Finish,frinfsi,Finir
+buttonOk,Ok,ofksf,Oui
+buttonCancel,Cancel,calramf,Annuler
+buttonPOI1,"Point of Interest 1","poffnw nrmkf","Point d'intérêt 1"
+buttonPOI2,"Point of Interest 2","poffnw nrmkf","Point d'intérêt 2"
+buttonPOI3,"Point of Interest 3","poffnw nrmkf","Point d'intérêt 3"
+buttonPOI4,"Point of Interest 4","poffnw nrmkf","Point d'intérêt 4"
+buttonPOI5,"Point of Interest 5","poffnw nrmkf","Point d'intérêt 5"
+buttonPOI6,"Point of Interest 6","poffnw nrmkf","Point d'intérêt 6"
+buttonPOI7,"Point of Interest 7","poffnw nrmkf","Point d'intérêt 7"
+buttonClose,Close,closfsf,Fermer
+panelQuit,"Do you want to quit the application?","Ddnakdaojfan?","Voulez-vous quitter l'application?"
+panelBluetooth,"Your bluetooth is turned off and this application uses bluetooth. Would you like to turn it on?","blusnfsfk","Votre bluetooth est fermé et cette application nécessite bluetooth. Voulez-vous l'allumer?"
+floor2,"Floor 2","florama","Étage 1"
