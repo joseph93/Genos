@@ -43,7 +43,6 @@ namespace Assets.Scripts
             {
                 Console.WriteLine("Security Exception:\n\n{0}", e.Message);
             }
-
         }
 
         [Test]
