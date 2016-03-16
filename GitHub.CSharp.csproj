@@ -74,6 +74,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LocalizeService\Demo\LocolizeTest.cs" />
+    <Compile Include="Assets\LocalizeService\Scripts\CSVReader.cs" />
+    <Compile Include="Assets\LocalizeService\Scripts\LocalizationService.cs" />
+    <Compile Include="Assets\LocalizeService\Scripts\UILocalization.cs" />
     <Compile Include="Assets\Scripts\Beacon\Beacon.cs" />
     <Compile Include="Assets\Scripts\Beacon\NipperTour.cs" />
     <Compile Include="Assets\Scripts\Beacon\Vibration.cs" />
