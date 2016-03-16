@@ -22,9 +22,6 @@ namespace Assets.Scripts {
         public Camera mainCam;
         public GameObject pathCreator;
 
-        private RaycastHit hit;
-        private LayerMask touchInputMask;
-
         private bool touched;
 
         private ModalWindow modalWindow;
@@ -35,6 +32,12 @@ namespace Assets.Scripts {
 
         private iBeaconHandler bh;
 
+        public float minSwipeDistX;
+        private Vector2 startPos;
+
+        private UI_Manager ui_Manager;
+        public Animator anim;
+
         //JOSEPH: Initialize the node list.
         void Awake()
         {
@@ -43,6 +46,7 @@ namespace Assets.Scripts {
         // Use this for initialization
         void Start()
         {
+            ui_Manager = FindObjectOfType<UI_Manager>();
             bh = FindObjectOfType<iBeaconHandler>();
             
             path = new List<Node>();
@@ -96,6 +100,45 @@ namespace Assets.Scripts {
                 myBeacons = bh.getBeacons();
 
             StartCoroutine(searchForDistanceOfBeacon(0.05f));
+
+            if (Input.touchCount > 0)
+
+            {
+
+                Touch touch = Input.touches[0];
+                
+                switch (touch.phase)
+
+                {
+
+                    case TouchPhase.Began:
+
+                        startPos = touch.position;
+
+                        break;
+
+
+
+                    case TouchPhase.Ended:
+                        
+                        float swipeDistHorizontal = (new Vector3(touch.position.x, 0, 0) - new Vector3(startPos.x, 0, 0)).magnitude;
+
+                        if (swipeDistHorizontal > minSwipeDistX)
+
+                        {
+
+                            float swipeValue = Mathf.Sign(touch.position.x - startPos.x);
+                            if (swipeValue < 0) //left swipe
+                            {
+                               ui_Manager.disableBoolAnimator(anim); 
+                            }
+
+                            //MoveLeft ();
+
+                        }
+                        break;
+                }
+            }
 
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
@@ -204,6 +247,7 @@ namespace Assets.Scripts {
                             {
                                 if (isInOrder(poi))
                                 {
+                                    //attach the observer to the poi.
                                     BeaconView bv = new BeaconView(poi);
                                     poi.setDescription(
                                         "Stop at the end of the corridor before the bridge to building 18. The door to the " +

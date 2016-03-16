@@ -17,7 +17,7 @@ EditorBuildSettings:
     path: Assets/Scenes/F2.unity
   - enabled: 1
     path: Assets/Scenes/F2-next.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ListOfPointsOfInterest.unity
   - enabled: 0
     path: Assets/Scenes/F2-next-duplicate.unity
