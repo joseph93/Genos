@@ -146,7 +146,7 @@ public class Graph : MonoBehaviour
     {
         if (!ExistKey(vertex.getID()))
         {
-            Vertices.Add(vertex.id, vertex);
+            Vertices.Add(vertex.getID(), vertex);
         }
     }
 

@@ -12,8 +12,8 @@ public class Node : MonoBehaviour {
 
     
     private State Status = State.UnVisited;
-    public int id;
-    public int floorNumber;
+    [SerializeField] private int id;
+    [SerializeField] private int floorNumber;
     private Dictionary<Node, float> adjacentNodes;
     public float x;
     public float y;

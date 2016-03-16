@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Beacon\Beacon.cs" />
     <Compile Include="Assets\Scripts\Beacon\NipperTour.cs" />
     <Compile Include="Assets\Scripts\Beacon\Vibration.cs" />
+    <Compile Include="Assets\Scripts\Beacon\iBeaconHandler.cs" />
     <Compile Include="Assets\Scripts\Beacon\iBeaconReceiver.cs" />
     <Compile Include="Assets\Scripts\Beacon\iBeaconRegion.cs" />
     <Compile Include="Assets\Scripts\Beacon\iBeaconServer.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Scripts\ButtonScripts\ListOfPOI.cs" />
     <Compile Include="Assets\Scripts\ButtonScripts\LoadingScene.cs" />
     <Compile Include="Assets\Scripts\ButtonScripts\TourButton.cs" />
+    <Compile Include="Assets\Scripts\Camera\IntroPlayer.cs" />
     <Compile Include="Assets\Scripts\Camera\TouchScreenCamera.cs" />
     <Compile Include="Assets\Scripts\Language\Language.cs" />
     <Compile Include="Assets\Scripts\Language\xmlReader.cs" />

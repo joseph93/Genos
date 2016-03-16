@@ -1,4 +1,16 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/LocalizeService/Demo/Demo.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/F2-next.unity
+=======
+<<<<<<< HEAD
+- path: Assets/xmlRead.unity
+=======
+- path: Assets/Scenes/Lang.unity
+>>>>>>> d867dcece733ea2d5a5460f7812df6c352932efe
+>>>>>>> b091130152b60ec7364a49e84c7b19de89b12f50
+>>>>>>> 444f16f7b09373186d4581e950d31c6aecc4cde4
   isLoaded: 1
   isActive: 1
