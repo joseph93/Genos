@@ -247,6 +247,7 @@ MonoBehaviour:
   - {fileID: 947255327}
   mainCam: {fileID: 1102128377}
   pathCreator: {fileID: 0}
+  iconImage: {fileID: 0}
 --- !u!1 &137250323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,6 +2071,7 @@ MonoBehaviour:
   x: 1.41
   y: -0.99
   poiName: Fourth
+  sequentialID: 0
   BeaconGameObject: {fileID: 1876923238}
   nipperPopUp: {fileID: 0}
   poiImage: {fileID: 0}
@@ -4252,6 +4254,7 @@ MonoBehaviour:
   x: -2.23
   y: -1.16
   poiName: Second
+  sequentialID: 0
   BeaconGameObject: {fileID: 1876923238}
   nipperPopUp: {fileID: 0}
   poiImage: {fileID: 0}
@@ -4503,6 +4506,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1858296857 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 163640, guid: 82afc875b95ad5643b736046615648a8, type: 2}
+  m_PrefabInternal: {fileID: 957925738}
+--- !u!114 &1858296858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858296857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: panelQuit
 --- !u!1001 &1876923237
 Prefab:
   m_ObjectHideFlags: 0
@@ -5106,6 +5125,7 @@ MonoBehaviour:
   x: -0.2899933
   y: -0.83000183
   poiName: Third
+  sequentialID: 0
   BeaconGameObject: {fileID: 1876923238}
   nipperPopUp: {fileID: 0}
   poiImage: {fileID: 0}

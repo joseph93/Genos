@@ -8,9 +8,24 @@ localization2,Russian,Русский,Russe
 localization3,French,Французский,Français
 titleMenu,Menu,Menu,Menu
 titleLanguage,Language,lgangfa,Langage
+titleTours,Tours,tgswb,Tournées
+titleListOfPOI,Nipper Tour,Nipper Tour,Nipper Tour
+titleIntroduction,"Introduction","intrigjfo","Introduction"
+buttonNipperTour,"NipperTour","nipsgwgs","Nipper Tour"
+buttonCommingSoon,"Comming Soon...","comnfajaf","À venir..."
 buttonTours,Tours,tsgstor,Tours
 buttonSettings,Settings,Sensntks,Configurations
 buttonFinish,Finish,frinfsi,Finir
 buttonOk,Ok,ofksf,Oui
 buttonCancel,Cancel,calramf,Annuler
+buttonPOI1,"Point of Interest 1","poffnw nrmkf","Point d'intérêt 1"
+buttonPOI2,"Point of Interest 2","poffnw nrmkf","Point d'intérêt 2"
+buttonPOI3,"Point of Interest 3","poffnw nrmkf","Point d'intérêt 3"
+buttonPOI4,"Point of Interest 4","poffnw nrmkf","Point d'intérêt 4"
+buttonPOI5,"Point of Interest 5","poffnw nrmkf","Point d'intérêt 5"
+buttonPOI6,"Point of Interest 6","poffnw nrmkf","Point d'intérêt 6"
+buttonPOI7,"Point of Interest 7","poffnw nrmkf","Point d'intérêt 7"
+buttonClose,Close,closfsf,Fermer
 panelQuit,"Do you want to quit the application?","Ddnakdaojfan?","Voulez-vous quitter l'application?"
+panelBluetooth,"Your bluetooth is turned off and this application uses bluetooth. Would you like to turn it on?","blusnfsfk","Votre bluetooth est fermé et cette application nécessite bluetooth. Voulez-vous l'allumer?"
+floor2,"Floor 2","florama","Étage 1"
