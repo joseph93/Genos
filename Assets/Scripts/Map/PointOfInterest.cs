@@ -12,8 +12,10 @@ namespace Assets.Scripts
     public class PointOfInterest : Node
     {
         private string description;
-        [SerializeField] private string poiName;
-        [SerializeField] private int sequentialID;
+        [SerializeField]
+        private string poiName;
+        [SerializeField]
+        private int sequentialID;
         private bool visited;
         public bool detected { get; set; }
         public bool warned { get; set; }
@@ -23,9 +25,9 @@ namespace Assets.Scripts
         private AudioSource[] sounds;
         private AudioSource popUp;
         private AudioSource beforeSound;
-        
+
         private List<Observer> observers;
-        
+
         private PopUpWindow popUpWindow;
         private UnityAction myViewAction;
 
@@ -52,7 +54,7 @@ namespace Assets.Scripts
             myViewAction = new UnityAction(displaySummary);
             myCloseAction = new UnityAction(popUpWindow.closePanel);
         }
-        
+
 
         public PointOfInterest(int id, int x, int y, int floorNumber, string poiName) : base(id, x, y, floorNumber)
         {

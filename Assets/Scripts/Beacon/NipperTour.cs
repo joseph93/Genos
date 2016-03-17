@@ -7,7 +7,8 @@ using Assets.Scripts.Observer_Pattern;
 using Assets.Scripts.Path;
 using UnityEngine.Events;
 
-namespace Assets.Scripts {
+namespace Assets.Scripts
+{
     public class NipperTour : MonoBehaviour
     {
         //private iBeaconHandler beaconHandler;
@@ -17,8 +18,8 @@ namespace Assets.Scripts {
         private List<Node> nodeList;
         private List<Node> path;
         private List<PointOfInterest> visitedPointOfInterests;
-        private List<PointOfInterest> pointsOfInterest;  
-        
+        private List<PointOfInterest> pointsOfInterest;
+
         public Camera mainCam;
         public GameObject pathCreator;
 
@@ -35,19 +36,26 @@ namespace Assets.Scripts {
 
         private iBeaconHandler bh;
 
+        public float minSwipeDistX;
+        private Vector2 startPos;
+
+        private UI_Manager ui_Manager;
+        public Animator anim;
+
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-            
+
         }
         // Use this for initialization
         void Start()
         {
+            ui_Manager = FindObjectOfType<UI_Manager>();
             bh = FindObjectOfType<iBeaconHandler>();
-            
+
             path = new List<Node>();
             nodeList = new List<Node>();
-            
+
             modalWindow = ModalWindow.Instance();
             yesAction = new UnityAction(modalWindow.closePanel);
             noAction = new UnityAction(modalWindow.closePanel);
@@ -86,41 +94,80 @@ namespace Assets.Scripts {
             visitedPointOfInterests = new List<PointOfInterest>();
 
         }
-        
+
 
         //Reviewer Ihcene: Update was fixed, for the rendering of the beacon, for each frames
         // Update is called once per frame
         void Update()
         {
-            if(bh != null)
+            if (bh != null)
                 myBeacons = bh.getBeacons();
 
             StartCoroutine(searchForDistanceOfBeacon(0.05f));
 
+            if (Input.touchCount > 0)
+
+            {
+
+                Touch touch = Input.touches[0];
+
+                switch (touch.phase)
+
+                {
+
+                    case TouchPhase.Began:
+
+                        startPos = touch.position;
+
+                        break;
+
+
+
+                    case TouchPhase.Ended:
+
+                        float swipeDistHorizontal = (new Vector3(touch.position.x, 0, 0) - new Vector3(startPos.x, 0, 0)).magnitude;
+
+                        if (swipeDistHorizontal > minSwipeDistX)
+
+                        {
+
+                            float swipeValue = Mathf.Sign(touch.position.x - startPos.x);
+                            if (swipeValue < 0) //left swipe
+                            {
+                                ui_Manager.disableBoolAnimator(anim);
+                            }
+
+                            //MoveLeft ();
+
+                        }
+                        break;
+                }
+            }
+
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                
+
                 //JOSEPH: When you touch a point of interest on the map, it shows the shortest path from the first node of the nodeList to the touched node.
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
-                
+
                 if (hit.collider != null)
                 {
                     if (touched)
                         path.Clear();
 
-                        ResetTrails();
-                        GameObject recipient = hit.transform.gameObject;
-                        Node touchedNode = recipient.GetComponent<Node>();
+                    ResetTrails();
+                    GameObject recipient = hit.transform.gameObject;
+                    Node touchedNode = recipient.GetComponent<Node>();
 
-                        ShortestPathCreator.currentPoint = 0;
-                        path = map.getGraph().shortest_path(nodeList[0], touchedNode);
-                        path.Reverse();
-                        touched = true;
-                    
+                    ShortestPathCreator.currentPoint = 0;
+                    path = map.getGraph().shortest_path(nodeList[0], touchedNode);
+                    path.Reverse();
+                    touched = true;
+
                 }
 
             }
-        } 
+        }
 
         public void ResetTrails()
         {
@@ -151,7 +198,7 @@ namespace Assets.Scripts {
             int currentPoi = pointsOfInterest.IndexOf(poi);
 
             PointOfInterest[] pois = pointsOfInterest.ToArray();
-            
+
             for (int i = 0; i < currentPoi; i++)
             {
                 if (!pois[i].isVisited())
@@ -168,7 +215,7 @@ namespace Assets.Scripts {
         {
             //JOSEPH: find the last object of the visited list.
             int lastIndex = visitedPointOfInterests.Count;
-            
+
 
             PointOfInterest[] pois = pointsOfInterest.ToArray();
 
@@ -214,7 +261,7 @@ namespace Assets.Scripts {
                                     visitedPointOfInterests.Add(poi);
                                     //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
                                     mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
-                                    
+
                                 }
                                 else
                                 {
@@ -235,6 +282,6 @@ namespace Assets.Scripts {
                 }
             }
         }
-        
+
     }
 }
