@@ -7,8 +7,8 @@ namespace Assets.Scripts
 {
     public class iBeaconHandler : MonoBehaviour
     {
-        private List<Beacon> myBeacons;
         private Vector2 scrolldistance;
+        private List<Beacon> myBeacons;
 
         public iBeaconHandler()
         {
@@ -102,7 +102,7 @@ namespace Assets.Scripts
             }
         }
 
-        void OnGUI() {
+        /*void OnGUI() {
 		GUIStyle labelStyle = GUI.skin.GetStyle("Label");
 #if UNITY_ANDROID
 		labelStyle.fontSize = 40;
@@ -127,6 +127,6 @@ namespace Assets.Scripts
 		}
 		GUILayout.EndVertical();
 		GUI.EndScrollView();
-	}
+	}*/
     }
 }
