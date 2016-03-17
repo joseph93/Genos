@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/F2-next.unity
-=======
-- path: Assets/Scenes/TourSelection.unity
->>>>>>> 8e4bff5a17f09935e9636784c28b94105d49639d
   isLoaded: 1
   isActive: 1

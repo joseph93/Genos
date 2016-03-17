@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 8e4bff5a17f09935e9636784c28b94105d49639d
 <languages>
   
 	<language>
@@ -13,7 +9,6 @@
 	</language>
 	
 	<language>
-<<<<<<< HEAD
 		<Name>Bulgarian</Name>
 		<button1>Pffwweq</button1>
 		<button2>gwwgwwwg</button2>
@@ -22,19 +17,4 @@
 		<Name>Francais</Name>
 		<button1>Jouer</button1>
 		<button2>Sortir</button2>
-	
-=======
-		<Name>Français</Name>
-		<button1>Jouer</button1>
-		<button2>Sortir</button2>
-	</language>
-
-  <language>
-    <Name>Bulgarian</Name>
-    <button1>gjjgkkwff</button1>
-    <button2>agaggewww</button2>
-  </language>
-  
-
->>>>>>> 8e4bff5a17f09935e9636784c28b94105d49639d
 </languages>

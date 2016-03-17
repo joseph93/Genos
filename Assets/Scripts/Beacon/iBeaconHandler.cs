@@ -7,6 +7,7 @@ namespace Assets.Scripts
 {
     public class iBeaconHandler : MonoBehaviour
     {
+        private Vector2 scrolldistance;
         private List<Beacon> myBeacons;
 
         public iBeaconHandler()
@@ -100,5 +101,32 @@ namespace Assets.Scripts
                 }
             }
         }
+
+        /*void OnGUI() {
+		GUIStyle labelStyle = GUI.skin.GetStyle("Label");
+#if UNITY_ANDROID
+		labelStyle.fontSize = 40;
+#elif UNITY_IOS
+		labelStyle.fontSize = 25;
+#endif
+		float currenty = 10;
+		float labelHeight = labelStyle.CalcHeight(new GUIContent("IBeacons"), Screen.width-20);
+		GUI.Label(new Rect(currenty,10,Screen.width-20,labelHeight),"IBeacons");
+		
+		currenty += labelHeight;
+		scrolldistance = GUI.BeginScrollView(new Rect(10,currenty,Screen.width -20, Screen.height - currenty - 10),scrolldistance,new Rect(0,0,Screen.width - 20,myBeacons.Count*100));
+		GUILayout.BeginVertical("box",GUILayout.Width(Screen.width-20),GUILayout.Height(50));
+        //if(guion) { GUI.Button(new Rect(10, 600, 500, 500), "Boom."); }
+		foreach (Beacon b in myBeacons) {
+			GUILayout.Label("UUID: "+b.UUID);
+			GUILayout.Label("Major: "+b.major);
+			GUILayout.Label("Minor: "+b.minor);
+			//GUILayout.Label("Range: "+b.range.ToString());
+            GUILayout.Label("Distance: "+b.accuracy);
+			GUILayout.Label("Rssi: "+b.rssi);
+		}
+		GUILayout.EndVertical();
+		GUI.EndScrollView();
+	}*/
     }
 }
