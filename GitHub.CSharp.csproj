@@ -17,7 +17,11 @@
     </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
+<<<<<<< HEAD
     <UnityVersion>5.3.1f1</UnityVersion>
+=======
+    <UnityVersion>5.3.2f1</UnityVersion>
+>>>>>>> b0b07eb8db4e1747889686a8b0b6cd3e7f5774f3
     <RootNamespace>
     </RootNamespace>
   </PropertyGroup>
@@ -109,6 +113,13 @@
     <Compile Include="Assets\Scripts\Exhibition Content\Image.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Text.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Video.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Assets\Scripts\Language\Language.cs" />
+    <Compile Include="Assets\Scripts\Language\PoiDescription.cs" />
+    <Compile Include="Assets\Scripts\Language\StorylineDescription.cs" />
+    <Compile Include="Assets\Scripts\Language\xmlReader.cs" />
+>>>>>>> b0b07eb8db4e1747889686a8b0b6cd3e7f5774f3
     <Compile Include="Assets\Scripts\Map\Edge.cs" />
     <Compile Include="Assets\Scripts\Map\Graph.cs" />
     <Compile Include="Assets\Scripts\Map\LabeledNode.cs" />
@@ -119,6 +130,7 @@
     <Compile Include="Assets\Scripts\Map\Storyline.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\BeaconView.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\Observer.cs" />
+    <Compile Include="Assets\Scripts\Observer Pattern\StoryPointView.cs" />
     <Compile Include="Assets\Scripts\Path\PathFollower.cs" />
     <Compile Include="Assets\Scripts\Path\ShortestPathCreator.cs" />
     <Compile Include="Assets\Scripts\Quit\QuitSpash.cs" />

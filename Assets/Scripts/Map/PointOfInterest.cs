@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Language;
 using Assets.Scripts.Observer_Pattern;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,14 +12,8 @@ namespace Assets.Scripts
 {
     public class PointOfInterest : Node
     {
-        private string description;
-        [SerializeField]
-        private string poiName;
-        [SerializeField]
-        private int sequentialID;
-        private bool visited;
-        public bool detected { get; set; }
-        public bool warned { get; set; }
+        public PoiDescription poiDescription;
+        private bool detected;
 
         public iBeaconServer beacon { get; set; }
         public GameObject BeaconGameObject;
@@ -44,9 +39,7 @@ namespace Assets.Scripts
             popUp = sounds[0];
             beforeSound = sounds[1];
             observers = new List<Observer>();
-            visited = false;
             detected = false;
-            warned = false;
 
             popUpWindow = PopUpWindow.Instance();
             summaryWindow = SummaryWindow.Instance();
@@ -56,39 +49,28 @@ namespace Assets.Scripts
         }
 
 
-        public PointOfInterest(int id, int x, int y, int floorNumber, string poiName) : base(id, x, y, floorNumber)
+        public PointOfInterest(int id, int x, int y, int floorNumber, PoiDescription poiD) : base(id, x, y, floorNumber)
         {
-            this.poiName = poiName;
-            description = "";
-            visited = false;
+            poiDescription = poiD;
             detected = false;
-            warned = false;
         }
 
-        public void setDescription(string descr)
+        public PoiDescription GetPoiDescription()
         {
-            description = descr;
+            return poiDescription;
         }
 
-        public string getPoiName()
+        public void setTitleAndSummary(string title, string summary)
         {
-            return poiName;
-        }
-
-        public int getSequentialID()
-        {
-            return sequentialID;
-        }
-
-        public void setVisited(bool visited)
-        {
-            this.visited = visited;
-            notify();
-        }
-
-        public bool isVisited()
-        {
-            return visited;
+            if (poiDescription != null)
+            {
+                poiDescription.title = title;
+                poiDescription.summary = summary;
+            }
+            else
+            {
+                poiDescription = new PoiDescription(title, summary);
+            }
         }
 
         public void changeIconScale()
@@ -98,19 +80,20 @@ namespace Assets.Scripts
 
         public void displayPopUpWindow()
         {
-            popUpWindow.PopUp(poiName, nipperPopUp, myViewAction);
+            popUpWindow.PopUp(poiDescription.title, nipperPopUp, myViewAction);
         }
 
         public void displaySummary()
         {
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
             renderer.color = new Color32(140, 115, 115, 255);
-            summaryWindow.SummaryOneImage(poiName, description, poiImage, myCloseAction);
+            summaryWindow.SummaryOneImage(poiDescription.title, poiDescription.summary, poiImage, myCloseAction);
         }
 
         public void setDetected(bool detected)
         {
             this.detected = detected;
+            notify();
         }
 
         public void popUpSound()
