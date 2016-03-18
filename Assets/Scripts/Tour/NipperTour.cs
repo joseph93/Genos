@@ -8,9 +8,9 @@ using Assets.Scripts.Observer_Pattern;
 using Assets.Scripts.Path;
 using UnityEngine.Events;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Tour
 {
-    public class NipperTour : MonoBehaviour
+    public class NipperTour : FreeRoaming
     {
         //private iBeaconHandler beaconHandler;
         private List<Beacon> myBeacons;
