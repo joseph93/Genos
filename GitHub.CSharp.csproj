@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -101,6 +103,9 @@
     <Compile Include="Assets\Scripts\Exhibition Content\Image.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Text.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Video.cs" />
+    <Compile Include="Assets\Scripts\Language\Language.cs" />
+    <Compile Include="Assets\Scripts\Language\PoiDescription.cs" />
+    <Compile Include="Assets\Scripts\Language\StorylineDescription.cs" />
     <Compile Include="Assets\Scripts\Language\xmlReader.cs" />
     <Compile Include="Assets\Scripts\Map\Edge.cs" />
     <Compile Include="Assets\Scripts\Map\Graph.cs" />
@@ -112,6 +117,7 @@
     <Compile Include="Assets\Scripts\Map\Storyline.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\BeaconView.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\Observer.cs" />
+    <Compile Include="Assets\Scripts\Observer Pattern\StoryPointView.cs" />
     <Compile Include="Assets\Scripts\Path\PathFollower.cs" />
     <Compile Include="Assets\Scripts\Path\ShortestPathCreator.cs" />
     <Compile Include="Assets\Scripts\Quit\QuitSpash.cs" />
