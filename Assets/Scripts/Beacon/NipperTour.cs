@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Assets.Scripts.Language;
 using Assets.Scripts.Observer_Pattern;
 using Assets.Scripts.Path;
 using UnityEngine.Events;
@@ -17,8 +18,9 @@ namespace Assets.Scripts
         public Node[] ArrayOfNodes;
         private List<Node> nodeList;
         private List<Node> path;
-        private List<PointOfInterest> visitedPointOfInterests;
+        private List<StoryPoint> visitedStoryPoints;
         private List<PointOfInterest> pointsOfInterest;
+        private List<StoryPoint> storyPoints; 
 
         public Camera mainCam;
         public GameObject pathCreator;
@@ -61,13 +63,31 @@ namespace Assets.Scripts
             noAction = new UnityAction(modalWindow.closePanel);
 
             map = new Map();
-            Storyline nipperTour = new Storyline("Nipper Tour", 4);
+            StorylineDescription sd = new StorylineDescription("Nipper Tour", "A guided tour of the Musee des Ondes.");
+            Storyline nipperTour = new Storyline(sd, 4);
 
-            foreach (Node n in ArrayOfNodes)
+            storyPoints = new List<StoryPoint>();
+            pointsOfInterest = new List<PointOfInterest>();
+
+            foreach (var n in ArrayOfNodes)
             {
                 nipperTour.addNode(n);
-            }
+                print(n.GetType().ToString());
+                if (n.GetFloorNumber() == 2)
+                {
+                    n.gameObject.SetActive(true);
+                }
 
+                if (n is PointOfInterest)
+                {
+                    pointsOfInterest.Add((PointOfInterest)n);
+                }
+
+                if (n is StoryPoint)
+                {
+                    storyPoints.Add((StoryPoint)n);
+                }
+            }
             map.addStoryline(nipperTour);
             Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
             Node n2 = ArrayOfNodes[1].GetComponentInChildren<Node>();
@@ -84,14 +104,7 @@ namespace Assets.Scripts
             //Add all the nodes that are in the Nipper Tour storyline in the map.
             map.initializeGraph();
 
-            pointsOfInterest = new List<PointOfInterest>();
-            foreach (PointOfInterest p in nodeList)
-            {
-                pointsOfInterest.Add(p);
-                print("Adding poi with sequential ID : " + p.getSequentialID());
-            }
-
-            visitedPointOfInterests = new List<PointOfInterest>();
+            visitedStoryPoints = new List<StoryPoint>();
 
         }
 
@@ -193,17 +206,16 @@ namespace Assets.Scripts
             trail.time = -trail.time;
         }
 
-        public bool isInOrder(PointOfInterest poi)
+        public bool isInOrder(StoryPoint sp)
         {
-            int currentPoi = pointsOfInterest.IndexOf(poi);
+            int currentPoi = this.storyPoints.IndexOf(sp);
 
-            PointOfInterest[] pois = pointsOfInterest.ToArray();
+            StoryPoint[] storyPoints = this.storyPoints.ToArray();
 
             for (int i = 0; i < currentPoi; i++)
             {
-                if (!pois[i].isVisited())
+                if (!storyPoints[i].isVisited())
                 {
-                    print("I'm checking its order");
                     return false;
                 }
             }
@@ -211,15 +223,15 @@ namespace Assets.Scripts
             return true;
         }
 
-        public PointOfInterest findLastUnvisitedPoi()
+        public StoryPoint findLastUnvisitedSp()
         {
             //JOSEPH: find the last object of the visited list.
-            int lastIndex = visitedPointOfInterests.Count;
+            int lastIndex = visitedStoryPoints.Count;
 
 
-            PointOfInterest[] pois = pointsOfInterest.ToArray();
+            StoryPoint[] storyPoints = this.storyPoints.ToArray();
 
-            return pois.ElementAt(lastIndex);
+            return storyPoints.ElementAt(lastIndex);
         }
 
         public IEnumerator searchForDistanceOfBeacon(float seconds)
@@ -243,37 +255,32 @@ namespace Assets.Scripts
                 }*/
                 if (b.accuracy < 2.00)
                 {
-                    foreach (PointOfInterest poi in pointsOfInterest)
+                    foreach (StoryPoint sp in storyPoints)
                     {
-                        if (!poi.isVisited())
+                        if (!sp.isVisited())
                         {
-                            if (poi.beacon.Equals(b))
+                            if (sp.beacon.Equals(b))
                             {
-                                if (isInOrder(poi))
+                                if (isInOrder(sp))
                                 {
-                                    BeaconView bv = new BeaconView(poi);
-                                    poi.setDescription(
-                                        "Stop at the end of the corridor before the bridge to building 18. The door to the " +
-                                        "right was the old president’s office.The door is closed, Nipper barks and on the screen " +
-                                        "appears a mental image from Nipper with the image of the old office, " +
-                                        "as suggested in three drawings by thearchitects Ross and MacDonalds.");
-                                    poi.setVisited(true);
-                                    visitedPointOfInterests.Add(poi);
+                                    BeaconView bv = new BeaconView(sp);
+                                    sp.setVisited(true);
+                                    visitedStoryPoints.Add(sp);
                                     //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
-                                    mainCam.transform.position = new Vector3(poi.x, poi.y, -10);
+                                    mainCam.transform.position = new Vector3(sp.x, sp.y, -10);
 
                                 }
                                 else
                                 {
-                                    if (!poi.warned)
+                                    if (!sp.warned)
                                     {
-                                        PointOfInterest lastUnvisitedPoi = findLastUnvisitedPoi();
+                                        StoryPoint lastUnvisitedSp = findLastUnvisitedSp();
                                         //Pop up, notify the user that he missed a poi
                                         string description = "You have missed point of interest " +
-                                                             lastUnvisitedPoi.getSequentialID() +
+                                                             lastUnvisitedSp.getSequentialID() +
                                                              ". Please go back and visit it before proceeding.";
                                         modalWindow.Choice(description, iconImage, yesAction, noAction);
-                                        poi.warned = true;
+                                        sp.warned = true;
                                     }
                                 }
                             }
