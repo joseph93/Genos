@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Vexe/uFAction/Examples/Scenes/BetterUndo.unity
+- path: Assets/Scenes/TourSelection.unity
   isLoaded: 1
   isActive: 1
