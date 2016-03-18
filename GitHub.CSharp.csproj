@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
-    <UnityVersion>5.3.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <UnityVersion>5.3.1f1</UnityVersion>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -26,7 +28,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_2;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_1;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -36,7 +38,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_3_2;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_1;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -66,17 +68,20 @@
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
-    <Reference Include="LibGit2Sharp">
-      <HintPath>Assets\Plugins\LibGit2Sharp.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Assets\UnityTestTools\IntegrationTestsFramework\Libs\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Mdb">
       <HintPath>Assets\UnityTestTools\IntegrationTestsFramework\Libs\Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="BasicSerializer">
-      <HintPath>Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BasicSerializer.dll</HintPath>
+    <Reference Include="Fasterflect">
+      <HintPath>Assets\Vexe\DLLs\Fasterflect\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="RuntimeExtensions">
+      <HintPath>Assets\Vexe\DLLs\Runtime\RuntimeExtensions\RuntimeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="RuntimeHelpers">
+      <HintPath>Assets\Vexe\DLLs\Runtime\RuntimeHelpers\RuntimeHelpers.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -99,15 +104,11 @@
     <Compile Include="Assets\Scripts\ButtonScripts\TourButton.cs" />
     <Compile Include="Assets\Scripts\Camera\IntroPlayer.cs" />
     <Compile Include="Assets\Scripts\Camera\TouchScreenCamera.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Assets\Scripts\Exhibition Content\Audio.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\ExhibitionContent.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Image.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Text.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Video.cs" />
->>>>>>> 3c44e0a35675a053bf61865717dd363525838f44
-    <Compile Include="Assets\Scripts\Language\xmlReader.cs" />
     <Compile Include="Assets\Scripts\Map\Edge.cs" />
     <Compile Include="Assets\Scripts\Map\Graph.cs" />
     <Compile Include="Assets\Scripts\Map\LabeledNode.cs" />
@@ -171,213 +172,76 @@
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerCallbackList.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerConfigurator.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestingAssets\CallTesting.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Core\FSCommon.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Core\Load.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Core\Save.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Other\FSAttributes.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Other\FSExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Other\FSMarker.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Other\FSReference.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\BinaryX20.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Internal\X20Logic.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Internal\X20Member.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Internal\X20Reflection.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\ArraySerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\BaseSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\CollectionSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\DictionarySerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\EnumSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\ListSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\PrimitiveSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\ReflectiveSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\StrongSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\TypeSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializer\BinaryX20\Serializers\UnityStructs.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializers\AnimationSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializers\AssetReferenceSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializers\ExplicitComponentSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializers\GameObjectSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializers\LightSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Serializers\ReflectiveComponentSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Storage\AssetStorage.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\Storage\PrefabStorage.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\AnimatorExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\ComponentExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\DelegateExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\FastReflection.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\Flags.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\GameObjectExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\GenericEnumerableExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\LayerMaskExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\MemberInfoExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\MethodInfoExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\OtherExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\PropertyInfoExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\RendererExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\RigidbodyExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\StringExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\SystemObjectExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\TransformExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\TypeExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\UnityObjectExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Extensions\VectorExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Helpers\ErrorHelper.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Helpers\EventsHelper.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Helpers\GizHelper.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Helpers\ReflectionHelper.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Libs\Helpers\RuntimeHelper.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\API\Categories\CategoryAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\API\Categories\CategoryDisplay.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\API\Categories\CategoryMemberType.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\API\Categories\CategorySetOp.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\API\Categories\DefineCategoriesAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\API\Categories\DefineCategoryAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\API\DisplayAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\API\DrawingAttributes.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\API\UsingAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\API\VisibilityAttributes.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\AnimVarAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\AssignableAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\BetterVectorAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\ButtonAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\ClampAttributes.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\CommentAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\ConstrainValueAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\DraggableAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\EnumMaskAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\FilterEnumAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\FilterTagsAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\IPAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\InlineAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\InputAxisAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\MaxAttributes.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\MinAttributes.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\OnChangedAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\ParagraphAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\PathAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\PopupAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\RandAttributes.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\RegexAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\ResourcePathAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\SelectEnumAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\SelectSceneAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\ShowTypeAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\SliderAttributes.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\TagsAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Attributes\User\WhiteSpaceAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Core\BaseBehaviour.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Core\BaseScriptableObject.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Others\DataRecord.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Others\ItemTuple.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Others\KVPList.cs" />
-    <Compile Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\Types\Others\SerializableDictionary.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\SerializationAttributes.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\SerializationData.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\SerializationLogic.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\FullSerializerBackend.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\MethodInfoConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\Unity\AnimationCurve_DirectConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\Unity\Bounds_DirectConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\Unity\Gradient_DirectConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\Unity\Keyframe_DirectConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\Unity\LayerMask_DirectConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\Unity\Rect_DirectConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsArrayConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsDateConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsDictionaryConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsEnumConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsGuidConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsIEnumerableConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsKeyValuePairConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsNullableConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsPrimitiveConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsReflectedConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsTypeConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Converters\fsWeakReferenceConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Internal\fsCyclicReferenceManager.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Internal\fsOption.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Internal\fsPortableReflection.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Internal\fsTypeExtensions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Internal\fsVersionManager.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Internal\fsVersionedType.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Reflection\fsMetaProperty.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Reflection\fsMetaType.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Reflection\fsReflectionUtility.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\Reflection\fsTypeLookup.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsAotCompilationManager.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsBaseConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsConfig.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsContext.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsConverterRegistrar.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsData.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsDirectConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsExceptions.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsISerializationCallbacks.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsIgnoreAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsJsonParser.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsJsonPrinter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsMemberSerialization.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsObjectAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsObjectProcessor.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsPropertyAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsResult.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\Source\fsSerializer.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\FullSerializer\UnityObjectConverter.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Serialization\Serializers\SerializerBackend.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Attributes\DefaultAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Attributes\RequirementAttributes.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Attributes\SelectObjAttribute.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Core\BetterBehaviour.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Core\BetterScriptableObject.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Delegates\BaseDelegates.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Delegates\DelegateSettings.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Delegates\uAction.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Delegates\uDelegate.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Delegates\uFunc.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Others\BetterPrefs.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Others\CachedBehaviour.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Others\Message.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Others\MessageExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Others\Requirements.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Others\RuntimeMember.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Deprecated\Runtime\Types\Others\SerializableType.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\FastSave Examples\GO\GameObjectTest.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\FastSave Examples\Hierarchy\HierarchyTest.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\FastSave Examples\Marked\MarkedTest.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\FastSave Examples\SomeData.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\AnimVarExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\AssignableExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\BetterVectorExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\ButtonExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\CategoriesExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\CollectionElementExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\ComplexDrawingExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\ConstraintsExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\DecorationsExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\DisplayExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\DraggableExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\DrawnByUnityLayoutExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\EnumsExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\FiltersExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\InlineExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\OnChangedExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\ParagraphExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\PathExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\PopupsExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\RandomsExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\ResourcePathExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\SelectionsExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\SequencesExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\ShowExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\SlidersExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\UsingExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Attributes\VisibleWhenExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Other\CustomDisplayOptionsExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Other\CustomDrawnObjectsExample.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Other\GOInliner.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\Other\SceneTransition.cs" />
-    <Compile Include="Assets\VFW-master\Assets\VFW Examples\Scripts\ScriptableObjects\BSOExample.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\BetterUndo.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\Operations\BasicOperation.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\Operations\IOperation.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\Operations\List Ops\AddToList.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\Operations\List Ops\ClearList.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\Operations\List Ops\ClearRange.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\Operations\List Ops\InsertToList.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\Operations\List Ops\ListOperation.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\Operations\List Ops\RemoveFromList.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\Operations\List Ops\SetVariable.cs" />
+    <Compile Include="Assets\Vexe\DEVBUS\Tests\DevbusTestTarget.cs" />
+    <Compile Include="Assets\Vexe\ShowEmAll\Attributes\EnumMaskAttribute.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Delegates\Actions\SysObjAction.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Delegates\Actions\UnityAction.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Delegates\Bases\BaseDelegate.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Delegates\Bases\BaseUnityDelegate.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Delegates\Bases\KickassDelegate.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Delegates\Bases\SysObjDelegate.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Delegates\Bases\UnityDelegate.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Delegates\Funcs\SysObjFunc.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Delegates\Funcs\UnityFunc.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Entries\ArgEntry.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Entries\FoldableEntry.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Entries\GOEntry.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Entries\MethodEntry.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Entries\TargetEntry.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Enums\EditorViewStyle.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Enums\SimpleBindingFlags.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Generic Event System\EventManager.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Generic Event System\uFAGameEvent.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Interfaces\IBasicDelegateOps.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Interfaces\IExtraDelegateOps.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Interfaces\IInvokable.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Interfaces\IRebuildableDelegate.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Interfaces\ITypedDelegate.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Interfaces\IViewableDelegate.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Others\ColorTheme.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Others\DelegateOpsHelper.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Others\Settings.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Others\SourceSet.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Others\Tuple.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Core\Property Attributes\ShowDelegateAttribute.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\ComponentModifiers\ComponentAdder.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\ComponentModifiers\ComponentModifier.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\ComponentModifiers\ComponentRemover.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\ComponentModifiers\ComponentStateChanger.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Delegates.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\OnMouseEvents\OnMouseDownEvent.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\OnMouseEvents\OnMouseEnterEvent.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\OnMouseEvents\OnMouseExitEvent.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\OnMouseEvents\OnMouseOverEvent.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\OnMouseEvents\OnMouseUpEvent.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\OnTriggerEvents\OnTriggerEnterEvent.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\OnTriggerEvents\OnTriggerExitEvent.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\OnTriggerEvents\OnTriggerStayEvent.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Sample Extensions\LightExtensions.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Sample Extensions\MonoBehaviourExtensions.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Sample Extensions\RigidbodyExtensions.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Sample Extensions\TransformExtensions.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\EventManagerTest.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\GUIWrapper\DrawMeInACustomWayPlease.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\GUIWrapper\GUIWrapperTest.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\HowToEasilySolveCircularDependency.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\InvocationPerformanceTest.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\KickassDelegateTest.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\SysObjActionTest.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\Target1.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\Target2.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\UnityActionTest.cs" />
+    <Compile Include="Assets\Vexe\uFAction\Examples\Scripts\Tests\UnityFuncTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\antique_book_cover\license.txt" />
@@ -390,7 +254,6 @@
     <None Include="Assets\Fonts\thyssen_j\9JULIUST.TXT" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\Resources\Intro.txt" />
-    <None Include="Assets\Scripts\Language\xmlLanguages.xml" />
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\AngryInclude.cginc" />
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\CharacterSelfIlluminationReflective.shader" />
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\EnemySelfIlluminationReflective.shader" />
@@ -407,10 +270,11 @@
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleBlend.shader" />
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
     <None Include="Assets\UnityTestTools\changelog.txt" />
-    <None Include="Assets\VFW-master\Assets\Plugins\Editor\Vexe\LICENSE.txt" />
-    <None Include="Assets\VFW-master\Assets\Plugins\Vexe\HISTORY.txt" />
-    <None Include="Assets\VFW-master\Assets\Plugins\Vexe\LICENSE.txt" />
-    <None Include="Assets\VFW-master\Assets\Plugins\Vexe\Runtime\FastSave\README.txt" />
+    <None Include="Assets\Vexe\DLLs\Editor\EditorExtensions\EditorExtensions.XML" />
+    <None Include="Assets\Vexe\DLLs\Editor\EditorHelpers\EditorHelpers.XML" />
+    <None Include="Assets\Vexe\DLLs\Fasterflect\Fasterflect.XML" />
+    <None Include="Assets\Vexe\DLLs\Runtime\RuntimeExtensions\RuntimeExtensions.XML" />
+    <None Include="Assets\Vexe\DLLs\Runtime\RuntimeHelpers\RuntimeHelpers.XML" />
     <None Include="Assets\link.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

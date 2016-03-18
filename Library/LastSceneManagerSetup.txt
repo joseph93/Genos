@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/VFW-master/Assets/VFW Examples/Scenes/Attributes.unity
-=======
-- path: Assets/Scenes/F2-next.unity
->>>>>>> 3c44e0a35675a053bf61865717dd363525838f44
+- path: Assets/Vexe/uFAction/Examples/Scenes/BetterUndo.unity
   isLoaded: 1
   isActive: 1
