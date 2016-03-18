@@ -60,6 +60,10 @@ namespace Assets.Scripts
             SceneManager.LoadScene("Menu");
         }
 
+        public void startFreeRoaming()
+        {
+            SceneManager.LoadScene("FreeRoaming");
+        }
 
     }
 }

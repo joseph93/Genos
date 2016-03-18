@@ -983,6 +983,7 @@ GameObject:
   - 222: {fileID: 1036449381}
   - 114: {fileID: 1036449380}
   - 114: {fileID: 1036449379}
+  - 114: {fileID: 1036449382}
   m_Layer: 5
   m_Name: Tour (1)
   m_TagString: Untagged
@@ -1046,7 +1047,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1036449380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1036449382}
+        m_MethodName: startFreeRoaming
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1036449380
@@ -1082,6 +1094,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1036449377}
+--- !u!114 &1036449382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1036449377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb381c4925b26348ac42e9a4e7698ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1321254717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,7 +1152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.014705896, g: 0.0099481065, b: 0.0099481065, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1149,7 +1172,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xC0 venir..."
+  m_Text: Free Roaming Tour
 --- !u!222 &1321254720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1167,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: buttonCommingSoon
+  _key: buttonFreeRoaming
 --- !u!1 &1621569437
 GameObject:
   m_ObjectHideFlags: 0
