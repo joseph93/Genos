@@ -12,18 +12,18 @@ namespace Assets.Scripts
 {
     public class PointOfInterest : Node
     {
-        public PoiDescription poiDescription;
+        protected PoiDescription poiDescription;
         private bool detected;
 
-        public iBeaconServer beacon { get; set; }
+        protected iBeaconServer beacon;
         public GameObject BeaconGameObject;
-        private AudioSource[] sounds;
-        private AudioSource popUp;
-        private AudioSource beforeSound;
+        protected AudioSource[] sounds;
+        protected AudioSource popUp;
+        protected AudioSource beforeSound;
 
-        private List<Observer> observers;
+        protected List<Observer> observers;
 
-        private PopUpWindow popUpWindow;
+        protected PopUpWindow popUpWindow;
         private UnityAction myViewAction;
 
         private SummaryWindow summaryWindow;
@@ -60,6 +60,11 @@ namespace Assets.Scripts
             return poiDescription;
         }
 
+        public iBeaconServer getBeacon()
+        {
+            return beacon;
+        }
+
         public void setTitleAndSummary(string title, string summary)
         {
             if (poiDescription != null)
@@ -75,7 +80,7 @@ namespace Assets.Scripts
 
         public void changeIconScale()
         {
-            transform.localScale = new Vector3(0.1f, 0.1f, 1);
+            transform.localScale = new Vector3(1.8f, 1.8f, 1);
         }
 
         public void displayPopUpWindow()
@@ -114,6 +119,11 @@ namespace Assets.Scripts
         public void attachObserver(Observer obs)
         {
             observers.Add(obs);
+        }
+
+        public void detachObserver(Observer obs)
+        {
+            observers.Remove(obs);
         }
 
         public void notify()

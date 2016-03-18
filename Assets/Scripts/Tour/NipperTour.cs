@@ -29,13 +29,7 @@ namespace Assets.Scripts.Tour
         private LayerMask touchInputMask;
 
         private bool touched;
-
-        private ModalWindow modalWindow;
-
-        public Sprite iconImage;
-        private UnityAction yesAction;
-        private UnityAction noAction;
-
+        
         private iBeaconHandler bh;
 
         public float minSwipeDistX;
@@ -57,11 +51,7 @@ namespace Assets.Scripts.Tour
 
             path = new List<Node>();
             nodeList = new List<Node>();
-
-            modalWindow = ModalWindow.Instance();
-            yesAction = new UnityAction(modalWindow.closePanel);
-            noAction = new UnityAction(modalWindow.closePanel);
-
+            
             map = new Map();
             StorylineDescription sd = new StorylineDescription("Nipper Tour", "A guided tour of the Musee des Ondes.");
             Storyline nipperTour = new Storyline(sd, 4);
@@ -87,6 +77,14 @@ namespace Assets.Scripts.Tour
                 {
                     storyPoints.Add((StoryPoint)n);
                 }
+            }
+
+            foreach (StoryPoint sp in storyPoints)
+            {
+                sp.setTitleAndSummary("Old President's Office", "Stop at the end of the corridor before the bridge to building 18. The door to the " +
+                                  "right was the old president’s office.The door is closed, Nipper barks and on the screen " +
+                                  "appears a mental image from Nipper with the image of the old office, " +
+                                  "as suggested in three drawings by thearchitects Ross and MacDonalds.");
             }
             map.addStoryline(nipperTour);
             Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
@@ -259,11 +257,11 @@ namespace Assets.Scripts.Tour
                     {
                         if (!sp.isVisited())
                         {
-                            if (sp.beacon.Equals(b))
+                            if (sp.getBeacon().Equals(b))
                             {
                                 if (isInOrder(sp))
                                 {
-                                    BeaconView bv = new BeaconView(sp);
+                                    StoryPointView storyPointView = new StoryPointView(sp);
                                     sp.setVisited(true);
                                     visitedStoryPoints.Add(sp);
                                     //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
@@ -279,7 +277,7 @@ namespace Assets.Scripts.Tour
                                         string description = "You have missed point of interest " +
                                                              lastUnvisitedSp.getSequentialID() +
                                                              ". Please go back and visit it before proceeding.";
-                                        modalWindow.Choice(description, iconImage, yesAction, noAction);
+                                        sp.displayWarning(description);
                                         sp.warned = true;
                                     }
                                 }

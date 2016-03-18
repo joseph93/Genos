@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.Observer_Pattern
 {
-    public class BeaconView : Observer
+    public class PointOfInterestView : Observer
     {
         private PointOfInterest poi;
 
-        public BeaconView(PointOfInterest poi)
+        public PointOfInterestView(PointOfInterest poi)
         {
             this.poi = poi;
             poi.attachObserver(this);
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Observer_Pattern
             poi.popUpSound();
             Vibration.Vibrate(1000);
             poi.displayPopUpWindow();
-            Debug.Log("Beacon Detected.");
+            Debug.Log("Point of interest detected.");
         }
         
     }
