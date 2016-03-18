@@ -115,7 +115,7 @@
     <Compile Include="Assets\Scripts\Map\PointOfInterest.cs" />
     <Compile Include="Assets\Scripts\Map\StoryPoint.cs" />
     <Compile Include="Assets\Scripts\Map\Storyline.cs" />
-    <Compile Include="Assets\Scripts\Observer Pattern\BeaconView.cs" />
+    <Compile Include="Assets\Scripts\Observer Pattern\PointOfInterestView.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\Observer.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\StoryPointView.cs" />
     <Compile Include="Assets\Scripts\Path\PathFollower.cs" />

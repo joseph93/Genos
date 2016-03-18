@@ -60,22 +60,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &124764
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 426906}
-  - 114: {fileID: 11451026}
-  m_Layer: 0
-  m_Name: Node Container Floor 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &125038
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,22 +176,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &161014
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 430042}
-  - 114: {fileID: 11481678}
-  m_Layer: 0
-  m_Name: Node Container Floor 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &161158
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,31 +227,7 @@ Transform:
   m_LocalScale: {x: 1.0572687, y: 1.0572687, z: 3.524229}
   m_Children: []
   m_Father: {fileID: 22420592}
-  m_RootOrder: 11
---- !u!4 &426906
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124764}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1409.6212, y: -2508.9844, z: 17.621145}
-  m_LocalScale: {x: 17.621145, y: 17.621145, z: 3.524229}
-  m_Children: []
-  m_Father: {fileID: 22420592}
-  m_RootOrder: 1
---- !u!4 &430042
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161014}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1409.6212, y: -2508.9844, z: 17.621145}
-  m_LocalScale: {x: 17.621145, y: 17.621145, z: 3.524229}
-  m_Children: []
-  m_Father: {fileID: 22420592}
-  m_RootOrder: 0
+  m_RootOrder: 9
 --- !u!4 &442850
 Transform:
   m_ObjectHideFlags: 1
@@ -295,7 +239,7 @@ Transform:
   m_LocalScale: {x: 1.0572687, y: 1.0572687, z: 3.524229}
   m_Children: []
   m_Father: {fileID: 22420592}
-  m_RootOrder: 7
+  m_RootOrder: 5
 --- !u!4 &453780
 Transform:
   m_ObjectHideFlags: 1
@@ -307,7 +251,7 @@ Transform:
   m_LocalScale: {x: 1.0572687, y: 1.0572687, z: 3.524229}
   m_Children: []
   m_Father: {fileID: 22420592}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!4 &454088
 Transform:
   m_ObjectHideFlags: 1
@@ -319,7 +263,7 @@ Transform:
   m_LocalScale: {x: 1.0572687, y: 1.0572687, z: 3.524229}
   m_Children: []
   m_Father: {fileID: 22420592}
-  m_RootOrder: 10
+  m_RootOrder: 8
 --- !u!4 &456880
 Transform:
   m_ObjectHideFlags: 1
@@ -331,7 +275,7 @@ Transform:
   m_LocalScale: {x: 1.0572687, y: 1.0572687, z: 3.524229}
   m_Children: []
   m_Father: {fileID: 22420592}
-  m_RootOrder: 6
+  m_RootOrder: 4
 --- !u!4 &457090
 Transform:
   m_ObjectHideFlags: 1
@@ -343,7 +287,7 @@ Transform:
   m_LocalScale: {x: 1.0572687, y: 1.0572687, z: 3.524229}
   m_Children: []
   m_Father: {fileID: 22420592}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!4 &458504
 Transform:
   m_ObjectHideFlags: 1
@@ -355,7 +299,7 @@ Transform:
   m_LocalScale: {x: 1.0572687, y: 1.0572687, z: 3.524229}
   m_Children: []
   m_Father: {fileID: 22420592}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!4 &466980
 Transform:
   m_ObjectHideFlags: 1
@@ -367,7 +311,7 @@ Transform:
   m_LocalScale: {x: 1.0572687, y: 1.0572687, z: 3.524229}
   m_Children: []
   m_Father: {fileID: 22420592}
-  m_RootOrder: 9
+  m_RootOrder: 7
 --- !u!4 &470232
 Transform:
   m_ObjectHideFlags: 1
@@ -379,7 +323,7 @@ Transform:
   m_LocalScale: {x: 1.0572687, y: 1.0572687, z: 3.524229}
   m_Children: []
   m_Father: {fileID: 22420592}
-  m_RootOrder: 5
+  m_RootOrder: 3
 --- !u!4 &470878
 Transform:
   m_ObjectHideFlags: 1
@@ -391,7 +335,7 @@ Transform:
   m_LocalScale: {x: 1.0572687, y: 1.0572687, z: 3.524229}
   m_Children: []
   m_Father: {fileID: 22420592}
-  m_RootOrder: 8
+  m_RootOrder: 6
 --- !u!61 &6110234
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -2103,28 +2047,6 @@ MonoBehaviour:
   BeaconGameObject: {fileID: 0}
   nipperPopUp: {fileID: 21300000, guid: e74095a7936ae3f40bcfb34b031f244c, type: 3}
   poiImage: {fileID: 21300000, guid: ed14be23e100e6544b09f830a7542884, type: 3}
---- !u!114 &11451026
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51dc8797f4aafc844aac5ccf8e92a373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ArrayOfNodes:
-  - {fileID: 11436288}
-  - {fileID: 11408898}
-  - {fileID: 11453278}
-  - {fileID: 11409908}
-  - {fileID: 11408734}
-  mainCam: {fileID: 0}
-  pathCreator: {fileID: 0}
-  iconImage: {fileID: 21300000, guid: 3da4147b8bcda5e498e060c036e29e9d, type: 3}
-  minSwipeDistX: 300
-  anim: {fileID: 0}
 --- !u!114 &11453278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2177,27 +2099,6 @@ MonoBehaviour:
   floorNumber: 2
   x: -0.90185547
   y: -4.829834
---- !u!114 &11481678
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51dc8797f4aafc844aac5ccf8e92a373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ArrayOfNodes:
-  - {fileID: 11490468}
-  - {fileID: 11486766}
-  - {fileID: 11419484}
-  - {fileID: 11463526}
-  mainCam: {fileID: 0}
-  pathCreator: {fileID: 0}
-  iconImage: {fileID: 21300000, guid: 3da4147b8bcda5e498e060c036e29e9d, type: 3}
-  minSwipeDistX: 300
-  anim: {fileID: 0}
 --- !u!114 &11485136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2573,8 +2474,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.28375, y: 0.28375, z: 0.28375}
   m_Children:
-  - {fileID: 430042}
-  - {fileID: 426906}
   - {fileID: 458504}
   - {fileID: 457090}
   - {fileID: 453780}
