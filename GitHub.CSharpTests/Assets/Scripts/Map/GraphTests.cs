@@ -37,6 +37,13 @@ namespace Assets.Scripts
 
                 List<Node> result = new List<Node>() {n4, n2, n3};
 
+                Assert.IsNotNull(g);
+                Assert.IsNotNull(n1);
+                Assert.IsNotNull(n2);
+                Assert.IsNotNull(n3);
+                Assert.IsNotNull(n4);
+                Assert.IsNotNull(n5);
+                Assert.IsNotNull(result);
                 Assert.Equals(result, g.shortest_path(n1, n4));
             }
             catch (SecurityException e)
@@ -67,6 +74,13 @@ namespace Assets.Scripts
                 n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 4 }, { n5, 5 }, { n2, 1 } });
                 n4.addListOfAdjacentNodes(new Dictionary<Node, float>() { });
                 n5.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 1 } });
+
+                Assert.IsNotNull(g);
+                Assert.IsNotNull(n1);
+                Assert.IsNotNull(n2);
+                Assert.IsNotNull(n3);
+                Assert.IsNotNull(n4);
+                Assert.IsNotNull(n5);
                 Assert.Equals(n4, g.BFS(n1, n4));
             }
             catch (SecurityException e)
@@ -99,6 +113,14 @@ namespace Assets.Scripts
                 n5.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 1 } });
                 g.BFS(n1);
                 State status = n4.getState();
+
+                Assert.IsNotNull(g);
+                Assert.IsNotNull(n1);
+                Assert.IsNotNull(n2);
+                Assert.IsNotNull(n3);
+                Assert.IsNotNull(n4);
+                Assert.IsNotNull(n5);
+                Assert.IsNotNull(status);
                 Assert.Equals(State.Visited, status);
             }
             catch (SecurityException e)
@@ -116,6 +138,9 @@ namespace Assets.Scripts
                 Node n1 = new Node(1, 0, 0, 1);
                 State status = n1.getState();
 
+                Assert.IsNotNull(g);
+                Assert.IsNotNull(n1);
+                Assert.IsNotNull(status);
                 Assert.Equals(State.UnVisited, status);
             }
             catch (SecurityException e)
@@ -224,6 +249,12 @@ namespace Assets.Scripts
                 n4.addListOfAdjacentNodes(new Dictionary<Node, float>() { });
                 n5.addListOfAdjacentNodes(new Dictionary<Node, float>() { });
 
+                Assert.IsNotNull(g);
+                Assert.IsNotNull(n1);
+                Assert.IsNotNull(n2);
+                Assert.IsNotNull(n3);
+                Assert.IsNotNull(n4);
+                Assert.IsNotNull(n5);
                 Assert.Equals(null, g.shortest_path(n1, n5));
             }
             catch (SecurityException e)

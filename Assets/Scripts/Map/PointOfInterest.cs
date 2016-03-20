@@ -80,7 +80,7 @@ namespace Assets.Scripts
 
         public void changeIconScale()
         {
-            transform.localScale = new Vector3(1.8f, 1.8f, 1);
+            transform.localScale = new Vector3(6f, 6f, 1);
         }
 
         public void displayPopUpWindow()

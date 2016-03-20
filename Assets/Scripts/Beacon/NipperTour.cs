@@ -24,10 +24,6 @@ namespace Assets.Scripts
 
         public Camera mainCam;
         public GameObject pathCreator;
-
-        private RaycastHit hit;
-        private LayerMask touchInputMask;
-
         private bool touched;
         
         private iBeaconHandler bh;
@@ -62,7 +58,7 @@ namespace Assets.Scripts
             foreach (var n in ArrayOfNodes)
             {
                 nipperTour.addNode(n);
-                print(n.GetType().ToString());
+
                 if (n.GetFloorNumber() == 2)
                 {
                     n.gameObject.SetActive(true);
@@ -72,6 +68,8 @@ namespace Assets.Scripts
                 {
                     pointsOfInterest.Add((PointOfInterest)n);
                 }
+                    
+                
 
                 if (n is StoryPoint)
                 {
@@ -79,12 +77,16 @@ namespace Assets.Scripts
                 }
             }
 
+            storyPoints.Sort();
+            
+
             foreach (StoryPoint sp in storyPoints)
             {
                 sp.setTitleAndSummary("Old President's Office", "Stop at the end of the corridor before the bridge to building 18. The door to the " +
                                   "right was the old president’s office.The door is closed, Nipper barks and on the screen " +
                                   "appears a mental image from Nipper with the image of the old office, " +
                                   "as suggested in three drawings by thearchitects Ross and MacDonalds.");
+                print("Storypoint with sequential ID: " + sp.getSequentialID());
             }
             map.addStoryline(nipperTour);
             Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
@@ -103,6 +105,7 @@ namespace Assets.Scripts
             map.initializeGraph();
 
             visitedStoryPoints = new List<StoryPoint>();
+            
 
         }
 
@@ -178,7 +181,12 @@ namespace Assets.Scripts
                 }
 
             }
-        }
+        }//end of Update() 
+
+        public List<Node> getNodeList()
+        {
+            return nodeList;
+        } 
 
         public void ResetTrails()
         {
@@ -206,6 +214,7 @@ namespace Assets.Scripts
 
         public bool isInOrder(StoryPoint sp)
         {
+
             int currentPoi = this.storyPoints.IndexOf(sp);
 
             StoryPoint[] storyPoints = this.storyPoints.ToArray();
@@ -230,6 +239,16 @@ namespace Assets.Scripts
             StoryPoint[] storyPoints = this.storyPoints.ToArray();
 
             return storyPoints.ElementAt(lastIndex);
+        }
+
+        public void setStorypointList(List<StoryPoint> spList)
+        {
+            storyPoints = spList;
+        }
+
+        public void setVisitedStorypointList(List<StoryPoint> spList)
+        {
+            visitedStoryPoints = spList;
         }
 
         public IEnumerator searchForDistanceOfBeacon(float seconds)

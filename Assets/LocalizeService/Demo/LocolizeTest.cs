@@ -1,5 +1,6 @@
 ﻿using SunCubeStudio.Localization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // For DEMO VIEW
@@ -14,10 +15,12 @@ public class LocolizeTest : MonoBehaviour
 
     public void English()
     {
+        SceneManager.LoadScene("Menu");
         LocalizationService.Instance.Localization = "English";
 
         CurrentText.text = string.Format("Current localization {0}",
             LocalizationService.Instance.GetTextByKeyWithLocalize("localization1", "English"));
+        
     }
     public void Russian()
     {
@@ -29,10 +32,12 @@ public class LocolizeTest : MonoBehaviour
 
     public void French()
     {
+        SceneManager.LoadScene("Menu");
         LocalizationService.Instance.Localization = "French";
 
         CurrentText.text = string.Format("Current localization {0}",
             LocalizationService.Instance.GetTextByKeyWithLocalize("localization3", "English"));
+        
     }
 
 }

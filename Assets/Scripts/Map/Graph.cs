@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts;
 
-public class Graph : MonoBehaviour
+public class Graph
 {
     // Use this for initialization
 

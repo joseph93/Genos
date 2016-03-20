@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts
 {
-    public class StoryPoint : PointOfInterest
+    public class StoryPoint : PointOfInterest, IComparable<StoryPoint>
     {
         [SerializeField]
         private int sequentialID;
@@ -25,6 +25,8 @@ namespace Assets.Scripts
         private UnityAction noAction;
 
         private UnityAction myViewAction;
+
+        public GameObject checkmarkIcon;
 
         void Awake()
         {
@@ -51,9 +53,9 @@ namespace Assets.Scripts
             yesAction = new UnityAction(modalWindow.closePanel);
             noAction = new UnityAction(modalWindow.closePanel);
         }
-        public StoryPoint(int id, int x, int y, int floorNumber, PoiDescription poiD, string videoPath) : base(id, x, y, floorNumber, poiD)
+        public StoryPoint(int id, int x, int y, int floorNumber, PoiDescription poiD, int sqID) : base(id, x, y, floorNumber, poiD)
         {
-            this.videoPath = videoPath;
+            sequentialID = sqID;
             visited = false;
             detected = false;
             warned = false;
@@ -62,6 +64,15 @@ namespace Assets.Scripts
         public int getSequentialID()
         {
             return sequentialID;
+        }
+
+        public int CompareTo(StoryPoint compareStoryPoint)
+        {
+            if (compareStoryPoint == null)
+                return -1;
+
+            else
+                return this.sequentialID.CompareTo(compareStoryPoint.sequentialID);
         }
 
         public void setVisited(bool visited)
@@ -73,6 +84,11 @@ namespace Assets.Scripts
         public bool isVisited()
         {
             return visited;
+        }
+
+        public void storyIsVisited()
+        {
+            checkmarkIcon.SetActive(true);
         }
 
         public string getVideoPath()
