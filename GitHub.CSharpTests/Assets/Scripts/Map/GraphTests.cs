@@ -69,11 +69,11 @@ namespace Assets.Scripts
                 g.InsertNewVertex(n3);
                 g.InsertNewVertex(n4);
                 g.InsertNewVertex(n5);
-                n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 4 }, { n3, 2 } });
-                n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 3 }, { n5, 3 }, { n4, 2 } });
-                n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 4 }, { n5, 5 }, { n2, 1 } });
-                n4.addListOfAdjacentNodes(new Dictionary<Node, float>() { });
-                n5.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 1 } });
+                n1.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n2, 4}, {n3, 2}});
+                n2.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n3, 3}, {n5, 3}, {n4, 2}});
+                n3.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n4, 4}, {n5, 5}, {n2, 1}});
+                n4.addListOfAdjacentNodes(new Dictionary<Node, float>() {});
+                n5.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n4, 1}});
 
                 Assert.IsNotNull(g);
                 Assert.IsNotNull(n1);
@@ -106,11 +106,11 @@ namespace Assets.Scripts
                 g.InsertNewVertex(n3);
                 g.InsertNewVertex(n4);
                 g.InsertNewVertex(n5);
-                n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 4 }, { n3, 2 } });
-                n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 3 }, { n5, 3 }, { n4, 2 } });
-                n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 4 }, { n5, 5 }, { n2, 1 } });
-                n4.addListOfAdjacentNodes(new Dictionary<Node, float>() { });
-                n5.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 1 } });
+                n1.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n2, 4}, {n3, 2}});
+                n2.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n3, 3}, {n5, 3}, {n4, 2}});
+                n3.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n4, 4}, {n5, 5}, {n2, 1}});
+                n4.addListOfAdjacentNodes(new Dictionary<Node, float>() {});
+                n5.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n4, 1}});
                 g.BFS(n1);
                 State status = n4.getState();
 
@@ -243,11 +243,11 @@ namespace Assets.Scripts
                 g.InsertNewVertex(n4);
                 g.InsertNewVertex(n5);
 
-                n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 4 }, { n3, 2 } });
-                n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 3 }, { n4, 2 } });
-                n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 4 }, { n2, 1 } });
-                n4.addListOfAdjacentNodes(new Dictionary<Node, float>() { });
-                n5.addListOfAdjacentNodes(new Dictionary<Node, float>() { });
+                n1.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n2, 4}, {n3, 2}});
+                n2.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n3, 3}, {n4, 2}});
+                n3.addListOfAdjacentNodes(new Dictionary<Node, float>() {{n4, 4}, {n2, 1}});
+                n4.addListOfAdjacentNodes(new Dictionary<Node, float>() {});
+                n5.addListOfAdjacentNodes(new Dictionary<Node, float>() {});
 
                 Assert.IsNotNull(g);
                 Assert.IsNotNull(n1);

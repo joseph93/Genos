@@ -57,6 +57,7 @@ namespace Assets.Scripts
             n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 6.0f } });
             n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 2.0f } });
             n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 3.0f } });
+            //This should be removed because we need to use the JSON file
 
             map.addNodeList(nodeList);
             //adding the list of nodes in the graph

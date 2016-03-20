@@ -91,6 +91,7 @@ namespace Assets.Scripts
                     if (touched)
                         path.Clear();
 
+                    //JOSEPH: erase the path renderer and recalculate which node you touched
                     ResetTrails();
                     GameObject recipient = hit.transform.gameObject;
                     Node touchedNode = recipient.GetComponent<Node>();
@@ -103,7 +104,7 @@ namespace Assets.Scripts
             }
         }
 
-//end of Update() 
+ 
 
         public List<Node> getNodeList()
         {
@@ -134,6 +135,7 @@ namespace Assets.Scripts
             trail.time = -trail.time;
         }
 
+        //Check if this storypoint follows the sequence
         public bool isInOrder(StoryPoint sp)
         {
 
@@ -160,9 +162,11 @@ namespace Assets.Scripts
 
             StoryPoint[] storyPoints = this.storyPoints.ToArray();
 
+            //JOSEPH: return the first missed storypoint
             return storyPoints.ElementAt(lastIndex);
         }
 
+        //JOSEPH: for unit testing
         public void setStorypointList(List<StoryPoint> spList)
         {
             storyPoints = spList;

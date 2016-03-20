@@ -51,11 +51,6 @@ namespace Assets.Scripts
             return mapGraph;
         }
 
-        public void displayShortestPath()
-        {
-            
-        }
-
         public List<Storyline> GetStorylines()
         {
             return storylines;

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Language;
 
-namespace Assets
+namespace Assets.Scripts
 {
     [TestFixture()]
     public class NipperTourTest

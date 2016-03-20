@@ -12,7 +12,7 @@ namespace Assets.Scripts
     public class StoryPoint : PointOfInterest, IComparable<StoryPoint>
     {
         [SerializeField]
-        private int sequentialID;
+        private int sequentialID; //JOSEPH: the order of the storypoint
         private bool visited;
         public bool detected { get; set; }
         public bool warned { get; set; }
@@ -66,6 +66,7 @@ namespace Assets.Scripts
             return sequentialID;
         }
 
+        //JOSEPH: sort the storypoints by sequential ID (from smallest to greatest)
         public int CompareTo(StoryPoint compareStoryPoint)
         {
             if (compareStoryPoint == null)
@@ -78,7 +79,6 @@ namespace Assets.Scripts
         public void setVisited(bool visited)
         {
             this.visited = visited;
-            notify();
         }
 
         public bool isVisited()
