@@ -12,27 +12,12 @@ namespace Assets.Scripts
 {
     public class NipperTour : FreeRoaming
     {
-        //private iBeaconHandler beaconHandler;
-        private List<Beacon> myBeacons;
-        private Map map;
-        public Node[] ArrayOfNodes;
-        private List<Node> nodeList;
         private List<Node> path;
         private List<StoryPoint> visitedStoryPoints;
-        private List<PointOfInterest> pointsOfInterest;
         private List<StoryPoint> storyPoints; 
-
-        public Camera mainCam;
+        
         public GameObject pathCreator;
         private bool touched;
-        
-        private iBeaconHandler bh;
-
-        public float minSwipeDistX;
-        private Vector2 startPos;
-
-        private UI_Manager ui_Manager;
-        public Animator anim;
 
         //JOSEPH: Initialize the node list.
         void Awake()
@@ -42,41 +27,17 @@ namespace Assets.Scripts
         // Use this for initialization
         void Start()
         {
-            ui_Manager = FindObjectOfType<UI_Manager>();
-            bh = FindObjectOfType<iBeaconHandler>();
 
             path = new List<Node>();
-            nodeList = new List<Node>();
             
-            map = new Map();
             StorylineDescription sd = new StorylineDescription("Nipper Tour", "A guided tour of the Musee des Ondes.");
             Storyline nipperTour = new Storyline(sd, 4);
 
             storyPoints = new List<StoryPoint>();
-            pointsOfInterest = new List<PointOfInterest>();
 
-            foreach (var n in ArrayOfNodes)
-            {
-                nipperTour.addNode(n);
+            initializeStoryPointList(nipperTour);
 
-                if (n.GetFloorNumber() == 2)
-                {
-                    n.gameObject.SetActive(true);
-                }
-
-                if (n is PointOfInterest)
-                {
-                    pointsOfInterest.Add((PointOfInterest)n);
-                }
-                    
-                
-
-                if (n is StoryPoint)
-                {
-                    storyPoints.Add((StoryPoint)n);
-                }
-            }
-
+            //JOSEPH: sorts the storypoints list by sequential ID (from 1 to ...)
             storyPoints.Sort();
             
 
@@ -88,25 +49,19 @@ namespace Assets.Scripts
                                   "as suggested in three drawings by thearchitects Ross and MacDonalds.");
                 print("Storypoint with sequential ID: " + sp.getSequentialID());
             }
-            map.addStoryline(nipperTour);
-            Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
-            Node n2 = ArrayOfNodes[1].GetComponentInChildren<Node>();
-            Node n3 = ArrayOfNodes[2].GetComponentInChildren<Node>();
-            Node n4 = ArrayOfNodes[3].GetComponentInChildren<Node>();
-
-
-            n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 6.0f } });
-            n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 2.0f } });
-            n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 3.0f } });
-
-            map.addNodeList(nipperTour.GetNodes());
-            nodeList = map.GetNodes();
-            //Add all the nodes that are in the Nipper Tour storyline in the map.
-            map.initializeGraph();
 
             visitedStoryPoints = new List<StoryPoint>();
-            
+        }
 
+        public void initializeStoryPointList(Storyline nipperTour)
+        {
+            foreach (var n in ArrayOfNodes)
+            {
+                if (n is StoryPoint)
+                {
+                    storyPoints.Add((StoryPoint) n);
+                }
+            }
         }
 
 
@@ -117,50 +72,17 @@ namespace Assets.Scripts
             if (bh != null)
                 myBeacons = bh.getBeacons();
 
-            StartCoroutine(searchForDistanceOfBeacon(0.05f));
+            StartCoroutine(searchForStorypointBeacon(0.05f));
 
-            if (Input.touchCount > 0)
+            swipePanelLeft();
 
-            {
+            getShortestPath();
+        }
 
-                Touch touch = Input.touches[0];
-
-                switch (touch.phase)
-
-                {
-
-                    case TouchPhase.Began:
-
-                        startPos = touch.position;
-
-                        break;
-
-
-
-                    case TouchPhase.Ended:
-
-                        float swipeDistHorizontal = (new Vector3(touch.position.x, 0, 0) - new Vector3(startPos.x, 0, 0)).magnitude;
-
-                        if (swipeDistHorizontal > minSwipeDistX)
-
-                        {
-
-                            float swipeValue = Mathf.Sign(touch.position.x - startPos.x);
-                            if (swipeValue < 0) //left swipe
-                            {
-                                ui_Manager.disableBoolAnimator(anim);
-                            }
-
-                            //MoveLeft ();
-
-                        }
-                        break;
-                }
-            }
-
+        public void getShortestPath()
+        {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-
                 //JOSEPH: When you touch a point of interest on the map, it shows the shortest path from the first node of the nodeList to the touched node.
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
 
@@ -177,11 +99,11 @@ namespace Assets.Scripts
                     path = map.getGraph().shortest_path(nodeList[0], touchedNode);
                     path.Reverse();
                     touched = true;
-
                 }
-
             }
-        }//end of Update() 
+        }
+
+//end of Update() 
 
         public List<Node> getNodeList()
         {
@@ -251,7 +173,7 @@ namespace Assets.Scripts
             visitedStoryPoints = spList;
         }
 
-        public IEnumerator searchForDistanceOfBeacon(float seconds)
+        public IEnumerator searchForStorypointBeacon(float seconds)
         {
             yield return new WaitForSeconds(seconds);
             foreach (Beacon b in myBeacons)

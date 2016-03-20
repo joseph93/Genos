@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/TourSelection.unity
-=======
-- path: Assets/Plugins/Examples/TizenSampleApp/TizenSampleAppScene.unity
->>>>>>> 7cd28e7e7accaabacc91d3e61508bcdd7462abac
+- path: Assets/Scenes/F2-next.unity
   isLoaded: 1
   isActive: 1
