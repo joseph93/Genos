@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts
 {
-    public class NipperTour : MonoBehaviour
+    public class NipperTour : FreeRoaming
     {
         //private iBeaconHandler beaconHandler;
         private List<Beacon> myBeacons;
