@@ -11,10 +11,8 @@ namespace Assets.Scripts
 {
     public class FreeRoaming : MonoBehaviour
     {
-        
-        //private iBeaconHandler beaconHandler;
         protected List<Beacon> myBeacons;
-        private Map map;
+        protected Map map;
         public Node[] ArrayOfNodes;
         protected List<Node> nodeList;
         protected List<PointOfInterest> pointsOfInterest;
@@ -48,21 +46,7 @@ namespace Assets.Scripts
           
             pointsOfInterest = new List<PointOfInterest>();
 
-            foreach (var n in ArrayOfNodes)
-            {
-                nodeList.Add(n);
-                if (n.GetFloorNumber() == 2)
-                {
-                    n.gameObject.SetActive(true);
-                }
-
-                if (n is PointOfInterest)
-                {
-                    pointsOfInterest.Add((PointOfInterest)n);
-                }
-
-               
-            }
+            initializeLists();
            
             Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
             Node n2 = ArrayOfNodes[1].GetComponentInChildren<Node>();
@@ -81,6 +65,23 @@ namespace Assets.Scripts
 
         }
 
+        public void initializeLists()
+        {
+            foreach (var n in ArrayOfNodes)
+            {
+                nodeList.Add(n);
+                if (n.GetFloorNumber() == 2)
+                {
+                    n.gameObject.SetActive(true);
+                }
+
+                if (n is PointOfInterest)
+                {
+                    pointsOfInterest.Add((PointOfInterest) n);
+                }
+            }
+        }
+
 
         //Reviewer Ihcene: Update was fixed, for the rendering of the beacon, for each frames
         // Update is called once per frame
@@ -89,20 +90,24 @@ namespace Assets.Scripts
             if (bh != null)
                 myBeacons = bh.getBeacons();
 
-            StartCoroutine(searchForDistanceOfBeacon(0.05f));
+            StartCoroutine(searchForPoiBeacon(0.05f));
+            
+            swipePanelLeft();
 
+           
 
-            //Slide-Panel on the left on touch
+            }
+
+        public void swipePanelLeft()
+        {
             if (Input.touchCount > 0)
 
             {
-
                 Touch touch = Input.touches[0];
 
                 switch (touch.phase)
 
                 {
-
                     case TouchPhase.Began:
 
                         startPos = touch.position;
@@ -110,15 +115,14 @@ namespace Assets.Scripts
                         break;
 
 
-
                     case TouchPhase.Ended:
 
-                        float swipeDistHorizontal = (new Vector3(touch.position.x, 0, 0) - new Vector3(startPos.x, 0, 0)).magnitude;
+                        float swipeDistHorizontal =
+                            (new Vector3(touch.position.x, 0, 0) - new Vector3(startPos.x, 0, 0)).magnitude;
 
                         if (swipeDistHorizontal > minSwipeDistX)
 
                         {
-
                             float swipeValue = Mathf.Sign(touch.position.x - startPos.x);
                             if (swipeValue < 0) //left swipe
                             {
@@ -126,16 +130,14 @@ namespace Assets.Scripts
                             }
 
                             //MoveLeft ();
-
                         }
                         break;
                 }
             }
+        }
 
-           
-
-            } //end of Update()
-        public IEnumerator searchForDistanceOfBeacon(float seconds)
+//end of Update()
+        public IEnumerator searchForPoiBeacon(float seconds)
         {
             yield return new WaitForSeconds(seconds);
             foreach (Beacon b in myBeacons)
@@ -165,10 +167,6 @@ namespace Assets.Scripts
         }//end of searchForDistanceOFBeacon()
         
         }
-
-
-     
-
     }
 
 
