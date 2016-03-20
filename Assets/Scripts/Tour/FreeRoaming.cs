@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Observer_Pattern;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.Tour
+namespace Assets.Scripts
 {
     public class FreeRoaming : MonoBehaviour
     {
@@ -146,7 +147,14 @@ namespace Assets.Scripts.Tour
                     {
                         if(!p.isDetected())
                         {
-                            
+
+                            if (p.getBeacon().Equals(b))
+                            {
+                                PointOfInterestView poiView = new PointOfInterestView(p);
+                                p.setDetected(true);
+                                mainCam.transform.position = new Vector3(p.x, p.y, -10);
+                            }
+
                         }
 
                     }

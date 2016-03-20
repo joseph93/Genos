@@ -8,7 +8,7 @@ using Assets.Scripts.Observer_Pattern;
 using Assets.Scripts.Path;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.Tour
+namespace Assets.Scripts
 {
     public class NipperTour : FreeRoaming
     {
