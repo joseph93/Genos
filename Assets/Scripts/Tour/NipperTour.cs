@@ -53,6 +53,14 @@ namespace Assets.Scripts
             visitedStoryPoints = new List<StoryPoint>();
         }
 
+        /**
+        * Method:    initializeStoryPointList
+        * FullName:  initializeStoryPointList
+        * Access:    public
+        * Qualifier:
+        * @param    Storyline nipperTour
+        * @return   void
+        */
         public void initializeStoryPointList(Storyline nipperTour)
         {
             foreach (var n in ArrayOfNodes)
@@ -78,6 +86,16 @@ namespace Assets.Scripts
 
             getShortestPath();
         }
+
+        
+       /**
+       * Method:    getShortestPath
+       * FullName:  getShortestPath
+       * Access:    public
+       * Qualifier:
+       * @param    
+       * @return   void
+       */
 
         public void getShortestPath()
         {
@@ -176,6 +194,7 @@ namespace Assets.Scripts
         {
             visitedStoryPoints = spList;
         }
+        
 
         public IEnumerator searchForStorypointBeacon(float seconds)
         {
