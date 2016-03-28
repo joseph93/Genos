@@ -28,4 +28,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/FreeRoaming.unity
   - enabled: 1
+<<<<<<< Updated upstream
     path: Assets/Scenes/3dOutdoor.unity
+=======
+    path: Assets/Scenes/3D-outdoor.unity
+  - enabled: 0
+    path: Assets/Itekube/TouchIT/Demo/Scene/TouchIT_Example.unity
+>>>>>>> Stashed changes

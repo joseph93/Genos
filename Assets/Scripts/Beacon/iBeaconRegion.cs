@@ -16,6 +16,8 @@ namespace Assets.Scripts
             return UUID + ":" + regionName;
         }
 
+        
+       
         public static string regionsToString(iBeaconRegion[] regions)
         {
             string returnString = "";
