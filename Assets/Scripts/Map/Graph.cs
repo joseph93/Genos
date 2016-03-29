@@ -21,6 +21,14 @@ public class Graph
 
 
     //Initialize all vertices with Unvisited value.
+/**
+* Method:    InitializeVertices
+* FullName:  InitializeVertices
+* Access:    private
+* Qualifier:
+* @param    
+* @return   void
+*/
     private void InitializeVertices()
     {
         foreach (KeyValuePair<int, Node> entry in Vertices)
@@ -29,7 +37,16 @@ public class Graph
         }
     }
 
-    //JOSEPH: Contains the id of the node?
+    //JOSEPH: Contains the id of the node
+
+    /**
+    * Method:    Contains
+    * FullName:  Contains
+    * Access:    public
+    * Qualifier:
+    * @param    int vertexKey
+    * @return   bool
+    */
     public bool Contains(int vertexKey)
     {
         if (Vertices.ContainsKey(vertexKey))
@@ -39,12 +56,28 @@ public class Graph
     }
 
 
+    /**
+    * Method:    GetFirstElementOfTheList
+    * FullName:  GetFirstElementOfTheList
+    * Access:    public
+    * Qualifier:
+    * @param    int findKey
+    * @return   Node
+    */
+
     public Node GetFirstElementOfTheList(int findKey)
     {
         return (from entry in Vertices where entry.Key == findKey select entry.Value).FirstOrDefault();
     }
 
-
+    /**
+    * Method:    BFS
+    * FullName:  BFS
+    * Access:    public
+    * Qualifier:
+    * @param    Node startVertex
+    * @return   void
+    */
     public void BFS(Node startVertex)
     {
 
@@ -77,12 +110,30 @@ public class Graph
 
     }
 
+
+        /**
+    * Method:    InitializeBFS
+    * FullName:  InitializeBFS
+    * Access:    public
+    * Qualifier:
+    * @param    Node vertextToFind
+    * @return   Node
+    */
     public Node InitializeBFS(Node vertexToFind)
     {
         InitializeVertices();
         return BFS(Vertices.First().Value, vertexToFind);
     }
    
+
+    /**
+    * Method:    BFS
+    * FullName:  BFS
+    * Access:    public
+    * Qualifier:
+    * @param    Node startVetex, vertexToFind
+    * @return   Node
+    */
 
     public Node BFS(Node startVertex, Node vertexToFind)
     {
@@ -122,6 +173,16 @@ public class Graph
 
 
     //JOSEPH: Find a node by giving its id
+
+
+    /**
+    * Method:    FindByKey
+    * FullName:  FindByKey
+    * Access:    public
+    * Qualifier:
+    * @param    int nodeID
+    * @return   Node
+    */
     public Node FindByKey(int nodeID)
     {
         foreach (KeyValuePair<int, Node> entry in Vertices)
@@ -132,7 +193,16 @@ public class Graph
         return null;
     }
 
-    //JOSEPH: does the node exist in the vertices dictionary?
+    //JOSEPH: does the node exist in the vertices dictionary
+
+    /**
+    * Method:    ExistKey
+    * FullName:  ExistKey
+    * Access:    public
+    * Qualifier:
+    * @param    int v
+    * @return   bool
+    */
     public bool ExistKey(int v)
     {
         if (FindByKey(v) == null)
@@ -140,6 +210,17 @@ public class Graph
         else
             return true;
     }
+
+
+
+    /**
+    * Method:    InsertNewVertex
+    * FullName:  InsertNewVertex
+    * Access:    public 
+    * Qualifier:
+    * @param   Node vertex
+    * @return   void
+    */
 
     public void InsertNewVertex(Node vertex)
     {
@@ -152,6 +233,16 @@ public class Graph
 
     // REVIEWED by Joseph Atallah
     // IHCENE: The shortest path algorithm
+
+
+    /**
+    * Method:    shortest_path
+    * FullName:  shortest_path
+    * Access:    public
+    * Qualifier:
+    * @param    Node start, finish
+    * @return   List<Node>
+    */
     public List<Node> shortest_path(Node start, Node finish)
     {
         // previous Dictionary: helps us to get the previous node
