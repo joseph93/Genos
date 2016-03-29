@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -77,6 +79,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\JSON\JSONObject.cs" />
+    <Compile Include="Assets\JSON\JSONTemplates.cs" />
+    <Compile Include="Assets\JSON\VectorTemplates.cs" />
     <Compile Include="Assets\LocalizeService\Demo\LocolizeTest.cs" />
     <Compile Include="Assets\LocalizeService\Scripts\CSVReader.cs" />
     <Compile Include="Assets\LocalizeService\Scripts\LocalizationService.cs" />
@@ -94,6 +99,8 @@
     <Compile Include="Assets\Scripts\ButtonScripts\TourButton.cs" />
     <Compile Include="Assets\Scripts\Camera\IntroPlayer.cs" />
     <Compile Include="Assets\Scripts\Camera\TouchScreenCamera.cs" />
+    <Compile Include="Assets\Scripts\Driver\FreeRoamingDriver.cs" />
+    <Compile Include="Assets\Scripts\Driver\StorylineDriver.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Audio.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\ExhibitionContent.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Image.cs" />
@@ -104,6 +111,7 @@
     <Compile Include="Assets\Scripts\Language\PoiDescription.cs" />
     <Compile Include="Assets\Scripts\Language\StorylineDescription.cs" />
     <Compile Include="Assets\Scripts\Map\Edge.cs" />
+    <Compile Include="Assets\Scripts\Map\FloorPlan.cs" />
     <Compile Include="Assets\Scripts\Map\Graph.cs" />
     <Compile Include="Assets\Scripts\Map\LabeledNode.cs" />
     <Compile Include="Assets\Scripts\Map\Map.cs" />
@@ -121,7 +129,6 @@
     <Compile Include="Assets\Scripts\ScrollContent\DialogueBox.cs" />
     <Compile Include="Assets\Scripts\ScrollContent\ScrollSnapRect.cs" />
     <Compile Include="Assets\Scripts\Tour\FreeRoaming.cs" />
-    <Compile Include="Assets\Scripts\Tour\NipperTour.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Manager.cs" />
     <Compile Include="Assets\Scripts\Windows\BringToFront.cs" />
     <Compile Include="Assets\Scripts\Windows\ModalWindow.cs" />
@@ -179,6 +186,7 @@
     <None Include="Assets\Fonts\romance_fatal_serif\ReadMe_Romance_Fatal_Serif.txt" />
     <None Include="Assets\Fonts\romance_fatal_serif\leeme_Romance_Fatal_Serif.txt" />
     <None Include="Assets\Fonts\thyssen_j\9JULIUST.TXT" />
+    <None Include="Assets\JSON\readme.txt" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\Plugins\README_TizenIAPStore.txt" />
     <None Include="Assets\Resources\Intro.txt" />

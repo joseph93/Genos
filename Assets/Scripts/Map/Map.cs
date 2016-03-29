@@ -3,15 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Path;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Map
+    public class Map 
     {
 
         private List<Storyline> storylines;
         private Graph mapGraph;
-        private List<Node> nodes; 
+        private List<Node> nodes;
 
         public Map()
         {
@@ -19,6 +21,7 @@ namespace Assets.Scripts
             nodes = new List<Node>();
             mapGraph = new Graph();
         }
+        
 
         public void addStoryline(Storyline sl)
         { 
@@ -60,6 +63,7 @@ namespace Assets.Scripts
         {
             return nodes;
         }
+
 
     }
 }

@@ -11,19 +11,19 @@ using Assets.Scripts.Language;
 namespace Assets.Scripts
 {
     [TestFixture()]
-    public class NipperTourTest
+    public class StorylineTest
     {
         [Test()]
         public void isInOrderTest()
         {
             try
             {
-                StoryPoint sp1 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 1);
-                StoryPoint sp2 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 2);
+                StoryPoint sp1 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 1, 0);
+                StoryPoint sp2 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 2, 0);
                 List<StoryPoint> spList = new List<StoryPoint>();
                 spList.Add(sp1);
                 spList.Add(sp2);
-                NipperTour np = new NipperTour();
+                Storyline np = new Storyline(0, new StorylineDescription("test", "test"), 4);
                 np.setStorypointList(spList);
 
                 Assert.True(np.isInOrder(sp1));
@@ -39,8 +39,8 @@ namespace Assets.Scripts
         {
             try
             {
-                StoryPoint sp1 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 1);
-                StoryPoint sp2 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 2);
+                StoryPoint sp1 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 1, 0);
+                StoryPoint sp2 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 2, 0);
                 List<StoryPoint> spList = new List<StoryPoint>();
                 spList.Add(sp1);
                 spList.Add(sp2);
@@ -48,7 +48,7 @@ namespace Assets.Scripts
                 List<StoryPoint> visitedSpList = new List<StoryPoint>();
                 visitedSpList.Add(sp1);
 
-                NipperTour np = new NipperTour();
+                Storyline np = new Storyline(0, new StorylineDescription("test", "test"), 4);
                 np.setStorypointList(spList);
                 np.setVisitedStorypointList(visitedSpList);
 

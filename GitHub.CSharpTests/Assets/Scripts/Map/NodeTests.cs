@@ -35,8 +35,8 @@ namespace Assets.Scripts
         {
             try
             {
-                StoryPoint sp1 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 1);
-                StoryPoint sp2 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 3);
+                StoryPoint sp1 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 1, 0);
+                StoryPoint sp2 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 3, 0);
 
                 Assert.Equals(1, sp1.CompareTo(sp2));
             }
@@ -51,8 +51,8 @@ namespace Assets.Scripts
         {
             try
             {
-                StoryPoint sp1 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 1);
-                StoryPoint sp2 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 3);
+                StoryPoint sp1 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 1, 0);
+                StoryPoint sp2 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 3, 0);
                 List<StoryPoint> unsortedList = new List<StoryPoint>();
                 unsortedList.Add(sp2);
                 unsortedList.Add(sp1);

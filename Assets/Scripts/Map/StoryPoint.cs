@@ -11,6 +11,7 @@ namespace Assets.Scripts
 {
     public class StoryPoint : PointOfInterest, IComparable<StoryPoint>
     {
+        private int storylineID;
         [SerializeField]
         private int sequentialID; //JOSEPH: the order of the storypoint
         private bool visited;
@@ -28,6 +29,7 @@ namespace Assets.Scripts
 
         public GameObject checkmarkIcon;
 
+
         void Awake()
         {
             beacon = BeaconGameObject.GetComponent<iBeaconServer>();
@@ -35,7 +37,6 @@ namespace Assets.Scripts
             popUp = sounds[0];
             beforeSound = sounds[1];
             observers = new List<Observer>();
-            detected = false;
 
             visited = false;
             detected = false;
@@ -53,9 +54,10 @@ namespace Assets.Scripts
             yesAction = new UnityAction(modalWindow.closePanel);
             noAction = new UnityAction(modalWindow.closePanel);
         }
-        public StoryPoint(int id, int x, int y, int floorNumber, PoiDescription poiD, int sqID) : base(id, x, y, floorNumber, poiD)
+        public StoryPoint(int id, int x, int y, int floorNumber, PoiDescription poiD, int sqID, int stID) : base(id, x, y, floorNumber, poiD)
         {
             sequentialID = sqID;
+            storylineID = stID;
             visited = false;
             detected = false;
             warned = false;
@@ -79,6 +81,8 @@ namespace Assets.Scripts
         public void setVisited(bool visited)
         {
             this.visited = visited;
+            print("Storypoint is visited");
+            notify();
         }
 
         public bool isVisited()
@@ -91,13 +95,9 @@ namespace Assets.Scripts
             checkmarkIcon.SetActive(true);
         }
 
-        public string getVideoPath()
-        {
-            return videoPath;
-        }
-
         public void playVideo()
         {
+            print("I want to play video.");
             Handheld.PlayFullScreenMovie(videoPath, Color.black, FullScreenMovieControlMode.Full);
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
             renderer.color = new Color32(140, 115, 115, 255);

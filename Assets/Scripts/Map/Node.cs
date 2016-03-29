@@ -8,7 +8,7 @@ using Assets.Scripts;
 
 public enum State { Visited = 0, UnVisited = 1, Processed = 2 }
 [ExecuteInEditMode]
-public class Node : MonoBehaviour {
+public class Node : MonoBehaviour{
 
     
     private State Status = State.UnVisited;
@@ -33,14 +33,6 @@ public class Node : MonoBehaviour {
         y = transform.position.y;
     }
 
-    public Node(Node n)
-    {
-        x = n.x;
-        y = n.y;
-        floorNumber = n.floorNumber;
-        id = n.id;
-    }
-
     public State getState()
     {
         return Status;
@@ -59,11 +51,6 @@ public class Node : MonoBehaviour {
     public int getID()
     {
         return id;
-    }
-
-    public void setID(int id)
-    {
-        this.id = id;
     }
 
     public int GetFloorNumber()
