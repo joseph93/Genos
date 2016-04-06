@@ -4,34 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/LoadingPage.unity
-  - enabled: 0
-    path: Assets/Scenes/Lang.unity
-  - enabled: 0
-    path: Assets/Scenes/Menu.unity
-  - enabled: 0
-    path: Assets/Scenes/TourSelection.unity
-  - enabled: 0
-    path: Assets/Scenes/Intro.unity
-  - enabled: 0
-    path: Assets/Scenes/F2.unity
-  - enabled: 0
-    path: Assets/Scenes/F2-next.unity
-  - enabled: 0
-    path: Assets/Scenes/ListOfPointsOfInterest.unity
-  - enabled: 0
-    path: Assets/Scenes/F2-next-duplicate.unity
-  - enabled: 0
-    path: Assets/Scenes/Intro2.unity
-  - enabled: 0
-    path: Assets/Scenes/FreeRoaming.unity
-  - enabled: 1
-<<<<<<< Updated upstream
-    path: Assets/Scenes/3dOutdoor.unity
-=======
-    path: Assets/Scenes/3D-outdoor.unity
-  - enabled: 0
-    path: Assets/Itekube/TouchIT/Demo/Scene/TouchIT_Example.unity
->>>>>>> Stashed changes
+  m_Scenes: []
