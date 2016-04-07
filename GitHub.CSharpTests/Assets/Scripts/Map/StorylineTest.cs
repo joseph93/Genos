@@ -18,12 +18,12 @@ namespace Assets.Scripts
         {
             try
             {
-                StoryPoint sp1 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 1, 0);
-                StoryPoint sp2 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 2, 0);
-                List<StoryPoint> spList = new List<StoryPoint>();
+                POS sp1 = new POS(0, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                POS sp2 = new POS(0, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                List<POS> spList = new List<POS>();
                 spList.Add(sp1);
                 spList.Add(sp2);
-                Storyline np = new Storyline(0, new StorylineDescription("test", "test"), 4);
+                Storyline np = new Storyline(0, 4, "test", "test");
                 np.setStorypointList(spList);
 
                 Assert.True(np.isInOrder(sp1));
@@ -39,16 +39,16 @@ namespace Assets.Scripts
         {
             try
             {
-                StoryPoint sp1 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 1, 0);
-                StoryPoint sp2 = new StoryPoint(0, 0, 0, 2, new PoiDescription("test", "test"), 2, 0);
-                List<StoryPoint> spList = new List<StoryPoint>();
+                POS sp1 = new POS(0, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                POS sp2 = new POS(0, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                List<POS> spList = new List<POS>();
                 spList.Add(sp1);
                 spList.Add(sp2);
 
-                List<StoryPoint> visitedSpList = new List<StoryPoint>();
+                List<POS> visitedSpList = new List<POS>();
                 visitedSpList.Add(sp1);
 
-                Storyline np = new Storyline(0, new StorylineDescription("test", "test"), 4);
+                Storyline np = new Storyline(0, 4, "test", "test");
                 np.setStorypointList(spList);
                 np.setVisitedStorypointList(visitedSpList);
 

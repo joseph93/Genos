@@ -20,8 +20,8 @@ namespace Assets.Scripts
         {
             try
             {
-                PointOfInterest p1 = new PointOfInterest(0, 0, 0, 1, null);
-                p1.setTitleAndSummary("test", "test");
+                PointOfInterest p1 = new PointOfInterest(0, 0, 0,"blue", 1);
+                p1.setTitleAndSummary("test", "test", "EN");
                 Assert.IsNotNull(p1.GetPoiDescription());
             }
             catch (SecurityException e)
@@ -35,8 +35,8 @@ namespace Assets.Scripts
         {
             try
             {
-                StoryPoint sp1 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 1, 0);
-                StoryPoint sp2 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 3, 0);
+                POS sp1 = new POS(1, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                POS sp2 = new POS(1, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
 
                 Assert.Equals(1, sp1.CompareTo(sp2));
             }
@@ -51,12 +51,12 @@ namespace Assets.Scripts
         {
             try
             {
-                StoryPoint sp1 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 1, 0);
-                StoryPoint sp2 = new StoryPoint(1, 0, 0, 2, new PoiDescription("test", "test"), 3, 0);
-                List<StoryPoint> unsortedList = new List<StoryPoint>();
+                POS sp1 = new POS(1, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                POS sp2 = new POS(1, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                List<POS> unsortedList = new List<POS>();
                 unsortedList.Add(sp2);
                 unsortedList.Add(sp1);
-                List<StoryPoint> sortedList = new List<StoryPoint>();
+                List<POS> sortedList = new List<POS>();
                 sortedList.Add(sp1);
                 sortedList.Add(sp2);
                 unsortedList.Sort();
@@ -76,9 +76,9 @@ namespace Assets.Scripts
             {
 
                 Graph g = new Graph();
-                Node n1 = new Node(1, 0, 0, 1);
-                Node n2 = new Node(2, 0, 0, 1);
-                Node n3 = new Node(3, 0, 0, 1);
+                Node n1 = new Node(1, 0, 0, "blue", 1);
+                Node n2 = new Node(2, 0, 0, "blue", 1);
+                Node n3 = new Node(3, 0, 0, "blue", 1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
@@ -90,8 +90,8 @@ namespace Assets.Scripts
                 Assert.IsNotNull(n1);
                 Assert.IsNotNull(n2);
                 Assert.IsNotNull(n3);
-                Assert.True(n1.hasAdjacentNode(n2),
-                    "This tests if hasAdjacentNode returns true if a node is adjacent to a given one.");
+                Assert.True(n1.isAdjacent(n2),
+                    "This tests if isAdjacent returns true if a node is adjacent to a given one.");
             }
             catch (SecurityException e)
             {

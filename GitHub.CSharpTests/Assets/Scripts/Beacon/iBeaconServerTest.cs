@@ -17,12 +17,8 @@ namespace Assets.Scripts
         {
             try
             {
-                iBeaconServer beacon1 = new iBeaconServer();
+                iBeaconServer beacon1 = new iBeaconServer("test", 10, 10);
                 Beacon beacon2 = new Beacon("test", 10, 10, 10, 10, 20.00, 10);
-
-                beacon1.m_uuid = "test";
-                beacon1.m_major = 10;
-                beacon1.m_minor = 10;
 
                 Assert.IsNotNull(beacon1);
                 Assert.IsNotNull(beacon2);

@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts;
+using UnityEngine;
 
-public class Graph
+public class Graph : MonoBehaviour
 {
     // Use this for initialization
 
@@ -85,7 +86,7 @@ public class Graph
             return;
 
         Queue<Node> nodes = new Queue<Node>();
-        Console.WriteLine("Starting at: {0}", startVertex.getID());
+        Debug.Log("Starting at: " + startVertex.getID());
         //JOSEPH: Put the first element in the queue.
         startVertex.setState(State.Visited);
         nodes.Enqueue(startVertex);
@@ -101,7 +102,7 @@ public class Graph
                 if (!v.IsVisited())
                 {
 
-                    Console.WriteLine("Passed to {0}", v.getID());
+                    Debug.Log("Passed to " + v.getID());
                     Vertices[v.getID()].setState(State.Visited);
                     nodes.Enqueue(v);
                 }

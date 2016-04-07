@@ -12,7 +12,6 @@ namespace Assets.Scripts.Driver
     {
         public Node[] ArrayOfNodes;
         public GameObject iBeaconHandler;
-        public GameObject floorManager;
 
         private float minSwipeDistX = 300;
         private Vector2 startPos;
@@ -21,6 +20,7 @@ namespace Assets.Scripts.Driver
         public Animator anim;
 
         private Map map;
+        private MapController mc;
 
         // Use this for initialization
         void Start()
@@ -46,9 +46,11 @@ namespace Assets.Scripts.Driver
 
             ui_Manager = FindObjectOfType<UI_Manager>();
 
-            Storyline demo = new Storyline(0, new StorylineDescription("test", "test"), 4);
-
+            Storyline demo = new Storyline(0, 1, "Demo Storyline", "Let's see how good is your mobile app!");
+            
             map = new Map();
+            mc = FindObjectOfType<MapController>();
+            
             demo.initializeLists(ArrayOfNodes);
             iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
             List<Beacon> beacons = bh.getBeacons();
@@ -57,19 +59,8 @@ namespace Assets.Scripts.Driver
             map.addNodeList(demo.getNodeList());
             map.initializeGraph();  //adding the list of nodes in the graph
             map.addStoryline(demo);
-
-
-
-            Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
-            Node n2 = ArrayOfNodes[1].GetComponentInChildren<Node>();
-            Node n3 = ArrayOfNodes[2].GetComponentInChildren<Node>();
-            Node n4 = ArrayOfNodes[3].GetComponentInChildren<Node>();
-
-
-            n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 6.0f } });
-            n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 2.0f } });
-            n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 3.0f } });
-
+            print("added storyline.");
+            
         }
 
         public void swipePanelLeft()

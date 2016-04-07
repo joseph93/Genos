@@ -44,21 +44,27 @@ namespace Assets.Scripts
             foreach (var n in arrayOfNodes)
             {
                 nodeList.Add(n);
-
-                n.gameObject.SetActive(n.GetFloorNumber() == 2);
+                print("Added node: " + n.getID());
 
                 if (n is PointOfInterest)
                 {
                     pointsOfInterest.Add((PointOfInterest) n);
+                    print("Added poi: " + n.getID());
                 }
+
+                
             }
+            pointsOfInterest[0].setTitleAndSummary("EV 3.187", "<div>Professor's office</div><div><b>blueberry</b></div>", "EN");
+            pointsOfInterest[1].setTitleAndSummary("Evacuation instructions", "<div>Read the instructions carefully for your safety!</div><div><b>Mint</b></div>", "EN");
+            pointsOfInterest[2].setTitleAndSummary("End of your demo", "<div>Get some rest. It's over!</div><div><b>Icy</b></div>", "EN");
+
         }
 
         public void initializePoi()
         {
-            foreach (StoryPoint poi in pointsOfInterest)
+            foreach (POS poi in pointsOfInterest)
             {
-                poi.setTitleAndSummary("Test", "test");
+                poi.setTitleAndSummary("Test", "test", "EN");
             }
         }
 
@@ -90,7 +96,6 @@ namespace Assets.Scripts
 
                             if (p.getBeacon().Equals(b))
                             {
-                                p.setTitleAndSummary("Test", "test");
                                 PointOfInterestView poiView = new PointOfInterestView(p);
                                 p.setDetected(true);
                                 mainCam.transform.position = new Vector3(p.x, p.y, -10);

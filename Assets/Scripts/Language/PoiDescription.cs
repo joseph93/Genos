@@ -9,11 +9,33 @@ namespace Assets.Scripts.Language
     {
         public string title { get; set; }
         public string summary { get; set; }
+        public Language language { get; set; }
 
-        public PoiDescription(string title, string summary)
+        public PoiDescription(string title, string summary, string lg)
         {
             this.title = title;
             this.summary = summary;
+            language = convertStringToLang(lg);
+        }
+
+        public static Language convertStringToLang(string lg)
+        {
+            if (lg == null)
+            {
+                return Language.NONE;
+            }
+            if (lg.Equals("EN"))
+            {
+                return Language.EN;
+            }
+
+            if (lg.Equals("FR"))
+            {
+                return Language.FR;
+            }
+
+            return Language.NONE;
+
         }
     }
 }

@@ -5,5 +5,5 @@ using System.Text;
 
 namespace Assets.Scripts.Language
 {
-    public enum Language { ENGLISH, FRENCH, GERMAN }
+    public enum Language { EN, FR, NONE }
 }

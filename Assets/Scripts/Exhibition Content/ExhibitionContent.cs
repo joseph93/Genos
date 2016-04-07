@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Language;
 
-public abstract class ExhibitionContent : MonoBehaviour
+public abstract class ExhibitionContent
 {
+    public string path { get; set; }
+    public Language lg { get; set; }
+    public string caption { get; set; }
 
-    private string contentID;
-    private string title;
-    private int storylineID;
-
-    public ExhibitionContent(string title, string contentID, int storylineID)
+    protected ExhibitionContent(string path, string lg, string cpt)
     {
-        this.title = title;
-        this.contentID = contentID;
-        this.storylineID = storylineID;
+        this.path = path;
+        this.lg = PoiDescription.convertStringToLang(lg);
+        caption = cpt;
     }
 }
+

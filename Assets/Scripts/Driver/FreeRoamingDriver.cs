@@ -45,18 +45,7 @@ public class FreeRoamingDriver : MonoBehaviour {
 
         map.addNodeList(freeRoamingTour.getNodeList());
         map.initializeGraph();  //adding the list of nodes in the graph
-
-
-
-        Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
-        Node n2 = ArrayOfNodes[1].GetComponentInChildren<Node>();
-        Node n3 = ArrayOfNodes[2].GetComponentInChildren<Node>();
-        Node n4 = ArrayOfNodes[3].GetComponentInChildren<Node>();
-
-
-        n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 6.0f } });
-        n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 2.0f } });
-        n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 3.0f } });
+        
 
     }
 

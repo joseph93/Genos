@@ -15,25 +15,29 @@ namespace Assets.Scripts
     public class Storyline : MonoBehaviour
     {
         private int id;
-        private StorylineDescription stDescription;
+        private string title;
+        private string description;
         public int floorsCovered { get; set; }
-        private List<StoryPoint> visitedStoryPoints;
-        private List<StoryPoint> storyPoints;
+        private List<POS> visitedStoryPoints;
+        private List<POS> storyPoints;
+        private List<int> path;   
         
         private List<Beacon> myBeacons;
-        private readonly List<Node> nodeList;
+        private List<Node> nodeList;
 
         public Camera mainCam;
 
-        public Storyline(int id, StorylineDescription stDescription, int fc)
+        public Storyline(int id, int fc, string title1, string description1)
         {
             this.id = id;
-            this.stDescription = stDescription;
+            this.title = title1;
+            description = description1;
             floorsCovered = fc;
             nodeList = new List<Node>();
-            storyPoints = new List<StoryPoint>();
-            visitedStoryPoints = new List<StoryPoint>();
+            storyPoints = new List<POS>();
+            visitedStoryPoints = new List<POS>();
             myBeacons = new List<Beacon>();
+            path = new List<int>();
         }
 
         // Use this for initialization
@@ -44,6 +48,11 @@ namespace Assets.Scripts
 
         void Start()
         {
+            nodeList = new List<Node>();
+            storyPoints = new List<POS>();
+            visitedStoryPoints = new List<POS>();
+            myBeacons = new List<Beacon>();
+            path = new List<int>();
         }
 
         void Update()
@@ -56,40 +65,51 @@ namespace Assets.Scripts
             myBeacons = beacons;
         }
 
+        public void addToPath(int nodeID)
+        {
+            path.Add(nodeID);
+        }
+
+        public List<int> getPath()
+        {
+            return path;
+        } 
+
         public List<Node> getNodeList()
         {
             return nodeList;
         }
 
-        public StorylineDescription GetStorylineDescription()
+        public List<POS> getStorypointList()
         {
-            return stDescription;
-        }
-
-        public void setStorylineDescription(string title, string descr)
-        {
-            stDescription.title = title;
-            stDescription.description = descr;
-        }
-
-
-
+            return storyPoints;
+        } 
+        
         public void initializeLists(Node[] arrayOfNodes)
         {
             foreach (var n in arrayOfNodes)
             {
                 nodeList.Add(n);
 
-                n.gameObject.SetActive(n.GetFloorNumber() == 2);
+                //n.gameObject.SetActive(n.GetFloorNumber() == 2);
 
-                if (n is StoryPoint)
+                if (n is POS)
                 {
-                    storyPoints.Add((StoryPoint)n);
+                    storyPoints.Add((POS)n);
                     print("Added storypoint " + n.getID());
                 }
             }
+            storyPoints[0].setTitleAndSummary("EV 3.187", "<div>Professor's office</div><div><b>blueberry</b></div>", "EN");
+            storyPoints[1].setTitleAndSummary("Evacuation instructions", "<div>Read the instructions carefully for your safety!</div><div><b>Mint</b></div>", "EN");
+            storyPoints[2].setTitleAndSummary("End of your demo", "<div>Get some rest. It's over!</div><div><b>Icy</b></div>", "EN");
+
             //JOSEPH: sorts the storypoints list by sequential ID (from 1 to ...)
             storyPoints.Sort();
+            
+            foreach (POS sp in storyPoints)
+            {
+                Debug.Log(sp.GetPoiDescription().title + " " + sp.GetPoiDescription().summary);
+            }
         }
 
 
@@ -98,16 +118,16 @@ namespace Assets.Scripts
         
 
         //Check if this storypoint follows the sequence
-        public bool isInOrder(StoryPoint sp)
+        public bool isInOrder(POS sp)
         {
 
             int currentPoi = this.storyPoints.IndexOf(sp);
 
-            StoryPoint[] storyPoints = this.storyPoints.ToArray();
+            POS[] poss = this.storyPoints.ToArray();
 
             for (int i = 0; i < currentPoi; i++)
             {
-                if (!storyPoints[i].isVisited())
+                if (!poss[i].isVisited())
                 {
                     return false;
                 }
@@ -116,25 +136,25 @@ namespace Assets.Scripts
             return true;
         }
 
-        public StoryPoint findLastUnvisitedSp()
+        public POS findLastUnvisitedSp()
         {
             //JOSEPH: find the last object of the visited list.
             int lastIndex = visitedStoryPoints.Count;
 
 
-            StoryPoint[] storyPoints = this.storyPoints.ToArray();
+            POS[] poss = this.storyPoints.ToArray();
 
             //JOSEPH: return the first missed storypoint
-            return storyPoints.ElementAt(lastIndex);
+            return poss.ElementAt(lastIndex);
         }
 
         //JOSEPH: for unit testing
-        public void setStorypointList(List<StoryPoint> spList)
+        public void setStorypointList(List<POS> spList)
         {
             storyPoints = spList;
         }
 
-        public void setVisitedStorypointList(List<StoryPoint> spList)
+        public void setVisitedStorypointList(List<POS> spList)
         {
             visitedStoryPoints = spList;
         }
@@ -142,6 +162,7 @@ namespace Assets.Scripts
         public IEnumerator searchForStorypointBeacon(float seconds)
         {
             yield return new WaitForSeconds(seconds);
+            
             foreach (Beacon b in myBeacons)
             {
                 /*if (b.accuracy > 2.00 && b.accuracy < 6.00)
@@ -160,20 +181,19 @@ namespace Assets.Scripts
                 }*/
                 if (b.accuracy < 2.00)
                 {
-                    print("Im near the beacon.");
-                    foreach (StoryPoint sp in storyPoints)
+                   // print("Im near the beacon.");
+                    foreach (POS sp in storyPoints)
                     {
-                        print("I'm in the for loop.");
+                        //print("I'm in the for loop.");
                         if (!sp.isVisited())
                         {
-                            print("Storypoint is not visited.");
+                            //print("Storypoint is not visited.");
                             if (sp.getBeacon().Equals(b))
                             {
-                                print("Its the same beacon");
+                                //print("Its the same beacon");
                                 if (isInOrder(sp))
                                 {
-                                    print("It's in order.");
-                                    sp.setTitleAndSummary("test", "test");
+                                    //print("It's in order.");
                                     StoryPointView storyPointView = new StoryPointView(sp);
                                     sp.setVisited(true);
                                     visitedStoryPoints.Add(sp);
@@ -185,7 +205,7 @@ namespace Assets.Scripts
                                 {
                                     if (!sp.warned)
                                     {
-                                        StoryPoint lastUnvisitedSp = findLastUnvisitedSp();
+                                        POS lastUnvisitedSp = findLastUnvisitedSp();
                                         //Pop up, notify the user that he missed a poi
                                         string description = "You have missed point of interest " +
                                                              lastUnvisitedSp.getSequentialID() +

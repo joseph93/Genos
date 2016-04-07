@@ -32,6 +32,14 @@ namespace Assets.Scripts
         public Sprite nipperPopUp;
         public Sprite poiImage;
 
+        public string[] videoPath;
+        public string caption;
+
+        private UnityAction viewVideoAction;
+        private ModalWindow modalWindow;
+
+        private readonly List<ExhibitionContent> contents; 
+
         void Awake()
         {
             beacon = BeaconGameObject.GetComponent<iBeaconServer>();
@@ -43,16 +51,20 @@ namespace Assets.Scripts
 
             popUpWindow = PopUpWindow.Instance();
             summaryWindow = SummaryWindow.Instance();
+            viewVideoAction = new UnityAction(POIplayVideo);
 
-            myViewAction = new UnityAction(displaySummary);
+            modalWindow = ModalWindow.Instance();
+
+            myViewAction = poiImage != null ? new UnityAction(POIdisplayImageWithCaption) : new UnityAction(POIplayVideo);
             myCloseAction = new UnityAction(popUpWindow.closePanel);
         }
 
 
-        public PointOfInterest(int id, int x, int y, int floorNumber, PoiDescription poiD) : base(id, x, y, floorNumber)
+        public PointOfInterest(int id, int x, int y, string color, int floorNumber) : base(id, x, y, color, floorNumber)
         {
-            poiDescription = poiD;
             detected = false;
+            contents = new List<ExhibitionContent>();
+            poiDescription = new PoiDescription(null, null, "NONE");
         }
 
         public PoiDescription GetPoiDescription()
@@ -65,7 +77,22 @@ namespace Assets.Scripts
             return beacon;
         }
 
-        public void setTitleAndSummary(string title, string summary)
+        public void setBeacon(iBeaconServer b)
+        {
+            beacon = b;
+        }
+
+        public List<ExhibitionContent> getContents()
+        {
+            return contents;
+        }
+
+        public void addContent(ExhibitionContent c)
+        {
+            contents.Add(c);
+        }
+
+        public void setTitleAndSummary(string title, string summary, string lg)
         {
             if (poiDescription != null)
             {
@@ -74,13 +101,33 @@ namespace Assets.Scripts
             }
             else
             {
-                poiDescription = new PoiDescription(title, summary);
+                poiDescription = new PoiDescription(title, summary, lg);
             }
+        }
+
+        public void setTitle(string title)
+        {
+            poiDescription.title = title;
+        }
+
+        public void setDescription(string descr)
+        {
+            poiDescription.summary = descr;
+        }
+
+        public void setLanguage(string lg)
+        {
+            poiDescription.language = PoiDescription.convertStringToLang(lg);
         }
 
         public void changeIconScale()
         {
-            transform.localScale = new Vector3(6f, 6f, 1);
+            transform.localScale = new Vector3(0.08f, 0.08f, 1);
+        }
+
+        public void POIdisplayImageWithCaption()
+        {
+            modalWindow.ChoiceOneButton(caption, poiImage, viewVideoAction);
         }
 
         public void displayPopUpWindow()
@@ -99,6 +146,22 @@ namespace Assets.Scripts
         {
             this.detected = detected;
             notify();
+        }
+
+        public void POIplayVideo()
+        {
+            StartCoroutine(POIcoroutinePlayVideo());
+        }
+
+        public IEnumerator POIcoroutinePlayVideo()
+        {
+            for (int i = 0; i < videoPath.Length; i++)
+            {
+                Handheld.PlayFullScreenMovie(videoPath[i], Color.black, FullScreenMovieControlMode.Full);
+                yield return new WaitForEndOfFrame();
+                yield return new WaitForEndOfFrame();
+                print("I want to play video.");
+            }
         }
 
         public void popUpSound()
