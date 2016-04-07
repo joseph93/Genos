@@ -7,14 +7,9 @@ namespace Assets.Scripts.Exhibition_Content
 {
     public class Image : ExhibitionContent
     {
-        private string filePath;
-        private int width;
-        private int height;
-        public Image(string title, string contentID, int storylineID, string filePath, int width, int height) : base(title, contentID, storylineID)
+
+        public Image(string path, string lg, string cpt) : base(path, lg, cpt)
         {
-            this.filePath = filePath;
-            this.width = width;
-            this.height = height;
         }
     }
 }

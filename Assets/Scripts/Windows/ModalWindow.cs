@@ -48,6 +48,22 @@ public class ModalWindow : MonoBehaviour
         cancelButton.gameObject.SetActive(true);
     }
 
+    public void ChoiceOneButton(string descr, Sprite iconImage, UnityAction okEvent)
+    {
+        modalPanelObject.SetActive(true);
+
+        okButton.onClick.RemoveAllListeners();
+        okButton.onClick.AddListener(okEvent);
+        okButton.onClick.AddListener(closePanel);
+
+        description.text = descr;
+        this.iconImage.sprite = iconImage;
+
+        this.iconImage.gameObject.SetActive(true);
+        okButton.gameObject.SetActive(true);
+        cancelButton.gameObject.SetActive(false);
+    }
+
     public void closePanel()
     {
         modalPanelObject.SetActive(false);

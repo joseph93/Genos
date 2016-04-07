@@ -7,10 +7,8 @@ namespace Assets.Scripts.Exhibition_Content
 {
     public class Audio : ExhibitionContent
     {
-        private string filePath;
-        public Audio(string title, string contentID, int storylineID, string filePath) : base(title, contentID, storylineID)
+        public Audio(string path, string lg, string cpt) : base(path, lg, cpt)
         {
-            this.filePath = filePath;
         }
     }
 }

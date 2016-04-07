@@ -24,6 +24,13 @@ namespace Assets.Scripts
 
         private static iBeaconServer m_instance;
 
+        public iBeaconServer(string uuid, int ma, int mi)
+        {
+            m_uuid = uuid;
+            m_major = ma;
+            m_minor = mi;
+        }
+
         void Awake()
         {
             m_instance = this;
