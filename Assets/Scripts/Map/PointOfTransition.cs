@@ -18,17 +18,40 @@ namespace Assets.Scripts
             ENTRANCE,
             EMERGENCY
         }
-
-        public Label label { get; set; }
-        public string color { get; set; }
-        public string title { get; set; }
-
-        public PointOfTransition(int id, int x, int y, int floorNumber, string label, string color, string title) : base(id, x, y,color, floorNumber)
+        public PointOfTransition(int id, int x, int y, string color, int floorNumber, string label,  string title) : base(id, x, y,color, floorNumber)
         {
             this.label = convertStringToLabel(label);
-            this.color = color;
             this.title = title;
         }
+        public Label label { get; set; }
+        public override void setBeacon(iBeaconServer b)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void addContent(ExhibitionContent c)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void setLanguage(string lg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void setTitle(string title)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void setDescription(string descr)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string title { get; set; }
+
+        
 
         public Label convertStringToLabel(string lbl)
         {

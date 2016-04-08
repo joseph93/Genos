@@ -37,11 +37,14 @@ namespace Assets.Scripts
 
         public void initializeGraph()
         {
+            mapGraph.InitializeVertices();
             //JOSEPH: Populate the graph with all the nodes in the storyline.
             foreach (Node n in nodes)
             {
-                mapGraph.InsertNewVertex(n);
-                Debug.Log("added node: " + n.getID());
+                if (!mapGraph.Contains(n.getID()))
+                {
+                    mapGraph.InsertNewVertex(n);
+                }
             }
             
         }

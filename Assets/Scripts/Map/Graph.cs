@@ -9,15 +9,17 @@ public class Graph : MonoBehaviour
 {
     // Use this for initialization
 
-    private Dictionary<int, Node> Vertices { get; set; }
-
-    //For use on the DFS to "break" the recursion.
-    private bool finished;
+    private readonly Dictionary<int, Node> Vertices;
+    
 
     public Graph()
     {
         Vertices = new Dictionary<int, Node>();
+    }
 
+    public Dictionary<int, Node> getVertices()
+    {
+        return Vertices;
     }
 
 
@@ -30,7 +32,7 @@ public class Graph : MonoBehaviour
 * @param    
 * @return   void
 */
-    private void InitializeVertices()
+    public void InitializeVertices()
     {
         foreach (KeyValuePair<int, Node> entry in Vertices)
         {

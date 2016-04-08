@@ -76,9 +76,9 @@ namespace Assets.Scripts
             {
 
                 Graph g = new Graph();
-                Node n1 = new Node(1, 0, 0, "blue", 1);
-                Node n2 = new Node(2, 0, 0, "blue", 1);
-                Node n3 = new Node(3, 0, 0, "blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
+                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
+                Node n3 = new PointOfInterest(3, 0, 0, "blue", 1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
