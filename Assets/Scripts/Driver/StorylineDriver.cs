@@ -57,7 +57,7 @@ namespace Assets.Scripts.Driver
             demo.setBeaconList(beacons);
 
             map.addNodeList(demo.getNodeList());
-            map.initializeGraph();  //adding the list of nodes in the graph
+            //map.initializeGraph();  //adding the list of nodes in the graph
             map.addStoryline(demo);
             print("added storyline.");
             
