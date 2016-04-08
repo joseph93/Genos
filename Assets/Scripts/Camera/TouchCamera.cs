@@ -4,17 +4,18 @@ using UnityEngine;
 using System.Collections;
 
 [AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
-public class TouchCamera : MonoBehaviour {
+public class TouchCamera : MonoBehaviour
+{
 
 
     public Transform target;
-    public float distance = 5.0f;
+    public float distance = 10.0f;
     public float xSpeed = 60.0f;
     public float ySpeed = 60.0f;
     public float yMinLimit = 10f;
     public float yMaxLimit = 60f;
-    public float distanceMin = 5f;
-    public float distanceMax = 10f;
+    public float distanceMin = 10f;
+    public float distanceMax = 20f;
     float x = 0.0f;
     float y = 0.0f;
     void Start()
@@ -32,7 +33,7 @@ public class TouchCamera : MonoBehaviour {
     void Update()
 
     {
-        
+
         if (target && Input.touchCount == 1 && Input.GetTouch(0).position.x > Screen.width / 2 && Input.GetTouch(0).phase == TouchPhase.Moved) //Just orbit touch without movement
 
         {
@@ -64,7 +65,7 @@ public class TouchCamera : MonoBehaviour {
 
 
         }
-        
+
     }
 
 
@@ -85,16 +86,18 @@ public class TouchCamera : MonoBehaviour {
     {
 
         // rotates around the building
-    x += touch.deltaPosition.x * xSpeed * 0.02f /* * distance*/;
 
+      
+        x += touch.deltaPosition.x * xSpeed * 0.02f /* * distance*/;
+            
         // rotates up and down (roof top)
 
-   // y -= touch.deltaPosition.y * ySpeed * 0.02f /* * distance*/;
+        y -= touch.deltaPosition.y * ySpeed * 0.02f /* * distance*/;
 
 
 
         y = ClampAngle(y, yMinLimit, yMaxLimit);
-        
+
 
         Quaternion rotation = Quaternion.Euler(y, x, 0);
 
@@ -110,7 +113,7 @@ public class TouchCamera : MonoBehaviour {
         {
 
 
-            //    distance -= hit.distance;
+              // distance -= hit.distance;
 
 
 
@@ -124,7 +127,7 @@ public class TouchCamera : MonoBehaviour {
 
         Vector3 position = rotation * negDistance + target.position;
 
-   
+
 
         transform.rotation = rotation;
 
@@ -136,14 +139,14 @@ public class TouchCamera : MonoBehaviour {
 
     }
 
-    
-/**
-* Method:    ClampAngle
-* FullName:  ClampAngle
-* Access:    public
-* Qualifier:
-* @param    float angle, min, max
-* @return   float
+
+    /**
+    * Method:    ClampAngle
+    * FullName:  ClampAngle
+    * Access:    public
+    * Qualifier:
+    * @param    float angle, min, max
+    * @return   float
 */
     public static float ClampAngle(float angle, float min, float max)
 

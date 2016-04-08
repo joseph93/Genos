@@ -119,6 +119,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\JSON\Editor\JSONChecker.cs" />
     <Compile Include="Assets\LocalizeService\Scripts\Editor\LocalizationServiceEditor.cs" />
     <Compile Include="Assets\LocalizeService\Scripts\Editor\UILocalizationEditor.cs" />
     <Compile Include="Assets\Source\iBeacon\Editor\PostProcessBuildTrigger.cs" />
@@ -168,6 +169,8 @@
     <None Include="Assets\Fonts\romance_fatal_serif\ReadMe_Romance_Fatal_Serif.txt" />
     <None Include="Assets\Fonts\romance_fatal_serif\leeme_Romance_Fatal_Serif.txt" />
     <None Include="Assets\Fonts\thyssen_j\9JULIUST.TXT" />
+    <None Include="Assets\GoogleMaps\README.txt" />
+    <None Include="Assets\JSON\readme.txt" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\Plugins\README_TizenIAPStore.txt" />
     <None Include="Assets\Resources\Intro.txt" />
@@ -188,6 +191,15 @@
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleBlend.shader" />
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
     <None Include="Assets\UnityTestTools\changelog.txt" />
+    <None Include="Assets\ZRNAssets\005135_16321_1_1\Documents\ReadMe.txt" />
+    <None Include="Assets\ZRNAssets\005135_16321_1_1\Shaders\su_Zmap_DoubleSide.shader" />
+    <None Include="Assets\ZRNAssets\005135_16321_1_1\Shaders\su_Zmap_river.shader" />
+    <None Include="Assets\ZRNAssets\005135_16321_1_1\Shaders\su_Zmap_way.shader" />
+    <None Include="Assets\ZRNAssets\PQAssets\Query-Chan-SD\Documents\ReadMe.txt" />
+    <None Include="Assets\ZRNAssets\PQAssets\Query-Chan-SD\license_en.txt" />
+    <None Include="Assets\ZRNAssets\PQAssets\Query-Chan-SD\license_jp.txt" />
+    <None Include="Assets\ZRNAssets\license_en.txt" />
+    <None Include="Assets\ZRNAssets\license_jp.txt" />
     <None Include="Assets\link.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
