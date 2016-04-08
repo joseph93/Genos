@@ -61,31 +61,63 @@ namespace Assets.Scripts
             {
                 foreach (Edge e in edgeList) // and for each edge in the edgelist
                 {
-                    if (n.Equals(e.startingNode))
+                    if (n == e.startingNode)
                     {
+<<<<<<< HEAD
                         
                         n.addAdjacentNode(e.endingNode, e.edgeWeight);  
                         Debug.Log(n.getID() + " to " + e.endingNode.getID());
                         e.endingNode.addAdjacentNode(n, e.edgeWeight);
                         Debug.Log(e.endingNode.getID() + " to " + n.getID());
                     } 
+=======
+                        foreach (Node adjacentNode in nodeList)
+                        {
+                            if (adjacentNode == e.endingNode)
+                            {
+                                n.addAdjacentNode(adjacentNode, e.edgeWeight); 
+                                Debug.Log(n.getID() + " to " + adjacentNode.getID() + " with edge weight " + e.edgeWeight);  
+                            }
+                             
+                        }
+                        
+                        //e.endingNode.addAdjacentNode(n, e.edgeWeight);
+                        //Debug.Log(e.endingNode.getID() + " to " + n.getID());
+                    }
+>>>>>>> df27b068fd8724c5af9b3eb43bb77646ca7137d9
                     
                 }
             }
 
-            /*foreach (Node n in nodeList)
-            {
-                Debug.Log("For node: " + n.getID());
-                foreach (Node adjacentNode in n.getAdjacentNodes().Keys)
-                {
-                    Debug.Log("the adjacent nodes are: " + adjacentNode.getID());
-                }
-            }*/
+            //Debug.Log(nodeList[0] == nodeList[9] ? "8 and 9 are equal." : "8 and 9 are not equal.");
             
+
             Map map = new Map();
             map.addNodeList(nodeList);
             map.initializeGraph();
-            map.getGraph().shortest_path(nodeList[0], nodeList[1]);
+  
+
+            foreach (Node n in nodeList)
+            {
+                Debug.Log("For node " + n.getID() + ", the number of adjacent nodes are: " + n.getAdjacentNodes().Keys.Count);
+                foreach (Node adjacentNode in n.getAdjacentNodes().Keys)
+                {
+                    Debug.Log("For node " + n.getID() + ", his adjacent nodes are: " + adjacentNode.getID());
+                }
+            }
+            
+
+            print("Node list count: " + nodeList.Count);
+            print("Edge list count: " + edgeList.Count);
+
+            
+            List<Node> path = map.getGraph().shortest_path(nodeList[0], nodeList[3]);
+            /*foreach (Node n in path)
+            {
+                Debug.Log("Im in path loop.");
+                Debug.Log(n.getID());
+            }*/
+            print(path == null ? "Path is null" : "Path is not null.");
         }
 
         public void createStartAndEndNode()
@@ -154,12 +186,11 @@ namespace Assets.Scripts
             List<Node> tmpNodeList = new List<Node>();
             foreach (JSONObject n in nodes.list) //1st degree : list of nodes (only 1 element)
             {
-                foreach (JSONObject x in n.list) //2nd degree : 1 list of pois and 1 list of pot (2 elements)
-                {
                     foreach (JSONObject poi in n.list[0].list) //3rd degree : list of pois
-                    {
+                    { 
                        // Debug.Log(poi.ToString() + "\n");
-                        PointOfInterest p = new PointOfInterest((int)poi.list[0].n, (int)poi.list[2].n, (int)poi.list[3].n,(string)poi.list[4].str, int.Parse(poi.list[6].str));
+                        Node p = new PointOfInterest((int)poi.list[0].n, (int)poi.list[2].n, (int)poi.list[3].n,(string)poi.list[4].str, int.Parse(poi.list[6].str));
+                       
                         foreach (JSONObject b in poi.list[7].list)
                         {
                             //Debug.Log(b.ToString() + "\n");
@@ -200,12 +231,12 @@ namespace Assets.Scripts
 
                     foreach (JSONObject pot in n.list[1].list) //3rd degree : list of pot
                     {
-                        PointOfTransition pointOfTransition = new PointOfTransition((int)pot.list[0].n, (int)pot.list[2].n, (int)pot.list[3].n, 
-                            int.Parse(pot.list[6].str), pot.list[4].str, pot.list[5].str, pot.list[1].str);
+                        Node pointOfTransition = new PointOfTransition((int)pot.list[0].n, (int)pot.list[2].n, (int)pot.list[3].n, 
+                            pot.list[5].str, int.Parse(pot.list[6].str), pot.list[4].str,  pot.list[1].str);
                         tmpNodeList.Add(pointOfTransition);
                         //Debug.Log(pot.ToString() + "\n");
                     }
-                }
+                
             }
 
             return tmpNodeList;

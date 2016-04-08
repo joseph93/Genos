@@ -44,7 +44,7 @@ public class FreeRoamingDriver : MonoBehaviour {
         freeRoamingTour.initializeLists(ArrayOfNodes);
 
         map.addNodeList(freeRoamingTour.getNodeList());
-        map.initializeGraph();  //adding the list of nodes in the graph
+        //map.initializeGraph();  //adding the list of nodes in the graph
         
 
     }

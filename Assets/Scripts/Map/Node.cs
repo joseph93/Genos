@@ -8,18 +8,18 @@ using Assets.Scripts;
 
 public enum State { Visited = 0, UnVisited = 1, Processed = 2 }
 [ExecuteInEditMode]
-public class Node : MonoBehaviour{
+public abstract class Node : MonoBehaviour{
 
     
     private State Status = State.UnVisited;
-    [SerializeField] private int id;
-    [SerializeField] private int floorNumber;
+    [SerializeField] private readonly int id;
+    [SerializeField] private readonly int floorNumber;
     private Dictionary<Node, float> adjacentNodes;
     public float x;
     public float y;
     public string color { get; set; }
 
-    public Node(int id, int x, int y, string color, int floorNumber)
+    protected Node(int id, int x, int y, string color, int floorNumber)
     {
         this.x = x;
         this.y = y;
@@ -27,6 +27,16 @@ public class Node : MonoBehaviour{
         this.id = id;
         this.color = color;
         adjacentNodes = new Dictionary<Node, float>();
+    }
+
+    protected Node(Node copyNode)
+    {
+        id = copyNode.id;
+        x = copyNode.x;
+        y = copyNode.y;
+        floorNumber = copyNode.floorNumber;
+        color = copyNode.color;
+        adjacentNodes = copyNode.adjacentNodes;
     }
 
     void Update()
@@ -78,8 +88,9 @@ public class Node : MonoBehaviour{
     {
         if (!isAdjacent(adjacentNode))
         {
+            //Debug.Log("Im before the if statement for node " + id);
             adjacentNodes.Add(adjacentNode, weight);
-            
+            Debug.Log("Node " + id + " added to his adjacent nodes Node " + adjacentNode.id);
             //Debug.Log("Added adjacent node " + adjacentNode.id + " to node " + this.id + " with edge weight " + weight);
         }
         
@@ -95,8 +106,40 @@ public class Node : MonoBehaviour{
         return transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
-    public bool Equals(Node n)
+    public override bool Equals(object obj)
     {
+        Node n = (Node) obj;
         return id == n.id && x == n.x && y == n.y && floorNumber == n.floorNumber;
     }
+
+    public static bool operator ==(Node a, Node b)
+    {
+        if (((object)a == null) || ((object)b == null))
+        {
+            return false;
+        }
+
+        return a.id == b.id && a.x == b.x && a.y == b.y && a.floorNumber == b.floorNumber;
+    }
+
+    public static bool operator !=(Node a, Node b)
+    {
+        return !(a == b);
+    }
+
+    public override int GetHashCode()
+    {
+        int temp = id.GetHashCode() + x.GetHashCode() + y.GetHashCode() + floorNumber.GetHashCode();
+        return temp;
+    }
+
+    public abstract void setBeacon(iBeaconServer b);
+
+    public abstract void addContent(ExhibitionContent c);
+
+    public abstract void setLanguage(string lg);
+
+    public abstract void setTitle(string title);
+
+    public abstract void setDescription(string descr);
 }

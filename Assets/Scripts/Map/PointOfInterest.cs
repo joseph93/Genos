@@ -66,6 +66,7 @@ namespace Assets.Scripts
             contents = new List<ExhibitionContent>();
             poiDescription = new PoiDescription(null, null, "NONE");
         }
+        
 
         public PoiDescription GetPoiDescription()
         {
@@ -77,7 +78,7 @@ namespace Assets.Scripts
             return beacon;
         }
 
-        public void setBeacon(iBeaconServer b)
+        public override void setBeacon(iBeaconServer b)
         {
             beacon = b;
         }
@@ -87,7 +88,7 @@ namespace Assets.Scripts
             return contents;
         }
 
-        public void addContent(ExhibitionContent c)
+        public override void addContent(ExhibitionContent c)
         {
             contents.Add(c);
         }
@@ -105,17 +106,17 @@ namespace Assets.Scripts
             }
         }
 
-        public void setTitle(string title)
+        public override void setTitle(string title)
         {
             poiDescription.title = title;
         }
 
-        public void setDescription(string descr)
+        public override void setDescription(string descr)
         {
             poiDescription.summary = descr;
         }
 
-        public void setLanguage(string lg)
+        public override void setLanguage(string lg)
         {
             poiDescription.language = PoiDescription.convertStringToLang(lg);
         }
