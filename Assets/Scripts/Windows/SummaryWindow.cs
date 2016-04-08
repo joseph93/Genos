@@ -21,7 +21,8 @@ public class SummaryWindow : MonoBehaviour {
         {
             summaryWindow = FindObjectOfType(typeof(SummaryWindow)) as SummaryWindow;
             if (!summaryWindow)
-                Debug.Log("There needs to be one active ModalWindow script on a GameObject in your scene.");
+                Debug.Log("There needs to be one active ModalWindow script on a " +
+                          " in your scene.");
         }
 
         return summaryWindow;

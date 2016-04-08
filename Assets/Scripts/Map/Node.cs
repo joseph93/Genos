@@ -8,7 +8,7 @@ using Assets.Scripts;
 
 public enum State { Visited = 0, UnVisited = 1, Processed = 2 }
 [ExecuteInEditMode]
-public class Node : MonoBehaviour {
+public class Node : MonoBehaviour{
 
     
     private State Status = State.UnVisited;
@@ -17,13 +17,15 @@ public class Node : MonoBehaviour {
     private Dictionary<Node, float> adjacentNodes;
     public float x;
     public float y;
+    public string color { get; set; }
 
-    public Node(int id, int x, int y, int floorNumber)
+    public Node(int id, int x, int y, string color, int floorNumber)
     {
         this.x = x;
         this.y = y;
         this.floorNumber = floorNumber;
         this.id = id;
+        this.color = color;
         adjacentNodes = new Dictionary<Node, float>();
     }
 
@@ -31,14 +33,6 @@ public class Node : MonoBehaviour {
     {
         x = transform.position.x;
         y = transform.position.y;
-    }
-
-    public Node(Node n)
-    {
-        x = n.x;
-        y = n.y;
-        floorNumber = n.floorNumber;
-        id = n.id;
     }
 
     public State getState()
@@ -59,11 +53,6 @@ public class Node : MonoBehaviour {
     public int getID()
     {
         return id;
-    }
-
-    public void setID(int id)
-    {
-        this.id = id;
     }
 
     public int GetFloorNumber()
@@ -87,16 +76,27 @@ public class Node : MonoBehaviour {
     //JOSEPH: Added - Adds an adjacent node to the dictionary
     public void addAdjacentNode(Node adjacentNode, float weight)
     {
-        adjacentNodes.Add(adjacentNode, weight);
+        if (!isAdjacent(adjacentNode))
+        {
+            adjacentNodes.Add(adjacentNode, weight);
+            
+            //Debug.Log("Added adjacent node " + adjacentNode.id + " to node " + this.id + " with edge weight " + weight);
+        }
+        
     }
 
-    public bool hasAdjacentNode(Node n)
+    public bool isAdjacent(Node n)
     {
-        return adjacentNodes.Keys.Any(key => n.getID() == key.getID());
+        return adjacentNodes.ContainsKey(n);
     }
     
     public Vector3 getPosition()
     {
         return transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+    }
+
+    public bool Equals(Node n)
+    {
+        return id == n.id && x == n.x && y == n.y && floorNumber == n.floorNumber;
     }
 }

@@ -1,4 +1,12 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/3D-outdoor.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/Menu.unity
+=======
+- path: Assets/Scenes/Help.unity
+>>>>>>> cf7ef303e0ebb60fd7810c9fa05a9784f1df1e2f
+>>>>>>> 1f75d99128bd87c4ba976ff25dbcbc5322d44893
   isLoaded: 1
   isActive: 1

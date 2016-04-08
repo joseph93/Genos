@@ -142,9 +142,9 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: a31656919023d4b44b4bdadcb412ac26, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 3
-    m_MaxSize: 75
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -294,15 +294,15 @@ RectTransform:
   m_GameObject: {fileID: 1167696809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 1.1, z: 1}
   m_Children:
   - {fileID: 1999361588}
   m_Father: {fileID: 1988644487}
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.2, y: 188}
-  m_SizeDelta: {x: 555, y: 167}
+  m_AnchoredPosition: {x: 0.000099182, y: 181}
+  m_SizeDelta: {x: 678, y: 245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1167696811
 MonoBehaviour:
@@ -368,14 +368,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.785}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6ceb301ecb6ba4b49b8f6850d0318297, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2f28cb6fb9930548b89b12981840617, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -454,15 +454,15 @@ RectTransform:
   m_GameObject: {fileID: 1372061236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 1.1, z: 1}
   m_Children:
   - {fileID: 97192815}
   m_Father: {fileID: 1988644487}
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.67, y: -208}
-  m_SizeDelta: {x: 555, y: 167}
+  m_AnchoredPosition: {x: 0.000078201, y: -217}
+  m_SizeDelta: {x: 678, y: 245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1372061238
 MonoBehaviour:
@@ -528,14 +528,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6ceb301ecb6ba4b49b8f6850d0318297, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2f28cb6fb9930548b89b12981840617, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -890,9 +890,9 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: a31656919023d4b44b4bdadcb412ac26, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 75
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -915,11 +915,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 487012, guid: 12cec505f612df74387dc9ed24aee8d6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 1.88
       objectReference: {fileID: 0}
     - target: {fileID: 487012, guid: 12cec505f612df74387dc9ed24aee8d6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 487012, guid: 12cec505f612df74387dc9ed24aee8d6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -944,6 +944,14 @@ Prefab:
     - target: {fileID: 487012, guid: 12cec505f612df74387dc9ed24aee8d6, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 487012, guid: 12cec505f612df74387dc9ed24aee8d6, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 13.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 487012, guid: 12cec505f612df74387dc9ed24aee8d6, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 18.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12cec505f612df74387dc9ed24aee8d6, type: 2}

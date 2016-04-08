@@ -11,33 +11,37 @@ namespace Assets.Scripts {
         public Sprite floor3;
         public Text floorNumber;
 
-        private NipperTour nipperTour;
+        private FreeRoamingDriver _freeRoamingDriver;
         private List<Node> nodes;
 
         void Start()
         {
-            nipperTour = FindObjectOfType<NipperTour>();
+           _freeRoamingDriver = FindObjectOfType<FreeRoamingDriver>();
         }
 
         void Update()
         {
-            nodes = nipperTour.getNodeList();
+            StartCoroutine(getMap());
+        }
+
+        public IEnumerator getMap()
+        {
+            yield return new WaitForSeconds(1.5f);
+            nodes = _freeRoamingDriver.getMap().GetNodes();
         }
 
         public void loadFloor2()
         {
             GetComponent<SpriteRenderer>().sprite = floor2;
             floorNumber.text = "Floor 2";
+            displayFloor2Nodes();
+        }
+
+        private void displayFloor2Nodes()
+        {
             foreach (var n in nodes)
             {
-                if (n.GetFloorNumber() == 2)
-                {
-                    n.gameObject.SetActive(true);
-                }
-                else
-                {
-                    n.gameObject.SetActive(false);
-                }
+                n.gameObject.SetActive(n.GetFloorNumber() == 2);
             }
         }
 
@@ -45,19 +49,15 @@ namespace Assets.Scripts {
         {
             GetComponent<SpriteRenderer>().sprite = floor3;
             floorNumber.text = "Floor 3";
-            foreach (var n in nodes)
-            {
-                if (n.GetFloorNumber() == 3)
-                {
-                    n.gameObject.SetActive(true);
-                }
-                else
-                {
-                    n.gameObject.SetActive(false);
-                }
-            }
+            displayFloor3Nodes();
         }
 
-        
+        private void displayFloor3Nodes()
+        {
+            foreach (var n in nodes)
+            {
+                n.gameObject.SetActive(n.GetFloorNumber() == 3);
+            }
+        }
     }
 }

@@ -57,11 +57,25 @@ namespace Assets.Scripts
             }
         }
 
+        public void loadFreeRoaming()
+        {
+            if (bluetoothOn)
+            {
+                SceneManager.LoadScene("FreeRoaming");
+                Vibration.Vibrate(100);
+            }
+
+            else
+            {
+                modalWindow.Choice("Your bluetooth is turned off and this application uses bluetooth. Would you like to turn it on?", iconImage, yesAction, noAction);
+            }
+        }
+
         public void loadIntro()
         {
             if (bluetoothOn)
             {
-                SceneManager.LoadScene("Intro");
+                SceneManager.LoadScene("F2");
                 Vibration.Vibrate(100);
             }
 

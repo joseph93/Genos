@@ -221,8 +221,12 @@ public class JSONObject {
 	/// Create a JSONObject by parsing string data
 	/// </summary>
 	/// <param name="val">The string to be parsed</param>
+<<<<<<< HEAD
 	/// <param 
     /// ="maxDepth">The maximum depth for the parser to search.  Set this to to 1 for the first level, 
+=======
+	/// <param name="maxDepth">The maximum depth for the parser to search.  Set this to to 1 for the first level, 
+>>>>>>> 1f75d99128bd87c4ba976ff25dbcbc5322d44893
 	/// 2 for the first 2 levels, etc.  It defaults to -2 because -1 is the depth value that is parsed (see below)</param>
 	/// <param name="storeExcessLevels">Whether to store levels beyond maxDepth in baked JSONObjects</param>
 	/// <param name="strict">Whether to be strict in the parsing. For example, non-strict parsing will successfully 

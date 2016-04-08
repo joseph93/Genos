@@ -7,10 +7,9 @@ namespace Assets.Scripts.Exhibition_Content
 {
     public class Video : ExhibitionContent
     {
-        private string videoPath;
-        public Video(string title, string contentID, int storylineID, string videoPath) : base(title, contentID, storylineID)
+
+        public Video(string path, string lg, string cpt) : base(path, lg, cpt)
         {
-            this.videoPath = videoPath;
         }
     }
 }

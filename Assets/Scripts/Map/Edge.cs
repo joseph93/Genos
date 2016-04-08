@@ -17,17 +17,18 @@ namespace Assets.Scripts {
 
         }
 
-        private Node startingNode { get; set; }
-        private Node endNode { get; set; }
-        private float edgeWeight { get; set; }
-        private int floorNumber { get; set; }
+        public int startingNodeID { get; set; }
+        public int endNodeID { get; set; }
+        public float edgeWeight { get; set; }
+        public int floorNumber { get; set; }
 
+        public Node startingNode { get; set; }
+        public Node endingNode { get; set; }
 
-        public Edge(Node n1, Node n2, int fN, float weight)
+        public Edge(int n1, int n2, float weight)
         {
-            startingNode = n1;
-            endNode = n2;
-            floorNumber = fN;
+            startingNodeID = n1;
+            endNodeID = n2;
             edgeWeight = weight;
         }
 
