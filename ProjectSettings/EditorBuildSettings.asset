@@ -4,33 +4,6 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-<<<<<<< HEAD
   m_Scenes:
-<<<<<<< HEAD
   - enabled: 1
     path: Assets/Scenes/3D-outdoor.unity
-  - enabled: 0
-    path: Assets/Scenes/F2-next.unity
-  - enabled: 0
-    path: Assets/GoogleMaps/Demo.unity
-=======
-  - enabled: 1
-    path: Assets/Scenes/LoadingPage.unity
-  - enabled: 1
-    path: Assets/Scenes/Lang.unity
-  - enabled: 1
-    path: Assets/Scenes/Menu.unity
-  - enabled: 1
-    path: Assets/Scenes/TourSelection.unity
-  - enabled: 1
-    path: Assets/Scenes/Intro.unity
-  - enabled: 1
-    path: Assets/Scenes/F2.unity
-  - enabled: 1
-    path: Assets/Scenes/F2-next.unity
-  - enabled: 1
-    path: Assets/Scenes/FreeRoaming.unity
-=======
-  m_Scenes: []
->>>>>>> cf7ef303e0ebb60fd7810c9fa05a9784f1df1e2f
->>>>>>> 1f75d99128bd87c4ba976ff25dbcbc5322d44893

@@ -63,6 +63,7 @@ namespace Assets.Scripts
                 {
                     if (n.Equals(e.startingNode))
                     {
+                        
                         n.addAdjacentNode(e.endingNode, e.edgeWeight);  
                         Debug.Log(n.getID() + " to " + e.endingNode.getID());
                         e.endingNode.addAdjacentNode(n, e.edgeWeight);
