@@ -176,7 +176,6 @@
     <None Include="Assets\Fonts\romance_fatal_serif\ReadMe_Romance_Fatal_Serif.txt" />
     <None Include="Assets\Fonts\romance_fatal_serif\leeme_Romance_Fatal_Serif.txt" />
     <None Include="Assets\Fonts\thyssen_j\9JULIUST.TXT" />
-    <None Include="Assets\GoogleMaps\README.txt" />
     <None Include="Assets\JSON\readme.txt" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\Plugins\README_TizenIAPStore.txt" />
