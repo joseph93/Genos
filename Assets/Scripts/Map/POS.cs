@@ -31,6 +31,7 @@ namespace Assets.Scripts
 
         public GameObject checkmarkIcon;
 
+        private List<StoryPointDescription> storypointDescrList; 
         private List<ExhibitionContent> contents;
 
         void Awake()
@@ -61,13 +62,19 @@ namespace Assets.Scripts
             warningPanel = WarningPanel.Instance();
 
         }
-        public POS(int id, int x, int y, string color, int floorNumber, PoiDescription poiD, int stID) : base(id, x, y, color, floorNumber)
+        public POS(int id, int x, int y, string color, int floorNumber, int stID) : base(id, x, y, color, floorNumber)
         {
             storylineID = stID;
             visited = false;
             detected = false;
             warned = false;
             contents = new List<ExhibitionContent>();
+            storypointDescrList = new List<StoryPointDescription>();
+        }
+
+        public void addStorypointDescription(StoryPointDescription sd)
+        {
+            storypointDescrList.Add(sd);
         }
 
         public int getSequentialID()
@@ -129,7 +136,8 @@ namespace Assets.Scripts
 
         public void displayStorylinePopUpWindow()
         {
-            popUpWindow.PopUp(poiDescription.title, nipperPopUp, myViewAction);
+            //CHANGE HERE WITH STORYPOINT DESCRIPTION
+            //popUpWindow.PopUp(poiDescriptionList.title, nipperPopUp, myViewAction);
         }
 
         public void displayWarning(string description)

@@ -31,7 +31,7 @@ namespace Assets.Scripts.Driver
         // Update is called once per frame
         void Update()
         {
-            StartCoroutine(map.GetStorylines()[0].searchForStorypointBeacon(1.00f));
+            //StartCoroutine(map.GetStorylines()[0].searchForStorypointBeacon(1.00f));
             swipePanelLeft();
         }
 
@@ -46,20 +46,17 @@ namespace Assets.Scripts.Driver
 
             ui_Manager = FindObjectOfType<UI_Manager>();
 
-            Storyline demo = new Storyline(0, 1, "Demo Storyline", "Let's see how good is your mobile app!");
+            //Storyline demo = new Storyline(0, 1, "Demo Storyline", "Let's see how good is your mobile app!");
             
-            map = new Map();
             mc = FindObjectOfType<MapController>();
+
+            map = mc.getMap();
             
-            demo.initializeLists(ArrayOfNodes);
             iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
             List<Beacon> beacons = bh.getBeacons();
-            demo.setBeaconList(beacons);
+            map.startStoryline(PlayerPrefs.GetInt("storylineID"));
+            //demo.setBeaconList(beacons);
 
-            map.addNodeList(demo.getNodeList());
-            //map.initializeGraph();  //adding the list of nodes in the graph
-            map.addStoryline(demo);
-            print("added storyline.");
             
         }
 

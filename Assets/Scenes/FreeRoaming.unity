@@ -160,8 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 4
-  floorNumber: 0
   x: 3.1618195
   y: 2.621788
 --- !u!1 &62447583
@@ -409,8 +407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 7
-  floorNumber: 0
   x: -0.05000305
   y: 1.1500015
 --- !u!1 &107347435
@@ -679,8 +675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 5
-  floorNumber: 0
   x: 2.9399948
   y: 2.1399918
 --- !u!1 &186826886
@@ -758,8 +752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 10
-  floorNumber: 0
   x: 2.980011
   y: 3.679985
 --- !u!1 &193455618
@@ -1549,8 +1541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 6
-  floorNumber: 0
   x: 2.9399948
   y: 1.140007
 --- !u!1001 &441391884
@@ -3895,8 +3885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d066f091a0bf1f439f817bb8a70d052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
-  floorNumber: 3
   x: -3.3899994
   y: 4.0899887
   BeaconGameObject: {fileID: 639908204}
@@ -4273,8 +4261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d066f091a0bf1f439f817bb8a70d052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
-  floorNumber: 3
   x: -1.469986
   y: 4.660019
   BeaconGameObject: {fileID: 1276454615}
@@ -4723,8 +4709,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 8
-  floorNumber: 0
   x: -0.061408997
   y: 3.7146606
 --- !u!1 &1431058520
@@ -4802,8 +4786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 3
-  floorNumber: 0
   x: 3.1323318
   y: 3.2374039
 --- !u!1 &1460733074
@@ -6021,8 +6003,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d066f091a0bf1f439f817bb8a70d052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  floorNumber: 3
   x: 3.375061
   y: 3.4450378
   BeaconGameObject: {fileID: 441391885}
@@ -6788,8 +6768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 9
-  floorNumber: 0
   x: -1.7465897
   y: 3.7668457
 --- !u!1 &1909984708
@@ -7053,6 +7031,45 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1989258044}
+--- !u!1 &2045880041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2045880043}
+  - 114: {fileID: 2045880042}
+  m_Layer: 0
+  m_Name: MapController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2045880042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2045880041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a6f30d4ae043b4cba1b5c434da93d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2045880043
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2045880041}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 113.500015, y: 267.83, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1 &2047221643
 GameObject:
   m_ObjectHideFlags: 0

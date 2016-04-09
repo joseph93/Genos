@@ -20,9 +20,10 @@ namespace Assets.Scripts
         {
             try
             {
-                PointOfInterest p1 = new PointOfInterest(0, 0, 0,"blue", 1);
+                /*PointOfInterest p1 = new PointOfInterest(0, 0, 0,"blue", 1);
                 p1.setTitleAndSummary("test", "test", "EN");
-                Assert.IsNotNull(p1.GetPoiDescription());
+                Assert.IsNotNull(p1.GetPoiDescription());*/
+                //CHANGE THIS HERE WITH POI DESCRIPTION LIST
             }
             catch (SecurityException e)
             {
@@ -35,8 +36,8 @@ namespace Assets.Scripts
         {
             try
             {
-                POS sp1 = new POS(1, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
-                POS sp2 = new POS(1, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                POS sp1 = new POS(1, 0, 0, "blue", 3, 0);
+                POS sp2 = new POS(1, 0, 0, "blue", 2, 0);
 
                 Assert.Equals(1, sp1.CompareTo(sp2));
             }
@@ -51,8 +52,8 @@ namespace Assets.Scripts
         {
             try
             {
-                POS sp1 = new POS(1, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
-                POS sp2 = new POS(1, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                POS sp1 = new POS(1, 0, 0, "blue", 2, 0);
+                POS sp2 = new POS(1, 0, 0, "blue", 2, 0);
                 List<POS> unsortedList = new List<POS>();
                 unsortedList.Add(sp2);
                 unsortedList.Add(sp1);

@@ -227,7 +227,7 @@ public class Graph : MonoBehaviour
 
     public void InsertNewVertex(Node vertex)
     {
-        if (!ExistKey(vertex.getID()))
+        if (!Vertices.ContainsKey(vertex.getID()))
         {
             Vertices.Add(vertex.getID(), vertex);
         }
