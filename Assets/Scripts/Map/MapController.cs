@@ -63,14 +63,6 @@ namespace Assets.Scripts
                 {
                     if (n == e.startingNode)
                     {
-<<<<<<< HEAD
-                        
-                        n.addAdjacentNode(e.endingNode, e.edgeWeight);  
-                        Debug.Log(n.getID() + " to " + e.endingNode.getID());
-                        e.endingNode.addAdjacentNode(n, e.edgeWeight);
-                        Debug.Log(e.endingNode.getID() + " to " + n.getID());
-                    } 
-=======
                         foreach (Node adjacentNode in nodeList)
                         {
                             if (adjacentNode == e.endingNode)
@@ -84,7 +76,6 @@ namespace Assets.Scripts
                         //e.endingNode.addAdjacentNode(n, e.edgeWeight);
                         //Debug.Log(e.endingNode.getID() + " to " + n.getID());
                     }
->>>>>>> df27b068fd8724c5af9b3eb43bb77646ca7137d9
                     
                 }
             }
@@ -137,6 +128,7 @@ namespace Assets.Scripts
                 }
             }
         }
+
 
         public List<FloorPlan> populateFloors()
         {

@@ -41,6 +41,6 @@ namespace Assets.Scripts
             //GetComponent<SpriteRenderer>().sprite = Sprite.Create(tex, new Rect(0,0, Screen.width, Screen.height), new Vector2(0.5f, 0.5f));
         }
 
-        
+
     }
 }
