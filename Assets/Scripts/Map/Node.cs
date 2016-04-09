@@ -8,7 +8,7 @@ using Assets.Scripts;
 
 public enum State { Visited = 0, UnVisited = 1, Processed = 2 }
 [ExecuteInEditMode]
-public abstract class Node : MonoBehaviour{
+public class Node : MonoBehaviour{
 
     
     private State Status = State.UnVisited;
@@ -19,7 +19,7 @@ public abstract class Node : MonoBehaviour{
     public float y;
     public string color { get; set; }
 
-    protected Node(int id, int x, int y, string color, int floorNumber)
+    public Node(int id, int x, int y, string color, int floorNumber)
     {
         this.x = x;
         this.y = y;
@@ -29,7 +29,7 @@ public abstract class Node : MonoBehaviour{
         adjacentNodes = new Dictionary<Node, float>();
     }
 
-    protected Node(Node copyNode)
+    public Node(Node copyNode)
     {
         id = copyNode.id;
         x = copyNode.x;
@@ -88,10 +88,8 @@ public abstract class Node : MonoBehaviour{
     {
         if (!isAdjacent(adjacentNode))
         {
-            //Debug.Log("Im before the if statement for node " + id);
             adjacentNodes.Add(adjacentNode, weight);
-            Debug.Log("Node " + id + " added to his adjacent nodes Node " + adjacentNode.id);
-            //Debug.Log("Added adjacent node " + adjacentNode.id + " to node " + this.id + " with edge weight " + weight);
+            
         }
         
     }
@@ -133,7 +131,7 @@ public abstract class Node : MonoBehaviour{
         return temp;
     }
 
-    public abstract void setBeacon(iBeaconServer b);
+    /*public abstract void setBeacon(iBeaconServer b);
 
     public abstract void addContent(ExhibitionContent c);
 
@@ -141,5 +139,5 @@ public abstract class Node : MonoBehaviour{
 
     public abstract void setTitle(string title);
 
-    public abstract void setDescription(string descr);
+    public abstract void setDescription(string descr);*/
 }

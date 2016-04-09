@@ -23,31 +23,13 @@ namespace Assets.Scripts
             this.label = convertStringToLabel(label);
             this.title = title;
         }
+
+        public PointOfTransition(PointOfTransition copyPOT) : base(copyPOT)
+        {
+            label = copyPOT.label;
+            title = copyPOT.title;
+        }
         public Label label { get; set; }
-        public override void setBeacon(iBeaconServer b)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void addContent(ExhibitionContent c)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void setLanguage(string lg)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void setTitle(string title)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void setDescription(string descr)
-        {
-            throw new NotImplementedException();
-        }
 
         public string title { get; set; }
 

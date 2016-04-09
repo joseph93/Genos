@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Menu.unity
-=======
-- path: Assets/Scenes/Help.unity
->>>>>>> cf7ef303e0ebb60fd7810c9fa05a9784f1df1e2f
+- path: Assets/Scenes/TourSelection.unity
   isLoaded: 1
   isActive: 1

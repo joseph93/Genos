@@ -27,7 +27,7 @@ namespace Assets.Scripts {
         public IEnumerator getMap()
         {
             yield return new WaitForSeconds(1.5f);
-            nodes = _freeRoamingDriver.getMap().GetNodes();
+            nodes = _freeRoamingDriver.getMap().GetPoiNodes();
         }
 
         public void loadFloor2()

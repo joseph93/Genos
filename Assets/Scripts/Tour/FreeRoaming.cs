@@ -38,35 +38,26 @@ namespace Assets.Scripts
             return nodeList;
         }
 
-
-        public void initializeLists(Node[] arrayOfNodes)
+        public List<PointOfInterest> getPoiList()
         {
-            foreach (var n in arrayOfNodes)
-            {
-                nodeList.Add(n);
-                print("Added node: " + n.getID());
+            return pointsOfInterest;
+        } 
 
-                if (n is PointOfInterest)
+
+        public void initializeLists(List<Node> poiList)
+        {
+            nodeList = poiList;
+
+            foreach (var n in nodeList)
+            {
+                if (n.GetType() == typeof(PointOfInterest))
                 {
                     pointsOfInterest.Add((PointOfInterest) n);
                     print("Added poi: " + n.getID());
-                }
-
-                
-            }
-            pointsOfInterest[0].setTitleAndSummary("EV 3.187", "<div>Professor's office</div><div><b>blueberry</b></div>", "EN");
-            pointsOfInterest[1].setTitleAndSummary("Evacuation instructions", "<div>Read the instructions carefully for your safety!</div><div><b>Mint</b></div>", "EN");
-            pointsOfInterest[2].setTitleAndSummary("End of your demo", "<div>Get some rest. It's over!</div><div><b>Icy</b></div>", "EN");
-
-        }
-
-        public void initializePoi()
-        {
-            foreach (POS poi in pointsOfInterest)
-            {
-                poi.setTitleAndSummary("Test", "test", "EN");
+                }   
             }
         }
+        
 
 
         //Reviewer Ihcene: Update was fixed, for the rendering of the beacon, for each frames

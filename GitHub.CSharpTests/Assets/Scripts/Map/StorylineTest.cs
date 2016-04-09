@@ -18,8 +18,8 @@ namespace Assets.Scripts
         {
             try
             {
-                POS sp1 = new POS(0, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
-                POS sp2 = new POS(0, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                POS sp1 = new POS(0, 0, 0, "blue", 2, 0);
+                POS sp2 = new POS(0, 0, 0, "blue", 2,  0);
                 List<POS> spList = new List<POS>();
                 spList.Add(sp1);
                 spList.Add(sp2);
@@ -39,8 +39,8 @@ namespace Assets.Scripts
         {
             try
             {
-                POS sp1 = new POS(0, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
-                POS sp2 = new POS(0, 0, 0, "blue", 2, new PoiDescription("test", "test", "EN"), 0);
+                POS sp1 = new POS(0, 0, 0, "blue", 2, 0);
+                POS sp2 = new POS(0, 0, 0, "blue", 2, 0);
                 List<POS> spList = new List<POS>();
                 spList.Add(sp1);
                 spList.Add(sp2);
