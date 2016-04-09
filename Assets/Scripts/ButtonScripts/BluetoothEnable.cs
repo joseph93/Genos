@@ -71,12 +71,13 @@ namespace Assets.Scripts
             }
         }
 
-        public void loadIntro()
+        public void loadStoryline(int slID)
         {
             if (bluetoothOn)
             {
                 SceneManager.LoadScene("F2");
                 Vibration.Vibrate(100);
+                PlayerPrefs.SetInt("storylineID", slID);
             }
 
             else

@@ -22,6 +22,9 @@ namespace Assets.Scripts
         private List<Edge> edgeList;
         private List<Node> nodeList;
         private List<Storyline> storylineList;    
+        private List<Node> poiList = new List<Node>();
+        private List<Node> storypointList = new List<Node>();
+        private Map map;
 
         void Start()
         {
@@ -35,87 +38,94 @@ namespace Assets.Scripts
 
             yield return request;
 
-            if (string.IsNullOrEmpty(request.error))
-            {
-
-                JSONObject jobject = new JSONObject(request.text);
-                accessData(jobject);
-            }
+            if (!string.IsNullOrEmpty(request.error)) yield break;
+            JSONObject jobject = new JSONObject(request.text);
+            accessData(jobject);
         }
 
         public void accessData(JSONObject obj)
         {
-            floors = obj.list[0];
-            nodes = obj.list[1];
-            edges = obj.list[2];
-            storylines = obj.list[3];
+            floors = obj.list[0];                           //this is the root for the floors JSON object
+            nodes = obj.list[1];                            //this is the root for the nodes JSON object
+            edges = obj.list[2];                            //this is the root for the edges JSON object
+            storylines = obj.list[3];                       //this is the root for the storylines JSON object
 
-            floorList = populateFloors();
-            edgeList = PopulateEdges();
-            storylineList = PopulateStorylines();
-            nodeList = populateNodes();
+            floorList = populateFloors();                   //parse the floors
+            edgeList = PopulateEdges();                     //parse the edges
+            storylineList = PopulateStorylines();           //parse the storylines
+            nodeList = populateNodes();                     //parse the nodes
+
             
-            createStartAndEndNode();
+            initializePoiAndStorypointLists();      //populate the list that contains the points of interest and the other that contains storypoints
+            
+            createStartAndEndNode(); //transform the id's of the nodes in the edges into Node objects
 
-            foreach (Node n in nodeList) // for each node in the nodelist
+            setAdjacencies();              //add all the adjacencies to all the nodes
+            
+            map = new Map();
+            map.setPoiList(poiList);
+            map.setStorypointList(storypointList);
+            map.setFloorplanList(floorList);
+            map.setStorylineList(storylineList);
+            map.initializeGraph(poiList);
+
+            
+
+
+        }
+
+        public Map getMap()
+        {
+            return map;
+        }
+
+        public void setAdjacencies()
+        {
+            foreach (Node n in poiList) // for each node in the nodelist
             {
                 foreach (Edge e in edgeList) // and for each edge in the edgelist
                 {
-                    if (n == e.startingNode)
+                    if (n == e.startingNode) //if n in the node list is equal to the starting node of the edge then go in
                     {
-                        foreach (Node adjacentNode in nodeList)
+                        foreach (Node adjacentNode in poiList) //look for the end node
                         {
                             if (adjacentNode == e.endingNode)
                             {
-                                n.addAdjacentNode(adjacentNode, e.edgeWeight); 
-                                Debug.Log(n.getID() + " to " + adjacentNode.getID() + " with edge weight " + e.edgeWeight);  
+                                //add the adjacency both ways
+                                n.addAdjacentNode(adjacentNode, e.edgeWeight);
+                                adjacentNode.addAdjacentNode(n, e.edgeWeight);
                             }
-                             
                         }
-                        
-                        //e.endingNode.addAdjacentNode(n, e.edgeWeight);
-                        //Debug.Log(e.endingNode.getID() + " to " + n.getID());
                     }
-                    
                 }
             }
+        }
 
-            //Debug.Log(nodeList[0] == nodeList[9] ? "8 and 9 are equal." : "8 and 9 are not equal.");
-            
-
-            Map map = new Map();
-            map.addNodeList(nodeList);
-            map.initializeGraph();
-  
-
-            foreach (Node n in nodeList)
+        public void initializePoiAndStorypointLists()
+        {
+            foreach (var n in nodeList)
             {
-                Debug.Log("For node " + n.getID() + ", the number of adjacent nodes are: " + n.getAdjacentNodes().Keys.Count);
-                foreach (Node adjacentNode in n.getAdjacentNodes().Keys)
+                if (n.GetType() == typeof (PointOfInterest))
                 {
-                    Debug.Log("For node " + n.getID() + ", his adjacent nodes are: " + adjacentNode.getID());
+                    poiList.Add(n);
+                }
+                if (n.GetType() == typeof (POS))
+                {
+                    storypointList.Add(n);
+                }
+                if (n.GetType() == typeof (PointOfTransition))
+                {
+                    poiList.Add((PointOfTransition) n);
+                    storypointList.Add(n);
                 }
             }
-            
-
-            print("Node list count: " + nodeList.Count);
-            print("Edge list count: " + edgeList.Count);
-
-            
-            List<Node> path = map.getGraph().shortest_path(nodeList[0], nodeList[3]);
-            /*foreach (Node n in path)
-            {
-                Debug.Log("Im in path loop.");
-                Debug.Log(n.getID());
-            }*/
-            print(path == null ? "Path is null" : "Path is not null.");
         }
 
         public void createStartAndEndNode()
         {
-            foreach (Node n in nodeList)
+            foreach (var n in poiList)
             {
-                foreach (Edge e in edgeList)
+                foreach (var e in edgeList)
                 {
                     if (n.getID() == e.startingNodeID)
                     {
@@ -181,8 +191,8 @@ namespace Assets.Scripts
                     foreach (JSONObject poi in n.list[0].list) //3rd degree : list of pois
                     { 
                        // Debug.Log(poi.ToString() + "\n");
-                        Node p = new PointOfInterest((int)poi.list[0].n, (int)poi.list[2].n, (int)poi.list[3].n,(string)poi.list[4].str, int.Parse(poi.list[6].str));
-                       
+                        PointOfInterest p = new PointOfInterest((int)poi.list[0].n, (int)poi.list[2].n, (int)poi.list[3].n, poi.list[4].str, int.Parse(poi.list[6].str));
+                        
                         foreach (JSONObject b in poi.list[7].list)
                         {
                             //Debug.Log(b.ToString() + "\n");
@@ -208,31 +218,63 @@ namespace Assets.Scripts
                             }
                             
                         }
-                        foreach (JSONObject t in poi.list[1].list)
+
+                        for (int i = 0; i < poi.list[1].Count; i++) //Add all the poi description in the point of interest
                         {
-                            //Debug.Log(t.list[0].ToString());
-                            p.setLanguage(t.list[0].str);
-                            p.setTitle(t.list[1].str);
+                            PoiDescription poiD = new PoiDescription(poi.list[1].list[i].list[1].str, poi.list[5].list[i].list[1].str, poi.list[1].list[i].list[0].str);
+                            p.addPoiDescription(poiD);
                         }
-                        foreach (JSONObject d in poi.list[5].list)
+
+                        foreach (var sp in poi.list[9].list)
                         {
-                            p.setDescription(d.list[1].str);
+                            POS storyPoint = new POS((int)poi.list[0].n, (int)poi.list[2].n, (int)poi.list[3].n, poi.list[4].str, int.Parse(poi.list[6].str), (int)sp.list[0].n);
+
+                            for (int i = 0; i < sp.list[1].Count; i++) // description and title JSON object
+                            {
+                                StoryPointDescription spd = new StoryPointDescription(sp.list[1].list[i].list[1].str, sp.list[2].list[i].list[1].str, sp.list[1].list[i].list[0].str);
+                                storyPoint.addStorypointDescription(spd);
+                            }
+
+                            /*foreach (var c in sp.list[3].list) //storypoint content list
+                            {
+                                foreach (var i in sp.list[3].list[0].list) //image list
+                                {
+                                    if (i != null)
+                                    {
+                                        ExhibitionContent image = new Image(i.list[0].str, i.list[2].str, i.list[1].str);
+                                        storyPoint.addContent(image);
+                                    }
+                                }
+
+                                foreach (var v in sp.list[3].list[1].list) //video list
+                                {
+                                    if (v != null)
+                                    {
+                                        ExhibitionContent video = new Video(v.list[1].str, v.list[2].str, v.list[1].str);
+                                        storyPoint.addContent(video);
+                                    }
+                                }
+                            }*/
+                            tmpNodeList.Add(storyPoint);
                         }
+
+
+
                         tmpNodeList.Add(p);
-                    }
+                    }//end of poi foreach
 
                     foreach (JSONObject pot in n.list[1].list) //3rd degree : list of pot
                     {
-                        Node pointOfTransition = new PointOfTransition((int)pot.list[0].n, (int)pot.list[2].n, (int)pot.list[3].n, 
+                        PointOfTransition pointOfTransition = new PointOfTransition((int)pot.list[0].n, (int)pot.list[2].n, (int)pot.list[3].n, 
                             pot.list[5].str, int.Parse(pot.list[6].str), pot.list[4].str,  pot.list[1].str);
                         tmpNodeList.Add(pointOfTransition);
                         //Debug.Log(pot.ToString() + "\n");
                     }
                 
-            }
+            }//end of root foreach
 
             return tmpNodeList;
-        }  
+        }   
         
     }
 }

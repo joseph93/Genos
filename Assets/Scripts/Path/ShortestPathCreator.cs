@@ -68,7 +68,7 @@ namespace Assets.Scripts.Path
                     Node touchedNode = recipient.GetComponent<Node>();
 
                     currentPoint = 0;
-                    shortest_path = map.getGraph().shortest_path(map.GetNodes()[0], touchedNode);
+                    shortest_path = map.getGraph().shortest_path(map.GetPoiNodes()[0], touchedNode);
                     shortest_path.Reverse();
                     touched = true;
                 }
@@ -81,7 +81,7 @@ namespace Assets.Scripts.Path
             StartCoroutine("DisableTrail", trail);
             if (trail.time < 0)
                 trail.time = -trail.time;
-            transform.position = new Vector3(map.GetNodes()[0].x, map.GetNodes()[0].y, -7);
+            transform.position = new Vector3(map.GetPoiNodes()[0].x, map.GetPoiNodes()[0].y, -7);
         }
 
         IEnumerator DisableTrail(TrailRenderer trail)

@@ -16,6 +16,7 @@ public class FreeRoamingDriver : MonoBehaviour {
     public Animator anim;
 
     private Map map;
+    private MapController mc;
 
     // Use this for initialization
     void Start ()
@@ -39,12 +40,10 @@ public class FreeRoamingDriver : MonoBehaviour {
 
         ui_Manager = FindObjectOfType<UI_Manager>();
         freeRoamingTour = FindObjectOfType<FreeRoaming>();
+        mc = FindObjectOfType<MapController>();
 
-        map = new Map();
-        freeRoamingTour.initializeLists(ArrayOfNodes);
-
-        map.addNodeList(freeRoamingTour.getNodeList());
-        //map.initializeGraph();  //adding the list of nodes in the graph
+        map = mc.getMap();
+        freeRoamingTour.initializeLists(map.GetPoiNodes());
         
 
     }

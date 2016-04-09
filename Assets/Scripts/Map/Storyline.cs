@@ -85,31 +85,18 @@ namespace Assets.Scripts
             return storyPoints;
         } 
         
-        public void initializeLists(Node[] arrayOfNodes)
+        public void initializeLists(List<Node> spList)
         {
-            foreach (var n in arrayOfNodes)
+            nodeList = spList;
+
+            foreach (var sp in nodeList)
             {
-                nodeList.Add(n);
-
-                //n.gameObject.SetActive(n.GetFloorNumber() == 2);
-
-                if (n is POS)
+                if (sp.GetType() == typeof (POS))
                 {
-                    storyPoints.Add((POS)n);
-                    print("Added storypoint " + n.getID());
+                    storyPoints.Add((POS)sp);
                 }
             }
-            storyPoints[0].setTitleAndSummary("EV 3.187", "<div>Professor's office</div><div><b>blueberry</b></div>", "EN");
-            storyPoints[1].setTitleAndSummary("Evacuation instructions", "<div>Read the instructions carefully for your safety!</div><div><b>Mint</b></div>", "EN");
-            storyPoints[2].setTitleAndSummary("End of your demo", "<div>Get some rest. It's over!</div><div><b>Icy</b></div>", "EN");
 
-            //JOSEPH: sorts the storypoints list by sequential ID (from 1 to ...)
-            storyPoints.Sort();
-            
-            foreach (POS sp in storyPoints)
-            {
-                Debug.Log(sp.GetPoiDescription().title + " " + sp.GetPoiDescription().summary);
-            }
         }
 
 

@@ -27,7 +27,7 @@ namespace Assets.Scripts {
         public IEnumerator getMap()
         {
             yield return new WaitForSeconds(1.5f);
-            nodes = _freeRoamingDriver.getMap().GetNodes();
+            nodes = _freeRoamingDriver.getMap().GetPoiNodes();
         }
 
         public void loadFloor2()
@@ -41,7 +41,7 @@ namespace Assets.Scripts {
         {
             foreach (var n in nodes)
             {
-                n.gameObject.SetActive(n.GetFloorNumber() == 2);
+                n.gameObject.SetActive(n.getFloorNumber() == 2);
             }
         }
 
@@ -56,7 +56,7 @@ namespace Assets.Scripts {
         {
             foreach (var n in nodes)
             {
-                n.gameObject.SetActive(n.GetFloorNumber() == 3);
+                n.gameObject.SetActive(n.getFloorNumber() == 3);
             }
         }
     }

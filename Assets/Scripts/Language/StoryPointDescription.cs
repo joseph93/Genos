@@ -18,6 +18,21 @@ namespace Assets.Scripts.Language
             language = convertStringToLang(lg);
         }
 
+        public void setTitle(string title)
+        {
+            this.title = title;
+        }
+
+        public void setDescription(string descr)
+        {
+            description = descr;
+        }
+
+        public void setLanguage(string lg)
+        {
+            language = PoiDescription.convertStringToLang(lg);
+        }
+
         public Language convertStringToLang(string lg)
         {
             if (lg.Equals("EN"))

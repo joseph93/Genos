@@ -26,6 +26,16 @@ namespace Assets.Scripts
             imageHeight = ih;
         }
 
+        public int getImageWidth()
+        {
+            return imageWidth;
+        }
+
+        public int getImageHeight()
+        {
+            return imageHeight;
+        }
+
         void Start()
         {
             StartCoroutine(LoadImgIntoTxture());

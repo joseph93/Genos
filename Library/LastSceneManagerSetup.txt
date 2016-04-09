@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/3D-outdoor.unity
+=======
+- path: Assets/Scenes/TourSelection.unity
+>>>>>>> a580baa3d4d00b9b904e20b4cfd8f95b077055c4
   isLoaded: 1
   isActive: 1

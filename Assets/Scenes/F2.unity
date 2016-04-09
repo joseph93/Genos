@@ -281,8 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 7
-  floorNumber: 0
   x: 0.027126312
   y: 1.0844765
 --- !u!1 &234498590
@@ -694,8 +692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 10
-  floorNumber: 0
   x: 3.2823868
   y: 3.5912971
 --- !u!1 &783957089
@@ -1043,8 +1039,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 5
-  floorNumber: 0
   x: 3.1015396
   y: 1.9797707
 --- !u!1 &983152133
@@ -1213,8 +1207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 4
-  floorNumber: 0
   x: 3.2823868
   y: 2.1588287
 --- !u!1 &1025424404
@@ -1515,8 +1507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464744ad5a11c7547b6d8cd92161b79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
-  floorNumber: 0
   x: -3.3899994
   y: 4.0899887
   BeaconGameObject: {fileID: 0}
@@ -1669,8 +1659,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 9
-  floorNumber: 0
   x: -1.600502
   y: 3.5912971
 --- !u!1 &1168331596
@@ -1748,8 +1736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 6
-  floorNumber: 0
   x: 3.1015396
   y: 1.0844765
 --- !u!1 &1231602382
@@ -1977,8 +1963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464744ad5a11c7547b6d8cd92161b79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
-  floorNumber: 0
   x: -1.469986
   y: 4.660019
   BeaconGameObject: {fileID: 0}
@@ -2135,8 +2119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 8
-  floorNumber: 0
   x: 0.027126312
   y: 3.5912971
 --- !u!1 &1353247007
@@ -2597,8 +2579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464744ad5a11c7547b6d8cd92161b79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  floorNumber: 3
   x: 3.375061
   y: 3.4450378
   BeaconGameObject: {fileID: 0}
@@ -2611,6 +2591,45 @@ MonoBehaviour:
   sequentialID: 1
   iconImage: {fileID: 21300000, guid: e74095a7936ae3f40bcfb34b031f244c, type: 3}
   checkmarkIcon: {fileID: 0}
+--- !u!1 &1467589560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1467589562}
+  - 114: {fileID: 1467589561}
+  m_Layer: 0
+  m_Name: MapController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1467589561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1467589560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a6f30d4ae043b4cba1b5c434da93d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1467589562
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1467589560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 113.500015, y: 267.83, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!4 &1474534084 stripped
 Transform:
   m_PrefabParentObject: {fileID: 436964, guid: 5c89eb821fd96ca4cac37308786dc693, type: 2}
@@ -3285,8 +3304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 3
-  floorNumber: 0
   x: 3.2823868
   y: 3.054123
 --- !u!1 &1688259395

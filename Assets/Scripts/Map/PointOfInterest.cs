@@ -12,7 +12,7 @@ namespace Assets.Scripts
 {
     public class PointOfInterest : Node
     {
-        protected PoiDescription poiDescription;
+        protected List<PoiDescription> poiDescriptionList;
         private bool detected;
 
         protected iBeaconServer beacon;
@@ -64,13 +64,24 @@ namespace Assets.Scripts
         {
             detected = false;
             contents = new List<ExhibitionContent>();
-            poiDescription = new PoiDescription(null, null, "NONE");
+            poiDescriptionList = new List<PoiDescription>();
         }
-        
 
-        public PoiDescription GetPoiDescription()
+        public PointOfInterest(PointOfInterest copyPOI) : base(copyPOI)
         {
-            return poiDescription;
+            detected = copyPOI.detected;
+            contents = copyPOI.contents;
+            poiDescriptionList = copyPOI.poiDescriptionList;
+        }
+
+        public List<PoiDescription> GetPoiDescriptionList()
+        {
+            return poiDescriptionList;
+        }
+
+        public void addPoiDescription(PoiDescription pd)
+        {
+            poiDescriptionList.Add(pd);
         }
 
         public iBeaconServer getBeacon()
@@ -78,7 +89,7 @@ namespace Assets.Scripts
             return beacon;
         }
 
-        public override void setBeacon(iBeaconServer b)
+        public void setBeacon(iBeaconServer b)
         {
             beacon = b;
         }
@@ -88,38 +99,23 @@ namespace Assets.Scripts
             return contents;
         }
 
-        public override void addContent(ExhibitionContent c)
+        public void addContent(ExhibitionContent c)
         {
             contents.Add(c);
         }
 
-        public void setTitleAndSummary(string title, string summary, string lg)
+        /*public void setTitleAndSummary(string title, string summary, string lg)
         {
-            if (poiDescription != null)
+            if (poiDescriptionList != null)
             {
-                poiDescription.title = title;
-                poiDescription.summary = summary;
+                poiDescriptionList.title = title;
+                poiDescriptionList.summary = summary;
             }
             else
             {
-                poiDescription = new PoiDescription(title, summary, lg);
+                poiDescriptionList = new PoiDescription(title, summary, lg);
             }
-        }
-
-        public override void setTitle(string title)
-        {
-            poiDescription.title = title;
-        }
-
-        public override void setDescription(string descr)
-        {
-            poiDescription.summary = descr;
-        }
-
-        public override void setLanguage(string lg)
-        {
-            poiDescription.language = PoiDescription.convertStringToLang(lg);
-        }
+        }*/
 
         public void changeIconScale()
         {
@@ -133,14 +129,16 @@ namespace Assets.Scripts
 
         public void displayPopUpWindow()
         {
-            popUpWindow.PopUp(poiDescription.title, nipperPopUp, myViewAction);
+            //popUpWindow.PopUp(poiDescriptionList.title, nipperPopUp, myViewAction);
+            //CHANGE HERE WITH LIST OF POIDESCRIPTION
         }
 
         public void displaySummary()
         {
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
             renderer.color = new Color32(140, 115, 115, 255);
-            summaryWindow.SummaryOneImage(poiDescription.title, poiDescription.summary, poiImage, myCloseAction);
+            //summaryWindow.SummaryOneImage(poiDescriptionList.title, poiDescriptionList.summary, poiImage, myCloseAction);
+            //CHANGE HERE WITH LIST OF POIDESCRIPTION
         }
 
         public void setDetected(bool detected)
