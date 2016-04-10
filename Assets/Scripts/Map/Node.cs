@@ -39,6 +39,40 @@ public class Node : MonoBehaviour{
         adjacentNodes = copyNode.adjacentNodes;
     }
 
+    //Added
+    public void setX(float x)
+    {
+        this.x = x;
+    }
+
+    public float getX()
+    {
+        return x;
+    }
+
+    public void setY(float y)
+    {
+        this.y = y;
+    }
+
+    public float getY()
+    {
+        return y;
+    }
+
+
+
+
+    public void setColor(string color)
+    {
+        this.color = color;
+    }
+
+    public string getColor()
+    {
+        return color;
+    }
+
     void Update()
     {
         x = transform.position.x;
@@ -65,7 +99,7 @@ public class Node : MonoBehaviour{
         return id;
     }
 
-    public int GetFloorNumber()
+    public int getFloorNumber()
     {
         return floorNumber;
     }
