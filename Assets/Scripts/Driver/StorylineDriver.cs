@@ -54,9 +54,9 @@ namespace Assets.Scripts.Driver
             
             iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
             List<Beacon> beacons = bh.getBeacons();
-            map.startStoryline(PlayerPrefs.GetInt("storylineID"));
-            //demo.setBeaconList(beacons);
-
+            map.startStoryline(0/*PlayerPrefs.GetInt("storylineID")*/);
+            
+            map.DisplayNodes();
             
         }
 
