@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Map 
+    public class Map : MonoBehaviour
     {
 
         private List<Storyline> storylines;
@@ -142,7 +142,7 @@ namespace Assets.Scripts
         {
 
             int blue = 0;
-            int green = 3;
+            int green = 1;
 
             Sprite nodeSprite;
             string nodeColorEditor; // show name of color of the sprite in editor (optional)

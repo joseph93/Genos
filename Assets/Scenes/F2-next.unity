@@ -4348,6 +4348,22 @@ MonoBehaviour:
   okButton: {fileID: 1459630102}
   cancelButton: {fileID: 1929667872}
   modalPanelObject: {fileID: 1317305116}
+--- !u!114 &1142338501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1142338497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9ef12d34eb16d48b89e3a4b9da48b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodePrefabPOI: {fileID: 194376, guid: 3c697da3005391f4ab0a07a2005e81e5, type: 2}
+  nodePrefabPOT: {fileID: 185818, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
+  nodeSprites:
+  - {fileID: 21300000, guid: 75cbd5ff660ed894aaaec97d486c4def, type: 3}
+  - {fileID: 21300000, guid: 61afb6392da613146afbed3383696217, type: 3}
 --- !u!1 &1154159638
 GameObject:
   m_ObjectHideFlags: 0
@@ -6342,6 +6358,10 @@ Prefab:
       propertyPath: modalPanelObject
       value: 
       objectReference: {fileID: 1003625566}
+    - target: {fileID: 154408, guid: 6e514b76616b4be4aba7097679eea42b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e514b76616b4be4aba7097679eea42b, type: 2}
   m_IsPrefabParent: 0
