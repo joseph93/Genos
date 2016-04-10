@@ -142,7 +142,7 @@ namespace Assets.Scripts
         {
 
             int blue = 0;
-            int green = 3;
+            int green = 1;
 
             Sprite nodeSprite;
             string nodeColorEditor; // show name of color of the sprite in editor (optional)
