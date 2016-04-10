@@ -8,9 +8,9 @@ namespace Assets.Scripts.Observer_Pattern
 {
     public class StoryPointView : Observer
     {
-        private StoryPoint sp;
+        private POS sp;
 
-        public StoryPointView(StoryPoint sp)
+        public StoryPointView(POS sp)
         {
             this.sp = sp;
             sp.attachObserver(this);
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Observer_Pattern
             sp.changeIconScale();
             sp.popUpSound();
             Vibration.Vibrate(1000);
-            sp.displayPopUpWindow();
+            sp.displayStorylinePopUpWindow();
             sp.storyIsVisited();
             Debug.Log("Storypoint detected.");
         }

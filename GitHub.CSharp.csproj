@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -69,14 +71,29 @@
     <Reference Include="LibGit2Sharp">
       <HintPath>Assets\Plugins\LibGit2Sharp.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Assets\Plugins\SimpleJSON\SimpleJSON\plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Assets\UnityTestTools\IntegrationTestsFramework\Libs\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Mdb">
       <HintPath>Assets\UnityTestTools\IntegrationTestsFramework\Libs\Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-UnityScript-firstpass">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="GitHub.CSharp.Plugins.csproj">
+      <Project>{F97C6703-B799-231C-1FBF-557C3926E331}</Project>
+      <Name>GitHub.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\JSON\JSONObject.cs" />
+    <Compile Include="Assets\JSON\JSONTemplates.cs" />
+    <Compile Include="Assets\JSON\VectorTemplates.cs" />
     <Compile Include="Assets\LocalizeService\Demo\LocolizeTest.cs" />
     <Compile Include="Assets\LocalizeService\Scripts\CSVReader.cs" />
     <Compile Include="Assets\LocalizeService\Scripts\LocalizationService.cs" />
@@ -93,7 +110,10 @@
     <Compile Include="Assets\Scripts\ButtonScripts\LoadingScene.cs" />
     <Compile Include="Assets\Scripts\ButtonScripts\TourButton.cs" />
     <Compile Include="Assets\Scripts\Camera\IntroPlayer.cs" />
+    <Compile Include="Assets\Scripts\Camera\TouchCamera.cs" />
     <Compile Include="Assets\Scripts\Camera\TouchScreenCamera.cs" />
+    <Compile Include="Assets\Scripts\Driver\FreeRoamingDriver.cs" />
+    <Compile Include="Assets\Scripts\Driver\StorylineDriver.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Audio.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\ExhibitionContent.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Image.cs" />
@@ -102,15 +122,18 @@
     <Compile Include="Assets\Scripts\Exhibition Content\Video.cs" />
     <Compile Include="Assets\Scripts\Language\Language.cs" />
     <Compile Include="Assets\Scripts\Language\PoiDescription.cs" />
-    <Compile Include="Assets\Scripts\Language\StorylineDescription.cs" />
+    <Compile Include="Assets\Scripts\Language\StoryPointDescription.cs" />
     <Compile Include="Assets\Scripts\Map\Edge.cs" />
+    <Compile Include="Assets\Scripts\Map\FloorPlan.cs" />
     <Compile Include="Assets\Scripts\Map\Graph.cs" />
-    <Compile Include="Assets\Scripts\Map\LabeledNode.cs" />
+    <Compile Include="Assets\Scripts\Map\PointOfTransition.cs" />
     <Compile Include="Assets\Scripts\Map\Map.cs" />
+    <Compile Include="Assets\Scripts\Map\MapController.cs" />
     <Compile Include="Assets\Scripts\Map\Node.cs" />
     <Compile Include="Assets\Scripts\Map\PointOfInterest.cs" />
-    <Compile Include="Assets\Scripts\Map\StoryPoint.cs" />
+    <Compile Include="Assets\Scripts\Map\POS.cs" />
     <Compile Include="Assets\Scripts\Map\Storyline.cs" />
+    <Compile Include="Assets\Scripts\Map\StoryPoint.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\Observer.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\PointOfInterestView.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\StoryPointView.cs" />
@@ -121,12 +144,12 @@
     <Compile Include="Assets\Scripts\ScrollContent\DialogueBox.cs" />
     <Compile Include="Assets\Scripts\ScrollContent\ScrollSnapRect.cs" />
     <Compile Include="Assets\Scripts\Tour\FreeRoaming.cs" />
-    <Compile Include="Assets\Scripts\Tour\NipperTour.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Manager.cs" />
     <Compile Include="Assets\Scripts\Windows\BringToFront.cs" />
     <Compile Include="Assets\Scripts\Windows\ModalWindow.cs" />
     <Compile Include="Assets\Scripts\Windows\PopUpWindow.cs" />
     <Compile Include="Assets\Scripts\Windows\SummaryWindow.cs" />
+    <Compile Include="Assets\Scripts\Windows\WarningPanel.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\Assertions.cs" />
@@ -179,9 +202,12 @@
     <None Include="Assets\Fonts\romance_fatal_serif\ReadMe_Romance_Fatal_Serif.txt" />
     <None Include="Assets\Fonts\romance_fatal_serif\leeme_Romance_Fatal_Serif.txt" />
     <None Include="Assets\Fonts\thyssen_j\9JULIUST.TXT" />
+    <None Include="Assets\JSON\readme.txt" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\Plugins\README_TizenIAPStore.txt" />
+    <None Include="Assets\Plugins\SimpleJSON\SimpleJSON\JSON Tests\TroubleShoot.txt" />
     <None Include="Assets\Resources\Intro.txt" />
+    <None Include="Assets\Rune Assets\Simple\Urban Buildings Pack 1\runesimple.shader" />
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\AngryInclude.cginc" />
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\CharacterSelfIlluminationReflective.shader" />
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\EnemySelfIlluminationReflective.shader" />

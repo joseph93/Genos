@@ -19,8 +19,8 @@ namespace Assets.Scripts
             {
                 Map map = new Map();
                 Graph g = new Graph();
-                Node n1 = new Node(1, 0, 0, 1);
-                Node n2 = new Node(2, 0, 0, 1);
+                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
+                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
 
                 List<Node> nodeList = new List<Node>();
 
@@ -33,7 +33,7 @@ namespace Assets.Scripts
                 map.addNode(n2);
 
                 Graph mapGraph = map.getGraph();
-                List<Node> mapNodes = map.GetNodes();
+                List<Node> mapNodes = map.GetPoiNodes();
 
                 Assert.IsNotNull(nodeList);
                 Assert.IsNotNull(g);
@@ -55,21 +55,21 @@ namespace Assets.Scripts
             try
             {
                 Map map = new Map();
-                Node n1 = new Node(1, 0, 0, 1);
-                Node n2 = new Node(2, 0, 0, 1);
+                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
+                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
 
                 List<Node> nodeList = new List<Node>();
 
                 nodeList.Add(n1);
                 nodeList.Add(n2);
 
-                map.addNodeList(nodeList);
+                map.setPoiList(nodeList);
 
                 Graph g = new Graph();
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
 
-                map.initializeGraph();
+                map.initializeGraph(nodeList);
                 Graph mapGraph = map.getGraph();
 
                 Assert.IsNotNull(nodeList);
@@ -90,17 +90,17 @@ namespace Assets.Scripts
             try
             {
                 Map map = new Map();
-                Node n1 = new Node(1, 0, 0, 1);
-                Node n2 = new Node(2, 0, 0, 1);
+                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
+                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
 
                 List<Node> nodeList = new List<Node>();
 
                 nodeList.Add(n1);
                 nodeList.Add(n2);
 
-                map.addNodeList(nodeList);
+                map.setPoiList(nodeList);
 
-                List<Node> mapNodes = map.GetNodes();
+                List<Node> mapNodes = map.GetPoiNodes();
 
                 Assert.IsNotNull(nodeList);
                 Assert.IsNotNull(mapNodes);
@@ -118,8 +118,8 @@ namespace Assets.Scripts
             try
             {
                 Map map = new Map();
-                Node n1 = new Node(1, 0, 0, 1);
-                Node n2 = new Node(2, 0, 0, 1);
+                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
+                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
                 map.addNode(n1);
                 map.addNode(n2);
 

@@ -8,37 +8,75 @@ using Assets.Scripts;
 
 public enum State { Visited = 0, UnVisited = 1, Processed = 2 }
 [ExecuteInEditMode]
-public class Node : MonoBehaviour {
+public class Node : MonoBehaviour{
 
     
     private State Status = State.UnVisited;
-    [SerializeField] private int id;
-    [SerializeField] private int floorNumber;
+    [SerializeField] private readonly int id;
+    [SerializeField] private readonly int floorNumber;
     private Dictionary<Node, float> adjacentNodes;
     public float x;
     public float y;
+    public string color { get; set; }
 
-    public Node(int id, int x, int y, int floorNumber)
+    public Node(int id, int x, int y, string color, int floorNumber)
     {
         this.x = x;
         this.y = y;
         this.floorNumber = floorNumber;
         this.id = id;
+        this.color = color;
         adjacentNodes = new Dictionary<Node, float>();
+    }
+
+    public Node(Node copyNode)
+    {
+        id = copyNode.id;
+        x = copyNode.x;
+        y = copyNode.y;
+        floorNumber = copyNode.floorNumber;
+        color = copyNode.color;
+        adjacentNodes = copyNode.adjacentNodes;
+    }
+
+    //Added
+    public void setX(float x)
+    {
+        this.x = x;
+    }
+
+    public float getX()
+    {
+        return x;
+    }
+
+    public void setY(float y)
+    {
+        this.y = y;
+    }
+
+    public float getY()
+    {
+        return y;
+    }
+
+
+
+
+    public void setColor(string color)
+    {
+        this.color = color;
+    }
+
+    public string getColor()
+    {
+        return color;
     }
 
     void Update()
     {
         x = transform.position.x;
         y = transform.position.y;
-    }
-
-    public Node(Node n)
-    {
-        x = n.x;
-        y = n.y;
-        floorNumber = n.floorNumber;
-        id = n.id;
     }
 
     public State getState()
@@ -61,12 +99,7 @@ public class Node : MonoBehaviour {
         return id;
     }
 
-    public void setID(int id)
-    {
-        this.id = id;
-    }
-
-    public int GetFloorNumber()
+    public int getFloorNumber()
     {
         return floorNumber;
     }
@@ -87,16 +120,58 @@ public class Node : MonoBehaviour {
     //JOSEPH: Added - Adds an adjacent node to the dictionary
     public void addAdjacentNode(Node adjacentNode, float weight)
     {
-        adjacentNodes.Add(adjacentNode, weight);
+        if (!isAdjacent(adjacentNode))
+        {
+            adjacentNodes.Add(adjacentNode, weight);
+            
+        }
+        
     }
 
-    public bool hasAdjacentNode(Node n)
+    public bool isAdjacent(Node n)
     {
-        return adjacentNodes.Keys.Any(key => n.getID() == key.getID());
+        return adjacentNodes.ContainsKey(n);
     }
     
     public Vector3 getPosition()
     {
         return transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
+
+    public override bool Equals(object obj)
+    {
+        Node n = (Node) obj;
+        return id == n.id && x == n.x && y == n.y && floorNumber == n.floorNumber;
+    }
+
+    public static bool operator ==(Node a, Node b)
+    {
+        if (((object)a == null) || ((object)b == null))
+        {
+            return false;
+        }
+
+        return a.id == b.id && a.x == b.x && a.y == b.y && a.floorNumber == b.floorNumber;
+    }
+
+    public static bool operator !=(Node a, Node b)
+    {
+        return !(a == b);
+    }
+
+    public override int GetHashCode()
+    {
+        int temp = id.GetHashCode() + x.GetHashCode() + y.GetHashCode() + floorNumber.GetHashCode();
+        return temp;
+    }
+
+    /*public abstract void setBeacon(iBeaconServer b);
+
+    public abstract void addContent(ExhibitionContent c);
+
+    public abstract void setLanguage(string lg);
+
+    public abstract void setTitle(string title);
+
+    public abstract void setDescription(string descr);*/
 }

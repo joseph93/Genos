@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Path;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -10,14 +12,20 @@ namespace Assets.Scripts
     {
 
         private List<Storyline> storylines;
-        private Graph mapGraph;
-        private List<Node> nodes; 
+        private readonly Graph mapGraph;
+        private List<Node> poiList;
+        private List<Node> storypointList;
+        private List<FloorPlan> floors;
+        
+        
 
         public Map()
         {
             storylines = new List<Storyline>();
-            nodes = new List<Node>();
+            poiList = new List<Node>();
+            storypointList = new List<Node>();
             mapGraph = new Graph();
+            floors = new List<FloorPlan>();
         }
 
         public void addStoryline(Storyline sl)
@@ -25,25 +33,48 @@ namespace Assets.Scripts
             storylines.Add(sl);
         }
 
-        public void initializeGraph()
+        public void setStorylineList(List<Storyline> slList)
         {
-            //JOSEPH: Populate the graph with all the nodes in the storyline.
-            foreach (Node n in nodes)
-            {
-                mapGraph.InsertNewVertex(n);
-            }
+            storylines = slList;
+        }
+
+        public void initializeGraph(List<Node> nl)
+        {
             
+            //JOSEPH: Populate the graph with all the nodes in the storyline.
+            foreach (Node n in nl)
+            {  
+              mapGraph.InsertNewVertex(n);  
+            }
+
+            mapGraph.InitializeVertices();
         }
 
         public void addNode(Node n)
         {
             mapGraph.InsertNewVertex(n);
-            nodes.Add(n);
+            poiList.Add(n);
         }
 
-        public void addNodeList(List<Node> nodeList)
+        //Add nodes to the node list and add them to the graph also.
+        public void setPoiList(List<Node> nodeList)
         {
-            nodes = nodeList;
+            poiList = nodeList;
+        }
+
+        public void setStorypointList(List<Node> spList)
+        {
+            storypointList = spList;
+        }
+
+        public void setFloorplanList(List<FloorPlan> floorList)
+        {
+            floors = floorList;
+        }
+
+        public List<FloorPlan> getFloors()
+        {
+            return floors;
         }
 
         public Graph getGraph()
@@ -56,10 +87,33 @@ namespace Assets.Scripts
             return storylines;
         }
 
-        public List<Node> GetNodes()
+        public List<Node> GetPoiNodes()
         {
-            return nodes;
+            return poiList;
         }
+
+        public List<Node> getStorypointNodes()
+        {
+            return storypointList;
+        }
+
+        public void startStoryline(int slID)
+        {
+            //display the nodes of the correct storyline
+            //display the floors of the correct storyline
+            storylines[slID].initializeLists(storypointList);
+        }
+
+        /*
+         * Set camera zoom height and width
+         * Display floorPlan image according to their x-y scaled
+         */
+        public void DisplayMap(FloorPlan floorPlan)
+        {
+            //floorplan.cs
+            
+        }
+
 
     }
 }

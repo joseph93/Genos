@@ -13,9 +13,26 @@ public class LocolizeTest : MonoBehaviour
         CurrentText.text = string.Format("Current localization - {0}", LocalizationService.Instance.Localization);
     }
 
+    public void EnglishInPanel()
+    {
+        LocalizationService.Instance.Localization = "English";
+
+        CurrentText.text = string.Format("Current localization {0}",
+            LocalizationService.Instance.GetTextByKeyWithLocalize("localization1", "English"));
+    }
+
+    public void FrenchInPanel()
+    {
+        LocalizationService.Instance.Localization = "French";
+
+        CurrentText.text = string.Format("Current localization {0}",
+            LocalizationService.Instance.GetTextByKeyWithLocalize("localization3", "English"));
+    }
+
     public void English()
     {
         SceneManager.LoadScene("Menu");
+        Vibration.Vibrate(100);
         LocalizationService.Instance.Localization = "English";
 
         CurrentText.text = string.Format("Current localization {0}",
@@ -33,6 +50,7 @@ public class LocolizeTest : MonoBehaviour
     public void French()
     {
         SceneManager.LoadScene("Menu");
+        Vibration.Vibrate(100);
         LocalizationService.Instance.Localization = "French";
 
         CurrentText.text = string.Format("Current localization {0}",

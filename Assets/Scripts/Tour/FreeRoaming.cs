@@ -12,76 +12,52 @@ namespace Assets.Scripts
     public class FreeRoaming : MonoBehaviour
     {
         protected List<Beacon> myBeacons;
-        protected Map map;
-        public Node[] ArrayOfNodes;
         protected List<Node> nodeList;
         protected List<PointOfInterest> pointsOfInterest;
 
         public Camera mainCam;
 
         protected iBeaconHandler bh;
-
-        public float minSwipeDistX;
-        protected Vector2 startPos;
-
-        protected UI_Manager ui_Manager;
-        public Animator anim;
-
+        
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-
+            
         }
         // Use this for initialization
         void Start()
         {
-            ui_Manager = FindObjectOfType<UI_Manager>();
             bh = FindObjectOfType<iBeaconHandler>();
-
-          
+            myBeacons = new List<Beacon>();
             nodeList = new List<Node>();
-
-        
-            map = new Map();
-          
             pointsOfInterest = new List<PointOfInterest>();
-
-            initializeLists();
-           
-            Node n1 = ArrayOfNodes[0].GetComponentInChildren<Node>();
-            Node n2 = ArrayOfNodes[1].GetComponentInChildren<Node>();
-            Node n3 = ArrayOfNodes[2].GetComponentInChildren<Node>();
-            Node n4 = ArrayOfNodes[3].GetComponentInChildren<Node>();
-
-
-            n1.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n2, 1.0f }, { n3, 6.0f } });
-            n2.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n3, 2.0f } });
-            n3.addListOfAdjacentNodes(new Dictionary<Node, float>() { { n4, 3.0f } });
-            //This should be removed because we need to use the JSON file
-
-            map.addNodeList(nodeList);
-            //adding the list of nodes in the graph
-            map.initializeGraph();
-            
-
         }
 
-        public void initializeLists()
+        public List<Node> getNodeList()
         {
-            foreach (var n in ArrayOfNodes)
-            {
-                nodeList.Add(n);
-                if (n.GetFloorNumber() == 2)
-                {
-                    n.gameObject.SetActive(true);
-                }
+            return nodeList;
+        }
 
-                if (n is PointOfInterest)
+        public List<PointOfInterest> getPoiList()
+        {
+            return pointsOfInterest;
+        } 
+
+
+        public void initializeLists(List<Node> poiList)
+        {
+            nodeList = poiList;
+
+            foreach (var n in nodeList)
+            {
+                if (n.GetType() == typeof(PointOfInterest))
                 {
                     pointsOfInterest.Add((PointOfInterest) n);
-                }
+                    print("Added poi: " + n.getID());
+                }   
             }
         }
+        
 
 
         //Reviewer Ihcene: Update was fixed, for the rendering of the beacon, for each frames
@@ -92,52 +68,10 @@ namespace Assets.Scripts
                 myBeacons = bh.getBeacons();
 
             StartCoroutine(searchForPoiBeacon(0.05f));
-            
-            swipePanelLeft();
 
-           
-
-            }
-
-        public void swipePanelLeft()
-        {
-            if (Input.touchCount > 0)
-
-            {
-                Touch touch = Input.touches[0];
-
-                switch (touch.phase)
-
-                {
-                    case TouchPhase.Began:
-
-                        startPos = touch.position;
-
-                        break;
-
-
-                    case TouchPhase.Ended:
-
-                        float swipeDistHorizontal =
-                            (new Vector3(touch.position.x, 0, 0) - new Vector3(startPos.x, 0, 0)).magnitude;
-
-                        if (swipeDistHorizontal > minSwipeDistX)
-
-                        {
-                            float swipeValue = Mathf.Sign(touch.position.x - startPos.x);
-                            if (swipeValue < 0) //left swipe
-                            {
-                                ui_Manager.disableBoolAnimator(anim);
-                            }
-
-                            //MoveLeft ();
-                        }
-                        break;
-                }
-            }
         }
 
-//end of Update()
+
         public IEnumerator searchForPoiBeacon(float seconds)
         {
             yield return new WaitForSeconds(seconds);
