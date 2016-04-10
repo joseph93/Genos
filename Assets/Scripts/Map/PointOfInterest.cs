@@ -44,8 +44,8 @@ namespace Assets.Scripts
         {
             beacon = BeaconGameObject.GetComponent<iBeaconServer>();
             sounds = GetComponents<AudioSource>();
-            popUp = sounds[0];
-            beforeSound = sounds[1];
+            //popUp = sounds[0];
+            //beforeSound = sounds[1];
             observers = new List<Observer>();
             detected = false;
 
