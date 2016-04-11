@@ -15,8 +15,8 @@ namespace Assets.Scripts
     public class Storyline : MonoBehaviour
     {
         private int id;
-        private string title;
-        private string description;
+        public string title { get; set; }
+        public string description { get; set; }
         public int floorsCovered { get; set; }
         private List<POS> visitedStoryPoints;
         private List<POS> storyPoints;
