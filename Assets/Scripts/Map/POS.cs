@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Exhibition_Content;
 using Assets.Scripts.Language;
 using Assets.Scripts.Observer_Pattern;
 using UnityEngine;
@@ -111,7 +112,15 @@ namespace Assets.Scripts
 
         public void POSdisplayImageWithCaption()
         {
-            modalWindow.ChoiceOneButton(caption, poiImage, viewVideoAction);
+            foreach (var image in contents)
+            {
+                if (image.GetType() == typeof (Image))
+                {
+                    modalWindow.ChoiceOneButton(caption, poiImage, viewVideoAction);
+                }
+                
+            }
+            
         }
 
         public void playVideo()
@@ -121,14 +130,19 @@ namespace Assets.Scripts
 
         public IEnumerator CoroutinePlayVideo()
         {
-            for (int i = 0; i < videoPath.Length; i++)
+            foreach (var video in contents)
             {
-                Handheld.PlayFullScreenMovie(videoPath[i], Color.black, FullScreenMovieControlMode.Full);
-                yield return new WaitForEndOfFrame();
-                yield return new WaitForEndOfFrame();
-                print("I want to play video.");
+                if (video.GetType() == typeof (Video))
+                {
+                    Screen.orientation = ScreenOrientation.Landscape;
+                    Handheld.PlayFullScreenMovie(video.path, Color.black, FullScreenMovieControlMode.Full);
+                    yield return new WaitForEndOfFrame();
+                    yield return new WaitForEndOfFrame();
+                    
+                }
+                
             }
-
+            Screen.orientation = ScreenOrientation.Portrait;
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
             renderer.color = new Color32(140, 115, 115, 255);
             transform.localScale = new Vector3(0.05f, 0.05f, 1);

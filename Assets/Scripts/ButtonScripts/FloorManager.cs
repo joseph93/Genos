@@ -7,23 +7,24 @@ using UnityEngine.UI;
 namespace Assets.Scripts {
     public class FloorManager : MonoBehaviour
     {
-        public Sprite floor2;
+        /*public Sprite floor2;
         public Sprite floor3;
         public Text floorNumber;
 
         private FreeRoamingDriver _freeRoamingDriver;
-        private List<Node> nodes;
+        private List<Node> nodes;*/
 
         void Start()
         {
-           _freeRoamingDriver = FindObjectOfType<FreeRoamingDriver>();
+            Renderer rend = GetComponent<Renderer>();
+            Debug.Log(rend.bounds.max.x);
+            Debug.Log(rend.bounds.max.y);
         }
 
         void Update()
         {
-            StartCoroutine(getMap());
         }
-
+        /*
         public IEnumerator getMap()
         {
             yield return new WaitForSeconds(1.5f);
@@ -58,6 +59,6 @@ namespace Assets.Scripts {
             {
                 n.gameObject.SetActive(n.getFloorNumber() == 3);
             }
-        }
+        }*/
     }
 }

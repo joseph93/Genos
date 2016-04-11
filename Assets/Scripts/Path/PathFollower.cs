@@ -9,6 +9,8 @@ public class PathFollower : MonoBehaviour {
     public int currentPoint;
     public int sizeOfPath = Length;
 
+
+
     public static int Length { get; private set; }
 
     // Use this for initialization

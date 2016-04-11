@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Map 
+    public class Map
     {
 
         private List<Storyline> storylines;
@@ -16,11 +16,8 @@ namespace Assets.Scripts
         private List<Node> poiList;
         private List<Node> storypointList;
         private List<FloorPlan> floors;
-
-        //Added for dislay
-        public GameObject nodePrefabPOI;
-        public GameObject nodePrefabPOT;
-        public Sprite[] nodeSprites;
+        
+        
 
         public Map()
         {
@@ -30,7 +27,6 @@ namespace Assets.Scripts
             mapGraph = new Graph();
             floors = new List<FloorPlan>();
         }
-        
 
         public void addStoryline(Storyline sl)
         { 
@@ -76,6 +72,11 @@ namespace Assets.Scripts
             floors = floorList;
         }
 
+        public List<FloorPlan> getFloors()
+        {
+            return floors;
+        }
+
         public Graph getGraph()
         {
             return mapGraph;
@@ -103,6 +104,7 @@ namespace Assets.Scripts
             storylines[slID].initializeLists(storypointList);
         }
 
+<<<<<<< HEAD
 
         /*
          * Convert width and height of x-coordinate to match the scale in unity
@@ -205,6 +207,8 @@ namespace Assets.Scripts
             } //foreach
         }
 
+=======
+>>>>>>> 9c3942faed3322c0f083373e423ed2a89136442f
         /*
          * Set camera zoom height and width
          * Display floorPlan image according to their x-y scaled
@@ -212,11 +216,7 @@ namespace Assets.Scripts
         public void DisplayMap(FloorPlan floorPlan)
         {
             //floorplan.cs
-
-
-
-
-
+            
         }
 
 
