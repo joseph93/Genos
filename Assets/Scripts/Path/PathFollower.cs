@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Driver;
 
 public class PathFollower : MonoBehaviour {
 
@@ -9,19 +10,21 @@ public class PathFollower : MonoBehaviour {
     public int currentPoint;
     public int sizeOfPath = Length;
 
-
+    private StorylineDriver sd;
 
     public static int Length { get; private set; }
 
     // Use this for initialization
     void Start () {
-  
+
     }
 
 	// Update is called once per frame
 	void Update () {
 
-	    if (currentPoint < path.Length)
+        sd = FindObjectOfType<StorylineDriver>();
+
+        if (currentPoint < path.Length)
 	    {
 	        float dist = Vector3.Distance(path[currentPoint].position, transform.position);
 

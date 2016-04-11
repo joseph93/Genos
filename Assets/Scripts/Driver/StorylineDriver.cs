@@ -57,10 +57,12 @@ namespace Assets.Scripts.Driver
 
             map = mc.getMap();
             
-            iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
-            List<Beacon> beacons = bh.getBeacons();
+            //iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
+            //List<Beacon> beacons = bh.getBeacons();
+            List<Node> orderedPath = map.orderedPath();
+            map.setStorypointList(orderedPath);
             map.startStoryline(0/*PlayerPrefs.GetInt("storylineID")*/);
-            DisplayNodes(map.GetPoiNodes(), map.getFloors());
+            DisplayNodes(map.getStorypointNodes(), map.getFloors());
 
 
         }
@@ -129,13 +131,13 @@ namespace Assets.Scripts.Driver
             return yConvertedScaled;
         }
 
-        public void DisplayNodes(List<Node> poiList, List<FloorPlan> floors)
+        public void DisplayNodes(List<Node> storyPointList, List<FloorPlan> floors)
         {
             int blue = 0;
             int green = 1;
             int red = 2;
             
-            foreach (Node n in poiList)
+            foreach (Node n in storyPointList)
             {
                 Sprite nodeSprite;
                 string nodeColorEditor; // show name of color of the sprite in editor (optional)
