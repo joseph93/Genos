@@ -17,6 +17,15 @@ namespace Assets.Scripts
         public int imageWidth { get; set; }
         public int imageHeight { get; set; }
         
+        public string getImagePath()
+        {
+            return imagePath;
+        }
+
+        public void setImagePath(string imagePath)
+        {
+            this.imagePath = imagePath;
+        }
 
         public FloorPlan(string fn, string ip, int iw, int ih)
         {
@@ -43,6 +52,11 @@ namespace Assets.Scripts
 
         public void LoadFloor()
         {
+/*            
+            //test
+            string floor3 = "floor3"; 
+            var tex = Resources.Load(floor3) as Texture2D;
+*/
             var tex = Resources.Load(imagePath) as Texture2D;
             GetComponent<RawImage>().texture = tex;
             if (tex != null)

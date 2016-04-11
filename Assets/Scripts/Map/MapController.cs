@@ -28,20 +28,11 @@ namespace Assets.Scripts
 
         void Start()
         {
-            StartCoroutine(decode());
-            
+
+
         }
 
-        public IEnumerator decode()
-        {
-            WWW request = new WWW("http://localhost/Map.json");
 
-            yield return request;
-
-            if (!string.IsNullOrEmpty(request.error)) yield break;
-            JSONObject jobject = new JSONObject(request.text);
-            accessData(jobject);
-        }
 
         public void accessData(JSONObject obj)
         {

@@ -52,22 +52,22 @@ namespace Assets.Scripts.Driver
             ui_Manager = FindObjectOfType<UI_Manager>();
 
             //Storyline demo = new Storyline(0, 1, "Demo Storyline", "Let's see how good is your mobile app!");
-            
+
             mc = FindObjectOfType<MapController>();
 
             map = mc.getMap();
-            
+
             iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
             List<Beacon> beacons = bh.getBeacons();
-            
+
             List<Node> orderedPath = map.orderedPath();
-            
-            
+
+
             foreach (var n in orderedPath)
             {
                 print(n.getID());
             }
-            
+
             map.setStorypointList(orderedPath);
             map.startStoryline(0 /*PlayerPrefs.GetInt("storylineID")*/);
             DisplayNodes(map.getStorypointNodes(), map.getFloors());
@@ -130,7 +130,7 @@ namespace Assets.Scripts.Driver
         public float XCoordinatesConversion(float x, float mapWidth)
         {
             Renderer rend = floorManager.GetComponent<Renderer>();
-            
+
             float xScaled = rend.bounds.max.x; //(2 * rend.bounds.max.x * mapWidth) / 2313f;
             float xConverted = x - mapWidth / 2;
             float xConvertedScaled = (xConverted * (2 * xScaled)) / mapWidth;
@@ -143,7 +143,7 @@ namespace Assets.Scripts.Driver
         public float YCoordinatesConversion(float y, float mapHeight)
         {
             Renderer rend = floorManager.GetComponent<Renderer>();
-            
+
             float yScaled = rend.bounds.max.y; //(2 * rend.bounds.max.y * mapHeight) / 2328f;
             float yConverted = -(y) + mapHeight / 2;
             float yConvertedScaled = (yConverted * (2 * yScaled)) / mapHeight;
@@ -155,7 +155,7 @@ namespace Assets.Scripts.Driver
             int blue = 0;
             int green = 1;
             int red = 2;
-            
+
             foreach (Node n in poiList)
             {
                 Sprite nodeSprite;
@@ -173,7 +173,7 @@ namespace Assets.Scripts.Driver
                         newNode.transform.parent = floorManager.transform;
                         newNode.SetActive(true);
 
-                    
+
                         //if id
 
                         //TODO: need to take specific type of node depending on their type
@@ -241,7 +241,7 @@ namespace Assets.Scripts.Driver
             } //foreach
         }
 
-        
-       
+
+
     }
 }

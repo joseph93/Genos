@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/SettingSound.unity
-=======
-- path: Assets/Scenes/F2.unity
->>>>>>> db331fa2573640c9f08838b5d86878657f6d420a
+- path: Assets/Scenes/F2-next.unity
   isLoaded: 1
   isActive: 1
