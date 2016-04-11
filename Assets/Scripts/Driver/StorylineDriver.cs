@@ -59,10 +59,31 @@ namespace Assets.Scripts.Driver
             
             iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
             List<Beacon> beacons = bh.getBeacons();
-            map.startStoryline(0/*PlayerPrefs.GetInt("storylineID")*/);
-            DisplayNodes(map.GetPoiNodes(), map.getFloors());
+            
+            List<Node> orderedPath = map.orderedPath();
+            
+            
+            foreach (var n in orderedPath)
+            {
+                print(n.getID());
+            }
+            
+            map.setStorypointList(orderedPath);
+            map.startStoryline(0 /*PlayerPrefs.GetInt("storylineID")*/);
+            DisplayNodes(map.getStorypointNodes(), map.getFloors());
 
+        }
 
+        public void DisplayFloor(int floorId)
+        {
+            foreach (var f in map.getFloors())
+            {
+                if (f.floorNumber.Equals(floorId.ToString()))
+                {
+                    f.LoadFloor();
+                    break;
+                }
+            }
         }
 
         public void swipePanelLeft()
@@ -141,7 +162,7 @@ namespace Assets.Scripts.Driver
                 string nodeColorEditor; // show name of color of the sprite in editor (optional)
                 GameObject newNode;
 
-                if (n.GetType() == typeof(PointOfInterest)) //check if poi or pot at runtime type
+                if (n.GetType() == typeof(PointOfInterest) || n.GetType() == typeof(POS)) //check if poi or pot at runtime type
                 {
                     float x = XCoordinatesConversion(n.x, floors[0].getImageWidth());
                     float y = YCoordinatesConversion(n.y, floors[0].getImageHeight());

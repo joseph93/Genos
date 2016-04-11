@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts;
 
 public class TouchScreenCamera : MonoBehaviour
 {
@@ -25,10 +26,13 @@ public class TouchScreenCamera : MonoBehaviour
     private float timeTouchPhaseEnded;
     private Vector2 scrollDirection = Vector2.zero;
 
+    private FloorPlan fp;
+    private bool cameraSizeChanged;
+
     void Start()
     {
+        fp = FindObjectOfType<FloorPlan>();
         myCamera = Camera.main;
-
         maxZoom = 0.5f * (mapWidth / myCamera.aspect);
 
         if (mapWidth > mapHeight)
@@ -42,6 +46,17 @@ public class TouchScreenCamera : MonoBehaviour
 
     void Update()
     {
+        Renderer floorRenderer = fp.gameObject.GetComponent<Renderer>();
+        mapWidth = floorRenderer.bounds.max.x*2;
+        mapHeight = floorRenderer.bounds.max.y*2;
+
+        if (!cameraSizeChanged)
+        {
+            myCamera.orthographicSize = mapWidth/2;
+            cameraSizeChanged = true;
+        }
+        
+
         if (updateZoomSensitivity)
         {
             moveSensitivityX = myCamera.orthographicSize / 5.0f;
