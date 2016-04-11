@@ -138,7 +138,7 @@ namespace Assets.Scripts
         /*
          * Display poi or pot according to their attributes
          */
-        public void DisplayNode(List<Node> poiList, FloorPlan floorPlan)
+        public void DisplayNode()
         {
 
             int blue = 0;
@@ -167,8 +167,8 @@ namespace Assets.Scripts
                             nodeSprite = nodeSprites[green];
                             nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
                             newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                            newNode.GetComponent<Node>().setX(XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
-                            newNode.GetComponent<Node>().setY(YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
+                            newNode.GetComponent<Node>().setX(XCoordinatesConversion(n.x, floors[0].getImageWidth()));
+                            newNode.GetComponent<Node>().setY(YCoordinatesConversion(n.y, floors[0].getImageHeight()));
                             //                          newNode.GetComponent<Node>().setID(n.getID());
                             //                          newNode.GetComponent<Node>().setFloorNumber(floor.getFloorNumber());
                             newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
@@ -190,8 +190,8 @@ namespace Assets.Scripts
                             nodeSprite = nodeSprites[blue];
                             nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
                             newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                            newNode.GetComponent<Node>().setX(XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
-                            newNode.GetComponent<Node>().setY(YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
+                            newNode.GetComponent<Node>().setX(XCoordinatesConversion(n.x, floors[0].getImageWidth()));
+                            newNode.GetComponent<Node>().setY(YCoordinatesConversion(n.y, floors[0].getImageHeight()));
                             //                          newNode.GetComponent<Node>().setID(n.getID());
                             //                          newNode.GetComponent<Node>().setFloorNumber(floor.getFloorNumber());
                             newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
