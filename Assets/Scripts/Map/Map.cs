@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Map
+    public class Map : MonoBehaviour
     {
 
         private List<Storyline> storylines;
@@ -108,10 +108,28 @@ namespace Assets.Scripts
          * Set camera zoom height and width
          * Display floorPlan image according to their x-y scaled
          */
-        public void DisplayMap(FloorPlan floorPlan)
+        public List<Node> orderedPath()
         {
-            //floorplan.cs
             
+            List<Node> orderedPath = new List<Node>();
+
+            foreach (Storyline s in storylines)
+            {
+                foreach (var id in s.getPath())
+                {
+                    foreach (var n in storypointList)
+                    {
+                        if (n.getID() == id)
+                        {
+                            orderedPath.Add(n);
+                            break;
+                        }
+
+                    }
+                }
+                
+            }
+            return orderedPath;
         }
 
 

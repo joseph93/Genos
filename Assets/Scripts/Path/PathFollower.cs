@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts;
 
 public class PathFollower : MonoBehaviour {
 
@@ -8,8 +9,7 @@ public class PathFollower : MonoBehaviour {
     public float reachDist = 0.2f;
     public int currentPoint;
     public int sizeOfPath = Length;
-
-
+    
 
     public static int Length { get; private set; }
 
@@ -32,6 +32,7 @@ public class PathFollower : MonoBehaviour {
 	            currentPoint++;
 	    } 
     }
+    
 
     void OnDrawGizmos() {
 
