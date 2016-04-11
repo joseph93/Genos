@@ -122,7 +122,6 @@
     <Compile Include="Assets\Scripts\Exhibition Content\Video.cs" />
     <Compile Include="Assets\Scripts\Language\Language.cs" />
     <Compile Include="Assets\Scripts\Language\PoiDescription.cs" />
-    <Compile Include="Assets\Scripts\Language\StoryPointDescription.cs" />
     <Compile Include="Assets\Scripts\Map\Edge.cs" />
     <Compile Include="Assets\Scripts\Map\FloorPlan.cs" />
     <Compile Include="Assets\Scripts\Map\Graph.cs" />
@@ -133,7 +132,6 @@
     <Compile Include="Assets\Scripts\Map\PointOfInterest.cs" />
     <Compile Include="Assets\Scripts\Map\POS.cs" />
     <Compile Include="Assets\Scripts\Map\Storyline.cs" />
-    <Compile Include="Assets\Scripts\Map\StoryPoint.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\Observer.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\PointOfInterestView.cs" />
     <Compile Include="Assets\Scripts\Observer Pattern\StoryPointView.cs" />

@@ -26,12 +26,12 @@ public class TouchScreenCamera : MonoBehaviour
     private float timeTouchPhaseEnded;
     private Vector2 scrollDirection = Vector2.zero;
 
-    private FloorPlan fp;
+    private GameObject fp;
     private bool cameraSizeChanged;
 
     void Start()
     {
-        fp = FindObjectOfType<FloorPlan>();
+        fp = GameObject.Find("FloorManager");
         myCamera = Camera.main;
         maxZoom = 0.5f * (mapWidth / myCamera.aspect);
 
@@ -42,19 +42,21 @@ public class TouchScreenCamera : MonoBehaviour
             myCamera.orthographicSize = maxZoom;
 
         CalculateLevelBounds();
+        
+    }
+
+    public IEnumerator getMapWidthAndHeight()
+    {
+        yield return new WaitForSeconds(0.06f);
+
+        Renderer floorRenderer = fp.GetComponent<Renderer>();
+        mapWidth = floorRenderer.bounds.max.x * 2;
+        mapHeight = floorRenderer.bounds.max.y * 2;
     }
 
     void Update()
     {
-        Renderer floorRenderer = fp.gameObject.GetComponent<Renderer>();
-        mapWidth = floorRenderer.bounds.max.x*2;
-        mapHeight = floorRenderer.bounds.max.y*2;
-
-        if (!cameraSizeChanged)
-        {
-            myCamera.orthographicSize = mapWidth/2;
-            cameraSizeChanged = true;
-        }
+        StartCoroutine(getMapWidthAndHeight());
         
 
         if (updateZoomSensitivity)

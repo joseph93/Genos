@@ -18,10 +18,9 @@ namespace Assets.Scripts
             ENTRANCE,
             EMERGENCY
         }
-        public PointOfTransition(int id, int x, int y, string color, int floorNumber, string label,  string title) : base(id, x, y,color, floorNumber)
+        public PointOfTransition(int id, int x, int y, int floorNumber, string label) : base(id, x, y, floorNumber)
         {
             this.label = convertStringToLabel(label);
-            this.title = title;
         }
 
         public PointOfTransition(PointOfTransition copyPOT) : base(copyPOT)
@@ -39,28 +38,28 @@ namespace Assets.Scripts
         {
             switch (lbl)
             {
-                case "RAMP":
+                case "ramp":
                     return Label.RAMP;
 
-                case "STAIRS" :
+                case "stairs" :
                     return Label.STAIRS;
 
-                case "ELEVATOR":
+                case "elevator":
                     return Label.ELEVATOR;
 
-                case "WASHROOM":
+                case "washroom":
                     return Label.WASHROOM;
 
-                case "EXIT":
+                case "exit":
                     return Label.EXIT;
 
-                case "ENTRANCE":
+                case "entrance":
                     return Label.ENTRANCE;
 
-                case "EMERGENCY":
+                case "emergency":
                     return Label.EMERGENCY;
 
-                case "NONE":
+                case "none":
                     return Label.NONE;
 
             }
