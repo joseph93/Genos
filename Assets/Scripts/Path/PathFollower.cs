@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+<<<<<<< HEAD
 using Assets.Scripts.Driver;
+=======
+using Assets.Scripts;
+>>>>>>> db331fa2573640c9f08838b5d86878657f6d420a
 
 public class PathFollower : MonoBehaviour {
 
@@ -9,8 +13,12 @@ public class PathFollower : MonoBehaviour {
     public float reachDist = 0.2f;
     public int currentPoint;
     public int sizeOfPath = Length;
+<<<<<<< HEAD
 
     private StorylineDriver sd;
+=======
+    
+>>>>>>> db331fa2573640c9f08838b5d86878657f6d420a
 
     public static int Length { get; private set; }
 
@@ -35,6 +43,7 @@ public class PathFollower : MonoBehaviour {
 	            currentPoint++;
 	    } 
     }
+    
 
     void OnDrawGizmos() {
 

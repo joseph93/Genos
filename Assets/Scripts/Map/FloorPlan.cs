@@ -16,7 +16,7 @@ namespace Assets.Scripts
         public string imagePath { get; set; }
         public int imageWidth { get; set; }
         public int imageHeight { get; set; }
-        private Texture2D tex;
+        
 
         public FloorPlan(string fn, string ip, int iw, int ih)
         {
@@ -38,17 +38,15 @@ namespace Assets.Scripts
 
         void Start()
         {
-            StartCoroutine(LoadImgIntoTxture());
+            LoadFloor();
         }
 
-        public IEnumerator LoadImgIntoTxture()
+        public void LoadFloor()
         {
-            yield return 0;
-            WWW www = new WWW("http://localhost/floor/3/floor3.png");
-            yield return www;
-            tex = www.texture;
+            var tex = Resources.Load(imagePath) as Texture2D;
             GetComponent<RawImage>().texture = tex;
-            //GetComponent<SpriteRenderer>().sprite = Sprite.Create(tex, new Rect(0,0, Screen.width, Screen.height), new Vector2(0.5f, 0.5f));
+            if (tex != null)
+                GetComponent<SpriteRenderer>().sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
         }
 
 

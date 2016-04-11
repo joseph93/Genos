@@ -16,13 +16,14 @@ namespace Assets.Scripts {
 
         void Start()
         {
-            Renderer rend = GetComponent<Renderer>();
-            Debug.Log(rend.bounds.max.x);
-            Debug.Log(rend.bounds.max.y);
+            
         }
 
         void Update()
         {
+            Renderer rend = GetComponent<Renderer>();
+            print("Bounds max x: " + rend.bounds.max.x);
+            print("Bounds max y: " + rend.bounds.max.y);
         }
         /*
         public IEnumerator getMap()
