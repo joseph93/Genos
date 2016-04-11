@@ -1,8 +1,12 @@
 sceneSetups:
 <<<<<<< HEAD
+- path: Assets/Scenes/3D-outdoor.unity
+=======
+<<<<<<< HEAD
 - path: Assets/Scenes/SettingSound.unity
 =======
 - path: Assets/Scenes/F2.unity
 >>>>>>> db331fa2573640c9f08838b5d86878657f6d420a
+>>>>>>> a95c60039408ccc89ce4ea832189a2be526d826c
   isLoaded: 1
   isActive: 1

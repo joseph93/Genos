@@ -285,7 +285,11 @@
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\ButtonScripts\LoadingScene.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\ButtonScripts\TourButton.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Camera\IntroPlayer.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Camera\TouchCamera.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Camera\TouchScreenCamera.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Camera\Zoom.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Driver\FreeRoamingDriver.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Driver\StorylineDriver.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\Audio.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\ExhibitionContent.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\Image.cs</File>
@@ -294,13 +298,16 @@
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\Video.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Language\Language.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Language\PoiDescription.cs</File>
-    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Language\StorylineDescription.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Language\StoryPointDescription.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Edge.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\FloorPlan.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Graph.cs</File>
-    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\LabeledNode.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Map.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\MapController.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Node.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\POS.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\PointOfInterest.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\PointOfTransition.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\StoryPoint.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Storyline.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Observer Pattern\Observer.cs</File>
@@ -313,11 +320,12 @@
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\ScrollContent\DialogueBox.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\ScrollContent\ScrollSnapRect.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Tour\FreeRoaming.cs</File>
-    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Tour\NipperTour.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\UI\Image.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\UI\UI_Manager.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Windows\BringToFront.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Windows\ModalWindow.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Windows\PopUpWindow.cs</File>
     <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Windows\SummaryWindow.cs</File>
+    <File>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Windows\WarningPanel.cs</File>
   </Files>
 </AnalysisInput>

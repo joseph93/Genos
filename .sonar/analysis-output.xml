@@ -482,7 +482,7 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\iBeaconRegion.cs</Path>
       <Metrics>
-        <Lines>32</Lines>
+        <Lines>34</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
         <Statements>7</Statements>
@@ -510,8 +510,6 @@
           <Line>15</Line>
           <Line>16</Line>
           <Line>17</Line>
-          <Line>19</Line>
-          <Line>20</Line>
           <Line>21</Line>
           <Line>22</Line>
           <Line>23</Line>
@@ -523,17 +521,19 @@
           <Line>29</Line>
           <Line>30</Line>
           <Line>31</Line>
+          <Line>32</Line>
+          <Line>33</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
         <Issue>
           <Id>S1643</Id>
-          <Line>24</Line>
+          <Line>26</Line>
           <Message>Use a StringBuilder instead.</Message>
         </Issue>
         <Issue>
           <Id>S1643</Id>
-          <Line>26</Line>
+          <Line>28</Line>
           <Message>Use a StringBuilder instead.</Message>
         </Issue>
       </Issues>
@@ -541,21 +541,21 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Beacon\iBeaconServer.cs</Path>
       <Metrics>
-        <Lines>79</Lines>
+        <Lines>86</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
-        <Statements>8</Statements>
-        <Functions>7</Functions>
-        <PublicApi>10</PublicApi>
-        <PublicUndocumentedApi>10</PublicUndocumentedApi>
-        <Complexity>13</Complexity>
+        <Statements>11</Statements>
+        <Functions>8</Functions>
+        <PublicApi>11</PublicApi>
+        <PublicUndocumentedApi>11</PublicUndocumentedApi>
+        <Complexity>14</Complexity>
         <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=5;2=1;4=1;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <FunctionComplexityDistribution>1=6;2=1;4=1;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank>
-            <Line>32</Line>
-            <Line>44</Line>
+            <Line>39</Line>
+            <Line>51</Line>
           </NonBlank>
         </Comments>
         <LinesOfCode>
@@ -577,68 +577,74 @@
           <Line>28</Line>
           <Line>29</Line>
           <Line>30</Line>
-          <Line>33</Line>
+          <Line>31</Line>
+          <Line>32</Line>
           <Line>34</Line>
           <Line>35</Line>
+          <Line>36</Line>
           <Line>37</Line>
-          <Line>38</Line>
+          <Line>40</Line>
+          <Line>41</Line>
           <Line>42</Line>
+          <Line>44</Line>
           <Line>45</Line>
-          <Line>46</Line>
-          <Line>47</Line>
-          <Line>48</Line>
           <Line>49</Line>
-          <Line>50</Line>
-          <Line>51</Line>
           <Line>52</Line>
           <Line>53</Line>
           <Line>54</Line>
           <Line>55</Line>
+          <Line>56</Line>
           <Line>57</Line>
           <Line>58</Line>
+          <Line>59</Line>
+          <Line>60</Line>
+          <Line>61</Line>
           <Line>62</Line>
           <Line>64</Line>
           <Line>65</Line>
           <Line>69</Line>
           <Line>71</Line>
           <Line>72</Line>
-          <Line>73</Line>
-          <Line>74</Line>
-          <Line>75</Line>
           <Line>76</Line>
-          <Line>77</Line>
           <Line>78</Line>
+          <Line>79</Line>
+          <Line>80</Line>
+          <Line>81</Line>
+          <Line>82</Line>
+          <Line>83</Line>
+          <Line>84</Line>
+          <Line>85</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
         <Issue>
           <Id>S2696</Id>
-          <Line>29</Line>
+          <Line>36</Line>
           <Message>Make the enclosing method "static" or remove this set.</Message>
         </Issue>
         <Issue>
+          <Id>S1144</Id>
+          <Line>34</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>40</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>52</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
           <Id>S1066</Id>
-          <Line>49</Line>
+          <Line>56</Line>
           <Message>Merge this if statement with the enclosing one.</Message>
         </Issue>
         <Issue>
-          <Id>S1144</Id>
-          <Line>27</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1144</Id>
-          <Line>33</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1144</Id>
-          <Line>45</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
           <Id>S1449</Id>
-          <Line>75</Line>
+          <Line>82</Line>
           <Message>Define the locale to be used in this String operation.</Message>
         </Issue>
       </Issues>
@@ -698,16 +704,16 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\ButtonScripts\BluetoothEnable.cs</Path>
       <Metrics>
-        <Lines>75</Lines>
+        <Lines>89</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
-        <Statements>15</Statements>
-        <Functions>6</Functions>
-        <PublicApi>4</PublicApi>
-        <PublicUndocumentedApi>4</PublicUndocumentedApi>
-        <Complexity>10</Complexity>
+        <Statements>19</Statements>
+        <Functions>7</Functions>
+        <PublicApi>5</PublicApi>
+        <PublicUndocumentedApi>5</PublicUndocumentedApi>
+        <Complexity>12</Complexity>
         <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=4;2=1;4=1;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <FunctionComplexityDistribution>1=4;2=2;4=1;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank>
@@ -771,8 +777,20 @@
           <Line>70</Line>
           <Line>71</Line>
           <Line>72</Line>
-          <Line>73</Line>
           <Line>74</Line>
+          <Line>75</Line>
+          <Line>76</Line>
+          <Line>77</Line>
+          <Line>78</Line>
+          <Line>79</Line>
+          <Line>80</Line>
+          <Line>82</Line>
+          <Line>83</Line>
+          <Line>84</Line>
+          <Line>85</Line>
+          <Line>86</Line>
+          <Line>87</Line>
+          <Line>88</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
@@ -805,12 +823,12 @@
         <Classes>1</Classes>
         <Accessors>0</Accessors>
         <Statements>14</Statements>
-        <Functions>4</Functions>
-        <PublicApi>6</PublicApi>
-        <PublicUndocumentedApi>6</PublicUndocumentedApi>
-        <Complexity>8</Complexity>
+        <Functions>7</Functions>
+        <PublicApi>7</PublicApi>
+        <PublicUndocumentedApi>7</PublicUndocumentedApi>
+        <Complexity>9</Complexity>
         <FileComplexityDistribution>0=0;5=1;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=2;2=2;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <FunctionComplexityDistribution>1=5;2=2;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank />
@@ -842,33 +860,32 @@
           <Line>29</Line>
           <Line>30</Line>
           <Line>31</Line>
-          <Line>32</Line>
           <Line>33</Line>
           <Line>34</Line>
           <Line>35</Line>
           <Line>36</Line>
           <Line>37</Line>
           <Line>38</Line>
-          <Line>39</Line>
           <Line>40</Line>
           <Line>41</Line>
           <Line>42</Line>
+          <Line>43</Line>
           <Line>44</Line>
           <Line>45</Line>
           <Line>46</Line>
-          <Line>47</Line>
           <Line>48</Line>
           <Line>49</Line>
           <Line>50</Line>
           <Line>51</Line>
           <Line>52</Line>
           <Line>53</Line>
-          <Line>54</Line>
           <Line>55</Line>
           <Line>56</Line>
           <Line>57</Line>
           <Line>58</Line>
           <Line>59</Line>
+          <Line>60</Line>
+          <Line>61</Line>
           <Line>62</Line>
           <Line>63</Line>
         </LinesOfCode>
@@ -889,7 +906,7 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\ButtonScripts\ListOfPOI.cs</Path>
       <Metrics>
-        <Lines>56</Lines>
+        <Lines>50</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
         <Statements>5</Statements>
@@ -902,8 +919,8 @@
         <Comments>
           <NoSonar />
           <NonBlank>
-            <Line>29</Line>
-            <Line>36</Line>
+            <Line>23</Line>
+            <Line>30</Line>
           </NonBlank>
         </Comments>
         <LinesOfCode>
@@ -921,59 +938,44 @@
           <Line>15</Line>
           <Line>16</Line>
           <Line>18</Line>
-          <Line>19</Line>
           <Line>20</Line>
           <Line>21</Line>
-          <Line>23</Line>
           <Line>24</Line>
-          <Line>26</Line>
+          <Line>25</Line>
           <Line>27</Line>
-          <Line>30</Line>
+          <Line>28</Line>
           <Line>31</Line>
           <Line>33</Line>
-          <Line>34</Line>
+          <Line>35</Line>
+          <Line>36</Line>
           <Line>37</Line>
-          <Line>39</Line>
+          <Line>38</Line>
+          <Line>40</Line>
           <Line>41</Line>
           <Line>42</Line>
           <Line>43</Line>
-          <Line>44</Line>
+          <Line>45</Line>
           <Line>46</Line>
           <Line>47</Line>
           <Line>48</Line>
           <Line>49</Line>
-          <Line>51</Line>
-          <Line>52</Line>
-          <Line>53</Line>
-          <Line>54</Line>
-          <Line>55</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
         <Issue>
           <Id>S1144</Id>
-          <Line>30</Line>
+          <Line>24</Line>
           <Message>Remove this unused private member.</Message>
         </Issue>
         <Issue>
           <Id>S1144</Id>
-          <Line>37</Line>
+          <Line>31</Line>
           <Message>Remove this unused private member.</Message>
         </Issue>
         <Issue>
           <Id>S2933</Id>
-          <Line>26</Line>
-          <Message>Make "description3" "readonly".</Message>
-        </Issue>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>23</Line>
+          <Line>20</Line>
           <Message>Make "description2" "readonly".</Message>
-        </Issue>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>16</Line>
-          <Message>Make "title3" "readonly".</Message>
         </Issue>
         <Issue>
           <Id>S2933</Id>
@@ -982,13 +984,23 @@
         </Issue>
         <Issue>
           <Id>S2933</Id>
-          <Line>18</Line>
-          <Message>Make "description1" "readonly".</Message>
+          <Line>21</Line>
+          <Message>Make "description3" "readonly".</Message>
         </Issue>
         <Issue>
           <Id>S2933</Id>
           <Line>15</Line>
           <Message>Make "title2" "readonly".</Message>
+        </Issue>
+        <Issue>
+          <Id>S2933</Id>
+          <Line>18</Line>
+          <Message>Make "description1" "readonly".</Message>
+        </Issue>
+        <Issue>
+          <Id>S2933</Id>
+          <Line>16</Line>
+          <Message>Make "title3" "readonly".</Message>
         </Issue>
       </Issues>
     </File>
@@ -1173,6 +1185,133 @@
       </Issues>
     </File>
     <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Camera\TouchCamera.cs</Path>
+      <Metrics>
+        <Lines>180</Lines>
+        <Classes>1</Classes>
+        <Accessors>0</Accessors>
+        <Statements>28</Statements>
+        <Functions>4</Functions>
+        <PublicApi>10</PublicApi>
+        <PublicUndocumentedApi>9</PublicUndocumentedApi>
+        <Complexity>17</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=0;2=3;4=0;6=0;8=0;10=1;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank>
+            <Line>27</Line>
+            <Line>37</Line>
+            <Line>57</Line>
+            <Line>63</Line>
+            <Line>74</Line>
+            <Line>75</Line>
+            <Line>76</Line>
+            <Line>77</Line>
+            <Line>78</Line>
+            <Line>79</Line>
+            <Line>88</Line>
+            <Line>91</Line>
+            <Line>93</Line>
+            <Line>95</Line>
+            <Line>116</Line>
+            <Line>144</Line>
+            <Line>145</Line>
+            <Line>146</Line>
+            <Line>147</Line>
+            <Line>148</Line>
+            <Line>149</Line>
+          </NonBlank>
+        </Comments>
+        <LinesOfCode>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>6</Line>
+          <Line>7</Line>
+          <Line>8</Line>
+          <Line>11</Line>
+          <Line>12</Line>
+          <Line>13</Line>
+          <Line>14</Line>
+          <Line>15</Line>
+          <Line>16</Line>
+          <Line>17</Line>
+          <Line>18</Line>
+          <Line>19</Line>
+          <Line>20</Line>
+          <Line>21</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>24</Line>
+          <Line>25</Line>
+          <Line>28</Line>
+          <Line>29</Line>
+          <Line>31</Line>
+          <Line>33</Line>
+          <Line>35</Line>
+          <Line>37</Line>
+          <Line>39</Line>
+          <Line>41</Line>
+          <Line>44</Line>
+          <Line>46</Line>
+          <Line>49</Line>
+          <Line>51</Line>
+          <Line>54</Line>
+          <Line>57</Line>
+          <Line>60</Line>
+          <Line>63</Line>
+          <Line>67</Line>
+          <Line>69</Line>
+          <Line>82</Line>
+          <Line>86</Line>
+          <Line>91</Line>
+          <Line>95</Line>
+          <Line>99</Line>
+          <Line>102</Line>
+          <Line>105</Line>
+          <Line>109</Line>
+          <Line>113</Line>
+          <Line>120</Line>
+          <Line>124</Line>
+          <Line>128</Line>
+          <Line>132</Line>
+          <Line>136</Line>
+          <Line>140</Line>
+          <Line>151</Line>
+          <Line>154</Line>
+          <Line>157</Line>
+          <Line>161</Line>
+          <Line>165</Line>
+          <Line>169</Line>
+          <Line>173</Line>
+          <Line>177</Line>
+          <Line>179</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S125</Id>
+          <Line>116</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>21</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>33</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>82</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Camera\TouchScreenCamera.cs</Path>
       <Metrics>
         <Lines>156</Lines>
@@ -1345,12 +1484,314 @@
       </Issues>
     </File>
     <File>
-      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\Audio.cs</Path>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Camera\Zoom.cs</Path>
       <Metrics>
-        <Lines>17</Lines>
+        <Lines>56</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
-        <Statements>1</Statements>
+        <Statements>10</Statements>
+        <Functions>1</Functions>
+        <PublicApi>3</PublicApi>
+        <PublicUndocumentedApi>3</PublicUndocumentedApi>
+        <Complexity>2</Complexity>
+        <FileComplexityDistribution>0=1;5=0;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=0;2=1;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank>
+            <Line>7</Line>
+            <Line>8</Line>
+            <Line>14</Line>
+            <Line>17</Line>
+            <Line>21</Line>
+            <Line>25</Line>
+            <Line>29</Line>
+            <Line>33</Line>
+            <Line>34</Line>
+            <Line>36</Line>
+            <Line>37</Line>
+            <Line>39</Line>
+            <Line>40</Line>
+            <Line>42</Line>
+            <Line>44</Line>
+            <Line>47</Line>
+          </NonBlank>
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>4</Line>
+          <Line>7</Line>
+          <Line>8</Line>
+          <Line>12</Line>
+          <Line>13</Line>
+          <Line>15</Line>
+          <Line>16</Line>
+          <Line>18</Line>
+          <Line>19</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>26</Line>
+          <Line>27</Line>
+          <Line>30</Line>
+          <Line>45</Line>
+          <Line>48</Line>
+          <Line>49</Line>
+          <Line>50</Line>
+          <Line>51</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S125</Id>
+          <Line>34</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>12</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Driver\FreeRoamingDriver.cs</Path>
+      <Metrics>
+        <Lines>90</Lines>
+        <Classes>1</Classes>
+        <Accessors>0</Accessors>
+        <Statements>20</Statements>
+        <Functions>5</Functions>
+        <PublicApi>6</PublicApi>
+        <PublicUndocumentedApi>6</PublicUndocumentedApi>
+        <Complexity>11</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=4;2=0;4=0;6=1;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank>
+            <Line>20</Line>
+            <Line>26</Line>
+            <Line>47</Line>
+            <Line>78</Line>
+            <Line>83</Line>
+          </NonBlank>
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>5</Line>
+          <Line>7</Line>
+          <Line>9</Line>
+          <Line>10</Line>
+          <Line>12</Line>
+          <Line>13</Line>
+          <Line>15</Line>
+          <Line>16</Line>
+          <Line>18</Line>
+          <Line>21</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>24</Line>
+          <Line>27</Line>
+          <Line>28</Line>
+          <Line>29</Line>
+          <Line>31</Line>
+          <Line>32</Line>
+          <Line>33</Line>
+          <Line>34</Line>
+          <Line>36</Line>
+          <Line>37</Line>
+          <Line>38</Line>
+          <Line>40</Line>
+          <Line>41</Line>
+          <Line>43</Line>
+          <Line>44</Line>
+          <Line>46</Line>
+          <Line>50</Line>
+          <Line>52</Line>
+          <Line>53</Line>
+          <Line>54</Line>
+          <Line>56</Line>
+          <Line>57</Line>
+          <Line>59</Line>
+          <Line>61</Line>
+          <Line>62</Line>
+          <Line>64</Line>
+          <Line>66</Line>
+          <Line>69</Line>
+          <Line>71</Line>
+          <Line>72</Line>
+          <Line>74</Line>
+          <Line>76</Line>
+          <Line>77</Line>
+          <Line>78</Line>
+          <Line>79</Line>
+          <Line>80</Line>
+          <Line>81</Line>
+          <Line>84</Line>
+          <Line>85</Line>
+          <Line>86</Line>
+          <Line>87</Line>
+          <Line>88</Line>
+          <Line>89</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S125</Id>
+          <Line>83</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>21</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>27</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S2933</Id>
+          <Line>12</Line>
+          <Message>Make "minSwipeDistX" "readonly".</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Driver\StorylineDriver.cs</Path>
+      <Metrics>
+        <Lines>105</Lines>
+        <Classes>1</Classes>
+        <Accessors>0</Accessors>
+        <Statements>27</Statements>
+        <Functions>5</Functions>
+        <PublicApi>7</PublicApi>
+        <PublicUndocumentedApi>7</PublicUndocumentedApi>
+        <Complexity>11</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=4;2=0;4=0;6=1;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank>
+            <Line>25</Line>
+            <Line>31</Line>
+            <Line>60</Line>
+            <Line>92</Line>
+            <Line>97</Line>
+          </NonBlank>
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>5</Line>
+          <Line>6</Line>
+          <Line>7</Line>
+          <Line>9</Line>
+          <Line>10</Line>
+          <Line>11</Line>
+          <Line>12</Line>
+          <Line>13</Line>
+          <Line>14</Line>
+          <Line>16</Line>
+          <Line>17</Line>
+          <Line>19</Line>
+          <Line>20</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>26</Line>
+          <Line>27</Line>
+          <Line>28</Line>
+          <Line>29</Line>
+          <Line>32</Line>
+          <Line>33</Line>
+          <Line>34</Line>
+          <Line>35</Line>
+          <Line>36</Line>
+          <Line>38</Line>
+          <Line>39</Line>
+          <Line>40</Line>
+          <Line>41</Line>
+          <Line>43</Line>
+          <Line>44</Line>
+          <Line>45</Line>
+          <Line>47</Line>
+          <Line>49</Line>
+          <Line>51</Line>
+          <Line>52</Line>
+          <Line>54</Line>
+          <Line>55</Line>
+          <Line>56</Line>
+          <Line>57</Line>
+          <Line>59</Line>
+          <Line>61</Line>
+          <Line>62</Line>
+          <Line>64</Line>
+          <Line>66</Line>
+          <Line>67</Line>
+          <Line>68</Line>
+          <Line>70</Line>
+          <Line>71</Line>
+          <Line>73</Line>
+          <Line>75</Line>
+          <Line>76</Line>
+          <Line>78</Line>
+          <Line>80</Line>
+          <Line>83</Line>
+          <Line>85</Line>
+          <Line>86</Line>
+          <Line>88</Line>
+          <Line>90</Line>
+          <Line>91</Line>
+          <Line>92</Line>
+          <Line>93</Line>
+          <Line>94</Line>
+          <Line>95</Line>
+          <Line>98</Line>
+          <Line>99</Line>
+          <Line>100</Line>
+          <Line>101</Line>
+          <Line>102</Line>
+          <Line>103</Line>
+          <Line>104</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S125</Id>
+          <Line>97</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>26</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>32</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S2933</Id>
+          <Line>16</Line>
+          <Message>Make "minSwipeDistX" "readonly".</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\Audio.cs</Path>
+      <Metrics>
+        <Lines>15</Lines>
+        <Classes>1</Classes>
+        <Accessors>0</Accessors>
+        <Statements>0</Statements>
         <Functions>1</Functions>
         <PublicApi>2</PublicApi>
         <PublicUndocumentedApi>2</PublicUndocumentedApi>
@@ -1375,28 +1816,20 @@
           <Line>12</Line>
           <Line>13</Line>
           <Line>14</Line>
-          <Line>15</Line>
-          <Line>16</Line>
         </LinesOfCode>
       </Metrics>
-      <Issues>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>10</Line>
-          <Message>Make "filePath" "readonly".</Message>
-        </Issue>
-      </Issues>
+      <Issues />
     </File>
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\ExhibitionContent.cs</Path>
       <Metrics>
-        <Lines>18</Lines>
+        <Lines>19</Lines>
         <Classes>1</Classes>
-        <Accessors>0</Accessors>
+        <Accessors>6</Accessors>
         <Statements>3</Statements>
         <Functions>1</Functions>
-        <PublicApi>2</PublicApi>
-        <PublicUndocumentedApi>2</PublicUndocumentedApi>
+        <PublicApi>4</PublicApi>
+        <PublicUndocumentedApi>4</PublicUndocumentedApi>
         <Complexity>1</Complexity>
         <FileComplexityDistribution>0=1;5=0;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
         <FunctionComplexityDistribution>1=1;2=0;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
@@ -1407,8 +1840,9 @@
         <LinesOfCode>
           <Line>1</Line>
           <Line>2</Line>
-          <Line>4</Line>
+          <Line>3</Line>
           <Line>5</Line>
+          <Line>6</Line>
           <Line>7</Line>
           <Line>8</Line>
           <Line>9</Line>
@@ -1421,31 +1855,15 @@
           <Line>17</Line>
         </LinesOfCode>
       </Metrics>
-      <Issues>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>9</Line>
-          <Message>Make "storylineID" "readonly".</Message>
-        </Issue>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>7</Line>
-          <Message>Make "contentID" "readonly".</Message>
-        </Issue>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>8</Line>
-          <Message>Make "title" "readonly".</Message>
-        </Issue>
-      </Issues>
+      <Issues />
     </File>
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\Image.cs</Path>
       <Metrics>
-        <Lines>21</Lines>
+        <Lines>16</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
-        <Statements>3</Statements>
+        <Statements>0</Statements>
         <Functions>1</Functions>
         <PublicApi>2</PublicApi>
         <PublicUndocumentedApi>2</PublicUndocumentedApi>
@@ -1465,44 +1883,22 @@
           <Line>7</Line>
           <Line>8</Line>
           <Line>9</Line>
-          <Line>10</Line>
           <Line>11</Line>
           <Line>12</Line>
           <Line>13</Line>
           <Line>14</Line>
           <Line>15</Line>
-          <Line>16</Line>
-          <Line>17</Line>
-          <Line>18</Line>
-          <Line>19</Line>
-          <Line>20</Line>
         </LinesOfCode>
       </Metrics>
-      <Issues>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>12</Line>
-          <Message>Make "height" "readonly".</Message>
-        </Issue>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>10</Line>
-          <Message>Make "filePath" "readonly".</Message>
-        </Issue>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>11</Line>
-          <Message>Make "width" "readonly".</Message>
-        </Issue>
-      </Issues>
+      <Issues />
     </File>
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\Text.cs</Path>
       <Metrics>
-        <Lines>17</Lines>
+        <Lines>15</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
-        <Statements>1</Statements>
+        <Statements>0</Statements>
         <Functions>1</Functions>
         <PublicApi>2</PublicApi>
         <PublicUndocumentedApi>2</PublicUndocumentedApi>
@@ -1527,17 +1923,9 @@
           <Line>12</Line>
           <Line>13</Line>
           <Line>14</Line>
-          <Line>15</Line>
-          <Line>16</Line>
         </LinesOfCode>
       </Metrics>
-      <Issues>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>10</Line>
-          <Message>Make "htmlContent" "readonly".</Message>
-        </Issue>
-      </Issues>
+      <Issues />
     </File>
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\Vibration.cs</Path>
@@ -1622,10 +2010,10 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Exhibition Content\Video.cs</Path>
       <Metrics>
-        <Lines>17</Lines>
+        <Lines>16</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
-        <Statements>1</Statements>
+        <Statements>0</Statements>
         <Functions>1</Functions>
         <PublicApi>2</PublicApi>
         <PublicUndocumentedApi>2</PublicUndocumentedApi>
@@ -1645,22 +2033,14 @@
           <Line>7</Line>
           <Line>8</Line>
           <Line>9</Line>
-          <Line>10</Line>
           <Line>11</Line>
           <Line>12</Line>
           <Line>13</Line>
           <Line>14</Line>
           <Line>15</Line>
-          <Line>16</Line>
         </LinesOfCode>
       </Metrics>
-      <Issues>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>10</Line>
-          <Message>Make "videoPath" "readonly".</Message>
-        </Issue>
-      </Issues>
+      <Issues />
     </File>
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Language\Language.cs</Path>
@@ -1695,16 +2075,16 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Language\PoiDescription.cs</Path>
       <Metrics>
-        <Lines>20</Lines>
+        <Lines>42</Lines>
         <Classes>1</Classes>
-        <Accessors>4</Accessors>
-        <Statements>2</Statements>
-        <Functions>1</Functions>
-        <PublicApi>4</PublicApi>
-        <PublicUndocumentedApi>4</PublicUndocumentedApi>
-        <Complexity>1</Complexity>
-        <FileComplexityDistribution>0=1;5=0;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=1;2=0;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Accessors>6</Accessors>
+        <Statements>10</Statements>
+        <Functions>2</Functions>
+        <PublicApi>6</PublicApi>
+        <PublicUndocumentedApi>6</PublicUndocumentedApi>
+        <Complexity>8</Complexity>
+        <FileComplexityDistribution>0=0;5=1;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=1;2=0;4=0;6=1;8=0;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank />
@@ -1720,30 +2100,59 @@
           <Line>9</Line>
           <Line>10</Line>
           <Line>11</Line>
-          <Line>13</Line>
+          <Line>12</Line>
           <Line>14</Line>
           <Line>15</Line>
           <Line>16</Line>
           <Line>17</Line>
           <Line>18</Line>
           <Line>19</Line>
+          <Line>21</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>24</Line>
+          <Line>25</Line>
+          <Line>26</Line>
+          <Line>27</Line>
+          <Line>28</Line>
+          <Line>29</Line>
+          <Line>30</Line>
+          <Line>32</Line>
+          <Line>33</Line>
+          <Line>34</Line>
+          <Line>35</Line>
+          <Line>37</Line>
+          <Line>39</Line>
+          <Line>40</Line>
+          <Line>41</Line>
         </LinesOfCode>
       </Metrics>
-      <Issues />
+      <Issues>
+        <Issue>
+          <Id>S1449</Id>
+          <Line>27</Line>
+          <Message>Define the locale to be used in this String operation.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1449</Id>
+          <Line>32</Line>
+          <Message>Define the locale to be used in this String operation.</Message>
+        </Issue>
+      </Issues>
     </File>
     <File>
-      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Language\StorylineDescription.cs</Path>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Language\StoryPointDescription.cs</Path>
       <Metrics>
-        <Lines>20</Lines>
+        <Lines>38</Lines>
         <Classes>1</Classes>
-        <Accessors>4</Accessors>
-        <Statements>2</Statements>
-        <Functions>1</Functions>
-        <PublicApi>4</PublicApi>
-        <PublicUndocumentedApi>4</PublicUndocumentedApi>
-        <Complexity>1</Complexity>
-        <FileComplexityDistribution>0=1;5=0;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=1;2=0;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Accessors>6</Accessors>
+        <Statements>8</Statements>
+        <Functions>2</Functions>
+        <PublicApi>6</PublicApi>
+        <PublicUndocumentedApi>6</PublicUndocumentedApi>
+        <Complexity>6</Complexity>
+        <FileComplexityDistribution>0=0;5=1;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=1;2=0;4=1;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank />
@@ -1759,27 +2168,52 @@
           <Line>9</Line>
           <Line>10</Line>
           <Line>11</Line>
-          <Line>13</Line>
+          <Line>12</Line>
           <Line>14</Line>
           <Line>15</Line>
           <Line>16</Line>
           <Line>17</Line>
           <Line>18</Line>
           <Line>19</Line>
+          <Line>21</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>24</Line>
+          <Line>25</Line>
+          <Line>26</Line>
+          <Line>28</Line>
+          <Line>29</Line>
+          <Line>30</Line>
+          <Line>31</Line>
+          <Line>33</Line>
+          <Line>35</Line>
+          <Line>36</Line>
+          <Line>37</Line>
         </LinesOfCode>
       </Metrics>
-      <Issues />
+      <Issues>
+        <Issue>
+          <Id>S1449</Id>
+          <Line>23</Line>
+          <Message>Define the locale to be used in this String operation.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1449</Id>
+          <Line>28</Line>
+          <Message>Define the locale to be used in this String operation.</Message>
+        </Issue>
+      </Issues>
     </File>
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Edge.cs</Path>
       <Metrics>
-        <Lines>36</Lines>
+        <Lines>37</Lines>
         <Classes>1</Classes>
-        <Accessors>8</Accessors>
-        <Statements>4</Statements>
+        <Accessors>12</Accessors>
+        <Statements>3</Statements>
         <Functions>3</Functions>
-        <PublicApi>2</PublicApi>
-        <PublicUndocumentedApi>2</PublicUndocumentedApi>
+        <PublicApi>8</PublicApi>
+        <PublicUndocumentedApi>8</PublicUndocumentedApi>
         <Complexity>3</Complexity>
         <FileComplexityDistribution>0=1;5=0;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
         <FunctionComplexityDistribution>1=3;2=0;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
@@ -1806,15 +2240,16 @@
           <Line>21</Line>
           <Line>22</Line>
           <Line>23</Line>
+          <Line>25</Line>
           <Line>26</Line>
-          <Line>27</Line>
           <Line>28</Line>
           <Line>29</Line>
           <Line>30</Line>
           <Line>31</Line>
           <Line>32</Line>
-          <Line>34</Line>
+          <Line>33</Line>
           <Line>35</Line>
+          <Line>36</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
@@ -1827,384 +2262,193 @@
           <Id>S1144</Id>
           <Line>15</Line>
           <Message>Remove this unused private member.</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\FloorPlan.cs</Path>
+      <Metrics>
+        <Lines>47</Lines>
+        <Classes>1</Classes>
+        <Accessors>8</Accessors>
+        <Statements>10</Statements>
+        <Functions>3</Functions>
+        <PublicApi>7</PublicApi>
+        <PublicUndocumentedApi>7</PublicUndocumentedApi>
+        <Complexity>3</Complexity>
+        <FileComplexityDistribution>0=1;5=0;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=3;2=0;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank>
+            <Line>41</Line>
+          </NonBlank>
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>5</Line>
+          <Line>6</Line>
+          <Line>7</Line>
+          <Line>8</Line>
+          <Line>10</Line>
+          <Line>11</Line>
+          <Line>12</Line>
+          <Line>13</Line>
+          <Line>14</Line>
+          <Line>15</Line>
+          <Line>16</Line>
+          <Line>17</Line>
+          <Line>18</Line>
+          <Line>19</Line>
+          <Line>21</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>24</Line>
+          <Line>25</Line>
+          <Line>26</Line>
+          <Line>27</Line>
+          <Line>29</Line>
+          <Line>30</Line>
+          <Line>31</Line>
+          <Line>32</Line>
+          <Line>34</Line>
+          <Line>35</Line>
+          <Line>36</Line>
+          <Line>37</Line>
+          <Line>38</Line>
+          <Line>39</Line>
+          <Line>40</Line>
+          <Line>42</Line>
+          <Line>45</Line>
+          <Line>46</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S125</Id>
+          <Line>41</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>29</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S2933</Id>
+          <Line>14</Line>
+          <Message>Make "prefix" "readonly".</Message>
         </Issue>
       </Issues>
     </File>
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Graph.cs</Path>
       <Metrics>
-        <Lines>236</Lines>
+        <Lines>330</Lines>
         <Classes>1</Classes>
-        <Accessors>2</Accessors>
-        <Statements>75</Statements>
-        <Functions>11</Functions>
-        <PublicApi>11</PublicApi>
-        <PublicUndocumentedApi>7</PublicUndocumentedApi>
-        <Complexity>40</Complexity>
-        <FileComplexityDistribution>0=0;5=0;10=0;20=0;30=1;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=3;2=4;4=1;6=1;8=2;10=0;12=0</FunctionComplexityDistribution>
-        <Comments>
-          <NoSonar />
-          <NonBlank>
-            <Line>9</Line>
-            <Line>13</Line>
-            <Line>23</Line>
-            <Line>32</Line>
-            <Line>56</Line>
-            <Line>62</Line>
-            <Line>63</Line>
-            <Line>92</Line>
-            <Line>100</Line>
-            <Line>101</Line>
-            <Line>109</Line>
-            <Line>124</Line>
-            <Line>135</Line>
-            <Line>153</Line>
-            <Line>154</Line>
-            <Line>157</Line>
-            <Line>159</Line>
-            <Line>161</Line>
-            <Line>162</Line>
-            <Line>165</Line>
-            <Line>168</Line>
-            <Line>171</Line>
-            <Line>176</Line>
-            <Line>187</Line>
-            <Line>188</Line>
-            <Line>189</Line>
-            <Line>200</Line>
-            <Line>201</Line>
-            <Line>217</Line>
-            <Line>219</Line>
-          </NonBlank>
-        </Comments>
-        <LinesOfCode>
-          <Line>1</Line>
-          <Line>2</Line>
-          <Line>3</Line>
-          <Line>4</Line>
-          <Line>5</Line>
-          <Line>7</Line>
-          <Line>8</Line>
-          <Line>11</Line>
-          <Line>14</Line>
-          <Line>16</Line>
-          <Line>17</Line>
-          <Line>18</Line>
-          <Line>20</Line>
-          <Line>24</Line>
-          <Line>25</Line>
-          <Line>26</Line>
-          <Line>27</Line>
-          <Line>28</Line>
-          <Line>29</Line>
-          <Line>30</Line>
-          <Line>33</Line>
-          <Line>34</Line>
-          <Line>35</Line>
-          <Line>36</Line>
-          <Line>38</Line>
-          <Line>39</Line>
-          <Line>42</Line>
-          <Line>43</Line>
-          <Line>44</Line>
-          <Line>45</Line>
-          <Line>48</Line>
-          <Line>49</Line>
-          <Line>51</Line>
-          <Line>52</Line>
-          <Line>54</Line>
-          <Line>55</Line>
-          <Line>57</Line>
-          <Line>58</Line>
-          <Line>60</Line>
-          <Line>61</Line>
-          <Line>64</Line>
-          <Line>66</Line>
-          <Line>67</Line>
-          <Line>68</Line>
-          <Line>69</Line>
-          <Line>71</Line>
-          <Line>72</Line>
-          <Line>73</Line>
-          <Line>74</Line>
-          <Line>75</Line>
-          <Line>76</Line>
-          <Line>78</Line>
-          <Line>80</Line>
-          <Line>81</Line>
-          <Line>82</Line>
-          <Line>83</Line>
-          <Line>84</Line>
-          <Line>87</Line>
-          <Line>88</Line>
-          <Line>89</Line>
-          <Line>90</Line>
-          <Line>93</Line>
-          <Line>94</Line>
-          <Line>95</Line>
-          <Line>96</Line>
-          <Line>98</Line>
-          <Line>99</Line>
-          <Line>102</Line>
-          <Line>104</Line>
-          <Line>105</Line>
-          <Line>106</Line>
-          <Line>107</Line>
-          <Line>108</Line>
-          <Line>110</Line>
-          <Line>111</Line>
-          <Line>112</Line>
-          <Line>113</Line>
-          <Line>114</Line>
-          <Line>115</Line>
-          <Line>116</Line>
-          <Line>118</Line>
-          <Line>119</Line>
-          <Line>125</Line>
-          <Line>126</Line>
-          <Line>127</Line>
-          <Line>128</Line>
-          <Line>129</Line>
-          <Line>130</Line>
-          <Line>131</Line>
-          <Line>132</Line>
-          <Line>133</Line>
-          <Line>136</Line>
-          <Line>137</Line>
-          <Line>138</Line>
-          <Line>139</Line>
-          <Line>140</Line>
-          <Line>141</Line>
-          <Line>142</Line>
-          <Line>144</Line>
-          <Line>145</Line>
-          <Line>146</Line>
-          <Line>147</Line>
-          <Line>148</Line>
-          <Line>149</Line>
-          <Line>150</Line>
-          <Line>155</Line>
-          <Line>156</Line>
-          <Line>158</Line>
-          <Line>160</Line>
-          <Line>163</Line>
-          <Line>166</Line>
-          <Line>169</Line>
-          <Line>170</Line>
-          <Line>172</Line>
-          <Line>173</Line>
-          <Line>174</Line>
-          <Line>175</Line>
-          <Line>177</Line>
-          <Line>178</Line>
-          <Line>179</Line>
-          <Line>180</Line>
-          <Line>182</Line>
-          <Line>183</Line>
-          <Line>185</Line>
-          <Line>186</Line>
-          <Line>190</Line>
-          <Line>192</Line>
-          <Line>193</Line>
-          <Line>195</Line>
-          <Line>196</Line>
-          <Line>197</Line>
-          <Line>198</Line>
-          <Line>199</Line>
-          <Line>202</Line>
-          <Line>203</Line>
-          <Line>204</Line>
-          <Line>206</Line>
-          <Line>207</Line>
-          <Line>209</Line>
-          <Line>210</Line>
-          <Line>211</Line>
-          <Line>212</Line>
-          <Line>214</Line>
-          <Line>215</Line>
-          <Line>216</Line>
-          <Line>218</Line>
-          <Line>220</Line>
-          <Line>221</Line>
-          <Line>222</Line>
-          <Line>223</Line>
-          <Line>224</Line>
-          <Line>225</Line>
-          <Line>226</Line>
-          <Line>228</Line>
-          <Line>229</Line>
-          <Line>230</Line>
-        </LinesOfCode>
-      </Metrics>
-      <Issues>
-        <Issue>
-          <Id>S1144</Id>
-          <Line>14</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1244</Id>
-          <Line>209</Line>
-          <Message>Use "&lt;=" or "&gt;=" instead of "==" and "!=".</Message>
-        </Issue>
-      </Issues>
-    </File>
-    <File>
-      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\LabeledNode.cs</Path>
-      <Metrics>
-        <Lines>30</Lines>
-        <Classes>1</Classes>
-        <Accessors>2</Accessors>
-        <Statements>1</Statements>
-        <Functions>1</Functions>
-        <PublicApi>3</PublicApi>
+        <Accessors>0</Accessors>
+        <Statements>76</Statements>
+        <Functions>12</Functions>
+        <PublicApi>13</PublicApi>
         <PublicUndocumentedApi>3</PublicUndocumentedApi>
-        <Complexity>1</Complexity>
-        <FileComplexityDistribution>0=1;5=0;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=1;2=0;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
-        <Comments>
-          <NoSonar />
-          <NonBlank />
-        </Comments>
-        <LinesOfCode>
-          <Line>1</Line>
-          <Line>2</Line>
-          <Line>3</Line>
-          <Line>4</Line>
-          <Line>6</Line>
-          <Line>7</Line>
-          <Line>8</Line>
-          <Line>9</Line>
-          <Line>10</Line>
-          <Line>11</Line>
-          <Line>12</Line>
-          <Line>13</Line>
-          <Line>14</Line>
-          <Line>15</Line>
-          <Line>16</Line>
-          <Line>17</Line>
-          <Line>18</Line>
-          <Line>19</Line>
-          <Line>20</Line>
-          <Line>22</Line>
-          <Line>24</Line>
-          <Line>25</Line>
-          <Line>26</Line>
-          <Line>27</Line>
-          <Line>28</Line>
-          <Line>29</Line>
-        </LinesOfCode>
-      </Metrics>
-      <Issues />
-    </File>
-    <File>
-      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Map.cs</Path>
-      <Metrics>
-        <Lines>66</Lines>
-        <Classes>1</Classes>
-        <Accessors>0</Accessors>
-        <Statements>12</Statements>
-        <Functions>8</Functions>
-        <PublicApi>9</PublicApi>
-        <PublicUndocumentedApi>9</PublicUndocumentedApi>
-        <Complexity>9</Complexity>
-        <FileComplexityDistribution>0=0;5=1;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=7;2=1;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Complexity>41</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=0;20=0;30=1;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=4;2=4;4=1;6=1;8=2;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank>
+            <Line>10</Line>
+            <Line>26</Line>
+            <Line>28</Line>
+            <Line>29</Line>
             <Line>30</Line>
-          </NonBlank>
-        </Comments>
-        <LinesOfCode>
-          <Line>1</Line>
-          <Line>2</Line>
-          <Line>3</Line>
-          <Line>4</Line>
-          <Line>5</Line>
-          <Line>7</Line>
-          <Line>8</Line>
-          <Line>9</Line>
-          <Line>10</Line>
-          <Line>12</Line>
-          <Line>13</Line>
-          <Line>14</Line>
-          <Line>16</Line>
-          <Line>17</Line>
-          <Line>18</Line>
-          <Line>19</Line>
-          <Line>20</Line>
-          <Line>21</Line>
-          <Line>23</Line>
-          <Line>24</Line>
-          <Line>25</Line>
-          <Line>26</Line>
-          <Line>28</Line>
-          <Line>29</Line>
-          <Line>31</Line>
-          <Line>32</Line>
-          <Line>33</Line>
-          <Line>34</Line>
-          <Line>36</Line>
-          <Line>38</Line>
-          <Line>39</Line>
-          <Line>40</Line>
-          <Line>41</Line>
-          <Line>42</Line>
-          <Line>44</Line>
-          <Line>45</Line>
-          <Line>46</Line>
-          <Line>47</Line>
-          <Line>49</Line>
-          <Line>50</Line>
-          <Line>51</Line>
-          <Line>52</Line>
-          <Line>54</Line>
-          <Line>55</Line>
-          <Line>56</Line>
-          <Line>57</Line>
-          <Line>59</Line>
-          <Line>60</Line>
-          <Line>61</Line>
-          <Line>62</Line>
-          <Line>64</Line>
-          <Line>65</Line>
-        </LinesOfCode>
-      </Metrics>
-      <Issues>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>12</Line>
-          <Message>Make "storylines" "readonly".</Message>
-        </Issue>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>13</Line>
-          <Message>Make "mapGraph" "readonly".</Message>
-        </Issue>
-      </Issues>
-    </File>
-    <File>
-      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Node.cs</Path>
-      <Metrics>
-        <Lines>103</Lines>
-        <Classes>1</Classes>
-        <Accessors>0</Accessors>
-        <Statements>22</Statements>
-        <Functions>14</Functions>
-        <PublicApi>17</PublicApi>
-        <PublicUndocumentedApi>14</PublicUndocumentedApi>
-        <Complexity>14</Complexity>
-        <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=14;2=0;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
-        <Comments>
-          <NoSonar />
-          <NonBlank>
-            <Line>74</Line>
-            <Line>75</Line>
+            <Line>31</Line>
+            <Line>32</Line>
+            <Line>33</Line>
+            <Line>43</Line>
+            <Line>46</Line>
+            <Line>47</Line>
+            <Line>48</Line>
+            <Line>49</Line>
+            <Line>50</Line>
+            <Line>51</Line>
+            <Line>63</Line>
+            <Line>64</Line>
+            <Line>65</Line>
+            <Line>66</Line>
+            <Line>67</Line>
+            <Line>68</Line>
+            <Line>77</Line>
+            <Line>78</Line>
+            <Line>79</Line>
+            <Line>80</Line>
             <Line>81</Line>
-            <Line>87</Line>
+            <Line>82</Line>
+            <Line>92</Line>
+            <Line>98</Line>
+            <Line>99</Line>
+            <Line>118</Line>
+            <Line>119</Line>
+            <Line>120</Line>
+            <Line>121</Line>
+            <Line>122</Line>
+            <Line>123</Line>
+            <Line>133</Line>
+            <Line>134</Line>
+            <Line>135</Line>
+            <Line>136</Line>
+            <Line>137</Line>
+            <Line>138</Line>
+            <Line>146</Line>
+            <Line>154</Line>
+            <Line>155</Line>
+            <Line>163</Line>
+            <Line>178</Line>
+            <Line>182</Line>
+            <Line>183</Line>
+            <Line>184</Line>
+            <Line>185</Line>
+            <Line>186</Line>
+            <Line>187</Line>
+            <Line>199</Line>
+            <Line>202</Line>
+            <Line>203</Line>
+            <Line>204</Line>
+            <Line>205</Line>
+            <Line>206</Line>
+            <Line>207</Line>
+            <Line>220</Line>
+            <Line>221</Line>
+            <Line>222</Line>
+            <Line>223</Line>
+            <Line>224</Line>
+            <Line>225</Line>
+            <Line>237</Line>
+            <Line>238</Line>
+            <Line>242</Line>
+            <Line>243</Line>
+            <Line>244</Line>
+            <Line>245</Line>
+            <Line>246</Line>
+            <Line>247</Line>
+            <Line>251</Line>
+            <Line>253</Line>
+            <Line>255</Line>
+            <Line>256</Line>
+            <Line>259</Line>
+            <Line>262</Line>
+            <Line>265</Line>
+            <Line>270</Line>
+            <Line>281</Line>
+            <Line>282</Line>
+            <Line>283</Line>
+            <Line>294</Line>
+            <Line>295</Line>
+            <Line>311</Line>
+            <Line>313</Line>
           </NonBlank>
         </Comments>
         <LinesOfCode>
@@ -2214,47 +2458,237 @@
           <Line>4</Line>
           <Line>5</Line>
           <Line>6</Line>
+          <Line>8</Line>
           <Line>9</Line>
-          <Line>10</Line>
-          <Line>11</Line>
-          <Line>14</Line>
+          <Line>12</Line>
           <Line>15</Line>
           <Line>16</Line>
           <Line>17</Line>
           <Line>18</Line>
-          <Line>19</Line>
+          <Line>20</Line>
           <Line>21</Line>
           <Line>22</Line>
           <Line>23</Line>
-          <Line>24</Line>
-          <Line>25</Line>
-          <Line>26</Line>
-          <Line>27</Line>
-          <Line>28</Line>
-          <Line>30</Line>
-          <Line>31</Line>
-          <Line>32</Line>
-          <Line>33</Line>
-          <Line>34</Line>
+          <Line>35</Line>
           <Line>36</Line>
           <Line>37</Line>
           <Line>38</Line>
           <Line>39</Line>
           <Line>40</Line>
           <Line>41</Line>
+          <Line>53</Line>
+          <Line>54</Line>
+          <Line>55</Line>
+          <Line>56</Line>
+          <Line>58</Line>
+          <Line>59</Line>
+          <Line>71</Line>
+          <Line>72</Line>
+          <Line>73</Line>
+          <Line>74</Line>
+          <Line>84</Line>
+          <Line>85</Line>
+          <Line>87</Line>
+          <Line>88</Line>
+          <Line>90</Line>
+          <Line>91</Line>
+          <Line>93</Line>
+          <Line>94</Line>
+          <Line>96</Line>
+          <Line>97</Line>
+          <Line>100</Line>
+          <Line>102</Line>
+          <Line>103</Line>
+          <Line>104</Line>
+          <Line>105</Line>
+          <Line>107</Line>
+          <Line>108</Line>
+          <Line>109</Line>
+          <Line>110</Line>
+          <Line>111</Line>
+          <Line>112</Line>
+          <Line>114</Line>
+          <Line>125</Line>
+          <Line>126</Line>
+          <Line>127</Line>
+          <Line>128</Line>
+          <Line>129</Line>
+          <Line>141</Line>
+          <Line>142</Line>
+          <Line>143</Line>
+          <Line>144</Line>
+          <Line>147</Line>
+          <Line>148</Line>
+          <Line>149</Line>
+          <Line>150</Line>
+          <Line>152</Line>
+          <Line>153</Line>
+          <Line>156</Line>
+          <Line>158</Line>
+          <Line>159</Line>
+          <Line>160</Line>
+          <Line>161</Line>
+          <Line>162</Line>
+          <Line>164</Line>
+          <Line>165</Line>
+          <Line>166</Line>
+          <Line>167</Line>
+          <Line>168</Line>
+          <Line>169</Line>
+          <Line>170</Line>
+          <Line>172</Line>
+          <Line>173</Line>
+          <Line>189</Line>
+          <Line>190</Line>
+          <Line>191</Line>
+          <Line>192</Line>
+          <Line>193</Line>
+          <Line>194</Line>
+          <Line>195</Line>
+          <Line>196</Line>
+          <Line>197</Line>
+          <Line>209</Line>
+          <Line>210</Line>
+          <Line>211</Line>
+          <Line>212</Line>
+          <Line>213</Line>
+          <Line>214</Line>
+          <Line>215</Line>
+          <Line>228</Line>
+          <Line>229</Line>
+          <Line>230</Line>
+          <Line>231</Line>
+          <Line>232</Line>
+          <Line>233</Line>
+          <Line>234</Line>
+          <Line>249</Line>
+          <Line>250</Line>
+          <Line>252</Line>
+          <Line>254</Line>
+          <Line>257</Line>
+          <Line>260</Line>
+          <Line>263</Line>
+          <Line>264</Line>
+          <Line>266</Line>
+          <Line>267</Line>
+          <Line>268</Line>
+          <Line>269</Line>
+          <Line>271</Line>
+          <Line>272</Line>
+          <Line>273</Line>
+          <Line>274</Line>
+          <Line>276</Line>
+          <Line>277</Line>
+          <Line>279</Line>
+          <Line>280</Line>
+          <Line>284</Line>
+          <Line>286</Line>
+          <Line>287</Line>
+          <Line>289</Line>
+          <Line>290</Line>
+          <Line>291</Line>
+          <Line>292</Line>
+          <Line>293</Line>
+          <Line>296</Line>
+          <Line>297</Line>
+          <Line>298</Line>
+          <Line>300</Line>
+          <Line>301</Line>
+          <Line>303</Line>
+          <Line>304</Line>
+          <Line>305</Line>
+          <Line>306</Line>
+          <Line>308</Line>
+          <Line>309</Line>
+          <Line>310</Line>
+          <Line>312</Line>
+          <Line>314</Line>
+          <Line>315</Line>
+          <Line>316</Line>
+          <Line>317</Line>
+          <Line>318</Line>
+          <Line>319</Line>
+          <Line>320</Line>
+          <Line>322</Line>
+          <Line>323</Line>
+          <Line>324</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S1244</Id>
+          <Line>303</Line>
+          <Message>Use "&lt;=" or "&gt;=" instead of "==" and "!=".</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Map.cs</Path>
+      <Metrics>
+        <Lines>87</Lines>
+        <Classes>1</Classes>
+        <Accessors>0</Accessors>
+        <Statements>17</Statements>
+        <Functions>10</Functions>
+        <PublicApi>11</PublicApi>
+        <PublicUndocumentedApi>10</PublicUndocumentedApi>
+        <Complexity>12</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=9;2=1;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank>
+            <Line>41</Line>
+            <Line>58</Line>
+          </NonBlank>
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>5</Line>
+          <Line>6</Line>
+          <Line>7</Line>
+          <Line>9</Line>
+          <Line>10</Line>
+          <Line>11</Line>
+          <Line>12</Line>
+          <Line>14</Line>
+          <Line>15</Line>
+          <Line>16</Line>
+          <Line>17</Line>
+          <Line>19</Line>
+          <Line>20</Line>
+          <Line>21</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>24</Line>
+          <Line>25</Line>
+          <Line>28</Line>
+          <Line>29</Line>
+          <Line>30</Line>
+          <Line>31</Line>
+          <Line>33</Line>
+          <Line>34</Line>
+          <Line>35</Line>
+          <Line>36</Line>
+          <Line>38</Line>
+          <Line>39</Line>
+          <Line>40</Line>
           <Line>42</Line>
+          <Line>43</Line>
           <Line>44</Line>
           <Line>45</Line>
           <Line>46</Line>
           <Line>47</Line>
-          <Line>49</Line>
+          <Line>48</Line>
           <Line>50</Line>
-          <Line>51</Line>
           <Line>52</Line>
+          <Line>53</Line>
           <Line>54</Line>
           <Line>55</Line>
           <Line>56</Line>
-          <Line>57</Line>
           <Line>59</Line>
           <Line>60</Line>
           <Line>61</Line>
@@ -2267,63 +2701,65 @@
           <Line>70</Line>
           <Line>71</Line>
           <Line>72</Line>
+          <Line>74</Line>
+          <Line>75</Line>
           <Line>76</Line>
           <Line>77</Line>
-          <Line>78</Line>
           <Line>79</Line>
+          <Line>80</Line>
+          <Line>81</Line>
           <Line>82</Line>
-          <Line>83</Line>
-          <Line>84</Line>
           <Line>85</Line>
-          <Line>88</Line>
-          <Line>89</Line>
-          <Line>90</Line>
-          <Line>91</Line>
-          <Line>93</Line>
-          <Line>94</Line>
-          <Line>95</Line>
-          <Line>96</Line>
-          <Line>98</Line>
-          <Line>99</Line>
-          <Line>100</Line>
-          <Line>101</Line>
-          <Line>102</Line>
+          <Line>86</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
         <Issue>
-          <Id>S1144</Id>
-          <Line>30</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1117</Id>
-          <Line>64</Line>
-          <Message>Rename "id" which hides the field with the same name.</Message>
-        </Issue>
-        <Issue>
           <Id>S2933</Id>
-          <Line>16</Line>
-          <Message>Make "floorNumber" "readonly".</Message>
+          <Line>15</Line>
+          <Message>Make "mapGraph" "readonly".</Message>
         </Issue>
       </Issues>
     </File>
     <File>
-      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\PointOfInterest.cs</Path>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\MapController.cs</Path>
       <Metrics>
-        <Lines>138</Lines>
+        <Lines>239</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
-        <Statements>32</Statements>
-        <Functions>15</Functions>
-        <PublicApi>18</PublicApi>
-        <PublicUndocumentedApi>18</PublicUndocumentedApi>
-        <Complexity>17</Complexity>
-        <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=13;2=2;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Statements>82</Statements>
+        <Functions>8</Functions>
+        <PublicApi>8</PublicApi>
+        <PublicUndocumentedApi>8</PublicUndocumentedApi>
+        <Complexity>33</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=0;20=0;30=1;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=1;2=4;4=1;6=0;8=1;10=1;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
-          <NonBlank />
+          <NonBlank>
+            <Line>60</Line>
+            <Line>62</Line>
+            <Line>76</Line>
+            <Line>77</Line>
+            <Line>83</Line>
+            <Line>106</Line>
+            <Line>108</Line>
+            <Line>109</Line>
+            <Line>179</Line>
+            <Line>181</Line>
+            <Line>183</Line>
+            <Line>188</Line>
+            <Line>192</Line>
+            <Line>194</Line>
+            <Line>195</Line>
+            <Line>199</Line>
+            <Line>201</Line>
+            <Line>204</Line>
+            <Line>207</Line>
+            <Line>213</Line>
+            <Line>224</Line>
+            <Line>229</Line>
+          </NonBlank>
         </Comments>
         <LinesOfCode>
           <Line>1</Line>
@@ -2335,38 +2771,321 @@
           <Line>7</Line>
           <Line>8</Line>
           <Line>9</Line>
-          <Line>11</Line>
+          <Line>10</Line>
           <Line>12</Line>
           <Line>13</Line>
           <Line>14</Line>
           <Line>15</Line>
           <Line>16</Line>
+          <Line>17</Line>
           <Line>18</Line>
           <Line>19</Line>
-          <Line>20</Line>
           <Line>21</Line>
           <Line>22</Line>
+          <Line>23</Line>
           <Line>24</Line>
           <Line>26</Line>
           <Line>27</Line>
+          <Line>28</Line>
+          <Line>30</Line>
+          <Line>32</Line>
+          <Line>33</Line>
+          <Line>34</Line>
+          <Line>36</Line>
+          <Line>38</Line>
+          <Line>39</Line>
+          <Line>41</Line>
+          <Line>42</Line>
+          <Line>43</Line>
+          <Line>44</Line>
+          <Line>46</Line>
+          <Line>47</Line>
+          <Line>48</Line>
+          <Line>49</Line>
+          <Line>50</Line>
+          <Line>51</Line>
+          <Line>53</Line>
+          <Line>54</Line>
+          <Line>55</Line>
+          <Line>56</Line>
+          <Line>58</Line>
+          <Line>60</Line>
+          <Line>61</Line>
+          <Line>62</Line>
+          <Line>63</Line>
+          <Line>64</Line>
+          <Line>65</Line>
+          <Line>66</Line>
+          <Line>67</Line>
+          <Line>68</Line>
+          <Line>69</Line>
+          <Line>70</Line>
+          <Line>71</Line>
+          <Line>72</Line>
+          <Line>74</Line>
+          <Line>78</Line>
+          <Line>80</Line>
+          <Line>81</Line>
+          <Line>86</Line>
+          <Line>87</Line>
+          <Line>88</Line>
+          <Line>91</Line>
+          <Line>92</Line>
+          <Line>93</Line>
+          <Line>94</Line>
+          <Line>95</Line>
+          <Line>96</Line>
+          <Line>97</Line>
+          <Line>98</Line>
+          <Line>101</Line>
+          <Line>102</Line>
+          <Line>105</Line>
+          <Line>111</Line>
+          <Line>112</Line>
+          <Line>114</Line>
+          <Line>115</Line>
+          <Line>116</Line>
+          <Line>117</Line>
+          <Line>118</Line>
+          <Line>119</Line>
+          <Line>120</Line>
+          <Line>121</Line>
+          <Line>122</Line>
+          <Line>123</Line>
+          <Line>124</Line>
+          <Line>125</Line>
+          <Line>126</Line>
+          <Line>127</Line>
+          <Line>128</Line>
+          <Line>129</Line>
+          <Line>130</Line>
+          <Line>133</Line>
+          <Line>134</Line>
+          <Line>135</Line>
+          <Line>137</Line>
+          <Line>138</Line>
+          <Line>139</Line>
+          <Line>140</Line>
+          <Line>141</Line>
+          <Line>143</Line>
+          <Line>144</Line>
+          <Line>146</Line>
+          <Line>147</Line>
+          <Line>148</Line>
+          <Line>150</Line>
+          <Line>151</Line>
+          <Line>152</Line>
+          <Line>153</Line>
+          <Line>154</Line>
+          <Line>156</Line>
+          <Line>157</Line>
+          <Line>159</Line>
+          <Line>160</Line>
+          <Line>161</Line>
+          <Line>163</Line>
+          <Line>164</Line>
+          <Line>165</Line>
+          <Line>166</Line>
+          <Line>167</Line>
+          <Line>168</Line>
+          <Line>169</Line>
+          <Line>170</Line>
+          <Line>171</Line>
+          <Line>173</Line>
+          <Line>174</Line>
+          <Line>176</Line>
+          <Line>177</Line>
+          <Line>178</Line>
+          <Line>179</Line>
+          <Line>180</Line>
+          <Line>181</Line>
+          <Line>182</Line>
+          <Line>184</Line>
+          <Line>186</Line>
+          <Line>187</Line>
+          <Line>189</Line>
+          <Line>190</Line>
+          <Line>191</Line>
+          <Line>192</Line>
+          <Line>193</Line>
+          <Line>195</Line>
+          <Line>196</Line>
+          <Line>197</Line>
+          <Line>198</Line>
+          <Line>200</Line>
+          <Line>201</Line>
+          <Line>202</Line>
+          <Line>203</Line>
+          <Line>204</Line>
+          <Line>205</Line>
+          <Line>206</Line>
+          <Line>208</Line>
+          <Line>210</Line>
+          <Line>211</Line>
+          <Line>212</Line>
+          <Line>214</Line>
+          <Line>215</Line>
+          <Line>216</Line>
+          <Line>217</Line>
+          <Line>218</Line>
+          <Line>219</Line>
+          <Line>220</Line>
+          <Line>221</Line>
+          <Line>222</Line>
+          <Line>224</Line>
+          <Line>225</Line>
+          <Line>226</Line>
+          <Line>227</Line>
+          <Line>228</Line>
+          <Line>230</Line>
+          <Line>232</Line>
+          <Line>234</Line>
+          <Line>235</Line>
+          <Line>237</Line>
+          <Line>238</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S125</Id>
+          <Line>76</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>83</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>107</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>183</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>188</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>194</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>199</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>207</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>213</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>229</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>26</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>148</Line>
+          <Message>Rename "edgeList" which hides the field with the same name.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>135</Line>
+          <Message>Rename "floorList" which hides the field with the same name.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>161</Line>
+          <Message>Rename "storylineList" which hides the field with the same name.</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Node.cs</Path>
+      <Metrics>
+        <Lines>146</Lines>
+        <Classes>1</Classes>
+        <Accessors>2</Accessors>
+        <Statements>34</Statements>
+        <Functions>17</Functions>
+        <PublicApi>24</PublicApi>
+        <PublicUndocumentedApi>21</PublicUndocumentedApi>
+        <Complexity>27</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=0;20=1;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=14;2=1;4=1;6=1;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank>
+            <Line>73</Line>
+            <Line>74</Line>
+            <Line>80</Line>
+            <Line>86</Line>
+            <Line>91</Line>
+            <Line>94</Line>
+          </NonBlank>
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>5</Line>
+          <Line>6</Line>
+          <Line>9</Line>
+          <Line>10</Line>
+          <Line>11</Line>
+          <Line>14</Line>
+          <Line>15</Line>
+          <Line>16</Line>
+          <Line>17</Line>
+          <Line>18</Line>
+          <Line>19</Line>
+          <Line>20</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>24</Line>
+          <Line>25</Line>
+          <Line>26</Line>
+          <Line>27</Line>
+          <Line>28</Line>
           <Line>29</Line>
           <Line>30</Line>
           <Line>32</Line>
           <Line>33</Line>
+          <Line>34</Line>
           <Line>35</Line>
           <Line>36</Line>
           <Line>37</Line>
           <Line>38</Line>
           <Line>39</Line>
           <Line>40</Line>
-          <Line>41</Line>
           <Line>42</Line>
+          <Line>43</Line>
           <Line>44</Line>
           <Line>45</Line>
-          <Line>47</Line>
+          <Line>46</Line>
           <Line>48</Line>
           <Line>49</Line>
-          <Line>52</Line>
+          <Line>50</Line>
+          <Line>51</Line>
           <Line>53</Line>
           <Line>54</Line>
           <Line>55</Line>
@@ -2383,10 +3102,347 @@
           <Line>69</Line>
           <Line>70</Line>
           <Line>71</Line>
-          <Line>72</Line>
+          <Line>75</Line>
+          <Line>76</Line>
+          <Line>77</Line>
+          <Line>78</Line>
+          <Line>81</Line>
+          <Line>82</Line>
+          <Line>83</Line>
+          <Line>84</Line>
+          <Line>87</Line>
+          <Line>88</Line>
+          <Line>89</Line>
+          <Line>90</Line>
+          <Line>92</Line>
+          <Line>93</Line>
+          <Line>95</Line>
+          <Line>97</Line>
+          <Line>99</Line>
+          <Line>100</Line>
+          <Line>101</Line>
+          <Line>102</Line>
+          <Line>104</Line>
+          <Line>105</Line>
+          <Line>106</Line>
+          <Line>107</Line>
+          <Line>109</Line>
+          <Line>110</Line>
+          <Line>111</Line>
+          <Line>112</Line>
+          <Line>113</Line>
+          <Line>115</Line>
+          <Line>116</Line>
+          <Line>117</Line>
+          <Line>118</Line>
+          <Line>119</Line>
+          <Line>120</Line>
+          <Line>122</Line>
+          <Line>123</Line>
+          <Line>125</Line>
+          <Line>126</Line>
+          <Line>127</Line>
+          <Line>128</Line>
+          <Line>130</Line>
+          <Line>131</Line>
+          <Line>132</Line>
+          <Line>133</Line>
+          <Line>134</Line>
+          <Line>136</Line>
+          <Line>138</Line>
+          <Line>140</Line>
+          <Line>142</Line>
+          <Line>144</Line>
+          <Line>145</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S125</Id>
+          <Line>91</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>94</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>42</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1244</Id>
+          <Line>122</Line>
+          <Message>Use "&lt;=" or "&gt;=" instead of "==" and "!=".</Message>
+        </Issue>
+        <Issue>
+          <Id>S1244</Id>
+          <Line>122</Line>
+          <Message>Use "&lt;=" or "&gt;=" instead of "==" and "!=".</Message>
+        </Issue>
+        <Issue>
+          <Id>S1244</Id>
+          <Line>112</Line>
+          <Message>Use "&lt;=" or "&gt;=" instead of "==" and "!=".</Message>
+        </Issue>
+        <Issue>
+          <Id>S1244</Id>
+          <Line>112</Line>
+          <Message>Use "&lt;=" or "&gt;=" instead of "==" and "!=".</Message>
+        </Issue>
+        <Issue>
+          <Id>S2328</Id>
+          <Line>132</Line>
+          <Message>Remove this use of "x" or make it "readonly".</Message>
+        </Issue>
+        <Issue>
+          <Id>S2328</Id>
+          <Line>132</Line>
+          <Message>Remove this use of "y" or make it "readonly".</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\POS.cs</Path>
+      <Metrics>
+        <Lines>141</Lines>
+        <Classes>1</Classes>
+        <Accessors>4</Accessors>
+        <Statements>41</Statements>
+        <Functions>13</Functions>
+        <PublicApi>16</PublicApi>
+        <PublicUndocumentedApi>15</PublicUndocumentedApi>
+        <Complexity>16</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=11;2=2;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank>
+            <Line>17</Line>
+            <Line>78</Line>
+          </NonBlank>
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>5</Line>
+          <Line>6</Line>
+          <Line>7</Line>
+          <Line>8</Line>
+          <Line>9</Line>
+          <Line>11</Line>
+          <Line>12</Line>
+          <Line>13</Line>
+          <Line>14</Line>
+          <Line>15</Line>
+          <Line>16</Line>
+          <Line>17</Line>
+          <Line>18</Line>
+          <Line>19</Line>
+          <Line>20</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>25</Line>
+          <Line>26</Line>
+          <Line>27</Line>
+          <Line>29</Line>
+          <Line>30</Line>
+          <Line>32</Line>
+          <Line>34</Line>
+          <Line>36</Line>
+          <Line>37</Line>
+          <Line>38</Line>
+          <Line>39</Line>
+          <Line>40</Line>
+          <Line>41</Line>
+          <Line>42</Line>
+          <Line>44</Line>
+          <Line>45</Line>
+          <Line>46</Line>
+          <Line>49</Line>
+          <Line>51</Line>
+          <Line>52</Line>
+          <Line>53</Line>
+          <Line>54</Line>
+          <Line>55</Line>
+          <Line>57</Line>
+          <Line>58</Line>
+          <Line>59</Line>
+          <Line>61</Line>
+          <Line>63</Line>
+          <Line>64</Line>
+          <Line>65</Line>
+          <Line>66</Line>
+          <Line>67</Line>
+          <Line>68</Line>
+          <Line>69</Line>
+          <Line>70</Line>
+          <Line>71</Line>
           <Line>73</Line>
           <Line>74</Line>
           <Line>75</Line>
+          <Line>76</Line>
+          <Line>79</Line>
+          <Line>80</Line>
+          <Line>81</Line>
+          <Line>82</Line>
+          <Line>84</Line>
+          <Line>85</Line>
+          <Line>86</Line>
+          <Line>88</Line>
+          <Line>89</Line>
+          <Line>90</Line>
+          <Line>91</Line>
+          <Line>92</Line>
+          <Line>93</Line>
+          <Line>95</Line>
+          <Line>96</Line>
+          <Line>97</Line>
+          <Line>98</Line>
+          <Line>100</Line>
+          <Line>101</Line>
+          <Line>102</Line>
+          <Line>103</Line>
+          <Line>105</Line>
+          <Line>106</Line>
+          <Line>107</Line>
+          <Line>108</Line>
+          <Line>110</Line>
+          <Line>111</Line>
+          <Line>112</Line>
+          <Line>113</Line>
+          <Line>115</Line>
+          <Line>116</Line>
+          <Line>117</Line>
+          <Line>118</Line>
+          <Line>119</Line>
+          <Line>120</Line>
+          <Line>121</Line>
+          <Line>122</Line>
+          <Line>123</Line>
+          <Line>125</Line>
+          <Line>126</Line>
+          <Line>127</Line>
+          <Line>128</Line>
+          <Line>130</Line>
+          <Line>131</Line>
+          <Line>132</Line>
+          <Line>133</Line>
+          <Line>135</Line>
+          <Line>136</Line>
+          <Line>137</Line>
+          <Line>138</Line>
+          <Line>139</Line>
+          <Line>140</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>88</Line>
+          <Message>Rename "visited" which hides the field with the same name.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>36</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>51</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S2933</Id>
+          <Line>15</Line>
+          <Message>Make "storylineID" "readonly".</Message>
+        </Issue>
+        <Issue>
+          <Id>S2933</Id>
+          <Line>34</Line>
+          <Message>Make "contents" "readonly".</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\PointOfInterest.cs</Path>
+      <Metrics>
+        <Lines>202</Lines>
+        <Classes>1</Classes>
+        <Accessors>0</Accessors>
+        <Statements>48</Statements>
+        <Functions>24</Functions>
+        <PublicApi>29</PublicApi>
+        <PublicUndocumentedApi>29</PublicUndocumentedApi>
+        <Complexity>27</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=0;20=1;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=21;2=3;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank />
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>5</Line>
+          <Line>6</Line>
+          <Line>7</Line>
+          <Line>8</Line>
+          <Line>9</Line>
+          <Line>11</Line>
+          <Line>12</Line>
+          <Line>13</Line>
+          <Line>14</Line>
+          <Line>15</Line>
+          <Line>16</Line>
+          <Line>18</Line>
+          <Line>19</Line>
+          <Line>20</Line>
+          <Line>21</Line>
+          <Line>22</Line>
+          <Line>24</Line>
+          <Line>26</Line>
+          <Line>27</Line>
+          <Line>29</Line>
+          <Line>30</Line>
+          <Line>32</Line>
+          <Line>33</Line>
+          <Line>35</Line>
+          <Line>36</Line>
+          <Line>38</Line>
+          <Line>39</Line>
+          <Line>41</Line>
+          <Line>43</Line>
+          <Line>44</Line>
+          <Line>45</Line>
+          <Line>46</Line>
+          <Line>47</Line>
+          <Line>48</Line>
+          <Line>49</Line>
+          <Line>50</Line>
+          <Line>52</Line>
+          <Line>53</Line>
+          <Line>54</Line>
+          <Line>56</Line>
+          <Line>58</Line>
+          <Line>59</Line>
+          <Line>60</Line>
+          <Line>63</Line>
+          <Line>64</Line>
+          <Line>65</Line>
+          <Line>66</Line>
+          <Line>67</Line>
+          <Line>68</Line>
+          <Line>71</Line>
+          <Line>72</Line>
+          <Line>73</Line>
+          <Line>74</Line>
           <Line>76</Line>
           <Line>77</Line>
           <Line>78</Line>
@@ -2403,13 +3459,14 @@
           <Line>92</Line>
           <Line>93</Line>
           <Line>94</Line>
-          <Line>95</Line>
           <Line>96</Line>
+          <Line>97</Line>
           <Line>98</Line>
           <Line>99</Line>
           <Line>100</Line>
           <Line>101</Line>
           <Line>102</Line>
+          <Line>103</Line>
           <Line>104</Line>
           <Line>105</Line>
           <Line>106</Line>
@@ -2434,55 +3491,105 @@
           <Line>130</Line>
           <Line>131</Line>
           <Line>132</Line>
-          <Line>133</Line>
           <Line>134</Line>
           <Line>135</Line>
           <Line>136</Line>
           <Line>137</Line>
+          <Line>139</Line>
+          <Line>140</Line>
+          <Line>141</Line>
+          <Line>142</Line>
+          <Line>143</Line>
+          <Line>144</Line>
+          <Line>146</Line>
+          <Line>147</Line>
+          <Line>148</Line>
+          <Line>149</Line>
+          <Line>150</Line>
+          <Line>152</Line>
+          <Line>153</Line>
+          <Line>154</Line>
+          <Line>155</Line>
+          <Line>157</Line>
+          <Line>158</Line>
+          <Line>159</Line>
+          <Line>160</Line>
+          <Line>161</Line>
+          <Line>162</Line>
+          <Line>163</Line>
+          <Line>164</Line>
+          <Line>165</Line>
+          <Line>166</Line>
+          <Line>168</Line>
+          <Line>169</Line>
+          <Line>170</Line>
+          <Line>171</Line>
+          <Line>173</Line>
+          <Line>174</Line>
+          <Line>175</Line>
+          <Line>176</Line>
+          <Line>178</Line>
+          <Line>179</Line>
+          <Line>180</Line>
+          <Line>181</Line>
+          <Line>183</Line>
+          <Line>184</Line>
+          <Line>185</Line>
+          <Line>186</Line>
+          <Line>188</Line>
+          <Line>189</Line>
+          <Line>190</Line>
+          <Line>191</Line>
+          <Line>193</Line>
+          <Line>194</Line>
+          <Line>195</Line>
+          <Line>196</Line>
+          <Line>197</Line>
+          <Line>198</Line>
+          <Line>199</Line>
+          <Line>200</Line>
+          <Line>201</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
         <Issue>
           <Id>S1144</Id>
-          <Line>35</Line>
+          <Line>43</Line>
           <Message>Remove this unused private member.</Message>
         </Issue>
         <Issue>
           <Id>S1117</Id>
-          <Line>98</Line>
+          <Line>146</Line>
           <Message>Rename "detected" which hides the field with the same name.</Message>
         </Issue>
       </Issues>
     </File>
     <File>
-      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\StoryPoint.cs</Path>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\PointOfTransition.cs</Path>
       <Metrics>
-        <Lines>125</Lines>
+        <Lines>90</Lines>
         <Classes>1</Classes>
         <Accessors>4</Accessors>
-        <Statements>33</Statements>
-        <Functions>13</Functions>
-        <PublicApi>16</PublicApi>
-        <PublicUndocumentedApi>15</PublicUndocumentedApi>
-        <Complexity>16</Complexity>
-        <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=11;2=2;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Statements>17</Statements>
+        <Functions>7</Functions>
+        <PublicApi>11</PublicApi>
+        <PublicUndocumentedApi>11</PublicUndocumentedApi>
+        <Complexity>24</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=0;20=1;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=6;2=0;4=0;6=0;8=0;10=0;12=1</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
-          <NonBlank>
-            <Line>15</Line>
-            <Line>69</Line>
-          </NonBlank>
+          <NonBlank />
         </Comments>
         <LinesOfCode>
           <Line>1</Line>
           <Line>2</Line>
           <Line>3</Line>
           <Line>4</Line>
-          <Line>5</Line>
           <Line>6</Line>
           <Line>7</Line>
           <Line>8</Line>
+          <Line>9</Line>
           <Line>10</Line>
           <Line>11</Line>
           <Line>12</Line>
@@ -2493,12 +3600,113 @@
           <Line>17</Line>
           <Line>18</Line>
           <Line>19</Line>
+          <Line>20</Line>
           <Line>21</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>24</Line>
+          <Line>25</Line>
+          <Line>26</Line>
+          <Line>27</Line>
+          <Line>28</Line>
+          <Line>29</Line>
+          <Line>30</Line>
+          <Line>32</Line>
+          <Line>33</Line>
+          <Line>34</Line>
+          <Line>35</Line>
+          <Line>37</Line>
+          <Line>38</Line>
+          <Line>39</Line>
+          <Line>40</Line>
+          <Line>42</Line>
+          <Line>43</Line>
+          <Line>44</Line>
+          <Line>45</Line>
+          <Line>47</Line>
+          <Line>48</Line>
+          <Line>49</Line>
+          <Line>50</Line>
+          <Line>52</Line>
+          <Line>56</Line>
+          <Line>57</Line>
+          <Line>58</Line>
+          <Line>59</Line>
+          <Line>60</Line>
+          <Line>61</Line>
+          <Line>63</Line>
+          <Line>64</Line>
+          <Line>66</Line>
+          <Line>67</Line>
+          <Line>69</Line>
+          <Line>70</Line>
+          <Line>72</Line>
+          <Line>73</Line>
+          <Line>75</Line>
+          <Line>76</Line>
+          <Line>78</Line>
+          <Line>79</Line>
+          <Line>81</Line>
+          <Line>82</Line>
+          <Line>84</Line>
+          <Line>86</Line>
+          <Line>87</Line>
+          <Line>88</Line>
+          <Line>89</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>42</Line>
+          <Message>Rename "title" which hides the property with the same name.</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\StoryPoint.cs</Path>
+      <Metrics>
+        <Lines>46</Lines>
+        <Classes>1</Classes>
+        <Accessors>2</Accessors>
+        <Statements>9</Statements>
+        <Functions>4</Functions>
+        <PublicApi>6</PublicApi>
+        <PublicUndocumentedApi>6</PublicUndocumentedApi>
+        <Complexity>5</Complexity>
+        <FileComplexityDistribution>0=0;5=1;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=3;2=1;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank />
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>5</Line>
+          <Line>7</Line>
+          <Line>8</Line>
+          <Line>9</Line>
+          <Line>10</Line>
+          <Line>11</Line>
+          <Line>12</Line>
+          <Line>13</Line>
+          <Line>15</Line>
+          <Line>16</Line>
+          <Line>17</Line>
+          <Line>18</Line>
+          <Line>19</Line>
+          <Line>20</Line>
+          <Line>22</Line>
           <Line>23</Line>
           <Line>24</Line>
           <Line>25</Line>
           <Line>27</Line>
+          <Line>28</Line>
           <Line>29</Line>
+          <Line>30</Line>
           <Line>31</Line>
           <Line>32</Line>
           <Line>33</Line>
@@ -2510,114 +3718,52 @@
           <Line>40</Line>
           <Line>41</Line>
           <Line>42</Line>
+          <Line>43</Line>
+          <Line>44</Line>
           <Line>45</Line>
-          <Line>47</Line>
-          <Line>48</Line>
-          <Line>49</Line>
-          <Line>50</Line>
-          <Line>52</Line>
-          <Line>53</Line>
-          <Line>54</Line>
-          <Line>55</Line>
-          <Line>56</Line>
-          <Line>57</Line>
-          <Line>58</Line>
-          <Line>59</Line>
-          <Line>60</Line>
-          <Line>61</Line>
-          <Line>62</Line>
-          <Line>64</Line>
-          <Line>65</Line>
-          <Line>66</Line>
-          <Line>67</Line>
-          <Line>70</Line>
-          <Line>71</Line>
-          <Line>72</Line>
-          <Line>73</Line>
-          <Line>75</Line>
-          <Line>76</Line>
-          <Line>77</Line>
-          <Line>79</Line>
-          <Line>80</Line>
-          <Line>81</Line>
-          <Line>82</Line>
-          <Line>84</Line>
-          <Line>85</Line>
-          <Line>86</Line>
-          <Line>87</Line>
-          <Line>89</Line>
-          <Line>90</Line>
-          <Line>91</Line>
-          <Line>92</Line>
-          <Line>94</Line>
-          <Line>95</Line>
-          <Line>96</Line>
-          <Line>97</Line>
-          <Line>99</Line>
-          <Line>100</Line>
-          <Line>101</Line>
-          <Line>102</Line>
-          <Line>103</Line>
-          <Line>104</Line>
-          <Line>106</Line>
-          <Line>107</Line>
-          <Line>108</Line>
-          <Line>109</Line>
-          <Line>111</Line>
-          <Line>112</Line>
-          <Line>113</Line>
-          <Line>114</Line>
-          <Line>115</Line>
-          <Line>116</Line>
-          <Line>117</Line>
-          <Line>119</Line>
-          <Line>120</Line>
-          <Line>121</Line>
-          <Line>122</Line>
-          <Line>123</Line>
-          <Line>124</Line>
         </LinesOfCode>
       </Metrics>
-      <Issues>
-        <Issue>
-          <Id>S1144</Id>
-          <Line>31</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1144</Id>
-          <Line>47</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1117</Id>
-          <Line>79</Line>
-          <Message>Rename "visited" which hides the field with the same name.</Message>
-        </Issue>
-        <Issue>
-          <Id>S2933</Id>
-          <Line>15</Line>
-          <Message>Make "sequentialID" "readonly".</Message>
-        </Issue>
-      </Issues>
+      <Issues />
     </File>
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Map\Storyline.cs</Path>
       <Metrics>
-        <Lines>54</Lines>
+        <Lines>226</Lines>
         <Classes>1</Classes>
-        <Accessors>6</Accessors>
-        <Statements>9</Statements>
-        <Functions>6</Functions>
-        <PublicApi>10</PublicApi>
-        <PublicUndocumentedApi>9</PublicUndocumentedApi>
-        <Complexity>6</Complexity>
-        <FileComplexityDistribution>0=0;5=1;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=6;2=0;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Accessors>2</Accessors>
+        <Statements>57</Statements>
+        <Functions>15</Functions>
+        <PublicApi>15</PublicApi>
+        <PublicUndocumentedApi>12</PublicUndocumentedApi>
+        <Complexity>28</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=0;20=1;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=12;2=0;4=2;6=0;8=1;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank>
-            <Line>10</Line>
+            <Line>14</Line>
+            <Line>43</Line>
+            <Line>94</Line>
+            <Line>106</Line>
+            <Line>116</Line>
+            <Line>117</Line>
+            <Line>120</Line>
+            <Line>141</Line>
+            <Line>147</Line>
+            <Line>151</Line>
+            <Line>168</Line>
+            <Line>170</Line>
+            <Line>172</Line>
+            <Line>174</Line>
+            <Line>176</Line>
+            <Line>177</Line>
+            <Line>184</Line>
+            <Line>187</Line>
+            <Line>190</Line>
+            <Line>193</Line>
+            <Line>196</Line>
+            <Line>200</Line>
+            <Line>209</Line>
           </NonBlank>
         </Comments>
         <LinesOfCode>
@@ -2626,14 +3772,15 @@
           <Line>3</Line>
           <Line>4</Line>
           <Line>5</Line>
+          <Line>6</Line>
           <Line>7</Line>
           <Line>8</Line>
+          <Line>9</Line>
           <Line>11</Line>
           <Line>12</Line>
-          <Line>13</Line>
-          <Line>14</Line>
           <Line>15</Line>
           <Line>16</Line>
+          <Line>17</Line>
           <Line>18</Line>
           <Line>19</Line>
           <Line>20</Line>
@@ -2642,34 +3789,227 @@
           <Line>23</Line>
           <Line>25</Line>
           <Line>26</Line>
-          <Line>27</Line>
           <Line>28</Line>
           <Line>30</Line>
           <Line>31</Line>
           <Line>32</Line>
           <Line>33</Line>
           <Line>34</Line>
+          <Line>35</Line>
           <Line>36</Line>
           <Line>37</Line>
           <Line>38</Line>
           <Line>39</Line>
+          <Line>40</Line>
           <Line>41</Line>
-          <Line>42</Line>
-          <Line>43</Line>
           <Line>44</Line>
-          <Line>46</Line>
+          <Line>45</Line>
           <Line>47</Line>
-          <Line>48</Line>
           <Line>49</Line>
+          <Line>50</Line>
+          <Line>51</Line>
           <Line>52</Line>
           <Line>53</Line>
+          <Line>54</Line>
+          <Line>55</Line>
+          <Line>56</Line>
+          <Line>58</Line>
+          <Line>59</Line>
+          <Line>61</Line>
+          <Line>63</Line>
+          <Line>64</Line>
+          <Line>65</Line>
+          <Line>66</Line>
+          <Line>68</Line>
+          <Line>69</Line>
+          <Line>70</Line>
+          <Line>71</Line>
+          <Line>73</Line>
+          <Line>74</Line>
+          <Line>75</Line>
+          <Line>76</Line>
+          <Line>78</Line>
+          <Line>79</Line>
+          <Line>80</Line>
+          <Line>81</Line>
+          <Line>83</Line>
+          <Line>84</Line>
+          <Line>85</Line>
+          <Line>86</Line>
+          <Line>88</Line>
+          <Line>89</Line>
+          <Line>90</Line>
+          <Line>91</Line>
+          <Line>92</Line>
+          <Line>96</Line>
+          <Line>97</Line>
+          <Line>98</Line>
+          <Line>99</Line>
+          <Line>100</Line>
+          <Line>101</Line>
+          <Line>102</Line>
+          <Line>103</Line>
+          <Line>104</Line>
+          <Line>107</Line>
+          <Line>109</Line>
+          <Line>110</Line>
+          <Line>111</Line>
+          <Line>112</Line>
+          <Line>113</Line>
+          <Line>121</Line>
+          <Line>122</Line>
+          <Line>124</Line>
+          <Line>126</Line>
+          <Line>128</Line>
+          <Line>129</Line>
+          <Line>130</Line>
+          <Line>131</Line>
+          <Line>132</Line>
+          <Line>133</Line>
+          <Line>134</Line>
+          <Line>136</Line>
+          <Line>137</Line>
+          <Line>139</Line>
+          <Line>140</Line>
+          <Line>142</Line>
+          <Line>145</Line>
+          <Line>148</Line>
+          <Line>149</Line>
+          <Line>152</Line>
+          <Line>153</Line>
+          <Line>154</Line>
+          <Line>155</Line>
+          <Line>157</Line>
+          <Line>158</Line>
+          <Line>159</Line>
+          <Line>160</Line>
+          <Line>162</Line>
+          <Line>163</Line>
+          <Line>164</Line>
+          <Line>166</Line>
+          <Line>167</Line>
+          <Line>182</Line>
+          <Line>183</Line>
+          <Line>185</Line>
+          <Line>186</Line>
+          <Line>188</Line>
+          <Line>189</Line>
+          <Line>191</Line>
+          <Line>192</Line>
+          <Line>194</Line>
+          <Line>195</Line>
+          <Line>197</Line>
+          <Line>198</Line>
+          <Line>199</Line>
+          <Line>201</Line>
+          <Line>203</Line>
+          <Line>204</Line>
+          <Line>205</Line>
+          <Line>206</Line>
+          <Line>207</Line>
+          <Line>208</Line>
+          <Line>210</Line>
+          <Line>211</Line>
+          <Line>212</Line>
+          <Line>213</Line>
+          <Line>214</Line>
+          <Line>215</Line>
+          <Line>216</Line>
+          <Line>217</Line>
+          <Line>218</Line>
+          <Line>219</Line>
+          <Line>220</Line>
+          <Line>221</Line>
+          <Line>222</Line>
+          <Line>224</Line>
+          <Line>225</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
         <Issue>
+          <Id>S125</Id>
+          <Line>94</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>168</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>184</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>187</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>190</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>193</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S125</Id>
+          <Line>196</Line>
+          <Message>Remove this commented out code.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>44</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>49</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>58</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>210</Line>
+          <Message>Rename "description" which hides the field with the same name.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1854</Id>
+          <Line>197</Line>
+          <Message>Remove this useless assignment to local variable "storyPointView".</Message>
+        </Issue>
+        <Issue>
+          <Id>S1066</Id>
+          <Line>191</Line>
+          <Message>Merge this if statement with the enclosing one.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1481</Id>
+          <Line>197</Line>
+          <Message>Remove this unused "storyPointView" local variable.</Message>
+        </Issue>
+        <Issue>
           <Id>S2933</Id>
-          <Line>13</Line>
-          <Message>Make "stDescription" "readonly".</Message>
+          <Line>17</Line>
+          <Message>Make "id" "readonly".</Message>
+        </Issue>
+        <Issue>
+          <Id>S2933</Id>
+          <Line>18</Line>
+          <Message>Make "title" "readonly".</Message>
+        </Issue>
+        <Issue>
+          <Id>S2933</Id>
+          <Line>19</Line>
+          <Message>Make "description" "readonly".</Message>
         </Issue>
       </Issues>
     </File>
@@ -2906,20 +4246,22 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Path\ShortestPathCreator.cs</Path>
       <Metrics>
-        <Lines>49</Lines>
+        <Lines>100</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
-        <Statements>9</Statements>
-        <Functions>2</Functions>
+        <Statements>33</Statements>
+        <Functions>5</Functions>
         <PublicApi>0</PublicApi>
         <PublicUndocumentedApi>0</PublicUndocumentedApi>
-        <Complexity>6</Complexity>
-        <FileComplexityDistribution>0=0;5=1;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=1;2=0;4=1;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Complexity>16</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=1;2=2;4=1;6=1;8=0;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank>
-            <Line>26</Line>
+            <Line>51</Line>
+            <Line>57</Line>
+            <Line>65</Line>
           </NonBlank>
         </Comments>
         <LinesOfCode>
@@ -2928,7 +4270,7 @@
           <Line>3</Line>
           <Line>4</Line>
           <Line>5</Line>
-          <Line>7</Line>
+          <Line>6</Line>
           <Line>8</Line>
           <Line>9</Line>
           <Line>10</Line>
@@ -2938,23 +4280,22 @@
           <Line>14</Line>
           <Line>15</Line>
           <Line>17</Line>
+          <Line>18</Line>
           <Line>19</Line>
-          <Line>20</Line>
           <Line>21</Line>
           <Line>22</Line>
-          <Line>24</Line>
+          <Line>23</Line>
           <Line>25</Line>
-          <Line>27</Line>
+          <Line>26</Line>
           <Line>28</Line>
           <Line>29</Line>
           <Line>30</Line>
           <Line>31</Line>
-          <Line>32</Line>
           <Line>33</Line>
-          <Line>34</Line>
           <Line>35</Line>
           <Line>36</Line>
           <Line>37</Line>
+          <Line>38</Line>
           <Line>39</Line>
           <Line>40</Line>
           <Line>41</Line>
@@ -2962,7 +4303,47 @@
           <Line>43</Line>
           <Line>44</Line>
           <Line>46</Line>
+          <Line>47</Line>
           <Line>48</Line>
+          <Line>49</Line>
+          <Line>50</Line>
+          <Line>51</Line>
+          <Line>53</Line>
+          <Line>54</Line>
+          <Line>55</Line>
+          <Line>56</Line>
+          <Line>58</Line>
+          <Line>60</Line>
+          <Line>61</Line>
+          <Line>62</Line>
+          <Line>63</Line>
+          <Line>66</Line>
+          <Line>67</Line>
+          <Line>68</Line>
+          <Line>70</Line>
+          <Line>71</Line>
+          <Line>72</Line>
+          <Line>73</Line>
+          <Line>74</Line>
+          <Line>75</Line>
+          <Line>76</Line>
+          <Line>78</Line>
+          <Line>79</Line>
+          <Line>80</Line>
+          <Line>81</Line>
+          <Line>82</Line>
+          <Line>83</Line>
+          <Line>84</Line>
+          <Line>85</Line>
+          <Line>87</Line>
+          <Line>88</Line>
+          <Line>89</Line>
+          <Line>90</Line>
+          <Line>92</Line>
+          <Line>94</Line>
+          <Line>95</Line>
+          <Line>97</Line>
+          <Line>99</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
@@ -2972,28 +4353,38 @@
           <Message>Change the visibility of "currentPoint" or make it "const" or "readonly".</Message>
         </Issue>
         <Issue>
-          <Id>S1144</Id>
-          <Line>19</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1144</Id>
-          <Line>24</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
           <Id>S1066</Id>
-          <Line>30</Line>
+          <Line>37</Line>
           <Message>Merge this if statement with the enclosing one.</Message>
         </Issue>
         <Issue>
           <Id>S1066</Id>
-          <Line>32</Line>
+          <Line>39</Line>
           <Message>Merge this if statement with the enclosing one.</Message>
         </Issue>
         <Issue>
           <Id>S2696</Id>
-          <Line>40</Line>
+          <Line>47</Line>
+          <Message>Make the enclosing method "static" or remove this set.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>21</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>28</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1144</Id>
+          <Line>87</Line>
+          <Message>Remove this unused private member.</Message>
+        </Issue>
+        <Issue>
+          <Id>S2696</Id>
+          <Line>70</Line>
           <Message>Make the enclosing method "static" or remove this set.</Message>
         </Issue>
       </Issues>
@@ -3183,6 +4574,16 @@
           <Message>Remove this commented out code.</Message>
         </Issue>
         <Issue>
+          <Id>S1066</Id>
+          <Line>31</Line>
+          <Message>Merge this if statement with the enclosing one.</Message>
+        </Issue>
+        <Issue>
+          <Id>S3456</Id>
+          <Line>39</Line>
+          <Message>Remove this redundant "ToCharArray" call.</Message>
+        </Issue>
+        <Issue>
           <Id>S1144</Id>
           <Line>12</Line>
           <Message>Remove this unused private member.</Message>
@@ -3203,16 +4604,6 @@
           <Message>Remove this unused private member.</Message>
         </Issue>
         <Issue>
-          <Id>S1066</Id>
-          <Line>31</Line>
-          <Message>Merge this if statement with the enclosing one.</Message>
-        </Issue>
-        <Issue>
-          <Id>S3456</Id>
-          <Line>39</Line>
-          <Message>Remove this redundant "ToCharArray" call.</Message>
-        </Issue>
-        <Issue>
           <Id>S2933</Id>
           <Line>10</Line>
           <Message>Make "testIntroText" "readonly".</Message>
@@ -3222,57 +4613,58 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\ScrollContent\ScrollSnapRect.cs</Path>
       <Metrics>
-        <Lines>306</Lines>
+        <Lines>350</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
         <Statements>114</Statements>
         <Functions>13</Functions>
         <PublicApi>13</PublicApi>
-        <PublicUndocumentedApi>10</PublicUndocumentedApi>
+        <PublicUndocumentedApi>9</PublicUndocumentedApi>
         <Complexity>43</Complexity>
         <FileComplexityDistribution>0=0;5=0;10=0;20=0;30=1;60=0;90=0</FileComplexityDistribution>
         <FunctionComplexityDistribution>1=5;2=2;4=3;6=3;8=0;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank>
-            <Line>31</Line>
-            <Line>40</Line>
-            <Line>44</Line>
-            <Line>48</Line>
-            <Line>51</Line>
-            <Line>56</Line>
-            <Line>59</Line>
-            <Line>69</Line>
-            <Line>81</Line>
-            <Line>87</Line>
-            <Line>97</Line>
-            <Line>99</Line>
-            <Line>102</Line>
-            <Line>104</Line>
-            <Line>107</Line>
+            <Line>7</Line>
+            <Line>33</Line>
+            <Line>42</Line>
+            <Line>46</Line>
+            <Line>50</Line>
+            <Line>53</Line>
+            <Line>58</Line>
+            <Line>61</Line>
+            <Line>72</Line>
+            <Line>88</Line>
+            <Line>94</Line>
+            <Line>105</Line>
+            <Line>108</Line>
             <Line>111</Line>
-            <Line>128</Line>
-            <Line>130</Line>
-            <Line>132</Line>
-            <Line>134</Line>
+            <Line>114</Line>
+            <Line>117</Line>
+            <Line>121</Line>
+            <Line>141</Line>
             <Line>143</Line>
-            <Line>149</Line>
-            <Line>152</Line>
-            <Line>183</Line>
-            <Line>186</Line>
-            <Line>194</Line>
-            <Line>208</Line>
-            <Line>213</Line>
-            <Line>219</Line>
-            <Line>238</Line>
-            <Line>257</Line>
-            <Line>259</Line>
-            <Line>265</Line>
-            <Line>273</Line>
-            <Line>283</Line>
+            <Line>145</Line>
+            <Line>147</Line>
+            <Line>157</Line>
+            <Line>163</Line>
+            <Line>166</Line>
+            <Line>203</Line>
+            <Line>207</Line>
+            <Line>217</Line>
+            <Line>234</Line>
+            <Line>240</Line>
+            <Line>247</Line>
+            <Line>269</Line>
+            <Line>291</Line>
             <Line>293</Line>
-            <Line>295</Line>
-            <Line>297</Line>
+            <Line>300</Line>
+            <Line>310</Line>
+            <Line>324</Line>
+            <Line>336</Line>
+            <Line>338</Line>
+            <Line>340</Line>
           </NonBlank>
         </Comments>
         <LinesOfCode>
@@ -3281,12 +4673,11 @@
           <Line>3</Line>
           <Line>4</Line>
           <Line>5</Line>
-          <Line>7</Line>
           <Line>8</Line>
           <Line>9</Line>
           <Line>10</Line>
+          <Line>11</Line>
           <Line>12</Line>
-          <Line>13</Line>
           <Line>14</Line>
           <Line>15</Line>
           <Line>16</Line>
@@ -3303,167 +4694,177 @@
           <Line>27</Line>
           <Line>28</Line>
           <Line>29</Line>
-          <Line>32</Line>
+          <Line>30</Line>
+          <Line>31</Line>
           <Line>34</Line>
-          <Line>35</Line>
           <Line>36</Line>
+          <Line>37</Line>
           <Line>38</Line>
-          <Line>41</Line>
-          <Line>42</Line>
-          <Line>45</Line>
-          <Line>46</Line>
-          <Line>49</Line>
-          <Line>52</Line>
-          <Line>53</Line>
+          <Line>40</Line>
+          <Line>43</Line>
+          <Line>44</Line>
+          <Line>47</Line>
+          <Line>48</Line>
+          <Line>51</Line>
           <Line>54</Line>
-          <Line>57</Line>
-          <Line>58</Line>
+          <Line>55</Line>
+          <Line>56</Line>
+          <Line>59</Line>
           <Line>60</Line>
-          <Line>63</Line>
-          <Line>64</Line>
+          <Line>62</Line>
           <Line>65</Line>
           <Line>66</Line>
           <Line>67</Line>
+          <Line>68</Line>
+          <Line>69</Line>
           <Line>70</Line>
-          <Line>71</Line>
-          <Line>72</Line>
           <Line>73</Line>
           <Line>74</Line>
           <Line>75</Line>
           <Line>76</Line>
           <Line>77</Line>
+          <Line>78</Line>
           <Line>79</Line>
+          <Line>80</Line>
+          <Line>81</Line>
           <Line>82</Line>
           <Line>83</Line>
           <Line>84</Line>
-          <Line>85</Line>
-          <Line>88</Line>
+          <Line>86</Line>
           <Line>89</Line>
+          <Line>90</Line>
           <Line>91</Line>
           <Line>92</Line>
-          <Line>93</Line>
+          <Line>95</Line>
           <Line>96</Line>
           <Line>98</Line>
+          <Line>99</Line>
           <Line>100</Line>
-          <Line>101</Line>
           <Line>103</Line>
-          <Line>105</Line>
+          <Line>104</Line>
           <Line>106</Line>
-          <Line>108</Line>
+          <Line>107</Line>
           <Line>109</Line>
+          <Line>110</Line>
           <Line>112</Line>
           <Line>113</Line>
-          <Line>114</Line>
           <Line>115</Line>
           <Line>116</Line>
+          <Line>118</Line>
           <Line>119</Line>
-          <Line>120</Line>
-          <Line>121</Line>
           <Line>122</Line>
           <Line>123</Line>
           <Line>124</Line>
           <Line>125</Line>
+          <Line>126</Line>
           <Line>127</Line>
-          <Line>129</Line>
+          <Line>130</Line>
           <Line>131</Line>
+          <Line>132</Line>
           <Line>133</Line>
+          <Line>134</Line>
           <Line>135</Line>
           <Line>136</Line>
           <Line>137</Line>
-          <Line>138</Line>
           <Line>139</Line>
           <Line>140</Line>
-          <Line>141</Line>
+          <Line>142</Line>
           <Line>144</Line>
-          <Line>145</Line>
           <Line>146</Line>
-          <Line>147</Line>
+          <Line>148</Line>
+          <Line>149</Line>
           <Line>150</Line>
+          <Line>151</Line>
+          <Line>152</Line>
           <Line>153</Line>
           <Line>154</Line>
           <Line>155</Line>
-          <Line>156</Line>
-          <Line>157</Line>
           <Line>158</Line>
           <Line>159</Line>
           <Line>160</Line>
           <Line>161</Line>
-          <Line>162</Line>
-          <Line>163</Line>
           <Line>164</Line>
           <Line>167</Line>
           <Line>168</Line>
           <Line>169</Line>
           <Line>170</Line>
           <Line>171</Line>
+          <Line>172</Line>
+          <Line>173</Line>
           <Line>174</Line>
           <Line>175</Line>
           <Line>176</Line>
           <Line>177</Line>
           <Line>178</Line>
           <Line>179</Line>
-          <Line>182</Line>
+          <Line>180</Line>
+          <Line>181</Line>
           <Line>184</Line>
           <Line>185</Line>
+          <Line>186</Line>
           <Line>187</Line>
           <Line>188</Line>
           <Line>189</Line>
-          <Line>190</Line>
-          <Line>191</Line>
           <Line>192</Line>
+          <Line>193</Line>
+          <Line>194</Line>
           <Line>195</Line>
           <Line>196</Line>
           <Line>197</Line>
           <Line>198</Line>
-          <Line>199</Line>
-          <Line>200</Line>
           <Line>201</Line>
           <Line>202</Line>
-          <Line>203</Line>
           <Line>204</Line>
-          <Line>207</Line>
+          <Line>205</Line>
+          <Line>206</Line>
+          <Line>208</Line>
           <Line>209</Line>
           <Line>210</Line>
           <Line>211</Line>
+          <Line>212</Line>
+          <Line>213</Line>
           <Line>214</Line>
           <Line>215</Line>
-          <Line>216</Line>
-          <Line>217</Line>
+          <Line>218</Line>
+          <Line>219</Line>
           <Line>220</Line>
           <Line>221</Line>
+          <Line>222</Line>
           <Line>223</Line>
           <Line>224</Line>
+          <Line>225</Line>
+          <Line>226</Line>
           <Line>227</Line>
           <Line>228</Line>
           <Line>229</Line>
           <Line>232</Line>
           <Line>233</Line>
-          <Line>234</Line>
+          <Line>235</Line>
+          <Line>236</Line>
           <Line>237</Line>
-          <Line>239</Line>
+          <Line>238</Line>
           <Line>241</Line>
           <Line>242</Line>
+          <Line>243</Line>
           <Line>244</Line>
           <Line>245</Line>
-          <Line>246</Line>
-          <Line>247</Line>
           <Line>248</Line>
           <Line>249</Line>
-          <Line>250</Line>
+          <Line>251</Line>
           <Line>252</Line>
-          <Line>253</Line>
+          <Line>255</Line>
           <Line>256</Line>
+          <Line>257</Line>
           <Line>258</Line>
-          <Line>260</Line>
           <Line>261</Line>
+          <Line>262</Line>
+          <Line>263</Line>
           <Line>264</Line>
-          <Line>266</Line>
           <Line>267</Line>
           <Line>268</Line>
-          <Line>269</Line>
           <Line>270</Line>
-          <Line>271</Line>
-          <Line>274</Line>
+          <Line>272</Line>
+          <Line>273</Line>
           <Line>275</Line>
           <Line>276</Line>
           <Line>277</Line>
@@ -3472,38 +4873,73 @@
           <Line>280</Line>
           <Line>281</Line>
           <Line>282</Line>
-          <Line>284</Line>
+          <Line>283</Line>
           <Line>285</Line>
-          <Line>287</Line>
-          <Line>288</Line>
-          <Line>291</Line>
+          <Line>286</Line>
+          <Line>289</Line>
+          <Line>290</Line>
           <Line>292</Line>
           <Line>294</Line>
-          <Line>296</Line>
+          <Line>295</Line>
           <Line>298</Line>
           <Line>299</Line>
-          <Line>300</Line>
           <Line>301</Line>
           <Line>302</Line>
           <Line>303</Line>
           <Line>304</Line>
           <Line>305</Line>
+          <Line>306</Line>
+          <Line>307</Line>
+          <Line>308</Line>
+          <Line>311</Line>
+          <Line>312</Line>
+          <Line>313</Line>
+          <Line>314</Line>
+          <Line>315</Line>
+          <Line>316</Line>
+          <Line>317</Line>
+          <Line>318</Line>
+          <Line>319</Line>
+          <Line>320</Line>
+          <Line>321</Line>
+          <Line>322</Line>
+          <Line>323</Line>
+          <Line>325</Line>
+          <Line>326</Line>
+          <Line>328</Line>
+          <Line>329</Line>
+          <Line>332</Line>
+          <Line>333</Line>
+          <Line>334</Line>
+          <Line>335</Line>
+          <Line>337</Line>
+          <Line>339</Line>
+          <Line>341</Line>
+          <Line>342</Line>
+          <Line>343</Line>
+          <Line>344</Line>
+          <Line>345</Line>
+          <Line>346</Line>
+          <Line>347</Line>
+          <Line>348</Line>
+          <Line>349</Line>
+          <Line>350</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
         <Issue>
           <Id>S1144</Id>
-          <Line>63</Line>
+          <Line>65</Line>
           <Message>Remove this unused private member.</Message>
         </Issue>
         <Issue>
           <Id>S1144</Id>
-          <Line>96</Line>
+          <Line>103</Line>
           <Message>Remove this unused private member.</Message>
         </Issue>
         <Issue>
           <Id>S2933</Id>
-          <Line>49</Line>
+          <Line>51</Line>
           <Message>Make "_pagePositions" "readonly".</Message>
         </Issue>
       </Issues>
@@ -3511,29 +4947,24 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Tour\FreeRoaming.cs</Path>
       <Metrics>
-        <Lines>177</Lines>
+        <Lines>120</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
-        <Statements>45</Statements>
-        <Functions>6</Functions>
-        <PublicApi>8</PublicApi>
-        <PublicUndocumentedApi>7</PublicUndocumentedApi>
-        <Complexity>21</Complexity>
-        <FileComplexityDistribution>0=0;5=0;10=0;20=1;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=2;2=1;4=1;6=2;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Statements>28</Statements>
+        <Functions>7</Functions>
+        <PublicApi>6</PublicApi>
+        <PublicUndocumentedApi>6</PublicUndocumentedApi>
+        <Complexity>16</Complexity>
+        <FileComplexityDistribution>0=0;5=0;10=1;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=3;2=3;4=0;6=1;8=0;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank>
-            <Line>30</Line>
-            <Line>35</Line>
-            <Line>60</Line>
-            <Line>63</Line>
-            <Line>87</Line>
-            <Line>88</Line>
-            <Line>128</Line>
-            <Line>133</Line>
-            <Line>140</Line>
-            <Line>168</Line>
+            <Line>22</Line>
+            <Line>27</Line>
+            <Line>72</Line>
+            <Line>73</Line>
+            <Line>111</Line>
           </NonBlank>
         </Comments>
         <LinesOfCode>
@@ -3552,368 +4983,78 @@
           <Line>14</Line>
           <Line>15</Line>
           <Line>16</Line>
-          <Line>17</Line>
           <Line>18</Line>
-          <Line>20</Line>
-          <Line>22</Line>
-          <Line>24</Line>
-          <Line>25</Line>
-          <Line>27</Line>
-          <Line>28</Line>
-          <Line>31</Line>
-          <Line>32</Line>
-          <Line>34</Line>
-          <Line>36</Line>
-          <Line>37</Line>
-          <Line>38</Line>
-          <Line>39</Line>
-          <Line>42</Line>
-          <Line>45</Line>
-          <Line>47</Line>
-          <Line>49</Line>
-          <Line>51</Line>
-          <Line>52</Line>
-          <Line>53</Line>
-          <Line>54</Line>
-          <Line>57</Line>
-          <Line>58</Line>
-          <Line>59</Line>
-          <Line>62</Line>
-          <Line>64</Line>
-          <Line>67</Line>
-          <Line>69</Line>
-          <Line>70</Line>
-          <Line>71</Line>
-          <Line>72</Line>
-          <Line>73</Line>
-          <Line>74</Line>
-          <Line>75</Line>
-          <Line>76</Line>
-          <Line>77</Line>
-          <Line>79</Line>
-          <Line>80</Line>
-          <Line>81</Line>
-          <Line>82</Line>
-          <Line>83</Line>
-          <Line>84</Line>
-          <Line>89</Line>
-          <Line>90</Line>
-          <Line>91</Line>
-          <Line>92</Line>
-          <Line>94</Line>
-          <Line>96</Line>
-          <Line>100</Line>
-          <Line>102</Line>
-          <Line>103</Line>
-          <Line>104</Line>
-          <Line>106</Line>
-          <Line>107</Line>
-          <Line>109</Line>
-          <Line>111</Line>
-          <Line>112</Line>
-          <Line>114</Line>
-          <Line>116</Line>
-          <Line>119</Line>
-          <Line>121</Line>
-          <Line>122</Line>
-          <Line>124</Line>
-          <Line>126</Line>
-          <Line>127</Line>
-          <Line>128</Line>
-          <Line>129</Line>
-          <Line>130</Line>
-          <Line>131</Line>
-          <Line>134</Line>
-          <Line>135</Line>
-          <Line>136</Line>
-          <Line>137</Line>
-          <Line>138</Line>
-          <Line>141</Line>
-          <Line>142</Line>
-          <Line>143</Line>
-          <Line>144</Line>
-          <Line>145</Line>
-          <Line>146</Line>
-          <Line>147</Line>
-          <Line>149</Line>
-          <Line>150</Line>
-          <Line>151</Line>
-          <Line>152</Line>
-          <Line>154</Line>
-          <Line>155</Line>
-          <Line>156</Line>
-          <Line>157</Line>
-          <Line>158</Line>
-          <Line>159</Line>
-          <Line>161</Line>
-          <Line>163</Line>
-          <Line>165</Line>
-          <Line>167</Line>
-          <Line>168</Line>
-          <Line>170</Line>
-          <Line>171</Line>
-        </LinesOfCode>
-      </Metrics>
-      <Issues>
-        <Issue>
-          <Id>S125</Id>
-          <Line>133</Line>
-          <Message>Remove this commented out code.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1144</Id>
-          <Line>31</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1144</Id>
-          <Line>36</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1144</Id>
-          <Line>89</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1854</Id>
-          <Line>156</Line>
-          <Message>Remove this useless assignment to local variable "poiView".</Message>
-        </Issue>
-        <Issue>
-          <Id>S1066</Id>
-          <Line>154</Line>
-          <Message>Merge this if statement with the enclosing one.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1481</Id>
-          <Line>156</Line>
-          <Message>Remove this unused "poiView" local variable.</Message>
-        </Issue>
-      </Issues>
-    </File>
-    <File>
-      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Tour\NipperTour.cs</Path>
-      <Metrics>
-        <Lines>238</Lines>
-        <Classes>1</Classes>
-        <Accessors>0</Accessors>
-        <Statements>68</Statements>
-        <Functions>14</Functions>
-        <PublicApi>12</PublicApi>
-        <PublicUndocumentedApi>10</PublicUndocumentedApi>
-        <Complexity>34</Complexity>
-        <FileComplexityDistribution>0=0;5=0;10=0;20=0;30=1;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=6;2=5;4=2;6=0;8=1;10=0;12=0</FunctionComplexityDistribution>
-        <Comments>
-          <NoSonar />
-          <NonBlank>
-            <Line>22</Line>
-            <Line>27</Line>
-            <Line>40</Line>
-            <Line>68</Line>
-            <Line>69</Line>
-            <Line>86</Line>
-            <Line>94</Line>
-            <Line>138</Line>
-            <Line>159</Line>
-            <Line>165</Line>
-            <Line>169</Line>
-            <Line>185</Line>
-            <Line>187</Line>
-            <Line>189</Line>
-            <Line>191</Line>
-            <Line>193</Line>
-            <Line>194</Line>
-            <Line>212</Line>
-            <Line>221</Line>
-          </NonBlank>
-        </Comments>
-        <LinesOfCode>
-          <Line>1</Line>
-          <Line>2</Line>
-          <Line>3</Line>
-          <Line>4</Line>
-          <Line>5</Line>
-          <Line>6</Line>
-          <Line>7</Line>
-          <Line>8</Line>
-          <Line>9</Line>
-          <Line>11</Line>
-          <Line>12</Line>
-          <Line>13</Line>
-          <Line>14</Line>
-          <Line>15</Line>
-          <Line>16</Line>
-          <Line>17</Line>
-          <Line>19</Line>
           <Line>20</Line>
           <Line>23</Line>
           <Line>24</Line>
           <Line>26</Line>
           <Line>28</Line>
           <Line>29</Line>
+          <Line>30</Line>
           <Line>31</Line>
+          <Line>32</Line>
           <Line>33</Line>
           <Line>34</Line>
           <Line>36</Line>
+          <Line>37</Line>
           <Line>38</Line>
-          <Line>41</Line>
+          <Line>39</Line>
+          <Line>42</Line>
+          <Line>43</Line>
           <Line>44</Line>
           <Line>45</Line>
           <Line>46</Line>
           <Line>47</Line>
-          <Line>48</Line>
           <Line>49</Line>
           <Line>50</Line>
           <Line>51</Line>
+          <Line>52</Line>
           <Line>53</Line>
-          <Line>54</Line>
           <Line>56</Line>
           <Line>57</Line>
           <Line>58</Line>
           <Line>59</Line>
-          <Line>60</Line>
           <Line>61</Line>
-          <Line>62</Line>
           <Line>63</Line>
           <Line>64</Line>
           <Line>65</Line>
-          <Line>70</Line>
-          <Line>71</Line>
-          <Line>72</Line>
-          <Line>73</Line>
+          <Line>66</Line>
+          <Line>67</Line>
+          <Line>68</Line>
+          <Line>69</Line>
+          <Line>74</Line>
           <Line>75</Line>
+          <Line>76</Line>
           <Line>77</Line>
           <Line>79</Line>
-          <Line>80</Line>
-          <Line>82</Line>
-          <Line>83</Line>
+          <Line>81</Line>
           <Line>84</Line>
           <Line>85</Line>
+          <Line>86</Line>
           <Line>87</Line>
+          <Line>88</Line>
           <Line>89</Line>
           <Line>90</Line>
-          <Line>91</Line>
           <Line>92</Line>
+          <Line>93</Line>
+          <Line>94</Line>
           <Line>95</Line>
-          <Line>96</Line>
           <Line>97</Line>
+          <Line>98</Line>
           <Line>99</Line>
           <Line>100</Line>
           <Line>101</Line>
           <Line>102</Line>
-          <Line>103</Line>
           <Line>104</Line>
-          <Line>105</Line>
-          <Line>109</Line>
+          <Line>106</Line>
+          <Line>108</Line>
           <Line>110</Line>
           <Line>111</Line>
-          <Line>112</Line>
+          <Line>113</Line>
           <Line>114</Line>
-          <Line>115</Line>
-          <Line>116</Line>
-          <Line>117</Line>
-          <Line>118</Line>
-          <Line>119</Line>
-          <Line>120</Line>
-          <Line>121</Line>
-          <Line>123</Line>
-          <Line>124</Line>
-          <Line>125</Line>
-          <Line>126</Line>
-          <Line>128</Line>
-          <Line>129</Line>
-          <Line>130</Line>
-          <Line>131</Line>
-          <Line>133</Line>
-          <Line>135</Line>
-          <Line>136</Line>
-          <Line>139</Line>
-          <Line>140</Line>
-          <Line>142</Line>
-          <Line>144</Line>
-          <Line>146</Line>
-          <Line>147</Line>
-          <Line>148</Line>
-          <Line>149</Line>
-          <Line>150</Line>
-          <Line>151</Line>
-          <Line>152</Line>
-          <Line>154</Line>
-          <Line>155</Line>
-          <Line>157</Line>
-          <Line>158</Line>
-          <Line>160</Line>
-          <Line>163</Line>
-          <Line>166</Line>
-          <Line>167</Line>
-          <Line>170</Line>
-          <Line>171</Line>
-          <Line>172</Line>
-          <Line>173</Line>
-          <Line>175</Line>
-          <Line>176</Line>
-          <Line>177</Line>
-          <Line>178</Line>
-          <Line>180</Line>
-          <Line>181</Line>
-          <Line>182</Line>
-          <Line>183</Line>
-          <Line>184</Line>
-          <Line>199</Line>
-          <Line>200</Line>
-          <Line>201</Line>
-          <Line>202</Line>
-          <Line>203</Line>
-          <Line>204</Line>
-          <Line>205</Line>
-          <Line>206</Line>
-          <Line>207</Line>
-          <Line>208</Line>
-          <Line>209</Line>
-          <Line>210</Line>
-          <Line>211</Line>
-          <Line>213</Line>
-          <Line>215</Line>
-          <Line>216</Line>
-          <Line>217</Line>
-          <Line>218</Line>
-          <Line>219</Line>
-          <Line>220</Line>
-          <Line>222</Line>
-          <Line>223</Line>
-          <Line>224</Line>
-          <Line>225</Line>
-          <Line>226</Line>
-          <Line>227</Line>
-          <Line>228</Line>
-          <Line>229</Line>
-          <Line>230</Line>
-          <Line>231</Line>
-          <Line>232</Line>
-          <Line>233</Line>
-          <Line>234</Line>
-          <Line>236</Line>
-          <Line>237</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
-        <Issue>
-          <Id>S125</Id>
-          <Line>185</Line>
-          <Message>Remove this commented out code.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1117</Id>
-          <Line>144</Line>
-          <Message>Rename "storyPoints" which hides the field with the same name.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1117</Id>
-          <Line>163</Line>
-          <Message>Rename "storyPoints" which hides the field with the same name.</Message>
-        </Issue>
         <Issue>
           <Id>S1144</Id>
           <Line>23</Line>
@@ -3926,30 +5067,57 @@
         </Issue>
         <Issue>
           <Id>S1144</Id>
-          <Line>70</Line>
-          <Message>Remove this unused private member.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1144</Id>
-          <Line>128</Line>
+          <Line>74</Line>
           <Message>Remove this unused private member.</Message>
         </Issue>
         <Issue>
           <Id>S1854</Id>
-          <Line>209</Line>
-          <Message>Remove this useless assignment to local variable "storyPointView".</Message>
+          <Line>99</Line>
+          <Message>Remove this useless assignment to local variable "poiView".</Message>
         </Issue>
         <Issue>
           <Id>S1066</Id>
-          <Line>205</Line>
+          <Line>97</Line>
           <Message>Merge this if statement with the enclosing one.</Message>
         </Issue>
         <Issue>
           <Id>S1481</Id>
-          <Line>209</Line>
-          <Message>Remove this unused "storyPointView" local variable.</Message>
+          <Line>99</Line>
+          <Message>Remove this unused "poiView" local variable.</Message>
         </Issue>
       </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\UI\Image.cs</Path>
+      <Metrics>
+        <Lines>15</Lines>
+        <Classes>1</Classes>
+        <Accessors>0</Accessors>
+        <Statements>0</Statements>
+        <Functions>0</Functions>
+        <PublicApi>0</PublicApi>
+        <PublicUndocumentedApi>0</PublicUndocumentedApi>
+        <Complexity>0</Complexity>
+        <FileComplexityDistribution>0=1;5=0;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=0;2=0;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank />
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>6</Line>
+          <Line>7</Line>
+          <Line>8</Line>
+          <Line>9</Line>
+          <Line>13</Line>
+          <Line>14</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues />
     </File>
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\UI\UI_Manager.cs</Path>
@@ -4026,16 +5194,16 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Windows\ModalWindow.cs</Path>
       <Metrics>
-        <Lines>56</Lines>
+        <Lines>72</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
-        <Statements>18</Statements>
-        <Functions>3</Functions>
-        <PublicApi>9</PublicApi>
-        <PublicUndocumentedApi>8</PublicUndocumentedApi>
-        <Complexity>5</Complexity>
+        <Statements>27</Statements>
+        <Functions>4</Functions>
+        <PublicApi>10</PublicApi>
+        <PublicUndocumentedApi>9</PublicUndocumentedApi>
+        <Complexity>6</Complexity>
         <FileComplexityDistribution>0=0;5=1;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
-        <FunctionComplexityDistribution>1=2;2=1;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <FunctionComplexityDistribution>1=3;2=1;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
         <Comments>
           <NoSonar />
           <NonBlank>
@@ -4083,11 +5251,28 @@
           <Line>51</Line>
           <Line>52</Line>
           <Line>53</Line>
-          <Line>54</Line>
           <Line>55</Line>
+          <Line>56</Line>
+          <Line>57</Line>
+          <Line>59</Line>
+          <Line>60</Line>
+          <Line>62</Line>
+          <Line>63</Line>
+          <Line>64</Line>
+          <Line>65</Line>
+          <Line>67</Line>
+          <Line>68</Line>
+          <Line>69</Line>
+          <Line>70</Line>
+          <Line>71</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>51</Line>
+          <Message>Rename "iconImage" which hides the field with the same name.</Message>
+        </Issue>
         <Issue>
           <Id>S1117</Id>
           <Line>31</Line>
@@ -4164,7 +5349,7 @@
     <File>
       <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Windows\SummaryWindow.cs</Path>
       <Metrics>
-        <Lines>91</Lines>
+        <Lines>92</Lines>
         <Classes>1</Classes>
         <Accessors>0</Accessors>
         <Statements>39</Statements>
@@ -4177,7 +5362,7 @@
         <Comments>
           <NoSonar />
           <NonBlank>
-            <Line>48</Line>
+            <Line>49</Line>
           </NonBlank>
         </Comments>
         <LinesOfCode>
@@ -4202,8 +5387,133 @@
           <Line>23</Line>
           <Line>24</Line>
           <Line>25</Line>
-          <Line>27</Line>
-          <Line>29</Line>
+          <Line>26</Line>
+          <Line>28</Line>
+          <Line>30</Line>
+          <Line>32</Line>
+          <Line>33</Line>
+          <Line>34</Line>
+          <Line>36</Line>
+          <Line>37</Line>
+          <Line>38</Line>
+          <Line>40</Line>
+          <Line>41</Line>
+          <Line>43</Line>
+          <Line>44</Line>
+          <Line>45</Line>
+          <Line>46</Line>
+          <Line>47</Line>
+          <Line>50</Line>
+          <Line>51</Line>
+          <Line>52</Line>
+          <Line>54</Line>
+          <Line>55</Line>
+          <Line>56</Line>
+          <Line>58</Line>
+          <Line>59</Line>
+          <Line>60</Line>
+          <Line>62</Line>
+          <Line>63</Line>
+          <Line>64</Line>
+          <Line>65</Line>
+          <Line>66</Line>
+          <Line>68</Line>
+          <Line>69</Line>
+          <Line>70</Line>
+          <Line>72</Line>
+          <Line>73</Line>
+          <Line>74</Line>
+          <Line>76</Line>
+          <Line>77</Line>
+          <Line>78</Line>
+          <Line>79</Line>
+          <Line>81</Line>
+          <Line>82</Line>
+          <Line>83</Line>
+          <Line>84</Line>
+          <Line>85</Line>
+          <Line>87</Line>
+          <Line>88</Line>
+          <Line>89</Line>
+          <Line>90</Line>
+          <Line>91</Line>
+        </LinesOfCode>
+      </Metrics>
+      <Issues>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>32</Line>
+          <Message>Rename "title" which hides the field with the same name.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>50</Line>
+          <Message>Rename "title" which hides the field with the same name.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>50</Line>
+          <Message>Rename "image1" which hides the field with the same name.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>68</Line>
+          <Message>Rename "title" which hides the field with the same name.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>68</Line>
+          <Message>Rename "image1" which hides the field with the same name.</Message>
+        </Issue>
+        <Issue>
+          <Id>S1117</Id>
+          <Line>68</Line>
+          <Message>Rename "image2" which hides the field with the same name.</Message>
+        </Issue>
+      </Issues>
+    </File>
+    <File>
+      <Path>C:\Users\IhceneCh\Documents\GitHub\Assets\Scripts\Windows\WarningPanel.cs</Path>
+      <Metrics>
+        <Lines>56</Lines>
+        <Classes>1</Classes>
+        <Accessors>0</Accessors>
+        <Statements>18</Statements>
+        <Functions>3</Functions>
+        <PublicApi>9</PublicApi>
+        <PublicUndocumentedApi>8</PublicUndocumentedApi>
+        <Complexity>5</Complexity>
+        <FileComplexityDistribution>0=0;5=1;10=0;20=0;30=0;60=0;90=0</FileComplexityDistribution>
+        <FunctionComplexityDistribution>1=2;2=1;4=0;6=0;8=0;10=0;12=0</FunctionComplexityDistribution>
+        <Comments>
+          <NoSonar />
+          <NonBlank>
+            <Line>30</Line>
+          </NonBlank>
+        </Comments>
+        <LinesOfCode>
+          <Line>1</Line>
+          <Line>2</Line>
+          <Line>3</Line>
+          <Line>4</Line>
+          <Line>6</Line>
+          <Line>7</Line>
+          <Line>9</Line>
+          <Line>10</Line>
+          <Line>11</Line>
+          <Line>12</Line>
+          <Line>13</Line>
+          <Line>15</Line>
+          <Line>17</Line>
+          <Line>18</Line>
+          <Line>19</Line>
+          <Line>20</Line>
+          <Line>21</Line>
+          <Line>22</Line>
+          <Line>23</Line>
+          <Line>24</Line>
+          <Line>26</Line>
+          <Line>28</Line>
           <Line>31</Line>
           <Line>32</Line>
           <Line>33</Line>
@@ -4212,77 +5522,25 @@
           <Line>37</Line>
           <Line>39</Line>
           <Line>40</Line>
-          <Line>42</Line>
+          <Line>41</Line>
           <Line>43</Line>
           <Line>44</Line>
-          <Line>45</Line>
           <Line>46</Line>
+          <Line>47</Line>
+          <Line>48</Line>
           <Line>49</Line>
-          <Line>50</Line>
           <Line>51</Line>
+          <Line>52</Line>
           <Line>53</Line>
           <Line>54</Line>
           <Line>55</Line>
-          <Line>57</Line>
-          <Line>58</Line>
-          <Line>59</Line>
-          <Line>61</Line>
-          <Line>62</Line>
-          <Line>63</Line>
-          <Line>64</Line>
-          <Line>65</Line>
-          <Line>67</Line>
-          <Line>68</Line>
-          <Line>69</Line>
-          <Line>71</Line>
-          <Line>72</Line>
-          <Line>73</Line>
-          <Line>75</Line>
-          <Line>76</Line>
-          <Line>77</Line>
-          <Line>78</Line>
-          <Line>80</Line>
-          <Line>81</Line>
-          <Line>82</Line>
-          <Line>83</Line>
-          <Line>84</Line>
-          <Line>86</Line>
-          <Line>87</Line>
-          <Line>88</Line>
-          <Line>89</Line>
-          <Line>90</Line>
         </LinesOfCode>
       </Metrics>
       <Issues>
         <Issue>
           <Id>S1117</Id>
           <Line>31</Line>
-          <Message>Rename "title" which hides the field with the same name.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1117</Id>
-          <Line>49</Line>
-          <Message>Rename "title" which hides the field with the same name.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1117</Id>
-          <Line>49</Line>
-          <Message>Rename "image1" which hides the field with the same name.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1117</Id>
-          <Line>67</Line>
-          <Message>Rename "title" which hides the field with the same name.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1117</Id>
-          <Line>67</Line>
-          <Message>Rename "image1" which hides the field with the same name.</Message>
-        </Issue>
-        <Issue>
-          <Id>S1117</Id>
-          <Line>67</Line>
-          <Message>Rename "image2" which hides the field with the same name.</Message>
+          <Message>Rename "iconImage" which hides the field with the same name.</Message>
         </Issue>
       </Issues>
     </File>

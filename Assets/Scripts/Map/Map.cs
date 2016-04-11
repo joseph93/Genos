@@ -8,7 +8,9 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Map : MonoBehaviour
+
+    public class Map 
+
     {
 
         private List<Storyline> storylines;
@@ -115,6 +117,7 @@ namespace Assets.Scripts
 
             foreach (Storyline s in storylines)
             {
+
                 foreach (var id in s.getPath())
                 {
                     foreach (var n in storypointList)
@@ -122,16 +125,16 @@ namespace Assets.Scripts
                         if (n.getID() == id)
                         {
                             orderedPath.Add(n);
+
                             break;
                         }
 
                     }
                 }
-                
+
             }
             return orderedPath;
         }
-
 
     }
 }
