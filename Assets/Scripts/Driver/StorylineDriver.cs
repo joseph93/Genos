@@ -57,17 +57,12 @@ namespace Assets.Scripts.Driver
 
             map = mc.getMap();
             
-<<<<<<< HEAD
+
             //iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
             //List<Beacon> beacons = bh.getBeacons();
             List<Node> orderedPath = map.orderedPath();
-            map.setStorypointList(orderedPath);
-            map.startStoryline(0/*PlayerPrefs.GetInt("storylineID")*/);
-=======
-            iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
-            List<Beacon> beacons = bh.getBeacons();
+
             
-            List<Node> orderedPath = map.orderedPath();
             
             
             foreach (var n in orderedPath)
@@ -77,7 +72,7 @@ namespace Assets.Scripts.Driver
             
             map.setStorypointList(orderedPath);
             map.startStoryline(0 /*PlayerPrefs.GetInt("storylineID")*/);
->>>>>>> db331fa2573640c9f08838b5d86878657f6d420a
+
             DisplayNodes(map.getStorypointNodes(), map.getFloors());
 
         }

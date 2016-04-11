@@ -8,11 +8,9 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-<<<<<<< HEAD
+
     public class Map 
-=======
-    public class Map : MonoBehaviour
->>>>>>> db331fa2573640c9f08838b5d86878657f6d420a
+
     {
 
         private List<Storyline> storylines;
@@ -108,11 +106,6 @@ namespace Assets.Scripts
             storylines[slID].initializeLists(storypointList);
         }
 
-<<<<<<< HEAD
-        
-        public List<Node> orderedPath()
-        {
-=======
         /*
          * Set camera zoom height and width
          * Display floorPlan image according to their x-y scaled
@@ -120,36 +113,25 @@ namespace Assets.Scripts
         public List<Node> orderedPath()
         {
             
->>>>>>> db331fa2573640c9f08838b5d86878657f6d420a
             List<Node> orderedPath = new List<Node>();
 
             foreach (Storyline s in storylines)
             {
-<<<<<<< HEAD
-                foreach (Node n in s.getNodeList())
-                {
-                    foreach (var id in s.getPath())
-=======
+
                 foreach (var id in s.getPath())
                 {
                     foreach (var n in storypointList)
->>>>>>> db331fa2573640c9f08838b5d86878657f6d420a
                     {
                         if (n.getID() == id)
                         {
                             orderedPath.Add(n);
-<<<<<<< HEAD
-=======
+
                             break;
->>>>>>> db331fa2573640c9f08838b5d86878657f6d420a
                         }
 
                     }
                 }
-<<<<<<< HEAD
-=======
-                
->>>>>>> db331fa2573640c9f08838b5d86878657f6d420a
+
             }
             return orderedPath;
         }
