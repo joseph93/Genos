@@ -56,6 +56,7 @@ namespace Assets.Scripts.Driver
             mc = FindObjectOfType<MapController>();
 
             map = mc.getMap();
+<<<<<<< HEAD
 
             iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
             List<Beacon> beacons = bh.getBeacons();
@@ -63,6 +64,17 @@ namespace Assets.Scripts.Driver
             List<Node> orderedPath = map.orderedPath();
 
 
+=======
+            
+
+            //iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
+            //List<Beacon> beacons = bh.getBeacons();
+            List<Node> orderedPath = map.orderedPath();
+
+            
+            
+            
+>>>>>>> fc92cf5d0b90af41bfb298340a349f20f3ee267b
             foreach (var n in orderedPath)
             {
                 print(n.getID());
@@ -70,6 +82,7 @@ namespace Assets.Scripts.Driver
 
             map.setStorypointList(orderedPath);
             map.startStoryline(0 /*PlayerPrefs.GetInt("storylineID")*/);
+
             DisplayNodes(map.getStorypointNodes(), map.getFloors());
 
         }
@@ -150,13 +163,18 @@ namespace Assets.Scripts.Driver
             return yConvertedScaled;
         }
 
-        public void DisplayNodes(List<Node> poiList, List<FloorPlan> floors)
+        public void DisplayNodes(List<Node> storyPointList, List<FloorPlan> floors)
         {
             int blue = 0;
             int green = 1;
             int red = 2;
+<<<<<<< HEAD
 
             foreach (Node n in poiList)
+=======
+            
+            foreach (Node n in storyPointList)
+>>>>>>> fc92cf5d0b90af41bfb298340a349f20f3ee267b
             {
                 Sprite nodeSprite;
                 string nodeColorEditor; // show name of color of the sprite in editor (optional)
