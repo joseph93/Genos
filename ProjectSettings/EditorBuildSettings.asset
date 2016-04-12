@@ -4,20 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-<<<<<<< HEAD
-    path: Assets/Scenes/Settings.unity
-  - enabled: 1
-    path: Assets/Scenes/Lang.unity
-  - enabled: 1
-    path: Assets/Scenes/Help.unity
-=======
-    path: Assets/Scenes/3D-outdoor.unity
-  - enabled: 0
-    path: Assets/Scenes/F2-next.unity
-  - enabled: 0
-    path: Assets/Fantasy Skybox FREE/Demo/Fantasy Skybox FREE Demo (960x600px).unity
-  - enabled: 1
-    path: Assets/Scenes/Menu.unity
->>>>>>> fc92cf5d0b90af41bfb298340a349f20f3ee267b
+  m_Scenes: []
