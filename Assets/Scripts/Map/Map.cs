@@ -101,40 +101,49 @@ namespace Assets.Scripts
 
         public void startStoryline(int slID)
         {
-            //display the nodes of the correct storyline
-            //display the floors of the correct storyline
-            storylines[slID].initializeLists(storypointList);
+            //set the correct nodes for the corresponding storyline
+            //storylines[slID].initializeLists(storypointList);
+
+            foreach (var sl in storylines)
+            {
+                if (sl.id == slID)
+                {
+                    sl.initializeLists(storypointList);
+                    break;
+                }
+            }
         }
 
         /*
          * Set camera zoom height and width
          * Display floorPlan image according to their x-y scaled
          */
-        public List<Node> orderedPath()
+        public List<Node> orderedPath(int slID)
         {
             
             List<Node> orderedPath = new List<Node>();
 
             foreach (Storyline s in storylines)
             {
-
-                foreach (var id in s.getPath())
-                {
-                    foreach (var n in storypointList)
+                if (s.id == slID) { 
+                    foreach (var id in s.getPath())
                     {
-                        if (n.getID() == id)
+                        foreach (var n in storypointList)
                         {
-                            orderedPath.Add(n);
-
-                            break;
+                            if (n.getID() == id)
+                            {
+                                orderedPath.Add(n);
+                                break;
+                            }
                         }
 
+                        }
                     }
                 }
-
+                    return orderedPath;
             }
-            return orderedPath;
+            
         }
 
     }
-}
+

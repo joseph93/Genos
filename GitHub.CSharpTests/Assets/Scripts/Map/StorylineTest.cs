@@ -18,12 +18,12 @@ namespace Assets.Scripts
         {
             try
             {
-                POS sp1 = new POS(0, 0, 0, "blue", 2, 0);
-                POS sp2 = new POS(0, 0, 0, "blue", 2,  0);
+                POS sp1 = new POS(0, 0, 0, 2, 0);
+                POS sp2 = new POS(0, 0, 0, 2,  0);
                 List<POS> spList = new List<POS>();
                 spList.Add(sp1);
                 spList.Add(sp2);
-                Storyline np = new Storyline(0, 4, "test", "test");
+                Storyline np = new Storyline(0, 4);
                 np.setStorypointList(spList);
 
                 Assert.True(np.isInOrder(sp1));
@@ -39,8 +39,8 @@ namespace Assets.Scripts
         {
             try
             {
-                POS sp1 = new POS(0, 0, 0, "blue", 2, 0);
-                POS sp2 = new POS(0, 0, 0, "blue", 2, 0);
+                POS sp1 = new POS(0, 0, 0, 2, 0);
+                POS sp2 = new POS(0, 0, 0, 2, 0);
                 List<POS> spList = new List<POS>();
                 spList.Add(sp1);
                 spList.Add(sp2);
@@ -48,7 +48,7 @@ namespace Assets.Scripts
                 List<POS> visitedSpList = new List<POS>();
                 visitedSpList.Add(sp1);
 
-                Storyline np = new Storyline(0, 4, "test", "test");
+                Storyline np = new Storyline(0, 4);
                 np.setStorypointList(spList);
                 np.setVisitedStorypointList(visitedSpList);
 

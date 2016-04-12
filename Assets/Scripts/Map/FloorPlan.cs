@@ -9,21 +9,24 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    public class FloorPlan : MonoBehaviour
+    public class FloorPlan
     {
-        private string prefix = "http://localhost";
         public string floorNumber { get; set; }
         public string imagePath { get; set; }
         public int imageWidth { get; set; }
         public int imageHeight { get; set; }
         
-
+        
         public FloorPlan(string fn, string ip, int iw, int ih)
         {
             floorNumber = fn;
-            imagePath = prefix + ip;
+            imagePath = ip;
             imageWidth = iw;
             imageHeight = ih;
+        }
+
+        void Start()
+        {
         }
 
         public int getImageWidth()
@@ -34,19 +37,6 @@ namespace Assets.Scripts
         public int getImageHeight()
         {
             return imageHeight;
-        }
-
-        void Start()
-        {
-            LoadFloor();
-        }
-
-        public void LoadFloor()
-        {
-            var tex = Resources.Load(imagePath) as Texture2D;
-            GetComponent<RawImage>().texture = tex;
-            if (tex != null)
-                GetComponent<SpriteRenderer>().sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
         }
 
 

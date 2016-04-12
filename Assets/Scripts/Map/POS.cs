@@ -13,7 +13,7 @@ namespace Assets.Scripts
 {
     public class POS : PointOfInterest, IComparable<POS>
     {
-        private int storylineID;
+        public int storylineID { get; set; }
         [SerializeField]
         private int sequentialID; //JOSEPH: the order of the storypoint
         private bool visited;
@@ -31,8 +31,7 @@ namespace Assets.Scripts
         private UnityAction viewVideoAction;
 
         public GameObject checkmarkIcon;
-
-        private List<StoryPointDescription> storypointDescrList; 
+        
         private List<ExhibitionContent> contents;
 
         void Awake()
@@ -63,20 +62,16 @@ namespace Assets.Scripts
             warningPanel = WarningPanel.Instance();
 
         }
-        public POS(int id, int x, int y, string color, int floorNumber, int stID) : base(id, x, y, color, floorNumber)
+        public POS(int id, int x, int y, int floorNumber, int stID) : base(id, x, y, floorNumber)
         {
             storylineID = stID;
             visited = false;
             detected = false;
             warned = false;
             contents = new List<ExhibitionContent>();
-            storypointDescrList = new List<StoryPointDescription>();
+            poiDescriptionList = new List<PoiDescription>();
         }
-
-        public void addStorypointDescription(StoryPointDescription sd)
-        {
-            storypointDescrList.Add(sd);
-        }
+        
 
         public int getSequentialID()
         {

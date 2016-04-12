@@ -14,9 +14,8 @@ namespace Assets.Scripts
     //Ihcene : StoryLine will only be available with the NipperTour
     public class Storyline : MonoBehaviour
     {
-        private int id;
-        public string title { get; set; }
-        public string description { get; set; }
+        public int id { get; set; }
+        private readonly List<PoiDescription> storylineDescriptionList;
         public int floorsCovered { get; set; }
         private List<POS> visitedStoryPoints;
         private List<POS> storyPoints;
@@ -27,17 +26,16 @@ namespace Assets.Scripts
 
         public Camera mainCam;
 
-        public Storyline(int id, int fc, string title1, string description1)
+        public Storyline(int id, int fc)
         {
             this.id = id;
-            this.title = title1;
-            description = description1;
             floorsCovered = fc;
             nodeList = new List<Node>();
             storyPoints = new List<POS>();
             visitedStoryPoints = new List<POS>();
             myBeacons = new List<Beacon>();
             path = new List<int>();
+            storylineDescriptionList = new List<PoiDescription>();
         }
 
         // Use this for initialization
@@ -59,6 +57,16 @@ namespace Assets.Scripts
         {
             
         }
+
+        public void addStorylineDescription(PoiDescription sd)
+        {
+            storylineDescriptionList.Add(sd);
+        }
+
+        public List<PoiDescription> getStorylineDescriptionList()
+        {
+            return storylineDescriptionList;
+        } 
 
         public void setBeaconList(List<Beacon> beacons)
         {

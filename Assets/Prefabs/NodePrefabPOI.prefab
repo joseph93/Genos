@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21216596}
   - 114: {fileID: 11494526}
   - 114: {fileID: 11428918}
+  - 61: {fileID: 6140688}
   m_Layer: 0
   m_Name: NodePrefabPOI
   m_TagString: Untagged
@@ -30,6 +31,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6140688
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194376}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!114 &11428918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41,6 +56,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d066f091a0bf1f439f817bb8a70d052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  floorNumber: 0
   x: 0
   y: 0
   BeaconGameObject: {fileID: 100000, guid: 6badeb4831d3cbb469ec244e7f50ea3a, type: 2}
@@ -59,6 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce60f3eb3c1523a4bb19569e73aa5dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  floorNumber: 0
   x: 0
   y: 0
 --- !u!212 &21216596

@@ -60,18 +60,11 @@ namespace Assets.Scripts
         }
 
 
-        public PointOfInterest(int id, int x, int y, string color, int floorNumber) : base(id, x, y, color, floorNumber)
+        public PointOfInterest(int id, int x, int y, int floorNumber) : base(id, x, y, floorNumber)
         {
             detected = false;
             contents = new List<ExhibitionContent>();
             poiDescriptionList = new List<PoiDescription>();
-        }
-
-        public PointOfInterest(PointOfInterest copyPOI) : base(copyPOI)
-        {
-            detected = copyPOI.detected;
-            contents = copyPOI.contents;
-            poiDescriptionList = copyPOI.poiDescriptionList;
         }
 
         public List<PoiDescription> GetPoiDescriptionList()

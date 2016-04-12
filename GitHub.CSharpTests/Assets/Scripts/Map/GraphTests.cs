@@ -17,11 +17,11 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0,"blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0,"blue", 1);
-                Node n3 = new PointOfInterest(3, 0, 0,"blue", 1);
-                Node n4 = new PointOfInterest(4, 0, 0,"blue", 1);
-                Node n5 = new PointOfInterest(5, 0, 0,"blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
+                Node n2 = new PointOfInterest(2, 0, 0, 1);
+                Node n3 = new PointOfInterest(3, 0, 0, 1);
+                Node n4 = new PointOfInterest(4, 0, 0, 1);
+                Node n5 = new PointOfInterest(5, 0, 0, 1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
@@ -58,11 +58,11 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0,"blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0,"blue", 1);
-                Node n3 = new PointOfInterest(3, 0, 0,"blue", 1);
-                Node n4 = new PointOfInterest(4, 0, 0,"blue", 1);
-                Node n5 = new PointOfInterest(5, 0, 0,"blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
+                Node n2 = new PointOfInterest(2, 0, 0, 1);
+                Node n3 = new PointOfInterest(3, 0, 0, 1);
+                Node n4 = new PointOfInterest(4, 0, 0, 1);
+                Node n5 = new PointOfInterest(5, 0, 0, 1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
@@ -95,11 +95,11 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0,"blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0,"blue", 1);
-                Node n3 = new PointOfInterest(3, 0, 0,"blue", 1);
-                Node n4 = new PointOfInterest(4, 0, 0,"blue", 1);
-                Node n5 = new PointOfInterest(5, 0, 0,"blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
+                Node n2 = new PointOfInterest(2, 0, 0, 1);
+                Node n3 = new PointOfInterest(3, 0, 0, 1);
+                Node n4 = new PointOfInterest(4, 0, 0, 1);
+                Node n5 = new PointOfInterest(5, 0, 0, 1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
@@ -135,7 +135,7 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0,"blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
                 State status = n1.getState();
 
                 Assert.IsNotNull(g);
@@ -155,7 +155,7 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0,"blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
                 g.InsertNewVertex(n1);
 
                 State status = n1.getState();
@@ -174,8 +174,8 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0,"blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
+                Node n2 = new PointOfInterest(2, 0, 0, 1);
 
                 Assert.Equals(null, g.BFS(n1, n2));
             }
@@ -191,8 +191,8 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
+                Node n2 = new PointOfInterest(2, 0, 0, 1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
@@ -211,8 +211,8 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
+                Node n2 = new PointOfInterest(2, 0, 0, 1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
@@ -231,11 +231,11 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
-                Node n3 = new PointOfInterest(3, 0, 0, "blue", 1);
-                Node n4 = new PointOfInterest(4, 0, 0, "blue", 1);
-                Node n5 = new PointOfInterest(5, 0, 0, "blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0,  1);
+                Node n2 = new PointOfInterest(2, 0, 0, 1);
+                Node n3 = new PointOfInterest(3, 0, 0,  1);
+                Node n4 = new PointOfInterest(4, 0, 0,  1);
+                Node n5 = new PointOfInterest(5, 0, 0,  1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
@@ -269,9 +269,9 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
-                Node n3 = new PointOfInterest(3, 0, 0, "blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0,  1);
+                Node n2 = new PointOfInterest(2, 0, 0,  1);
+                Node n3 = new PointOfInterest(3, 0, 0,  1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
@@ -291,8 +291,8 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
+                Node n2 = new PointOfInterest(2, 0, 0, 1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);
@@ -311,8 +311,8 @@ namespace Assets.Scripts
             try
             {
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
+                Node n2 = new PointOfInterest(2, 0, 0, 1);
 
                 List<Node> nodelist = new List<Node>();
                 nodelist.Add(n1);

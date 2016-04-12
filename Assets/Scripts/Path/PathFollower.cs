@@ -52,7 +52,7 @@ public class PathFollower : MonoBehaviour {
 
         sd = FindObjectOfType<StorylineDriver>();
 
-        path = sd.getMap().orderedPath();
+        //path = sd.getMap().orderedPath();
 
         transform.position = new Vector3(sd.XCoordinatesConversion(path[0].x, sd.getMap().getFloors()[0].getImageWidth()), sd.YCoordinatesConversion(path[0].y, sd.getMap().getFloors()[0].getImageHeight()), -8);
         
