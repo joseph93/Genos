@@ -67,9 +67,7 @@ namespace Assets.Scripts
             map.setStorypointList(storypointList);
             map.setFloorplanList(floorList);
             map.setStorylineList(storylineList);
-            map.initializeGraph(poiList);
-
-
+            map.initializeGraph(storypointList);
 
         }
 
@@ -172,7 +170,7 @@ namespace Assets.Scripts
 
             foreach (JSONObject s in storylines.list)
             {
-                Storyline storyline = new Storyline((int)s.list[0].n, (int)s.list[6].n);
+                Storyline storyline = new Storyline((int)s.list[0].n, s.list[6].Count);
                 foreach (JSONObject nodeid in s.list[3].list)
                 {
                     storyline.addToPath((int)nodeid.n);

@@ -41,8 +41,8 @@ public class TouchScreenCamera : MonoBehaviour
         if (myCamera.orthographicSize > maxZoom)
             myCamera.orthographicSize = maxZoom;
 
-        CalculateLevelBounds();
         
+        StartCoroutine(changeMaxZoom());
     }
 
     public IEnumerator getMapWidthAndHeight()
@@ -52,6 +52,17 @@ public class TouchScreenCamera : MonoBehaviour
         Renderer floorRenderer = fp.GetComponent<Renderer>();
         mapWidth = floorRenderer.bounds.max.x * 2;
         mapHeight = floorRenderer.bounds.max.y * 2;
+        
+    }
+
+    public IEnumerator changeMaxZoom()
+    {
+        yield return new WaitForSeconds(0.06f);
+        Renderer floorRenderer = fp.GetComponent<Renderer>();
+        mapWidth = floorRenderer.bounds.max.x * 2;
+        mapHeight = floorRenderer.bounds.max.y * 2;
+        maxZoom = myCamera.orthographicSize;
+        CalculateLevelBounds();
     }
 
     void Update()
@@ -63,6 +74,7 @@ public class TouchScreenCamera : MonoBehaviour
         {
             moveSensitivityX = myCamera.orthographicSize / 5.0f;
             moveSensitivityY = myCamera.orthographicSize / 5.0f;
+            
         }
 
         Touch[] touches = Input.touches; //return all the touches currently on screen
