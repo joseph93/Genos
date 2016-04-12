@@ -67,13 +67,7 @@ namespace Assets.Scripts
             map.setStorypointList(storypointList);
             map.setFloorplanList(floorList);
             map.setStorylineList(storylineList);
-<<<<<<< HEAD
             map.initializeGraph(storypointList);
-=======
-            map.initializeGraph(poiList);
-
-
->>>>>>> 91a19b2c87cdee45ef360e0a4a9296efaf5684a5
 
         }
 
