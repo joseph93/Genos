@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI; // needed for the toggle button
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour {
 
@@ -14,7 +15,7 @@ public class SoundManager : MonoBehaviour {
        
         if(GetComponent<Toggle>().isOn == false) // toggle is checked meaning sound is on
         {
-            
+         
             Camera.main.gameObject.GetComponent<AudioListener>().enabled = false;
         }
         else if (GetComponent<Toggle>().isOn == true) //toggle is unchecked meaning sound if off

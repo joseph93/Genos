@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Assets.Scripts;
 using Assets.Scripts.Language;
 
-public class FreeRoamingDriver : MonoBehaviour {
+public class FreeRoamingDriver : MonoBehaviour
+{
 
     public Node[] ArrayOfNodes;
     private FreeRoaming freeRoamingTour;
@@ -19,15 +20,16 @@ public class FreeRoamingDriver : MonoBehaviour {
     private MapController mc;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         StartCoroutine(startFreeRoaming());
     }
-	
-	// Update is called once per frame
-	void Update () {
-	    swipePanelLeft();
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        swipePanelLeft();
+    }
 
     public Map getMap()
     {
@@ -44,7 +46,7 @@ public class FreeRoamingDriver : MonoBehaviour {
 
         map = mc.getMap();
         freeRoamingTour.initializeLists(map.GetPoiNodes());
-        
+
 
     }
 

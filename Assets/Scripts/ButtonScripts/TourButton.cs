@@ -50,6 +50,11 @@ namespace Assets.Scripts
             SceneManager.LoadScene("Quit");
         }
 
+        public void loadHelp()
+        {
+            SceneManager.LoadScene("Help");
+        }
+
         public void loadLang()
         {
             SceneManager.LoadScene("Lang");
