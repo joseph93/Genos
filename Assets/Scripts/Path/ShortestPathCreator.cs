@@ -18,6 +18,8 @@ namespace Assets.Scripts.Path
         private Map map;
         private bool touched;
 
+
+
         void Start()
         {
             shortest_path = new List<Node>();
