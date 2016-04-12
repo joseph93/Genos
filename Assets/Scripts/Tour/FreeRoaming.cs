@@ -18,11 +18,11 @@ namespace Assets.Scripts
         public Camera mainCam;
 
         protected iBeaconHandler bh;
-        
+
         //JOSEPH: Initialize the node list.
         void Awake()
         {
-            
+
         }
         // Use this for initialization
         void Start()
@@ -41,7 +41,7 @@ namespace Assets.Scripts
         public List<PointOfInterest> getPoiList()
         {
             return pointsOfInterest;
-        } 
+        }
 
 
         public void initializeLists(List<Node> poiList)
@@ -52,12 +52,12 @@ namespace Assets.Scripts
             {
                 if (n.GetType() == typeof(PointOfInterest))
                 {
-                    pointsOfInterest.Add((PointOfInterest) n);
+                    pointsOfInterest.Add((PointOfInterest)n);
                     print("Added poi: " + n.getID());
-                }   
+                }
             }
         }
-        
+
 
 
         //Reviewer Ihcene: Update was fixed, for the rendering of the beacon, for each frames
@@ -82,7 +82,7 @@ namespace Assets.Scripts
 
                     foreach (PointOfInterest p in pointsOfInterest)
                     {
-                        if(!p.isDetected())
+                        if (!p.isDetected())
                         {
 
                             if (p.getBeacon().Equals(b))
@@ -96,15 +96,11 @@ namespace Assets.Scripts
 
                     }
 
-                }  
-                
+                }
+
             }
         }//end of searchForDistanceOFBeacon()
-        
-        }
+
     }
-
-
-
-
+}
 
