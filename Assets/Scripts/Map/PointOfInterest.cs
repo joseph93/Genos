@@ -122,6 +122,10 @@ namespace Assets.Scripts
 
         public void displayPopUpWindow()
         {
+            foreach (var descr in poiDescriptionList)
+            {
+                
+            }
             //popUpWindow.PopUp(poiDescriptionList.title, nipperPopUp, myViewAction);
             //CHANGE HERE WITH LIST OF POIDESCRIPTION
         }
