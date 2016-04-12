@@ -202,7 +202,7 @@ namespace Assets.Scripts.Driver
                         newNode.transform.localScale = new Vector3(7f, 7f, 7f);
                         newNode.transform.parent = floorManager.transform;
                         newNode.SetActive(true);
-                        nodeSprite = nodeSprites[red];
+                        nodeSprite = nodeSprites[blue];
                         nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
                         newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
                         newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
@@ -241,7 +241,7 @@ namespace Assets.Scripts.Driver
                         newNode.transform.localScale = new Vector3(7f, 7f, 7f);
                         newNode.transform.parent = floorManager.transform;
                         newNode.SetActive(true);
-                        nodeSprite = nodeSprites[red];
+                        nodeSprite = nodeSprites[green];
                         nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
                         newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
                         newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
