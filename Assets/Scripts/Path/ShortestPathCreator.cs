@@ -9,7 +9,7 @@ namespace Assets.Scripts.Path
 {
     class ShortestPathCreator : MonoBehaviour
     {
-        private FreeRoamingDriver _freeRoamingDriver;
+        private MapController mc;
         public float speed = 5.0f;
         public float reachDist = 0.2f;
         public static int currentPoint;
@@ -22,15 +22,21 @@ namespace Assets.Scripts.Path
 
         void Start()
         {
-            _freeRoamingDriver = FindObjectOfType<FreeRoamingDriver>();
-            
             shortest_path = new List<Node>();
+            StartCoroutine(getMapController());
+            
+        }
+
+        public IEnumerator getMapController()
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            mc = FindObjectOfType<MapController>();
+            map = mc.getMap();
         }
 
         void Update()
         {
-            if(_freeRoamingDriver != null)
-                map = _freeRoamingDriver.getMap();
 
             getShortestPath();
 

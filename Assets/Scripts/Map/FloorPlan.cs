@@ -9,14 +9,14 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    public class FloorPlan : MonoBehaviour
+    public class FloorPlan
     {
-        private string prefix = "http://localhost";
         public string floorNumber { get; set; }
         public string imagePath { get; set; }
         public int imageWidth { get; set; }
         public int imageHeight { get; set; }
         
+<<<<<<< HEAD
         public string getImagePath()
         {
             return imagePath;
@@ -27,12 +27,19 @@ namespace Assets.Scripts
             this.imagePath = imagePath;
         }
 
+=======
+        
+>>>>>>> 1630dbd41bef7c44a09d16c80b0a613b495e14ec
         public FloorPlan(string fn, string ip, int iw, int ih)
         {
             floorNumber = fn;
-            imagePath = prefix + ip;
+            imagePath = ip;
             imageWidth = iw;
             imageHeight = ih;
+        }
+
+        void Start()
+        {
         }
 
         public int getImageWidth()
@@ -45,6 +52,7 @@ namespace Assets.Scripts
             return imageHeight;
         }
 
+<<<<<<< HEAD
         void Start()
         {
             LoadFloor();
@@ -63,6 +71,8 @@ namespace Assets.Scripts
                 GetComponent<SpriteRenderer>().sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
         }
 
+=======
+>>>>>>> 1630dbd41bef7c44a09d16c80b0a613b495e14ec
 
     }
 }

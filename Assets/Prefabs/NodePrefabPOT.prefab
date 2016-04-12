@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21255804}
   - 114: {fileID: 11462892}
   - 114: {fileID: 11437116}
+  - 61: {fileID: 6142940}
   m_Layer: 0
   m_Name: NodePrefabPOT
   m_TagString: Untagged
@@ -30,6 +31,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6142940
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185818}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!114 &11437116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41,6 +56,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  floorNumber: 0
   x: 0
   y: 0
 --- !u!114 &11462892
@@ -54,6 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce60f3eb3c1523a4bb19569e73aa5dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  floorNumber: 0
   x: 0
   y: 0
 --- !u!212 &21255804

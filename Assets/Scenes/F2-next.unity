@@ -4225,8 +4225,6 @@ GameObject:
   - 222: {fileID: 1125990154}
   - 212: {fileID: 1125990152}
   - 114: {fileID: 1125990156}
-  - 114: {fileID: 1125990153}
-  - 114: {fileID: 1125990157}
   m_Layer: 0
   m_Name: FloorManager
   m_TagString: Untagged
@@ -4264,17 +4262,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!114 &1125990153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1125990151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0732dbfe0e608ae4dabf945c039cc307, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1125990154
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4324,17 +4311,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &1125990157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1125990151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a85e56c325b16f499dcc10c29ebd991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1141188881
 GameObject:
   m_ObjectHideFlags: 0
@@ -4783,7 +4759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1309568703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4988,7 +4964,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2055200, guid: 5c89eb821fd96ca4cac37308786dc693, type: 2}
       propertyPath: orthographic size
-      value: 102.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11487324, guid: 5c89eb821fd96ca4cac37308786dc693, type: 2}
       propertyPath: maxZoom
@@ -8223,7 +8199,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 75cbd5ff660ed894aaaec97d486c4def, type: 3}
   - {fileID: 21300000, guid: 61afb6392da613146afbed3383696217, type: 3}
   - {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e, type: 3}
-  floorManager: {fileID: 1125990151}
 --- !u!224 &2079881387
 RectTransform:
   m_ObjectHideFlags: 0
