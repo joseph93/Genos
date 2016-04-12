@@ -184,6 +184,7 @@
     <Compile Include="Assets\Scripts\Quit\XQuitButton.cs" />
     <Compile Include="Assets\Scripts\ScrollContent\DialogueBox.cs" />
     <Compile Include="Assets\Scripts\ScrollContent\ScrollSnapRect.cs" />
+    <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Tour\FreeRoaming.cs" />
     <Compile Include="Assets\Scripts\UI\Image.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Manager.cs" />
