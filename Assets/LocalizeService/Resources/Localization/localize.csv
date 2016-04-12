@@ -12,6 +12,7 @@ titleTours,Tours,tgswb,Tours
 titleListOfPointsOfInterest,"Nipper Tour","Nipper Toggss","Tour Nipper"
 titlePOI,"Points of Interest","asd","Point d'intérêt"
 titleIntroduction,"Introduction","intrigjfo","Introduction"
+titleSettings,"Settings","fswff","Configurations"
 buttonNipperTour,"Nipper Tour","nipsgwgs","Tour Nipper"
 buttonFreeRoaming,"Free Roaming Tour","sjdijsiw","Tour Libre"
 buttonCommingSoon,"Comming Soon...","comnfajaf","À venir..."
@@ -22,6 +23,8 @@ buttonOk,Ok,ofksf,Ok
 buttonCancel,Cancel,calramf,Annuler
 buttonNext,"Next","nesga","Suivant"
 buttonClose,Close,closfsf,Fermer
+buttonSound,"Sound","fafaf","Son"
+buttonHelp,"Help","hrh","Aide"
 buttonViewSummary,"View Summary","Viewnmanfka","Voir le Résumé"
 buttonPOI1,"Point of Interest 1","poffnw nrmkf","Point d'intérêt 1"
 buttonPOI2,"Point of Interest 2","poffnw nrmkf","Point d'intérêt 2"

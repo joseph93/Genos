@@ -15,8 +15,8 @@ namespace Assets.Scripts
         public string imagePath { get; set; }
         public int imageWidth { get; set; }
         public int imageHeight { get; set; }
-        
-        
+
+
         public FloorPlan(string fn, string ip, int iw, int ih)
         {
             floorNumber = fn;

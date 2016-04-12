@@ -11,16 +11,14 @@ namespace Assets.Scripts.Driver
 {
     public class StorylineDriver : MonoBehaviour
     {
-        public GameObject iBeaconHandler;
-
         private float minSwipeDistX = 300;
         private Vector2 startPos;
-
         private UI_Manager ui_Manager;
         public Animator anim;
-
         private Map map;
         private MapController mc;
+
+        public GameObject iBeaconHandler;
 
         public GameObject nodePrefabPOI;
         public GameObject nodePrefabPOT;
@@ -183,6 +181,8 @@ namespace Assets.Scripts.Driver
             int blue = 0;
             int green = 1;
             int red = 2;
+            int stairs = 3;
+            int elevator = 4;
             
             foreach (Node n in storyPointList)
             {
@@ -202,7 +202,7 @@ namespace Assets.Scripts.Driver
                         newNode.transform.localScale = new Vector3(7f, 7f, 7f);
                         newNode.transform.parent = floorManager.transform;
                         newNode.SetActive(true);
-                        nodeSprite = nodeSprites[red];
+                        nodeSprite = nodeSprites[blue];
                         nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
                         newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
                         newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
@@ -210,23 +210,7 @@ namespace Assets.Scripts.Driver
                         newNode.GetComponent<Node>().id = (n.getID());
                         newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
                         newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-                    
-                        //if id
-
-                        //TODO: need to take specific type of node depending on their type
-                        /*if (n.color.Equals("Blue"))
-                        {
-                            nodeSprite = nodeSprites[green];
-                            nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
-                            newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                            newNode.GetComponent<Node>().x = XCoordinatesConversion(n.x, floorPlan.getImageWidth());
-                            newNode.GetComponent<Node>().y = YCoordinatesConversion(n.y, floorPlan.getImageHeight());
-                            newNode.GetComponent<Node>().id = n.getID();
-                            newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
-                            newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-
-                        }*/
-                            
+                          
                         
                     }
                 }
@@ -238,36 +222,58 @@ namespace Assets.Scripts.Driver
 
                     if (newNode != null)
                     {
+                        PointOfTransition pot = (PointOfTransition)n;
                         newNode.transform.localScale = new Vector3(7f, 7f, 7f);
                         newNode.transform.parent = floorManager.transform;
                         newNode.SetActive(true);
-                        nodeSprite = nodeSprites[red];
-                        nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
-                        newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                        newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
-                        newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
-                        newNode.GetComponent<Node>().id = (n.getID());
-                        newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
-                        newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-                        /*if (n.color.Equals("Green"))
-                        {
-                            nodeSprite = nodeSprites[blue];
-                            nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
-                            newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                            newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
-                            newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
-                            newNode.GetComponent<Node>().id = (n.getID());
-                            newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
-                            newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-                        }*/
+
+                        //Added foreach loop 
+                     
+                            if (pot.label == PointOfTransition.Label.STAIRS) //stairs
+                            {
+                                nodeSprite = nodeSprites[stairs];
+                                nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
+                                newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
+                                newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
+                                newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
+                                newNode.GetComponent<Node>().id = (n.getID());
+                                newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
+                                newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
+
+                            }
+                            else if (pot.label == PointOfTransition.Label.ELEVATOR) //elevator
+                            {
+                                nodeSprite = nodeSprites[elevator];
+                                nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
+                                newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
+                                newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
+                                newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
+                                newNode.GetComponent<Node>().id = (n.getID());
+                                newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
+                                newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
+                            }
+                            else //none=green
+                            {
+                                nodeSprite = nodeSprites[green];
+                                nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
+                                newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
+                                newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
+                                newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
+                                newNode.GetComponent<Node>().id = (n.getID());
+                                newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
+                                newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
+                            }
+                        }
+                        
+                    
                             
                         
-                    }
+                    
                 }
 
 
             } //foreach
-        }
+        } //display
 
         
        
