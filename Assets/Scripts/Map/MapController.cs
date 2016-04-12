@@ -23,18 +23,14 @@ namespace Assets.Scripts
         private List<FloorPlan> floorList;
         private List<Edge> edgeList;
         private List<Node> nodeList;
-        private List<Storyline> storylineList;    
+        private List<Storyline> storylineList;
         private readonly List<Node> poiList = new List<Node>();
         private readonly List<Node> storypointList = new List<Node>();
         private Map map;
-        
+
 
         void Start()
         {
-<<<<<<< HEAD
-
-
-=======
             decode();
 
         }
@@ -45,10 +41,7 @@ namespace Assets.Scripts
 
             JSONObject jobject = new JSONObject(request.text);
             accessData(jobject);
->>>>>>> 1630dbd41bef7c44a09d16c80b0a613b495e14ec
         }
-
-
 
         public void accessData(JSONObject obj)
         {
@@ -62,20 +55,20 @@ namespace Assets.Scripts
             storylineList = PopulateStorylines();           //parse the storylines
             nodeList = populateNodes();                     //parse the nodes
 
-            
+
             initializePoiAndStorypointLists();      //populate the list that contains the points of interest and the other that contains storypoints
-            
+
             createStartAndEndNode(); //transform the id's of the nodes in the edges into Node objects
 
             setAdjacencies();              //add all the adjacencies to all the nodes
-            
+
             map = new Map();
             map.setPoiList(poiList);
             map.setStorypointList(storypointList);
             map.setFloorplanList(floorList);
             map.setStorylineList(storylineList);
             map.initializeGraph(poiList);
-            
+
 
 
         }
@@ -111,17 +104,17 @@ namespace Assets.Scripts
         {
             foreach (var n in nodeList)
             {
-                if (n.GetType() == typeof (PointOfInterest))
+                if (n.GetType() == typeof(PointOfInterest))
                 {
                     poiList.Add(n);
                 }
-                if (n.GetType() == typeof (POS))
+                if (n.GetType() == typeof(POS))
                 {
                     storypointList.Add(n);
                 }
-                if (n.GetType() == typeof (PointOfTransition))
+                if (n.GetType() == typeof(PointOfTransition))
                 {
-                    poiList.Add((PointOfTransition) n);
+                    poiList.Add((PointOfTransition)n);
                     storypointList.Add(n);
                 }
             }
@@ -187,7 +180,7 @@ namespace Assets.Scripts
 
                 for (int i = 0; i < s.list[1].list.Count; i++)
                 {
-                    PoiDescription storylineDescription = new PoiDescription(s.list[1].list[i].list[1].str, 
+                    PoiDescription storylineDescription = new PoiDescription(s.list[1].list[i].list[1].str,
                         s.list[2].list[i].list[1].str, s.list[1].list[i].list[0].str);
                     storyline.addStorylineDescription(storylineDescription);
                 }
@@ -202,125 +195,125 @@ namespace Assets.Scripts
             List<Node> tmpNodeList = new List<Node>();
             foreach (JSONObject n in nodes.list) //1st degree : list of nodes (only 1 element)
             {
-                    //Debug.Log(n.ToString());
-                    foreach (JSONObject poi in n.list[0].list) //3rd degree : list of pois
-                    { 
-                        //print(poi.ToString());
-                        PointOfInterest p = new PointOfInterest((int)poi.list[0].n, (int)poi.list[3].n, (int)poi.list[4].n, (int)poi.list[5].n);
-                        
-                        foreach (JSONObject b in poi.list[6].list)
+                //Debug.Log(n.ToString());
+                foreach (JSONObject poi in n.list[0].list) //3rd degree : list of pois
+                {
+                    //print(poi.ToString());
+                    PointOfInterest p = new PointOfInterest((int)poi.list[0].n, (int)poi.list[3].n, (int)poi.list[4].n, (int)poi.list[5].n);
+
+                    foreach (JSONObject b in poi.list[6].list)
+                    {
+                        //Debug.Log(b.ToString() + "\n");
+                        iBeaconServer beacon = new iBeaconServer(poi.list[6].list[0].str, int.Parse(poi.list[6].list[1].str), int.Parse(poi.list[6].list[2].str));
+                        p.setBeacon(beacon);
+                    }
+                    foreach (JSONObject c in poi.list[7].list) //Media list
+                    {
+                        //Debug.Log(c.ToString() + "\n");
+                        /*foreach (JSONObject i in poi.list[8].list[0].list) // Image list
                         {
-                            //Debug.Log(b.ToString() + "\n");
-                            iBeaconServer beacon = new iBeaconServer(poi.list[6].list[0].str, int.Parse(poi.list[6].list[1].str), int.Parse(poi.list[6].list[2].str));
-                            p.setBeacon(beacon);
+                            ExhibitionContent image = new Image(i.list[0].str, i.list[1].str, i.list[2].str);
+                            p.addContent(image);
+                            //Debug.Log(i.ToString() + "\n");
+                        }*/
+                        if (poi.list[7].list[1].list.Count > 0)
+                        {
+                            foreach (JSONObject v in poi.list[7].list[1].list) // Video list
+                            {
+                                string videoPath = v.list[0].str;
+                                string mp4Path = videoPath.Remove(videoPath.Length - 4);
+                                //Remove extension type of the file
+                                print(mp4Path);
+                                ExhibitionContent video = new Video(mp4Path, v.list[1].str, v.list[2].str);
+                                p.addContent(video);
+                                //Debug.Log(v.list[0].ToString() + "\n");
+                            }
                         }
-                        foreach (JSONObject c in poi.list[7].list) //Media list
+
+                        if (poi.list[7].list[2].list.Count > 0)
                         {
-                            //Debug.Log(c.ToString() + "\n");
-                            /*foreach (JSONObject i in poi.list[8].list[0].list) // Image list
+                            foreach (var a in poi.list[7].list[2].list) // Audio list
                             {
-                                ExhibitionContent image = new Image(i.list[0].str, i.list[1].str, i.list[2].str);
-                                p.addContent(image);
-                                //Debug.Log(i.ToString() + "\n");
-                            }*/
-                            if (poi.list[7].list[1].list.Count > 0)
+                                string audioPath = a.list[0].str.Remove(0, 13);
+                                string mp3Path = audioPath.Remove(audioPath.Length - 4);
+                                print(mp3Path);
+                                ExhibitionContent audio = new Audio(mp3Path, a.list[1].str, a.list[2].str);
+                                p.addContent(audio);
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < poi.list[1].Count; i++) //Add all the poi description in the point of interest
+                    {
+                        PoiDescription poiD = new PoiDescription(poi.list[1].list[i].list[1].str, poi.list[2].list[i].list[1].str, poi.list[1].list[i].list[0].str);
+                        p.addPoiDescription(poiD);
+                    }
+
+                    foreach (var sp in poi.list[8].list)
+                    {
+                        POS storyPoint = new POS((int)poi.list[0].n, (int)poi.list[3].n, (int)poi.list[4].n, (int)poi.list[5].n, (int)sp.list[1].n);
+
+                        for (int i = 0; i < sp.list[2].Count; i++) // description and title JSON object
+                        {
+                            PoiDescription spd = new PoiDescription(sp.list[2].list[i].list[1].str, sp.list[3].list[i].list[1].str, sp.list[2].list[i].list[0].str);
+                            storyPoint.addPoiDescription(spd);
+                        }
+
+                        foreach (var c in sp.list[4].list) //storypoint content list
+                        {
+                            /*foreach (var i in sp.list[4].list[0].list) //image list
                             {
-                                foreach (JSONObject v in poi.list[7].list[1].list) // Video list
+                                if (i != null)
                                 {
-                                    string videoPath = v.list[0].str;
+                                    ExhibitionContent image = new Image(i.list[0].str, i.list[2].str, i.list[1].str);
+                                    storyPoint.addContent(image);
+                                }
+                            }*/
+
+                            if (sp.list[4].list[1].list.Count > 0)
+                            {
+                                foreach (var v in sp.list[4].list[1].list) //video list
+                                {
+                                    string videoPath = v.list[0].str.Remove(0, 13);
                                     string mp4Path = videoPath.Remove(videoPath.Length - 4);
-                                        //Remove extension type of the file
+                                    //Remove extension type of the file
                                     print(mp4Path);
-                                    ExhibitionContent video = new Video(mp4Path, v.list[1].str, v.list[2].str);
-                                    p.addContent(video);
-                                    //Debug.Log(v.list[0].ToString() + "\n");
+                                    ExhibitionContent video = new Video(v.list[0].str, v.list[1].str, v.list[2].str);
+                                    storyPoint.addContent(video);
                                 }
                             }
 
-                            if (poi.list[7].list[2].list.Count > 0)
+                            if (sp.list[4].list[2].list.Count > 0)
                             {
-                                foreach (var a in poi.list[7].list[2].list) // Audio list
+                                foreach (var a in sp.list[4].list[2].list) //audio list
                                 {
                                     string audioPath = a.list[0].str.Remove(0, 13);
                                     string mp3Path = audioPath.Remove(audioPath.Length - 4);
                                     print(mp3Path);
                                     ExhibitionContent audio = new Audio(mp3Path, a.list[1].str, a.list[2].str);
-                                    p.addContent(audio);
+                                    storyPoint.addContent(audio);
                                 }
                             }
                         }
-
-                        for (int i = 0; i < poi.list[1].Count; i++) //Add all the poi description in the point of interest
-                        {
-                            PoiDescription poiD = new PoiDescription(poi.list[1].list[i].list[1].str, poi.list[2].list[i].list[1].str, poi.list[1].list[i].list[0].str);
-                            p.addPoiDescription(poiD);
-                        }
-
-                        foreach (var sp in poi.list[8].list)
-                        {
-                            POS storyPoint = new POS((int)poi.list[0].n, (int)poi.list[3].n, (int)poi.list[4].n, (int)poi.list[5].n, (int)sp.list[1].n);
-
-                            for (int i = 0; i < sp.list[2].Count; i++) // description and title JSON object
-                            {
-                                PoiDescription spd = new PoiDescription(sp.list[2].list[i].list[1].str, sp.list[3].list[i].list[1].str, sp.list[2].list[i].list[0].str);
-                                storyPoint.addPoiDescription(spd);
-                            }
-
-                            foreach (var c in sp.list[4].list) //storypoint content list
-                            {
-                                /*foreach (var i in sp.list[4].list[0].list) //image list
-                                {
-                                    if (i != null)
-                                    {
-                                        ExhibitionContent image = new Image(i.list[0].str, i.list[2].str, i.list[1].str);
-                                        storyPoint.addContent(image);
-                                    }
-                                }*/
-
-                                if (sp.list[4].list[1].list.Count > 0)
-                                {
-                                    foreach (var v in sp.list[4].list[1].list) //video list
-                                    {
-                                        string videoPath = v.list[0].str.Remove(0, 13);
-                                        string mp4Path = videoPath.Remove(videoPath.Length - 4);
-                                        //Remove extension type of the file
-                                        print(mp4Path);
-                                        ExhibitionContent video = new Video(v.list[0].str, v.list[1].str,v.list[2].str);
-                                        storyPoint.addContent(video);
-                                    }
-                                }
-
-                                if (sp.list[4].list[2].list.Count > 0)
-                                {
-                                    foreach (var a in sp.list[4].list[2].list) //audio list
-                                    {
-                                        string audioPath = a.list[0].str.Remove(0, 13);
-                                        string mp3Path = audioPath.Remove(audioPath.Length - 4);
-                                        print(mp3Path);
-                                        ExhibitionContent audio = new Audio(mp3Path, a.list[1].str, a.list[2].str);
-                                        storyPoint.addContent(audio);
-                                    }
-                                }
-                            }
-                            tmpNodeList.Add(storyPoint);
-                        }
-
-
-
-                        tmpNodeList.Add(p);
-                    }//end of poi foreach
-
-                    foreach (JSONObject pot in n.list[1].list) //3rd degree : list of pot
-                    {
-                        PointOfTransition pointOfTransition = new PointOfTransition((int)pot.list[0].n, (int)pot.list[2].n, (int)pot.list[3].n, (int)pot.list[4].n, pot.list[1].str);
-                        tmpNodeList.Add(pointOfTransition);
-                        //Debug.Log(pot.ToString() + "\n");
+                        tmpNodeList.Add(storyPoint);
                     }
-                
+
+
+
+                    tmpNodeList.Add(p);
+                }//end of poi foreach
+
+                foreach (JSONObject pot in n.list[1].list) //3rd degree : list of pot
+                {
+                    PointOfTransition pointOfTransition = new PointOfTransition((int)pot.list[0].n, (int)pot.list[2].n, (int)pot.list[3].n, (int)pot.list[4].n, pot.list[1].str);
+                    tmpNodeList.Add(pointOfTransition);
+                    //Debug.Log(pot.ToString() + "\n");
+                }
+
             }//end of root foreach
 
             return tmpNodeList;
-        }   
-        
+        }
+
     }
 }
