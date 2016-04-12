@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Driver;
 using UnityEngine;
 
 namespace Assets.Scripts.Path
@@ -10,20 +11,20 @@ namespace Assets.Scripts.Path
     class ShortestPathCreator : MonoBehaviour
     {
         private MapController mc;
+        private StorylineDriver slDriver;
+        private List<GameObject> nodesGameObjects; 
         public float speed = 5.0f;
         public float reachDist = 0.2f;
         public static int currentPoint;
 
         private List<Node> shortest_path;
         private Map map;
-        private bool touched;
 
 
 
         void Start()
         {
             shortest_path = new List<Node>();
-            StartCoroutine(getMapController());
             
         }
 
@@ -31,14 +32,28 @@ namespace Assets.Scripts.Path
         {
             yield return new WaitForSeconds(0.5f);
 
+            slDriver = FindObjectOfType<StorylineDriver>();
+            if (slDriver != null)
+                nodesGameObjects = slDriver.GetNodeGameObjects();
+            transform.position = new Vector3(nodesGameObjects[1].transform.position.x, nodesGameObjects[1].transform.position.y, -7);
             mc = FindObjectOfType<MapController>();
             map = mc.getMap();
+
+            foreach (var value in map.getGraph().getVertices().Values)
+            {
+                foreach (var adj in value.getAdjacentNodes().Keys)
+                {
+                    print("For node " + value.getID() + ", his adjacent nodes are: " + adj.getID());
+                }
+            }
         }
 
         void Update()
         {
-
-            getShortestPath();
+            
+                shortest_path = slDriver.getShortestPath();
+            
+            
 
             if (shortest_path != null)
             {
@@ -58,7 +73,7 @@ namespace Assets.Scripts.Path
             }
         }//end of update
 
-        public void getShortestPath()
+        /*public void getShortestPath()
         {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
@@ -67,17 +82,30 @@ namespace Assets.Scripts.Path
 
                 if (hit.collider != null)
                 {
-                    if (touched)
-                        shortest_path.Clear();
+                    //if (touched)
+                        //shortest_path.Clear();
 
                     //JOSEPH: erase the path renderer and recalculate which node you touched
                     ResetTrails();
                     GameObject recipient = hit.transform.gameObject;
                     Node touchedNode = recipient.GetComponent<Node>();
-
                     currentPoint = 0;
-                    shortest_path = map.getGraph().shortest_path(map.GetPoiNodes()[0], touchedNode);
+                    Debug.Log("First node: " + map.getStorypointNodes()[1].getID());
+                    Debug.Log("Touched node: " + touchedNode.getID());
+                    shortest_path = map.getGraph().shortest_path(map.getStorypointNodes()[1], touchedNode);
                     shortest_path.Reverse();
+                    
+                    if (shortest_path == null)
+                        Debug.Log("Shortest path is null");
+
+                    else
+                    {
+                       foreach (var n in shortest_path)
+                        {
+                            print(n.getID());
+                        } 
+                    }
+                    
                     touched = true;
                 }
             }
@@ -89,7 +117,7 @@ namespace Assets.Scripts.Path
             StartCoroutine("DisableTrail", trail);
             if (trail.time < 0)
                 trail.time = -trail.time;
-            transform.position = new Vector3(map.GetPoiNodes()[0].x, map.GetPoiNodes()[0].y, -7);
+            transform.position = new Vector3(nodesGameObjects[1].transform.position.x, nodesGameObjects[1].transform.position.y, -7);
         }
 
         IEnumerator DisableTrail(TrailRenderer trail)
@@ -100,7 +128,7 @@ namespace Assets.Scripts.Path
             yield return new WaitForSeconds(0.01f);
 
             trail.time = -trail.time;
-        }
+        }*/
 
     }
 

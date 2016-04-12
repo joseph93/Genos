@@ -324,7 +324,7 @@ GameObject:
   - 114: {fileID: 78186952}
   - 114: {fileID: 78186951}
   m_Layer: 10
-  m_Name: F4 Button
+  m_Name: F2 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,12 +390,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2079881386}
-        m_MethodName: DisplayFloor
+        m_MethodName: DisplayFloorPlan
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -975,7 +975,7 @@ GameObject:
   - 114: {fileID: 293812707}
   - 114: {fileID: 293812706}
   m_Layer: 10
-  m_Name: F2 Button
+  m_Name: F4 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1041,12 +1041,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2079881386}
-        m_MethodName: DisplayFloor
+        m_MethodName: DisplayFloorPlan
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1923,7 +1923,7 @@ GameObject:
   - 114: {fileID: 550356822}
   - 114: {fileID: 550356821}
   m_Layer: 10
-  m_Name: F1 Button
+  m_Name: F5 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1989,12 +1989,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2079881386}
-        m_MethodName: DisplayFloor
+        m_MethodName: DisplayFloorPlan
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3469,6 +3469,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3484,7 +3485,7 @@ GameObject:
   - 114: {fileID: 896459502}
   - 114: {fileID: 896459501}
   m_Layer: 10
-  m_Name: F5 Button
+  m_Name: F1 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3550,12 +3551,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2079881386}
-        m_MethodName: DisplayFloor
+        m_MethodName: DisplayFloorPlan
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6433,6 +6434,10 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1688747910}
+--- !u!1 &1721659248 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 144288, guid: ee50ea8a32708574f94647420cab7c1b, type: 2}
+  m_PrefabInternal: {fileID: 1570801299}
 --- !u!1 &1722854884
 GameObject:
   m_ObjectHideFlags: 0
@@ -6685,7 +6690,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2079881386}
-        m_MethodName: DisplayFloor
+        m_MethodName: DisplayFloorPlan
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8199,6 +8204,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 75cbd5ff660ed894aaaec97d486c4def, type: 3}
   - {fileID: 21300000, guid: 61afb6392da613146afbed3383696217, type: 3}
   - {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e, type: 3}
+  shortestPathCreator: {fileID: 1721659248}
 --- !u!224 &2079881387
 RectTransform:
   m_ObjectHideFlags: 0

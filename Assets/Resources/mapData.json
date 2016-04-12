@@ -1,32 +1,31 @@
-{
-  "floorPlan": [
-    {
-      "floorID": 2,
-      "imagePath": "/floor_plans/floor2.svg",
-      "imageWidth": 4381,
-      "imageHeight": 2220
-    },
-    {
-      "floorID": 3,
-      "imagePath": "/floor_plans/floor3.svg",
-      "imageWidth": 4381,
-      "imageHeight": 2220
-    },
-    {
-      "floorID": 4,
-      "imagePath": "/floor_plans/floor4.svg",
-      "imageWidth": 4381,
-      "imageHeight": 2220
-    },
-    {
-      "floorID": 5,
-      "imagePath": "/floor_plans/floor5.svg",
-      "imageWidth": 4381,
-      "imageHeight": 2220
-    }
-  ],
+{  
+   "floorPlan":[  
+      {  
+         "floorID":2,
+         "imagePath":"/floor_plans/floor2.svg",
+         "imageWidth":4381,
+         "imageHeight":2220
+      },
+      {  
+         "floorID":3,
+         "imagePath":"/floor_plans/floor3.svg",
+         "imageWidth":4381,
+         "imageHeight":2220
+      },
+      {  
+         "floorID":4,
+         "imagePath":"/floor_plans/floor4.svg",
+         "imageWidth":4381,
+         "imageHeight":2220
+      },
+      {  
+         "floorID":5,
+         "imagePath":"/floor_plans/floor5.svg",
+         "imageWidth":4381,
+         "imageHeight":2220
+      }
+   ],
   "node": [
-
     {
       "poi": [
         {
@@ -60,9 +59,15 @@
             "minor": "372"
           },
           "media": {
-            "image": [ ],
-            "video": [ ],
-            "audio": [ ]
+            "image": [
+
+            ],
+            "video": [
+
+            ],
+            "audio": [
+
+            ]
           },
           "storyPoint": [
             {
@@ -89,7 +94,9 @@
                 }
               ],
               "media": {
-                "image": [ ],
+                "image": [
+
+                ],
                 "video": [
                   {
                     "path": "/media_files/N1E.mp4",
@@ -102,7 +109,9 @@
                     "caption": ""
                   }
                 ],
-                "audio": [ ]
+                "audio": [
+
+                ]
               }
             },
             {
@@ -129,9 +138,15 @@
                 }
               ],
               "media": {
-                "image": [ ],
-                "video": [ ],
-                "audio": [ ]
+                "image": [
+
+                ],
+                "video": [
+
+                ],
+                "audio": [
+
+                ]
               }
             }
           ],
@@ -168,9 +183,15 @@
             "minor": "57400"
           },
           "media": {
-            "image": [ ],
-            "video": [ ],
-            "audio": [ ]
+            "image": [
+
+            ],
+            "video": [
+
+            ],
+            "audio": [
+
+            ]
           },
           "storyPoint": [
             {
@@ -197,8 +218,12 @@
                 }
               ],
               "media": {
-                "image": [ ],
-                "video": [ ],
+                "image": [
+
+                ],
+                "video": [
+
+                ],
                 "audio": [
                   {
                     "path": "/media_files/N2E.m4a",
@@ -242,9 +267,15 @@
             "minor": "3099"
           },
           "media": {
-            "image": [ ],
-            "video": [ ],
-            "audio": [ ]
+            "image": [
+
+            ],
+            "video": [
+
+            ],
+            "audio": [
+
+            ]
           },
           "storyPoint": [
             {
@@ -271,7 +302,9 @@
                 }
               ],
               "media": {
-                "image": [ ],
+                "image": [
+
+                ],
                 "video": [
                   {
                     "path": "/media_files/N3E.mp4",
@@ -279,7 +312,9 @@
                     "caption": ""
                   }
                 ],
-                "audio": [ ]
+                "audio": [
+
+                ]
               }
             },
             {
@@ -306,7 +341,9 @@
                 }
               ],
               "media": {
-                "image": [ ],
+                "image": [
+
+                ],
                 "video": [
                   {
                     "path": "/media_files/J1E.mp4",
@@ -314,7 +351,9 @@
                     "caption": ""
                   }
                 ],
-                "audio": [ ]
+                "audio": [
+
+                ]
               }
             }
           ],
@@ -351,9 +390,15 @@
             "minor": "57191"
           },
           "media": {
-            "image": [ ],
-            "video": [ ],
-            "audio": [ ]
+            "image": [
+
+            ],
+            "video": [
+
+            ],
+            "audio": [
+
+            ]
           },
           "storyPoint": [
             {
@@ -380,7 +425,9 @@
                 }
               ],
               "media": {
-                "image": [ ],
+                "image": [
+
+                ],
                 "video": [
                   {
                     "path": "/media_files/J2E.mp4",
@@ -388,7 +435,9 @@
                     "caption": ""
                   }
                 ],
-                "audio": [ ]
+                "audio": [
+
+                ]
               }
             }
           ],
@@ -425,9 +474,15 @@
             "minor": "40805"
           },
           "media": {
-            "image": [ ],
-            "video": [ ],
-            "audio": [ ]
+            "image": [
+
+            ],
+            "video": [
+
+            ],
+            "audio": [
+
+            ]
           },
           "storyPoint": [
             {
@@ -454,8 +509,12 @@
                 }
               ],
               "media": {
-                "image": [ ],
-                "video": [ ],
+                "image": [
+
+                ],
+                "video": [
+
+                ],
                 "audio": [
                   {
                     "path": "/media_files/J3E.m4a",
@@ -504,9 +563,15 @@
             "minor": "16906"
           },
           "media": {
-            "image": [ ],
-            "video": [ ],
-            "audio": [ ]
+            "image": [
+
+            ],
+            "video": [
+
+            ],
+            "audio": [
+
+            ]
           },
           "storyPoint": [
             {
@@ -533,7 +598,9 @@
                 }
               ],
               "media": {
-                "image": [ ],
+                "image": [
+
+                ],
                 "video": [
                   {
                     "path": "/media_files/J4E.mp4",
@@ -541,7 +608,9 @@
                     "caption": ""
                   }
                 ],
-                "audio": [ ]
+                "audio": [
+
+                ]
               }
             }
           ],
@@ -650,181 +719,191 @@
       ]
     }
   ],
-    "edge"
-    :
-    [
-      {
-        "startNode": 0,
-        "endNode": 1,
-        "distance": 479.12628815376013
+   "edge":[  
+      {  
+         "startNode":0,
+         "endNode":1,
+         "distance":479.12628815376013
       },
-      {
-        "startNode": 1,
-        "endNode": 2,
-        "distance": 151.00993344810135
+      {  
+         "startNode":1,
+         "endNode":2,
+         "distance":151.00993344810135
       },
-      {
-        "startNode": 2,
-        "endNode": 3,
-        "distance": 50.91168824543142
+      {  
+         "startNode":2,
+         "endNode":3,
+         "distance":50.91168824543142
       },
-      {
-        "startNode": 3,
-        "endNode": 4,
-        "distance": 447.7019097569274
+      {  
+         "startNode":3,
+         "endNode":4,
+         "distance":447.7019097569274
       },
-      {
-        "startNode": 3,
-        "endNode": 5,
-        "distance": 61.26989472816156
+      {  
+         "startNode":3,
+         "endNode":5,
+         "distance":61.26989472816156
       },
-      {
-        "startNode": 5,
-        "endNode": 6,
-        "distance": 70.25667228100119
+      {  
+         "startNode":5,
+         "endNode":6,
+         "distance":70.25667228100119
       },
-      {
-        "startNode": 6,
-        "endNode": 7,
-        "distance": 201.80436070610565
+      {  
+         "startNode":6,
+         "endNode":7,
+         "distance":201.80436070610565
       },
-      {
-        "startNode": 7,
-        "endNode": 8,
-        "distance": 111.16204388189342
+      {  
+         "startNode":7,
+         "endNode":8,
+         "distance":111.16204388189342
       },
-      {
-        "startNode": 9,
-        "endNode": 7,
-        "distance": 104.01922899156675
+      {  
+         "startNode":9,
+         "endNode":7,
+         "distance":104.01922899156675
       },
-      {
-        "startNode": 14,
-        "endNode": 15,
-        "distance": 90.69729874698585
+      {  
+         "startNode":14,
+         "endNode":15,
+         "distance":90.69729874698585
       },
-      {
-        "startNode": 15,
-        "endNode": 16,
-        "distance": 1386.290734297824
+      {  
+         "startNode":15,
+         "endNode":16,
+         "distance":1386.290734297824
       },
-      {
-        "startNode": 16,
-        "endNode": 17,
-        "distance": 724.2775711010248
+      {  
+         "startNode":16,
+         "endNode":17,
+         "distance":724.2775711010248
       },
-      {
-        "startNode": 14,
-        "endNode": 18,
-        "distance": 107.07940978544848
+      {  
+         "startNode":14,
+         "endNode":18,
+         "distance":107.07940978544848
       },
-      {
-        "startNode": 14,
-        "endNode": 19,
-        "distance": 100.7670581092849
+      {  
+         "startNode":14,
+         "endNode":19,
+         "distance":100.7670581092849
       },
-      {
-        "startNode": 8,
-        "endNode": 23,
-        "distance": 32.449961479175904
+      {  
+         "startNode":8,
+         "endNode":23,
+         "distance":32.449961479175904
       },
-      {
-        "startNode": 23,
-        "endNode": 22,
-        "distance": 4.123105625617661
+      {  
+         "startNode":23,
+         "endNode":22,
+         "distance":4.123105625617661
       },
-      {
-        "startNode": 22,
-        "endNode": 18,
-        "distance": 2.23606797749979
+      {  
+         "startNode":22,
+         "endNode":18,
+         "distance":2.23606797749979
       },
-      {
-        "startNode": 19,
-        "endNode": 25,
-        "distance": 4.242640687119285
+      {  
+         "startNode":19,
+         "endNode":25,
+         "distance":4.242640687119285
       },
-      {
-        "startNode": 25,
-        "endNode": 24,
-        "distance": 4
+      {  
+         "startNode":25,
+         "endNode":24,
+         "distance":4
       },
-      {
-        "startNode": 24,
-        "endNode": 9,
-        "distance": 5.656854249492381
+      {  
+         "startNode":24,
+         "endNode":9,
+         "distance":5.656854249492381
       }
-    ],
-    "storyline"
-    :
-    [
-      {
-        "id": 0,
-        "title": [
-          {
-            "language": "EN",
-            "title": "A stroll with Nipper"
-          },
-          {
-            "language": "FR",
-            "title": "Marcher avec Nipper"
-          }
-        ],
-        "description": [
-          {
-            "language": "EN",
-            "description": "The presidents dog Nipper searches his Master"
-          },
-          {
-            "language": "FR",
-            "description": "Le chien du Presidente cherche son Maitre"
-          }
-        ],
-        "path": [
-          0,
-          2,
-          4
-        ],
-        "thumbnail": "",
-        "walkingTimeInMinutes": "",
-        "floorsCovered": [
-          2
-        ]
+   ],
+   "storyline":[  
+      {  
+         "id":0,
+         "title":[  
+            {  
+               "language":"EN",
+               "title":"A stroll with Nipper"
+            },
+            {  
+               "language":"FR",
+               "title":"Marcher avec Nipper"
+            }
+         ],
+         "description":[  
+            {  
+               "language":"EN",
+               "description":"The presidents dog Nipper searches his Master"
+            },
+            {  
+               "language":"FR",
+               "description":"Le chien du Presidente cherche son Maitre"
+            }
+         ],
+         "path":[  
+            0,
+            1,
+            2,
+            3,
+            4
+         ],
+         "thumbnail":"",
+         "walkingTimeInMinutes":"",
+         "floorsCovered":[  
+            2
+         ]
       },
-      {
-        "id": 4,
-        "title": [
-          {
-            "language": "FR",
-            "title": "Une tour avec Jean"
-          },
-          {
-            "language": "EN",
-            "title": "A tour with Jean"
-          }
-        ],
-        "description": [
-          {
-            "language": "FR",
-            "description": "Decouvrez l'histoire du Edifice RCA"
-          },
-          {
-            "language": "EN",
-            "description": "Discover the history of the Edifice RCA"
-          }
-        ],
-        "path": [
-          0,
-          4,
-          7,
-          14,
-          17
-        ],
-        "thumbnail": "",
-        "walkingTimeInMinutes": "",
-        "floorsCovered": [
-          2,
-          5
-        ]
+      {  
+         "id":4,
+         "title":[  
+            {  
+               "language":"FR",
+               "title":"Une tour avec Jean"
+            },
+            {  
+               "language":"EN",
+               "title":"A tour with Jean"
+            }
+         ],
+         "description":[  
+            {  
+               "language":"FR",
+               "description":"Decouvrez l'histoire du Edifice RCA"
+            },
+            {  
+               "language":"EN",
+               "description":"Discover the history of the Edifice RCA"
+            }
+         ],
+         "path":[  
+            0,
+            1,
+            2,
+            3,
+            4,
+            3,
+            5,
+            6,
+            7,
+            9,
+            24,
+            25,
+            19,
+            14,
+            15,
+            16,
+            17
+         ],
+         "thumbnail":"",
+         "walkingTimeInMinutes":"",
+         "floorsCovered":[  
+            2,
+            5
+         ]
       }
-    ]
+   ]
 }

@@ -99,7 +99,7 @@ namespace Assets.Scripts
             return storypointList;
         }
 
-        public void startStoryline(int slID)
+        public void startStoryline(List<Node> storypointList, int slID)
         {
             //set the correct nodes for the corresponding storyline
             //storylines[slID].initializeLists(storypointList);
@@ -125,7 +125,8 @@ namespace Assets.Scripts
 
             foreach (Storyline s in storylines)
             {
-                if (s.id == slID) { 
+                if (s.id == slID)
+                { 
                     foreach (var id in s.getPath())
                     {
                         foreach (var n in storypointList)
@@ -137,11 +138,11 @@ namespace Assets.Scripts
                             }
                         }
 
-                        }
-                    }
-                }
-                    return orderedPath;
-            }
+                     }
+                 }
+             }
+             return orderedPath;
+        }
             
         }
 
