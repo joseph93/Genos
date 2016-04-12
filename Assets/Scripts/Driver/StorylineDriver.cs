@@ -58,37 +58,16 @@ namespace Assets.Scripts.Driver
             mc = FindObjectOfType<MapController>();
 
             map = mc.getMap();
-            
-<<<<<<< HEAD
+
             iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
             List<Beacon> beacons = bh.getBeacons();
             
             //List<Node> orderedPath = map.orderedPath(0);
-=======
-
-            //iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
-            //List<Beacon> beacons = bh.getBeacons();
-            List<Node> orderedPath = map.orderedPath();
-
-            
->>>>>>> fc92cf5d0b90af41bfb298340a349f20f3ee267b
             
             //map.setStorypointList(orderedPath);
             map.startStoryline(0 /*PlayerPrefs.GetInt("storylineID")*/);
             DisplayFloor(2, 0); //this should be the first floor
-
-            foreach (var sp in map.getStorypointNodes())
-            {
-                print(sp.getID());
-            }
             
-<<<<<<< HEAD
-=======
-            map.setStorypointList(orderedPath);
-            map.startStoryline(0 /*PlayerPrefs.GetInt("storylineID")*/);
-
-            DisplayNodes(map.getStorypointNodes(), map.getFloors());
->>>>>>> fc92cf5d0b90af41bfb298340a349f20f3ee267b
 
         }
 
@@ -198,11 +177,8 @@ namespace Assets.Scripts.Driver
             return yConvertedScaled;
         }
 
-<<<<<<< HEAD
-        public void DisplayNodes(List<Node> poiList, FloorPlan floorPlan)
-=======
-        public void DisplayNodes(List<Node> storyPointList, List<FloorPlan> floors)
->>>>>>> fc92cf5d0b90af41bfb298340a349f20f3ee267b
+
+        public void DisplayNodes(List<Node> storyPointList, FloorPlan floorPlan)
         {
             int blue = 0;
             int green = 1;

@@ -125,37 +125,25 @@ namespace Assets.Scripts
 
             foreach (Storyline s in storylines)
             {
-<<<<<<< HEAD
-                if (s.id == slID)
-=======
-
-                foreach (var id in s.getPath())
->>>>>>> fc92cf5d0b90af41bfb298340a349f20f3ee267b
-                {
+                if (s.id == slID) { 
                     foreach (var id in s.getPath())
                     {
                         foreach (var n in storypointList)
                         {
-<<<<<<< HEAD
                             if (n.getID() == id)
                             {
                                 orderedPath.Add(n);
                                 break;
                             }
-=======
-                            orderedPath.Add(n);
-
-                            break;
                         }
->>>>>>> fc92cf5d0b90af41bfb298340a349f20f3ee267b
 
                         }
                     }
                 }
-
+                    return orderedPath;
             }
-            return orderedPath;
+            
         }
 
     }
-}
+
