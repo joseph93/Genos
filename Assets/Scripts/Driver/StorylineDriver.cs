@@ -81,7 +81,7 @@ namespace Assets.Scripts.Driver
                     floorManager.GetComponent<RawImage>().texture = tex;
                     if (tex != null)
                         floorManager.GetComponent<SpriteRenderer>().sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
-                    Camera.main.orthographicSize = floorManager.GetComponent<Renderer>().bounds.max.x;
+                    Camera.main.orthographicSize = floorManager.GetComponent<Renderer>().bounds.max.y;
                     List<Node> floorNodes = new List<Node>();
                     foreach (var floorNode in map.getStorypointNodes())
                     {
