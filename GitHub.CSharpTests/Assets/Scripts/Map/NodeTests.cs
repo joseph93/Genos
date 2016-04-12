@@ -36,8 +36,8 @@ namespace Assets.Scripts
         {
             try
             {
-                POS sp1 = new POS(1, 0, 0, "blue", 3, 0);
-                POS sp2 = new POS(1, 0, 0, "blue", 2, 0);
+                POS sp1 = new POS(1, 0, 0, 3, 0);
+                POS sp2 = new POS(1, 0, 0, 2, 0);
 
                 Assert.Equals(1, sp1.CompareTo(sp2));
             }
@@ -52,8 +52,8 @@ namespace Assets.Scripts
         {
             try
             {
-                POS sp1 = new POS(1, 0, 0, "blue", 2, 0);
-                POS sp2 = new POS(1, 0, 0, "blue", 2, 0);
+                POS sp1 = new POS(1, 0, 0, 2, 0);
+                POS sp2 = new POS(1, 0, 0, 2, 0);
                 List<POS> unsortedList = new List<POS>();
                 unsortedList.Add(sp2);
                 unsortedList.Add(sp1);
@@ -77,9 +77,9 @@ namespace Assets.Scripts
             {
 
                 Graph g = new Graph();
-                Node n1 = new PointOfInterest(1, 0, 0, "blue", 1);
-                Node n2 = new PointOfInterest(2, 0, 0, "blue", 1);
-                Node n3 = new PointOfInterest(3, 0, 0, "blue", 1);
+                Node n1 = new PointOfInterest(1, 0, 0, 1);
+                Node n2 = new PointOfInterest(2, 0, 0, 1);
+                Node n3 = new PointOfInterest(3, 0, 0, 1);
 
                 g.InsertNewVertex(n1);
                 g.InsertNewVertex(n2);

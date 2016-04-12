@@ -12,20 +12,19 @@ public class Node : MonoBehaviour{
 
     
     private State Status = State.UnVisited;
-    [SerializeField] private readonly int id;
-    [SerializeField] private readonly int floorNumber;
+    public int id;
+    public int floorNumber;
     private Dictionary<Node, float> adjacentNodes;
     public float x;
     public float y;
     public string color { get; set; }
 
-    public Node(int id, int x, int y, string color, int floorNumber)
+    public Node(int id, int x, int y, int floorNumber)
     {
         this.x = x;
         this.y = y;
         this.floorNumber = floorNumber;
         this.id = id;
-        this.color = color;
         adjacentNodes = new Dictionary<Node, float>();
     }
 
@@ -37,46 +36,6 @@ public class Node : MonoBehaviour{
         floorNumber = copyNode.floorNumber;
         color = copyNode.color;
         adjacentNodes = copyNode.adjacentNodes;
-    }
-
-    //Added
-    public void setX(float x)
-    {
-        this.x = x;
-    }
-
-    public float getX()
-    {
-        return x;
-    }
-
-    public void setY(float y)
-    {
-        this.y = y;
-    }
-
-    public float getY()
-    {
-        return y;
-    }
-
-
-
-
-    public void setColor(string color)
-    {
-        this.color = color;
-    }
-
-    public string getColor()
-    {
-        return color;
-    }
-
-    void Update()
-    {
-        x = transform.position.x;
-        y = transform.position.y;
     }
 
     public State getState()
@@ -164,14 +123,4 @@ public class Node : MonoBehaviour{
         int temp = id.GetHashCode() + x.GetHashCode() + y.GetHashCode() + floorNumber.GetHashCode();
         return temp;
     }
-
-    /*public abstract void setBeacon(iBeaconServer b);
-
-    public abstract void addContent(ExhibitionContent c);
-
-    public abstract void setLanguage(string lg);
-
-    public abstract void setTitle(string title);
-
-    public abstract void setDescription(string descr);*/
 }
