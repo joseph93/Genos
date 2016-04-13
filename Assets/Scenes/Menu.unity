@@ -248,7 +248,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 320947695}
-        m_MethodName: loadLang
+        m_MethodName: loadSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -729,7 +729,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Configurations
+  m_Text: Settings
 --- !u!222 &1170872181
 CanvasRenderer:
   m_ObjectHideFlags: 0
