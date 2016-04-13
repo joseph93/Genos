@@ -82,7 +82,7 @@ public class Node : MonoBehaviour{
         if (!isAdjacent(adjacentNode))
         {
             adjacentNodes.Add(adjacentNode, weight);
-            
+            //print("Node " + id + " to node " + adjacentNode.id);
         }
         
     }
@@ -110,7 +110,7 @@ public class Node : MonoBehaviour{
             return false;
         }
 
-        return a.id == b.id && a.x == b.x && a.y == b.y && a.floorNumber == b.floorNumber;
+        return a.id == b.id /*&& a.x == b.x && a.y == b.y && a.floorNumber == b.floorNumber*/;
     }
 
     public static bool operator !=(Node a, Node b)

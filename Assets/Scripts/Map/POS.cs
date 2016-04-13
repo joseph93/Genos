@@ -38,8 +38,8 @@ namespace Assets.Scripts
         {
             beacon = BeaconGameObject.GetComponent<iBeaconServer>();
             sounds = GetComponents<AudioSource>();
-            popUp = sounds[0];
-            beforeSound = sounds[1];
+            //popUp = sounds[0];
+            //beforeSound = sounds[1];
             observers = new List<Observer>();
 
             visited = false;
@@ -70,6 +70,7 @@ namespace Assets.Scripts
             warned = false;
             contents = new List<ExhibitionContent>();
             poiDescriptionList = new List<PoiDescription>();
+            observers = new List<Observer>();
         }
         
 
@@ -87,6 +88,16 @@ namespace Assets.Scripts
             else
                 return this.sequentialID.CompareTo(comparePos.sequentialID);
         }
+
+        public void addContent(ExhibitionContent c)
+        {
+            contents.Add(c);
+        }
+
+        public List<ExhibitionContent> getContents()
+        {
+            return contents;
+        } 
 
         public void setVisited(bool visited)
         {
@@ -118,6 +129,19 @@ namespace Assets.Scripts
             
         }
 
+        public void playAudio()
+        {
+            foreach (var audio in contents)
+            {
+                if (audio.GetType() == typeof (Audio))
+                {
+                    AudioClip a = Resources.Load(audio.path) as AudioClip;
+                    AudioSource source = GameObject.Find("FloorManager").AddComponent<AudioSource>();
+                    source.PlayOneShot(a);
+                }
+            }
+        }
+
         public void playVideo()
         {
             StartCoroutine(CoroutinePlayVideo());
@@ -129,6 +153,7 @@ namespace Assets.Scripts
             {
                 if (video.GetType() == typeof (Video))
                 {
+                    print("Storypoint " + id + " is playing video " + video.path);
                     Screen.orientation = ScreenOrientation.Landscape;
                     Handheld.PlayFullScreenMovie(video.path, Color.black, FullScreenMovieControlMode.Full);
                     yield return new WaitForEndOfFrame();
@@ -138,9 +163,9 @@ namespace Assets.Scripts
                 
             }
             Screen.orientation = ScreenOrientation.Portrait;
-            SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+            /*SpriteRenderer renderer = GetComponent<SpriteRenderer>();
             renderer.color = new Color32(140, 115, 115, 255);
-            transform.localScale = new Vector3(0.05f, 0.05f, 1);
+            transform.localScale = new Vector3(0.05f, 0.05f, 1);*/
         }
 
         public void displayStorylinePopUpWindow()
