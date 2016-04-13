@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Exhibition_Content;
 using Assets.Scripts.Language;
 using Assets.Scripts.Path;
 using UnityEngine;
@@ -29,18 +30,21 @@ namespace Assets.Scripts.Driver
         private readonly List<GameObject> gameObjectNodesList = new List<GameObject>();
 
         public GameObject shortestPathCreator;
-        public static bool touched;
+
+        private static bool changedFloor;
 
         // Use this for initialization
         void Start()
         {
             StartCoroutine(startStoryline());
+
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-            //StartCoroutine(map.GetStorylines()[0].searchForStorypointBeacon(1.00f));
+            StartCoroutine(map.GetStorylines()[0].searchForStorypointBeacon(1.00f));
             swipePanelLeft();
             
         }
@@ -53,8 +57,7 @@ namespace Assets.Scripts.Driver
         public List<Node> getShortestPath()
         {
             List<Node> shortest_path = new List<Node>();
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
+            
                 //JOSEPH: When you touch a point of interest on the map, it shows the shortest path from the first node of the nodeList to the touched node.
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
 
@@ -68,9 +71,9 @@ namespace Assets.Scripts.Driver
                     GameObject recipient = hit.transform.gameObject;
                     Node touchedNode = recipient.GetComponent<Node>();
                     ShortestPathCreator.currentPoint = 0;
-                    Debug.Log("First node: " + map.getStorypointNodes()[1].getID());
-                    Debug.Log("Touched node: " + touchedNode.getID());
-                    shortest_path = map.getGraph().shortest_path(map.getStorypointNodes()[1], touchedNode);
+                    Debug.Log("First node: " + map.getGraph().getVertices()[0].getID());
+                    Debug.Log("Touched node floor number: " + touchedNode.getFloorNumber());
+                    shortest_path = map.getGraph().shortest_path(map.getGraph().getVertices()[0], touchedNode);
                     shortest_path.Reverse();
                     
                     foreach (var n in shortest_path)
@@ -78,10 +81,8 @@ namespace Assets.Scripts.Driver
                         print(n.getID());
                     }
 
-                    touched = true;
-
                 }
-            }
+            
             return shortest_path;
         }
 
@@ -91,7 +92,17 @@ namespace Assets.Scripts.Driver
             StartCoroutine("DisableTrail", trail);
             if (trail.time < 0)
                 trail.time = -trail.time;
-            shortestPathCreator.transform.position = new Vector3(gameObjectNodesList[1].transform.position.x, gameObjectNodesList[1].transform.position.y, -7);
+            shortestPathCreator.transform.position = new Vector3(gameObjectNodesList[0].transform.position.x, gameObjectNodesList[0].transform.position.y, -7);
+        }
+
+        IEnumerator DisableTrail(TrailRenderer trail)
+        {
+            if (trail.time < 0)
+                yield break;
+
+            yield return new WaitForSeconds(0.01f);
+
+            trail.time = -trail.time;
         }
 
         public IEnumerator startStoryline()
@@ -109,15 +120,21 @@ namespace Assets.Scripts.Driver
 
             iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
             List<Beacon> beacons = bh.getBeacons();
+            int slID = PlayerPrefs.GetInt("storylineID");
+
+            print("Storyline id is: " + slID);
+			map.GetStoryline(slID).setBeaconList(beacons);
             
-            List<Node> orderedPath = map.orderedPath(0);
+            List<Node> orderedPath = map.orderedPath(slID);
 
             //map.setStorypointList(orderedPath);
-            map.startStoryline(orderedPath, 0 /*PlayerPrefs.GetInt("storylineID")*/);
-            DisplayFloor(2, 0); //this should be the first floor
+            map.startStoryline(orderedPath, slID);
+            DisplayFloor(2, slID); //this should be the first floor
 
-            shortestPathCreator.transform.position = new Vector3(gameObjectNodesList[1].transform.position.x, gameObjectNodesList[1].transform.position.y, -7);
-
+			map.GetStoryline(slID).getStorypointList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
+            
+            shortestPathCreator.transform.position = new Vector3(gameObjectNodesList[0].transform.position.x, gameObjectNodesList[0].transform.position.y, -7);
+            
         }
 
         public List<GameObject> GetNodeGameObjects()
@@ -127,7 +144,7 @@ namespace Assets.Scripts.Driver
 
         public void DisplayFloorPlan(int floorId)
         {
-            DisplayFloor(floorId, 0);
+            DisplayFloor(floorId, PlayerPrefs.GetInt("storylineID"));
         }
 
         public void DisplayFloor(int floorId, int storylineId)
@@ -139,6 +156,17 @@ namespace Assets.Scripts.Driver
                     Destroy(obj);
                 }
             }
+
+            if (changedFloor && ShortestPathCreator.touched)
+            {
+                TrailRenderer trail = shortestPathCreator.GetComponent<TrailRenderer>();
+                StartCoroutine("DisableTrail", trail);
+                ShortestPathCreator.touched = false;
+            }
+
+            changedFloor = true;
+
+
             foreach (var f in map.getFloors())
             {
                 if (f.floorNumber.Equals(floorId.ToString()))
@@ -267,7 +295,7 @@ namespace Assets.Scripts.Driver
 
                     if (newNode != null)
                     {
-                        newNode.transform.localScale = new Vector3(7f, 7f, 7f);
+                        newNode.transform.localScale = new Vector3(5f, 5f, 5f);
                         newNode.transform.parent = floorManager.transform;
                         newNode.SetActive(true);
                         nodeSprite = nodeSprites[blue];
@@ -304,11 +332,8 @@ namespace Assets.Scripts.Driver
 
                     if (newNode != null)
                     {
-
-
-
                         PointOfTransition pot = (PointOfTransition) n;
-                        newNode.transform.localScale = new Vector3(7f, 7f, 7f);
+                        newNode.transform.localScale = new Vector3(5f, 5f, 5f);
                         newNode.transform.parent = floorManager.transform;
                         newNode.SetActive(true);
                         newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));

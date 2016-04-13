@@ -186,8 +186,8 @@ namespace Assets.Scripts
                             if (sp.getBeacon().Equals(b))
                             {
                                 //print("Its the same beacon");
-                                if (isInOrder(sp))
-                                {
+                                //if (isInOrder(sp))
+                                //{
                                     //print("It's in order.");
                                     StoryPointView storyPointView = new StoryPointView(sp);
                                     sp.setVisited(true);
@@ -195,8 +195,8 @@ namespace Assets.Scripts
                                     //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
                                     mainCam.transform.position = new Vector3(sp.x, sp.y, -10);
 
-                                }
-                                else
+                                //}
+                                /*else
                                 {
                                     if (!sp.warned)
                                     {
@@ -208,7 +208,7 @@ namespace Assets.Scripts
                                         sp.displayWarning(description);
                                         sp.warned = true;
                                     }
-                                }
+                                }*/
                             }
                         }
                     }

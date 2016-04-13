@@ -258,13 +258,14 @@ public class Graph : MonoBehaviour
 
         // the path list : represents our shortest path between 2 nodes (final result)
         List<Node> path = null;
-
+        Debug.Log("Let's start.");
         // JOSEPH-REVIEW: KeyValuePari<int,Node> can be replaced by Node value in Vertices.Values.
         foreach (Node entry in Vertices.Values)
         {
             // the distance between the first node and itself is equal to 0
             if (entry.getID() == start.getID())
             {
+                Debug.Log("Start node is" + entry.getID());
                 distances[entry] = 0;
             }
             // the distance between the first node and the other nodes is unknown, thus set to "Infinity"
@@ -274,6 +275,7 @@ public class Graph : MonoBehaviour
             }
 
             nodes.Add(entry);
+            Debug.Log("Added node " + entry.getID());
         }
 
         while (nodes.Count != 0)
@@ -291,6 +293,7 @@ public class Graph : MonoBehaviour
                 path = new List<Node>();
                 while (previous.ContainsKey(smallest))
                 {
+                    Debug.Log("Im at the last node");
                     // insert the exact shortest path by retracing the values of each nodes inside 
                     // the previous Dictionary
                     path.Add(smallest);
@@ -310,6 +313,7 @@ public class Graph : MonoBehaviour
             {
                 // distance of the current node + adjacent node
                 float alt = distances[smallest] + neighbor.Value;
+                Debug.Log("Neighbor edge weight: " + neighbor.Value);
                 // then compare with the distance of the other adjacent node
                 if (alt < distances[neighbor.Key])
                 {
