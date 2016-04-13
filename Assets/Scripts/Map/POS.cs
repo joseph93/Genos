@@ -69,8 +69,15 @@ namespace Assets.Scripts
             detected = false;
             warned = false;
             contents = new List<ExhibitionContent>();
-            poiDescriptionList = new List<PoiDescription>();
+            descriptionList = new List<Description>();
             observers = new List<Observer>();
+          //  popUpWindow = PopUpWindow.Instance();
+          //  myViewAction = new UnityAction(modalWindow.closePanel);
+          //  modalWindow = ModalWindow.Instance();
+          //  yesAction = new UnityAction(modalWindow.closePanel);
+          //  noAction = new UnityAction(modalWindow.closePanel);
+    
+         //   warningPanel = WarningPanel.Instance();
         }
         
 
@@ -170,8 +177,20 @@ namespace Assets.Scripts
 
         public void displayStorylinePopUpWindow()
         {
+            /*string lg = PlayerPrefs.GetString("language");
+
+            Language.Language lang = Description.convertStringToLang(lg);
+
+            foreach(var d in descriptionList)
+            {
+                if(lang == d.language)
+                {
+                    popUpWindow.PopUp(d.title, nipperPopUp, myViewAction);
+                    break;
+                }
+            }*/
             //CHANGE HERE WITH STORYPOINT DESCRIPTION
-            //popUpWindow.PopUp(poiDescriptionList.title, nipperPopUp, myViewAction);
+            print(descriptionList[0].title);
         }
 
         public void displayWarning(string description)

@@ -332,10 +332,7 @@ namespace Assets.Scripts.Driver
 
                     if (newNode != null)
                     {
-<<<<<<< HEAD
 
-=======
->>>>>>> 458877ddaeca6c5321b92232b6e09c48f5c2ccf8
                         PointOfTransition pot = (PointOfTransition) n;
                         newNode.transform.localScale = new Vector3(5f, 5f, 5f);
                         newNode.transform.parent = floorManager.transform;
@@ -348,10 +345,6 @@ namespace Assets.Scripts.Driver
                         nodeSprite = nodeSprites[green];
                         nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
                         newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                        newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
-                        newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
-                        newNode.GetComponent<Node>().id = (n.getID());
-                        newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
                         newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
                         /*if (n.color.Equals("Green"))
                         {

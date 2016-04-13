@@ -11,7 +11,7 @@ public abstract class ExhibitionContent
     protected ExhibitionContent(string path, string lg, string cpt)
     {
         this.path = path;
-        this.lg = PoiDescription.convertStringToLang(lg);
+        this.lg = Description.convertStringToLang(lg);
         caption = cpt;
     }
 }

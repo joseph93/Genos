@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Assets.Scripts.Language
 {
-    public class PoiDescription
+    public class Description
     {
         public string title { get; set; }
         public string summary { get; set; }
         public Language language { get; set; }
 
-        public PoiDescription(string title, string summary, string lg)
+        public Description(string title, string summary, string lg)
         {
             this.title = title;
             this.summary = summary;
@@ -30,7 +30,7 @@ namespace Assets.Scripts.Language
 
         public void setLanguage(string lg)
         {
-            this.language = PoiDescription.convertStringToLang(lg);
+            this.language = Description.convertStringToLang(lg);
         }
 
         public static Language convertStringToLang(string lg)

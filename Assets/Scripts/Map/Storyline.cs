@@ -15,7 +15,7 @@ namespace Assets.Scripts
     public class Storyline : MonoBehaviour
     {
         public int id { get; set; }
-        private readonly List<PoiDescription> storylineDescriptionList;
+        private readonly List<Description> storylineDescriptionList;
         public int floorsCovered { get; set; }
         private List<POS> visitedStoryPoints;
         private List<POS> storyPoints;
@@ -35,7 +35,7 @@ namespace Assets.Scripts
             visitedStoryPoints = new List<POS>();
             myBeacons = new List<Beacon>();
             path = new List<int>();
-            storylineDescriptionList = new List<PoiDescription>();
+            storylineDescriptionList = new List<Description>();
         }
 
         // Use this for initialization
@@ -58,12 +58,12 @@ namespace Assets.Scripts
             
         }
 
-        public void addStorylineDescription(PoiDescription sd)
+        public void addStorylineDescription(Description sd)
         {
             storylineDescriptionList.Add(sd);
         }
 
-        public List<PoiDescription> getStorylineDescriptionList()
+        public List<Description> getStorylineDescriptionList()
         {
             return storylineDescriptionList;
         } 

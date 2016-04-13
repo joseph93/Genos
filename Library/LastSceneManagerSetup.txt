@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-sceneSetups: []
-=======
 sceneSetups:
-- path: Assets/Scenes/F2.unity
+- path: Assets/Scenes/Lang.unity
   isLoaded: 1
   isActive: 1
->>>>>>> 458877ddaeca6c5321b92232b6e09c48f5c2ccf8
