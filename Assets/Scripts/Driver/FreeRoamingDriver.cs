@@ -47,7 +47,6 @@ public class FreeRoamingDriver : MonoBehaviour
         map = mc.getMap();
         freeRoamingTour.initializeLists(map.GetPoiNodes());
 
-
     }
 
     public void swipePanelLeft()

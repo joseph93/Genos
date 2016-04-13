@@ -23,9 +23,19 @@ namespace Assets.Scripts.Language
             this.title = title;
         }
 
+        public string getTitle()
+        {
+            return title;
+        }
+
         public void setDescription(string descr)
         {
             this.summary = descr;
+        }
+
+        public string getDescription()
+        {
+            return summary;
         }
 
         public void setLanguage(string lg)
