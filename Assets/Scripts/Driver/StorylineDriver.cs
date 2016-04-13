@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts;
 using Assets.Scripts.Exhibition_Content;
 using Assets.Scripts.Language;
 using Assets.Scripts.Observer_Pattern;
@@ -49,14 +50,9 @@ namespace Assets.Scripts.Driver
         void Start()
         {
             StartCoroutine(startStoryline());
-<<<<<<< HEAD
-=======
-
             //Added
             // assignContent(poiList);
             //displayButtonTitle();
-
->>>>>>> 60a333e4e05a465c9dc2d10ae993d568058e059b
         }
 
         // Update is called once per frame
@@ -149,7 +145,6 @@ namespace Assets.Scripts.Driver
 
             map.startStoryline(orderedPath, slID);
             DisplayFloor(2, slID); //this should be the first floor
-<<<<<<< HEAD
 			map.GetStoryline(slID).getStorypointList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
 
 
@@ -165,12 +160,9 @@ namespace Assets.Scripts.Driver
             {
                 print("Title: " + d.title + ", language: " + d.language + ", description: " + d.summary);
             }*/
-
-=======
-
+            
 			//map.GetStoryline(slID).getStorypointList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
             
->>>>>>> 60a333e4e05a465c9dc2d10ae993d568058e059b
             shortestPathCreator.transform.position = new Vector3(gameObjectNodesList[0].transform.position.x, gameObjectNodesList[0].transform.position.y, -7);
             
         }
@@ -408,7 +400,6 @@ namespace Assets.Scripts.Driver
                     }
 
                 }//foreach
-<<<<<<< HEAD
 
 
             } //display
@@ -478,18 +469,10 @@ namespace Assets.Scripts.Driver
                 }
             }
         }*/
-    } 
-
-
-=======
-            } //display
-
-        //map.GetStorylines()[0].getStorypointList()
-
 
         /*
-         * Assign the parsed titleButton, titlePanel, and descriptionPanel from the list of storyline/pos/poi
-         */
+     * Assign the parsed titleButton, titlePanel, and descriptionPanel from the list of storyline/pos/poi
+     */
         public void assignContent(List<Node> poiList)
         {
             Debug.Log("assignContent() has been started.");
@@ -545,8 +528,8 @@ namespace Assets.Scripts.Driver
             //summaryWindow.SummaryOneImage(titlePanel, descriptionPanel, image1, myCloseAction);
             Debug.Log("displayPanelSummary has been finished.");
         }
->>>>>>> 60a333e4e05a465c9dc2d10ae993d568058e059b
 
-    }  
-}
+    } 
+} 
+  
 
