@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Observer_Pattern
 {
-    public class StoryPointView : Observer
+    public class StoryPointView : MonoBehaviour, Observer
     {
         private POS sp;
 
