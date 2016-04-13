@@ -332,6 +332,7 @@ namespace Assets.Scripts.Driver
 
                     if (newNode != null)
                     {
+
                         PointOfTransition pot = (PointOfTransition) n;
                         newNode.transform.localScale = new Vector3(5f, 5f, 5f);
                         newNode.transform.parent = floorManager.transform;
@@ -340,6 +341,22 @@ namespace Assets.Scripts.Driver
                         newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
                         newNode.GetComponent<Node>().id = (n.getID());
                         newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
+
+                        nodeSprite = nodeSprites[green];
+                        nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
+                        newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
+                        newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
+                        /*if (n.color.Equals("Green"))
+                        {
+                            nodeSprite = nodeSprites[blue];
+                            nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
+                            newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
+                            newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
+                            newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
+                            newNode.GetComponent<Node>().id = (n.getID());
+                            newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
+                            newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
+                        }*/
 
                         //Added foreach loop 
 
@@ -352,6 +369,7 @@ namespace Assets.Scripts.Driver
                             newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
                             gameObjectNodesList.Add(newNode);
                         }
+
                         else if (pot.label == PointOfTransition.Label.ELEVATOR) //elevator
                         {
                             nodeSprite = nodeSprites[elevator];
@@ -370,6 +388,7 @@ namespace Assets.Scripts.Driver
                         }
                     }
                 }
+
                 }
 
 

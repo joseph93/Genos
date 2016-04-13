@@ -21,7 +21,7 @@ namespace Assets.Scripts.Observer_Pattern
             //sp.changeIconScale();
             //sp.popUpSound();
             Vibration.Vibrate(1000);
-            //sp.displayStorylinePopUpWindow();
+            sp.displayStorylinePopUpWindow();
             //sp.storyIsVisited();
             Debug.Log("Storypoint detected.");
         }

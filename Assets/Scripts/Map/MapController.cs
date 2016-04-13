@@ -197,7 +197,7 @@ namespace Assets.Scripts
 
                 for (int i = 0; i < s.list[1].list.Count; i++)
                 {
-                    PoiDescription storylineDescription = new PoiDescription(s.list[1].list[i].list[1].str,
+                    Description storylineDescription = new Description(s.list[1].list[i].list[1].str,
                         s.list[2].list[i].list[1].str, s.list[1].list[i].list[0].str);
                     storyline.addStorylineDescription(storylineDescription);
                 }
@@ -261,7 +261,7 @@ namespace Assets.Scripts
 
                     for (int i = 0; i < poi.list[1].Count; i++) //Add all the poi description in the point of interest
                     {
-                        PoiDescription poiD = new PoiDescription(poi.list[1].list[i].list[1].str, poi.list[2].list[i].list[1].str, poi.list[1].list[i].list[0].str);
+                        Description poiD = new Description(poi.list[1].list[i].list[1].str, poi.list[2].list[i].list[1].str, poi.list[1].list[i].list[0].str);
                         p.addPoiDescription(poiD);
                     }
 
@@ -271,7 +271,7 @@ namespace Assets.Scripts
 
                         for (int i = 0; i < sp.list[2].Count; i++) // description and title JSON object
                         {
-                            PoiDescription spd = new PoiDescription(sp.list[2].list[i].list[1].str, sp.list[3].list[i].list[1].str, sp.list[2].list[i].list[0].str);
+                            Description spd = new Description(sp.list[2].list[i].list[1].str, sp.list[3].list[i].list[1].str, sp.list[2].list[i].list[0].str);
                             storyPoint.addPoiDescription(spd);
                         }
 

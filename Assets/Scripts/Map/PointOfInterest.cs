@@ -12,7 +12,7 @@ namespace Assets.Scripts
 {
     public class PointOfInterest : Node
     {
-        protected List<PoiDescription> poiDescriptionList;
+        protected List<Description> descriptionList;
         private bool detected;
 
         protected iBeaconServer beacon;
@@ -64,17 +64,17 @@ namespace Assets.Scripts
         {
             detected = false;
             contents = new List<ExhibitionContent>();
-            poiDescriptionList = new List<PoiDescription>();
+            descriptionList = new List<Description>();
         }
 
-        public List<PoiDescription> GetPoiDescriptionList()
+        public List<Description> GetPoiDescriptionList()
         {
-            return poiDescriptionList;
+            return descriptionList;
         }
 
-        public void addPoiDescription(PoiDescription pd)
+        public void addPoiDescription(Description pd)
         {
-            poiDescriptionList.Add(pd);
+            descriptionList.Add(pd);
         }
 
         public iBeaconServer getBeacon()
@@ -122,7 +122,7 @@ namespace Assets.Scripts
 
         public void displayPopUpWindow()
         {
-            foreach (var descr in poiDescriptionList)
+            foreach (var descr in descriptionList)
             {
                 
             }

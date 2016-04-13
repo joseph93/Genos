@@ -17,10 +17,10 @@ namespace Assets.Scripts.Observer_Pattern
         }
         public void update()
         {
-            poi.changeIconScale();
-            poi.popUpSound();
+           // poi.changeIconScale();
+           // poi.popUpSound();
             Vibration.Vibrate(1000);
-            poi.displayPopUpWindow();
+           //  poi.displayPopUpWindow();
             Debug.Log("Point of interest detected.");
         }
         
