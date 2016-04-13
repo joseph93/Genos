@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11494526}
   - 114: {fileID: 11428918}
   - 61: {fileID: 6140688}
+  - 114: {fileID: 11494728}
   m_Layer: 0
   m_Name: NodePrefabPOI
   m_TagString: Untagged
@@ -80,6 +81,29 @@ MonoBehaviour:
   floorNumber: 0
   x: 0
   y: 0
+--- !u!114 &11494728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464744ad5a11c7547b6d8cd92161b79b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  floorNumber: 0
+  x: 0
+  y: 0
+  BeaconGameObject: {fileID: 0}
+  nipperPopUp: {fileID: 0}
+  poiImage: {fileID: 0}
+  videoPath: []
+  caption: 
+  sequentialID: 0
+  iconImage: {fileID: 0}
+  checkmarkIcon: {fileID: 0}
 --- !u!212 &21216596
 SpriteRenderer:
   m_ObjectHideFlags: 1

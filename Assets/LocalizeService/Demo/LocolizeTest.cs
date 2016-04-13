@@ -15,48 +15,45 @@ public class LocolizeTest : MonoBehaviour
 
     public void EnglishInPanel()
     {
-        LocalizationService.Instance.Localization = "English";
-
+        LocalizationService.Instance.Localization = "English";   
         CurrentText.text = string.Format("Current localization {0}",
-            LocalizationService.Instance.GetTextByKeyWithLocalize("localization1", "English"));
+        LocalizationService.Instance.GetTextByKeyWithLocalize("localization1", "English"));
     }
 
     public void FrenchInPanel()
     {
         LocalizationService.Instance.Localization = "French";
-
         CurrentText.text = string.Format("Current localization {0}",
-            LocalizationService.Instance.GetTextByKeyWithLocalize("localization3", "English"));
+        LocalizationService.Instance.GetTextByKeyWithLocalize("localization3", "English"));
     }
 
     public void English()
     {
         PlayerPrefs.SetString("language", "EN");
-        SceneManager.LoadScene("F2-next");  //changer a Menu, this is for testing purposes
+        SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
         Vibration.Vibrate(100);
-        LocalizationService.Instance.Localization = "English";
 
+        LocalizationService.Instance.Localization = "English";
         CurrentText.text = string.Format("Current localization {0}",
-            LocalizationService.Instance.GetTextByKeyWithLocalize("localization1", "English"));
+        LocalizationService.Instance.GetTextByKeyWithLocalize("localization1", "English"));
         
     }
     public void Russian()
     {
         LocalizationService.Instance.Localization = "Russian";
-
         CurrentText.text = string.Format("Current localization {0}",
-            LocalizationService.Instance.GetTextByKeyWithLocalize("localization2", "English"));
+        LocalizationService.Instance.GetTextByKeyWithLocalize("localization2", "English"));
     }
 
     public void French()
     {
         PlayerPrefs.SetString("language", "FR");
-        SceneManager.LoadScene("F2-next");  //changer a Menu, this is for testing purposes
+        SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
         Vibration.Vibrate(100);
-        LocalizationService.Instance.Localization = "French";
 
+        LocalizationService.Instance.Localization = "French";
         CurrentText.text = string.Format("Current localization {0}",
-            LocalizationService.Instance.GetTextByKeyWithLocalize("localization3", "English"));
+        LocalizationService.Instance.GetTextByKeyWithLocalize("localization3", "English"));
         
     }
 

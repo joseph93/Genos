@@ -75,6 +75,7 @@ public class FreeRoamingDriver : MonoBehaviour
 
         freeRoamingTour.initializeLists(map.GetPoiNodes());
 
+<<<<<<< HEAD
 
         DisplayFloor(2);
 
@@ -110,6 +111,8 @@ public class FreeRoamingDriver : MonoBehaviour
             
             shortestPathCreator.transform.position = new Vector3(gameObjectNodesList[0].transform.position.x, gameObjectNodesList[0].transform.position.y, -7);
             */
+=======
+>>>>>>> 6f55a59d5408080a30da2e37f70ca10bc1358859
     }
 
     public void swipePanelLeft()

@@ -48,26 +48,37 @@ namespace Assets.Scripts
         public void changeSceneToQuit()
         {
             SceneManager.LoadScene("Quit");
+            Vibration.Vibrate(100);
         }
 
         public void loadHelp()
         {
             SceneManager.LoadScene("Help");
+            Vibration.Vibrate(100);
+        }
+
+        public void loadSettings()
+        {
+            SceneManager.LoadScene("Settings");
+            Vibration.Vibrate(100);
         }
 
         public void loadLang()
         {
             SceneManager.LoadScene("Lang");
+            Vibration.Vibrate(100);
         }
 
         public void loadMenu()
         {
             SceneManager.LoadScene("Menu");
+            Vibration.Vibrate(100);
         }
 
         public void startFreeRoaming()
         {
             SceneManager.LoadScene("FreeRoaming");
+            Vibration.Vibrate(100);
         }
 
     }

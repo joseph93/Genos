@@ -880,6 +880,54 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22417364, guid: 82afc875b95ad5643b736046615648a8,
     type: 2}
   m_PrefabInternal: {fileID: 957925738}
+--- !u!1 &957925740 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 176098, guid: 82afc875b95ad5643b736046615648a8, type: 2}
+  m_PrefabInternal: {fileID: 957925738}
+--- !u!1 &957925741 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 164094, guid: 82afc875b95ad5643b736046615648a8, type: 2}
+  m_PrefabInternal: {fileID: 957925738}
+--- !u!1 &957925742 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 163640, guid: 82afc875b95ad5643b736046615648a8, type: 2}
+  m_PrefabInternal: {fileID: 957925738}
+--- !u!114 &957925743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 957925740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: buttonCancel
+--- !u!114 &957925744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 957925741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: buttonOk
+--- !u!114 &957925745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 957925742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: panelQuit
 --- !u!1 &982933431
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +937,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 982933433}
   - 114: {fileID: 982933432}
-  - 82: {fileID: 982933434}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -925,80 +972,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!82 &982933434
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 982933431}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: afa7ac3576581b54eab00f345ad3315c, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &1025424404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,7 +1627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1477518713
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2067,7 +2040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: titleTutorial
+  _key: titleHelp
 --- !u!114 &1792198583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2496,7 +2469,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1992868110}
-        m_MethodName: loadOverview
+        m_MethodName: loadSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -28,7 +28,7 @@ public class WarningPanel : MonoBehaviour
     }
 
     //JOSEPH: Ok/Cancel : A string, an image, OK event, Cancel event
-    public void Warn(string descr, Sprite iconImage, UnityAction okEvent, UnityAction cancelEvent)
+    public void Warn(string descr, UnityAction okEvent, UnityAction cancelEvent)
     {
         modalPanelObject.SetActive(true);
 
@@ -41,9 +41,9 @@ public class WarningPanel : MonoBehaviour
         cancelButton.onClick.AddListener(closePanel);
 
         description.text = descr;
-        this.iconImage.sprite = iconImage;
+        /*this.iconImage.sprite = iconImage;
 
-        this.iconImage.gameObject.SetActive(true);
+        this.iconImage.gameObject.SetActive(true);*/
         okButton.gameObject.SetActive(true);
         cancelButton.gameObject.SetActive(true);
     }
