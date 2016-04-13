@@ -305,8 +305,6 @@ namespace Assets.Scripts.Driver
                     if (newNode != null)
                     {
 
-
-
                         PointOfTransition pot = (PointOfTransition) n;
                         newNode.transform.localScale = new Vector3(7f, 7f, 7f);
                         newNode.transform.parent = floorManager.transform;
@@ -347,13 +345,7 @@ namespace Assets.Scripts.Driver
                             newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
                             gameObjectNodesList.Add(newNode);
                         }
-<<<<<<< HEAD
-                        
-  
-                            
-                        
-                    
-=======
+
                         else if (pot.label == PointOfTransition.Label.ELEVATOR) //elevator
                         {
                             nodeSprite = nodeSprites[elevator];
@@ -372,7 +364,7 @@ namespace Assets.Scripts.Driver
                         }
                     }
                 }
->>>>>>> 8298766c469ac61b4e9ef29d03715f8b1c59004e
+
                 }
 
 
