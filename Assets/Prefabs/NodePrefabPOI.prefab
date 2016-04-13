@@ -61,7 +61,7 @@ MonoBehaviour:
   x: 0
   y: 0
   BeaconGameObject: {fileID: 100000, guid: 6badeb4831d3cbb469ec244e7f50ea3a, type: 2}
-  nipperPopUp: {fileID: 0}
+  nipperPopUp: {fileID: 21300000, guid: e74095a7936ae3f40bcfb34b031f244c, type: 3}
   poiImage: {fileID: 0}
   videoPath: []
   caption: 
@@ -164,7 +164,8 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: nipperPopUp
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: e74095a7936ae3f40bcfb34b031f244c,
+        type: 3}
     - target: {fileID: 0}
       propertyPath: m_Name
       value: NodePrefabPOI
