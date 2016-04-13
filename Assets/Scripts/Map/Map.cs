@@ -10,9 +10,7 @@ namespace Assets.Scripts
 {
 
     public class Map 
-
     {
-
         private List<Storyline> storylines;
         private readonly Graph mapGraph;
         private List<Node> poiList;

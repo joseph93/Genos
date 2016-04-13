@@ -26,6 +26,9 @@ namespace Assets.Scripts
 
         public Camera mainCam;
 
+        public GameObject[] checkmarks;
+        private int visitedStorypoint;
+
         public Storyline(int id, int fc)
         {
             this.id = id;
@@ -73,6 +76,11 @@ namespace Assets.Scripts
             myBeacons = beacons;
         }
 
+        public List<Beacon> getBeacons()
+        {
+            return myBeacons;
+        } 
+
         public void addToPath(int nodeID)
         {
             path.Add(nodeID);
@@ -115,8 +123,23 @@ namespace Assets.Scripts
         //Check if this storypoint follows the sequence
         public bool isInOrder(POS sp)
         {
+            
+            for (int i = 0; i < storyPoints.Count; i++)
+            {
+                if (sp.id == storyPoints[0].id)
+                    return true;
 
-            int currentPoi = this.storyPoints.IndexOf(sp);
+                if (sp.id == storyPoints[i].id)
+                {
+                    if (storyPoints[i - 1].isVisited())
+                        return true;
+                }
+            }
+            return false;
+
+
+
+            /*int currentPoi = this.storyPoints.IndexOf(sp);
 
             POS[] poss = this.storyPoints.ToArray();
 
@@ -128,7 +151,7 @@ namespace Assets.Scripts
                 }
             }
 
-            return true;
+            return true;*/
         }
 
         public POS findLastUnvisitedSp()
@@ -157,10 +180,12 @@ namespace Assets.Scripts
         public IEnumerator searchForStorypointBeacon(float seconds)
         {
             yield return new WaitForSeconds(seconds);
-            
+
             foreach (Beacon b in myBeacons)
             {
-                /*if (b.accuracy > 2.00 && b.accuracy < 6.00)
+                if (b != null)
+                {
+                    /*if (b.accuracy > 2.00 && b.accuracy < 6.00)
                 {
                     foreach (PointOfInterest poi in nodeList)
                     {
@@ -174,41 +199,49 @@ namespace Assets.Scripts
                         }
                     }
                 }*/
-                if (b.accuracy < 2.00)
-                {
-                   // print("Im near the beacon.");
-                    foreach (POS sp in storyPoints)
-                    {
-                        //print("I'm in the for loop.");
-                        if (!sp.isVisited())
-                        {
-                            //print("Storypoint is not visited.");
-                            if (sp.getBeacon().Equals(b))
-                            {
-                                //print("Its the same beacon");
-                                //if (isInOrder(sp))
-                                //{
-                                    //print("It's in order.");
-                                    StoryPointView storyPointView = new StoryPointView(sp);
-                                    sp.setVisited(true);
-                                    visitedStoryPoints.Add(sp);
-                                    //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
-                                    mainCam.transform.position = new Vector3(sp.x, sp.y, -10);
 
-                                //}
-                                /*else
+
+                    if (b.accuracy < 2.00)
+                    {
+                        // print("Im near the beacon.");
+                        foreach (POS sp in storyPoints)
+                        {
+                            if (sp != null)
+                            {
+                                //print("I'm in the for loop.");
+                                if (!sp.isVisited())
                                 {
-                                    if (!sp.warned)
+                                    //print("Storypoint is not visited.");
+                                    if (sp.getBeacon().Equals(b))
                                     {
-                                        POS lastUnvisitedSp = findLastUnvisitedSp();
-                                        //Pop up, notify the user that he missed a poi
-                                        string description = "You have missed point of interest " +
-                                                             lastUnvisitedSp.getSequentialID() +
-                                                             ". Please go back and visit it before proceeding.";
-                                        sp.displayWarning(description);
-                                        sp.warned = true;
+                                        //print("Its the same beacon");
+                                        if (isInOrder(sp))
+                                        {
+                                            //print("It's in order.");
+                                            //checkmarks[visitedStorypoint].SetActive(true);
+                                            //visitedStorypoint++;
+                                            StoryPointView storyPointView = new StoryPointView(sp);
+                                            sp.setVisited(true);
+                                            visitedStoryPoints.Add(sp);
+                                            //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
+                                            //Camera.main.transform.position = new Vector3(sp.x, sp.y, -10);
+
+                                        }
+                                        else
+                                        {
+                                            if (!sp.warned)
+                                            {
+                                                //POS lastUnvisitedSp = findLastUnvisitedSp();
+                                                //Pop up, notify the user that he missed a poi
+                                                string description =
+                                                    "You have missed a point of interest. Please go back and visit it before proceeding.";
+                                                print(description);
+                                                sp.displayWarning(description);
+                                                sp.warned = true;
+                                            }
+                                        }
                                     }
-                                }*/
+                                }
                             }
                         }
                     }

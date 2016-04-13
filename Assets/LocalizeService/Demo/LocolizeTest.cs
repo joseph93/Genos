@@ -30,7 +30,7 @@ public class LocolizeTest : MonoBehaviour
     public void English()
     {
         PlayerPrefs.SetString("language", "EN");
-        SceneManager.LoadScene("F2-next");  //changer a Menu, this is for testing purposes
+        SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
         Vibration.Vibrate(100);
 
         LocalizationService.Instance.Localization = "English";
@@ -48,7 +48,7 @@ public class LocolizeTest : MonoBehaviour
     public void French()
     {
         PlayerPrefs.SetString("language", "FR");
-        SceneManager.LoadScene("F2-next");  //changer a Menu, this is for testing purposes
+        SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
         Vibration.Vibrate(100);
 
         LocalizationService.Instance.Localization = "French";

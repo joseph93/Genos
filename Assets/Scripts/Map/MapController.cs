@@ -261,17 +261,21 @@ namespace Assets.Scripts
 
                     for (int i = 0; i < poi.list[1].Count; i++) //Add all the poi description in the point of interest
                     {
-                        Description poiD = new Description(poi.list[1].list[i].list[1].str, poi.list[2].list[i].list[1].str, poi.list[1].list[i].list[0].str);
+                        string title = RemoveHtml.RemoveHtmlTags(poi.list[1].list[i].list[1].str);
+                        string descr = RemoveHtml.RemoveHtmlTags(poi.list[2].list[i].list[1].str);
+                        Description poiD = new Description(title, descr, poi.list[1].list[i].list[0].str);
                         p.addPoiDescription(poiD);
                     }
 
                     foreach (var sp in poi.list[8].list)
                     {
                         POS storyPoint = new POS((int)poi.list[0].n, (int)poi.list[3].n, (int)poi.list[4].n, (int)poi.list[5].n, (int)sp.list[1].n);
-
+                        
                         for (int i = 0; i < sp.list[2].Count; i++) // description and title JSON object
                         {
-                            Description spd = new Description(sp.list[2].list[i].list[1].str, sp.list[3].list[i].list[1].str, sp.list[2].list[i].list[0].str);
+                            string title = RemoveHtml.RemoveHtmlTags(sp.list[2].list[i].list[1].str);
+                            string descr = RemoveHtml.RemoveHtmlTags(sp.list[3].list[i].list[1].str);
+                            Description spd = new Description(title, descr, sp.list[2].list[i].list[0].str);
                             storyPoint.addPoiDescription(spd);
                         }
 

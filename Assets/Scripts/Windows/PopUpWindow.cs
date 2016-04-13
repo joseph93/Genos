@@ -26,7 +26,7 @@ public class PopUpWindow : MonoBehaviour {
     }
 
     //JOSEPH: Ok/Cancel : A string, an image, OK event, Cancel event
-    public void PopUp(string descr, Sprite iconImage, UnityAction viewEvent)
+    public void PopUp(string descr, UnityAction viewEvent)
     {
         modalPanelObject.SetActive(true);
 
@@ -35,10 +35,12 @@ public class PopUpWindow : MonoBehaviour {
         viewButton.onClick.AddListener(closePanel);
         
         description.text = descr;
-        this.iconImage.sprite = iconImage;
 
-        this.iconImage.gameObject.SetActive(true);
         viewButton.gameObject.SetActive(true);
+
+        /*yield return new WaitForSeconds(3.0f);
+
+        closePanel();*/
     }
 
     public void closePanel()

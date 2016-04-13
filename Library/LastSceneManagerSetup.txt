@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/DisplayButton.unity
+- path: Assets/Scenes/F2-next.unity
   isLoaded: 1
   isActive: 1
