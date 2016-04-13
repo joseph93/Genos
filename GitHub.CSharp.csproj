@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -161,7 +163,7 @@
     <Compile Include="Assets\Scripts\Exhibition Content\Vibration.cs" />
     <Compile Include="Assets\Scripts\Exhibition Content\Video.cs" />
     <Compile Include="Assets\Scripts\Language\Language.cs" />
-    <Compile Include="Assets\Scripts\Language\PoiDescription.cs" />
+    <Compile Include="Assets\Scripts\Language\Description.cs" />
     <Compile Include="Assets\Scripts\Language\RemoveHtml.cs" />
     <Compile Include="Assets\Scripts\Map\Edge.cs" />
     <Compile Include="Assets\Scripts\Map\FloorPlan.cs" />

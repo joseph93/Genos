@@ -10,7 +10,8 @@ public class RemoveHtml
     {
         var step1 = Regex.Replace(value, @"<[^>]+>|&nbsp;", "").Trim();
         var step2 = Regex.Replace(step1, @"\s{2,}", " ");
-        return step2;
+        var step3 = step2.Replace("\\n", string.Empty);
+        return step3;
     }
 
 }

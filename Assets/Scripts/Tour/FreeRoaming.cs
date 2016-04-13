@@ -42,6 +42,10 @@ namespace Assets.Scripts
         {
             return pointsOfInterest;
         }
+        public void setBeaconList(List<Beacon> beacons)
+        {
+            myBeacons = beacons;
+        }
 
 
         public void initializeLists(List<Node> poiList)
