@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Lang.unity
+- path: Assets/Scenes/DisplayButton.unity
   isLoaded: 1
   isActive: 1
