@@ -89,6 +89,16 @@ namespace Assets.Scripts
             return storylines;
         }
 
+		public Storyline GetStoryline(int slId)
+		{
+			foreach (var s in storylines) 
+			{
+				if (s.id == slId)
+					return s;
+			}
+			return null;
+		}
+
         public List<Node> GetPoiNodes()
         {
             return poiList;

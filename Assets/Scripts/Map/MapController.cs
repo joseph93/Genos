@@ -59,7 +59,7 @@ namespace Assets.Scripts
             initializePoiAndStorypointLists();      //populate the list that contains the points of interest and the other that contains storypoints
 
             createStartAndEndNode(); //transform the id's of the nodes in the edges into Node objects
-
+            
             setAdjacencies();              //add all the adjacencies to all the nodes
 
             map = new Map();
@@ -67,8 +67,8 @@ namespace Assets.Scripts
             map.setStorypointList(storypointList);
             map.setFloorplanList(floorList);
             map.setStorylineList(storylineList);
-            map.initializeGraph(storypointList);
-
+            map.initializeGraph(poiList);
+            
         }
 
         public Map getMap()
@@ -96,6 +96,25 @@ namespace Assets.Scripts
                     }
                 }
             }
+
+            /*foreach (Node n in storypointList) // for each node in the nodelist
+            {
+                foreach (Edge e in edgeList) // and for each edge in the edgelist
+                {
+                    if (n == e.startingNode) //if n in the node list is equal to the starting node of the edge then go in
+                    {
+                        foreach (Node adjacentNode in storypointList) //look for the end node
+                        {
+                            if (adjacentNode == e.endingNode)
+                            {
+                                //add the adjacency both ways
+                                n.addAdjacentNode(adjacentNode, e.edgeWeight);
+                                adjacentNode.addAdjacentNode(n, e.edgeWeight);
+                            }
+                        }
+                    }
+                }
+            }*/
         }
 
         public void initializePoiAndStorypointLists()
@@ -205,8 +224,8 @@ namespace Assets.Scripts
                         iBeaconServer beacon = new iBeaconServer(poi.list[6].list[0].str, int.Parse(poi.list[6].list[1].str), int.Parse(poi.list[6].list[2].str));
                         p.setBeacon(beacon);
                     }
-                    foreach (JSONObject c in poi.list[7].list) //Media list
-                    {
+                    //foreach (JSONObject c in poi.list[7].list) //Media list
+                    //{
                         //Debug.Log(c.ToString() + "\n");
                         /*foreach (JSONObject i in poi.list[8].list[0].list) // Image list
                         {
@@ -218,11 +237,10 @@ namespace Assets.Scripts
                         {
                             foreach (JSONObject v in poi.list[7].list[1].list) // Video list
                             {
-                                string videoPath = v.list[0].str;
-                                string mp4Path = videoPath.Remove(videoPath.Length - 4);
+                                string videoPath = v.list[0].str.Remove(0, 13);
                                 //Remove extension type of the file
-                                print(mp4Path);
-                                ExhibitionContent video = new Video(mp4Path, v.list[1].str, v.list[2].str);
+                                //print(videoPath);
+                                Video video = new Video(videoPath, v.list[1].str, v.list[2].str);
                                 p.addContent(video);
                                 //Debug.Log(v.list[0].ToString() + "\n");
                             }
@@ -234,12 +252,12 @@ namespace Assets.Scripts
                             {
                                 string audioPath = a.list[0].str.Remove(0, 13);
                                 string mp3Path = audioPath.Remove(audioPath.Length - 4);
-                                print(mp3Path);
-                                ExhibitionContent audio = new Audio(mp3Path, a.list[1].str, a.list[2].str);
+                                //print(mp3Path);
+                                Audio audio = new Audio(mp3Path, a.list[1].str, a.list[2].str);
                                 p.addContent(audio);
                             }
                         }
-                    }
+                    //}
 
                     for (int i = 0; i < poi.list[1].Count; i++) //Add all the poi description in the point of interest
                     {
@@ -257,8 +275,8 @@ namespace Assets.Scripts
                             storyPoint.addPoiDescription(spd);
                         }
 
-                        foreach (var c in sp.list[4].list) //storypoint content list
-                        {
+                        //foreach (var c in sp.list[4].list) //storypoint content list
+                        //{
                             /*foreach (var i in sp.list[4].list[0].list) //image list
                             {
                                 if (i != null)
@@ -273,10 +291,9 @@ namespace Assets.Scripts
                                 foreach (var v in sp.list[4].list[1].list) //video list
                                 {
                                     string videoPath = v.list[0].str.Remove(0, 13);
-                                    string mp4Path = videoPath.Remove(videoPath.Length - 4);
                                     //Remove extension type of the file
-                                    print(mp4Path);
-                                    ExhibitionContent video = new Video(v.list[0].str, v.list[1].str, v.list[2].str);
+                                    //print(videoPath);
+                                    Video video = new Video(videoPath, v.list[1].str, v.list[2].str);
                                     storyPoint.addContent(video);
                                 }
                             }
@@ -287,12 +304,12 @@ namespace Assets.Scripts
                                 {
                                     string audioPath = a.list[0].str.Remove(0, 13);
                                     string mp3Path = audioPath.Remove(audioPath.Length - 4);
-                                    print(mp3Path);
-                                    ExhibitionContent audio = new Audio(mp3Path, a.list[1].str, a.list[2].str);
+                                    //print(mp3Path);
+                                    Audio audio = new Audio(mp3Path, a.list[1].str, a.list[2].str);
                                     storyPoint.addContent(audio);
                                 }
                             }
-                        }
+                        //}
                         tmpNodeList.Add(storyPoint);
                     }
 
