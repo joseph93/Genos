@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/F2.unity
-=======
-- path: Assets/Scenes/Storyline4.unity
->>>>>>> 9474ecc15eaa3a7265fb496e2e7b0a0864fdb0a8
+- path: Assets/Scenes/Storyline0.unity
   isLoaded: 1
   isActive: 1
