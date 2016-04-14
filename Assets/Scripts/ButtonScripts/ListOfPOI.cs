@@ -26,6 +26,7 @@ public class ListOfPOI : MonoBehaviour
 
     private int poiId;
 
+    //EN
     private string title1 = "MOEB Start for all tours";
     private string title2 = "Ross and MacDonald Building";
     private string title3 = "Presidents office";
@@ -39,6 +40,21 @@ public class ListOfPOI : MonoBehaviour
     private string description4 = "Look at the wall around the passenger elevator. You see the shadow of a much larger frame. We do not know why originally two freight elevators were here side by side. The old passenger elevator is still in place behind the door to the staircase. Have a look. Did you try to push the butten to call the elevator here? Well, good luck!";
     private string description5 = "put text";
     private string description6 = "put text";
+
+    //FR
+    private string title11 = "Debut de tous le tours";
+    private string title22 = "L'annex du Ross & MacDonald";
+    private string title33 = "Le bureau du President RCA";
+    private string title44 = "Les lifts";
+    private string title55 = "Colunne du 5em etage";
+    private string title66 = "View dans la court du edifice";
+
+    private string text11 = "a besoin du traduction";
+    private string text22 = "Aussi je besoin d;une tradution";
+    private string text33 = "Une autre place de mettre du contenu";
+    private string text44 = "pas encore traduit";
+    private string text55 = "a besoin du text";
+    private string text66 = "a besoin du text en francaise";
 
 
 
@@ -102,37 +118,102 @@ public class ListOfPOI : MonoBehaviour
     public void pointOfInterest1()
     {
         poiId = 1;
-        summaryWindow.SummaryOneButton(title1, description1, myCloseAction);
+        string lg = PlayerPrefs.GetString("language");
+
+        if (lg.Equals("EN"))
+        {
+            summaryWindow.SummaryOneButton(title1, description1, myCloseAction);
+        }
+
+        else if (lg.Equals("FR"))
+        {
+            summaryWindow.SummaryOneButton(title11, text11, myCloseAction);
+        }
+        
     }
 
     public void pointOfInterest2()
     {
         poiId = 2;
-        summaryWindow.SummaryOneButton(title2, description2, myCloseAction);
+        string lg = PlayerPrefs.GetString("language");
+
+        if (lg.Equals("EN"))
+        {
+            summaryWindow.SummaryOneButton(title2, description2, myCloseAction);
+        }
+
+        else if (lg.Equals("FR"))
+        {
+            summaryWindow.SummaryOneButton(title22, text22, myCloseAction);
+        }
+
     }
 
     public void pointOfInterest3()
     {
-        poiId = 3;
-        summaryWindow.SummaryOneButton(title3, description3, myCloseAction);
+        poiId = 3; string lg = PlayerPrefs.GetString("language");
+
+        if (lg.Equals("EN"))
+        {
+            summaryWindow.SummaryOneButton(title3, description3, myCloseAction);
+        }
+
+        else if (lg.Equals("FR"))
+        {
+            summaryWindow.SummaryOneButton(title33, text33, myCloseAction);
+        }
+       
     }
 
     public void pointOfInterest4()
     {
         poiId = 4;
-        summaryWindow.SummaryOneButton(title4, description4, myCloseAction);
+        string lg = PlayerPrefs.GetString("language");
+
+        if (lg.Equals("EN"))
+        {
+            summaryWindow.SummaryOneButton(title4, description4, myCloseAction);
+        }
+
+        else if (lg.Equals("FR"))
+        {
+            summaryWindow.SummaryOneButton(title44, text44, myCloseAction);
+        }
+
     }
 
     public void pointOfInterest5()
     {
         poiId = 5;
-        summaryWindow.SummaryOneButton(title5, description5, myCloseAction);
+        string lg = PlayerPrefs.GetString("language");
+
+        if (lg.Equals("EN"))
+        {
+            summaryWindow.SummaryOneButton(title5, description5, myCloseAction);
+        }
+
+        else if (lg.Equals("FR"))
+        {
+            summaryWindow.SummaryOneButton(title55, text55, myCloseAction);
+        }
+
     }
 
     public void pointOfInterest6()
     {
         poiId = 6;
-        summaryWindow.SummaryOneButton(title6, description6, myCloseAction);
+        string lg = PlayerPrefs.GetString("language");
+
+        if (lg.Equals("EN"))
+        {
+            summaryWindow.SummaryOneButton(title6, description6, myCloseAction);
+        }
+
+        else if (lg.Equals("FR"))
+        {
+            summaryWindow.SummaryOneButton(title66, text66, myCloseAction);
+        }
+
     }
 
     //map.GetStorylines()[0].getStorypointList()
