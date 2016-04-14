@@ -55,52 +55,45 @@ public class ListOfPOI : MonoBehaviour
 
     public void locatePoi()
     {
-        GameObject obj;
 
         if (poiId == 1)
         {
-            obj = poi1;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi1.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
 
         if (poiId == 2)
         {
-            obj = poi2;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi2.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
 
         if (poiId == 3)
         {
-            obj = poi3;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi3.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
 
         if (poiId == 4)
         {
-            obj = poi4;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi4.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
 
         if (poiId == 5)
         {
-            obj = poi5;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi5.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
 
         if (poiId == 6)
         {
-            obj = poi6;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi6.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
@@ -110,37 +103,37 @@ public class ListOfPOI : MonoBehaviour
     public void pointOfInterest1()
     {
         poiId = 1;
-        summaryWindow.SummaryNoImage(title1, description1, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title1, description1, myCloseAction);
     }
 
     public void pointOfInterest2()
     {
         poiId = 2;
-        summaryWindow.SummaryNoImage(title2, description2, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title2, description2, myCloseAction);
     }
 
     public void pointOfInterest3()
     {
         poiId = 3;
-        summaryWindow.SummaryNoImage(title3, description3, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title3, description3, myCloseAction);
     }
 
     public void pointOfInterest4()
     {
         poiId = 4;
-        summaryWindow.SummaryNoImage(title4, description4, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title4, description4, myCloseAction);
     }
 
     public void pointOfInterest5()
     {
         poiId = 5;
-        summaryWindow.SummaryNoImage(title5, description5, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title5, description5, myCloseAction);
     }
 
     public void pointOfInterest6()
     {
         poiId = 6;
-        summaryWindow.SummaryNoImage(title6, description6, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title6, description6, myCloseAction);
     }
 
     //map.GetStorylines()[0].getStorypointList()
