@@ -35,6 +35,7 @@ public class FreeRoamingDriver : MonoBehaviour
     private GameObject floorManager;
     private readonly List<GameObject> gameObjectNodesList = new List<GameObject>();
 
+    public Button[] cercles;
 
     private static bool changedFloor;
 
@@ -47,7 +48,7 @@ public class FreeRoamingDriver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(freeRoamingTour.searchForPoiBeacon(1.00f));
+        StartCoroutine(freeRoamingTour.searchForPoiBeacon(.05f));
         swipePanelLeft();
     }
 
@@ -58,7 +59,7 @@ public class FreeRoamingDriver : MonoBehaviour
 
     public IEnumerator startFreeRoaming()
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.005f);
 
         ui_Manager = FindObjectOfType<UI_Manager>();
 
@@ -72,14 +73,14 @@ public class FreeRoamingDriver : MonoBehaviour
         iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
         List<Beacon> beacons = bh.getBeacons();
 
+        freeRoamingTour.setBeaconList(beacons);
 
         freeRoamingTour.initializeLists(map.GetPoiNodes());
 
-<<<<<<< HEAD
 
         DisplayFloor(2);
 
-        freeRoamingTour.getPoiList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
+       freeRoamingTour.getPoiList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
 
         /*public IEnumerator startStoryline()
         {
@@ -111,8 +112,7 @@ public class FreeRoamingDriver : MonoBehaviour
             
             shortestPathCreator.transform.position = new Vector3(gameObjectNodesList[0].transform.position.x, gameObjectNodesList[0].transform.position.y, -7);
             */
-=======
->>>>>>> 6f55a59d5408080a30da2e37f70ca10bc1358859
+
     }
 
     public void swipePanelLeft()
@@ -188,9 +188,19 @@ public class FreeRoamingDriver : MonoBehaviour
             foreach (var obj in gameObjectNodesList)
             {
                 Destroy(obj);
+
             }
         }
 
+        for (int i=0; i < cercles.Length; i++)
+        {
+            if (i == (floorId - 1))
+            {
+                cercles[i].image.color = new Color32(255, 0, 0, 94);
+            }
+            else
+                cercles[i].image.color = new Color32(0, 0, 0, 0);
+        }
 
         changedFloor = true;
 

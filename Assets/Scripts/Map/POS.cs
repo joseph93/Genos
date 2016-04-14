@@ -75,8 +75,8 @@ namespace Assets.Scripts
             myViewAction = new UnityAction(playVideo);
             //modalWindow = ModalWindow.Instance();
             warningPanel = WarningPanel.Instance();
-            yesAction = new UnityAction(warningPanel.closePanel);
-            noAction = new UnityAction(warningPanel.closePanel);
+          //  yesAction = new UnityAction(warningPanel.closePanel);
+         //   noAction = new UnityAction(warningPanel.closePanel);
         }
         
 
