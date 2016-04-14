@@ -10,6 +10,7 @@ public class SummaryWindow : MonoBehaviour {
     public Image image1;
     public Image image2;
     public Button closeButton;
+    public Button findButton;
     public Scrollbar scrollBar;
     public GameObject modalPanelObject;
 
@@ -29,7 +30,7 @@ public class SummaryWindow : MonoBehaviour {
 
     }
 
-    public void SummaryNoImage(string title, string descr, UnityAction closeEvent)
+    public void SummaryNoImage(string title, string descr, UnityAction closeEvent, UnityAction findEvent)
     {
         modalPanelObject.SetActive(true);
 
@@ -37,12 +38,17 @@ public class SummaryWindow : MonoBehaviour {
         closeButton.onClick.AddListener(closeEvent);
         closeButton.onClick.AddListener(closePanel);
 
+        findButton.onClick.RemoveAllListeners();
+        findButton.onClick.AddListener(findEvent);
+        findButton.onClick.AddListener(closePanel);
+
         this.title.text = title;
         description.text = descr;
 
         this.image1.gameObject.SetActive(false);
         this.image2.gameObject.SetActive(false);
         closeButton.gameObject.SetActive(true);
+        findButton.gameObject.SetActive(true);
         scrollBar.gameObject.SetActive(true);
     }
 
@@ -62,6 +68,24 @@ public class SummaryWindow : MonoBehaviour {
         this.image1.gameObject.SetActive(true);
         this.image2.gameObject.SetActive(false);
         closeButton.gameObject.SetActive(true);
+        scrollBar.gameObject.SetActive(true);
+    }
+
+    public void SummaryOneButton(string title, string descr, UnityAction closeEvent)
+    {
+        modalPanelObject.SetActive(true);
+
+        closeButton.onClick.RemoveAllListeners();
+        closeButton.onClick.AddListener(closeEvent);
+        closeButton.onClick.AddListener(closePanel);
+
+        this.title.text = title;
+        description.text = descr;
+
+        this.image1.gameObject.SetActive(false);
+        this.image2.gameObject.SetActive(false);
+        closeButton.gameObject.SetActive(true);
+        findButton.gameObject.SetActive(false);
         scrollBar.gameObject.SetActive(true);
     }
 

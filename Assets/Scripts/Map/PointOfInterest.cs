@@ -34,6 +34,9 @@ namespace Assets.Scripts
 
         public string[] videoPath;
         public string caption;
+        public string[] titles;
+        public string[] descriptions;
+        public AudioClip[] audioSources;
 
         private UnityAction viewVideoAction;
         private ModalWindow modalWindow;
@@ -44,7 +47,7 @@ namespace Assets.Scripts
         {
             beacon = BeaconGameObject.GetComponent<iBeaconServer>();
             sounds = GetComponents<AudioSource>();
-            //popUp = sounds[0];
+            popUp = sounds[0];
             //beforeSound = sounds[1];
             observers = new List<Observer>();
             detected = false;
@@ -65,6 +68,14 @@ namespace Assets.Scripts
             detected = false;
             contents = new List<ExhibitionContent>();
             descriptionList = new List<Description>();
+            observers = new List<Observer>();
+            popUpWindow = PopUpWindow.Instance();
+            modalWindow = ModalWindow.Instance();
+        }
+
+        public void setDescriptionList(List<Description> descr)
+        {
+            descriptionList = descr;
         }
 
         public List<Description> GetPoiDescriptionList()
@@ -112,7 +123,7 @@ namespace Assets.Scripts
 
         public void changeIconScale()
         {
-            transform.localScale = new Vector3(0.08f, 0.08f, 1);
+            transform.localScale = new Vector3(1f, 1f, 1);
         }
 
         public void POIdisplayImageWithCaption()
@@ -124,8 +135,23 @@ namespace Assets.Scripts
         {
             foreach (var descr in descriptionList)
             {
+
                 
             }
+
+            string lg = PlayerPrefs.GetString("language");
+
+            Language.Language lang = Description.convertStringToLang(lg);
+
+            foreach (var d in descriptionList)
+            {
+                if (lang == d.language)
+                {
+                    popUpWindow.PopUp(d.title, myViewAction);
+                    break;
+                }
+            }
+            
             //popUpWindow.PopUp(poiDescriptionList.title, nipperPopUp, myViewAction);
             //CHANGE HERE WITH LIST OF POIDESCRIPTION
         }

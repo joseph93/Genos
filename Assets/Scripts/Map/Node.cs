@@ -38,6 +38,11 @@ public class Node : MonoBehaviour{
         adjacentNodes = copyNode.adjacentNodes;
     }
 
+    void Update()
+    {
+        //transform.position = new Vector3(x, y, -7);
+    }
+
     public State getState()
     {
         return Status;

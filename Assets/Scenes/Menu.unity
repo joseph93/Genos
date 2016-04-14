@@ -973,7 +973,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1751199145}
-        m_MethodName: changeSceneToTour
+        m_MethodName: changeSceneToOutdoor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

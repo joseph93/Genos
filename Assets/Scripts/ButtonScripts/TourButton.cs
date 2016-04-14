@@ -19,7 +19,12 @@ namespace Assets.Scripts
         }
 
         // Update is called once per frame
-        
+
+        public void changeSceneToOutdoor()
+        {
+            SceneManager.LoadScene("3D-outdoor");
+            Vibration.Vibrate(100);
+        }
 
         public void changeSceneToTour()
         {

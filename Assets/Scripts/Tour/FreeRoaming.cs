@@ -27,7 +27,7 @@ namespace Assets.Scripts
         // Use this for initialization
         void Start()
         {
-            bh = FindObjectOfType<iBeaconHandler>();
+            //bh = FindObjectOfType<iBeaconHandler>();
             myBeacons = new List<Beacon>();
             nodeList = new List<Node>();
             pointsOfInterest = new List<PointOfInterest>();
@@ -41,6 +41,10 @@ namespace Assets.Scripts
         public List<PointOfInterest> getPoiList()
         {
             return pointsOfInterest;
+        }
+        public void setBeaconList(List<Beacon> beacons)
+        {
+            myBeacons = beacons;
         }
 
 
@@ -64,11 +68,11 @@ namespace Assets.Scripts
         // Update is called once per frame
         void Update()
         {
-            if (bh != null)
+            /*if (bh != null)
                 myBeacons = bh.getBeacons();
 
             StartCoroutine(searchForPoiBeacon(0.05f));
-
+            */
         }
 
 
@@ -90,6 +94,7 @@ namespace Assets.Scripts
                                 PointOfInterestView poiView = new PointOfInterestView(p);
                                 p.setDetected(true);
                                 mainCam.transform.position = new Vector3(p.x, p.y, -10);
+                                print("im inside");
                             }
 
                         }
