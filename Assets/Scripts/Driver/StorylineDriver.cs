@@ -45,6 +45,7 @@ namespace Assets.Scripts.Driver
         private string buttonTitle="buttontitle";
         private string panelTitle = "paneltitle";
         private string panelDescription = "paneldescription";
+        public Button b;
 
         // Use this for initialization
         void Start()
@@ -174,6 +175,10 @@ namespace Assets.Scripts.Driver
 
         public void DisplayFloorPlan(int floorId)
         {
+         
+          
+      
+
             DisplayFloor(floorId, PlayerPrefs.GetInt("storylineID"));
         }
 
@@ -230,6 +235,7 @@ namespace Assets.Scripts.Driver
                         
                     }
                     DisplayNodes(floorNodes, f);
+                  
                     //Added
                     //DisplayButtons(map.GetStorylines()[0].getStorypointList());
                     //Added
@@ -343,7 +349,14 @@ namespace Assets.Scripts.Driver
                         newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
                         newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
                         gameObjectNodesList.Add(newNode);
-  
+
+                       /* //Added
+                        if(storyPointList.Count >= 3) { 
+                            b.enabled = false;
+                            b.GetComponentInChildren<CanvasRenderer>().SetAlpha(0);
+                            b.GetComponentInChildren<UnityEngine.UI.Text>().color = Color.clear;
+                        }
+                        */
                     }
                 }
                 else if (n.GetType() == typeof(PointOfTransition)) //check poi or pot at runtime type
@@ -485,6 +498,21 @@ namespace Assets.Scripts.Driver
                 {
                     Debug.Log("if getType entered");
 
+
+                    POS pos = (POS)n;
+                    string lg = PlayerPrefs.GetString("language");
+
+                    Language.Language lang = Description.convertStringToLang(lg);
+
+                    foreach (var d in pos.GetPoiDescriptionList())
+                    {
+                        if (lang == d.language)
+                        {
+                            
+                            break;
+                        }
+                    }
+
                     //this.buttonTitle = n.GetComponent<Description>().getTitle(); //TODO
                     Debug.Log("buttonTitle has been entered");
 
@@ -521,10 +549,30 @@ namespace Assets.Scripts.Driver
         /*
          * Display the title and the description of the summary panel
          */
-        public void displayPanelSummary()
+        public void displayPanelSummary(int id)
         {
             Debug.Log("displayPanelSummary has been started.");
-            summaryWindow.SummaryNoImage(panelTitle, panelDescription, myCloseAction);
+
+            List<POS> storypoints = map.GetStoryline(PlayerPrefs.GetInt("storylineID")).getStorypointList();
+            string lg = PlayerPrefs.GetString("language");
+
+            Language.Language lang = Description.convertStringToLang(lg);
+
+            foreach (var sp in storypoints)
+            {
+                if(sp.id == id)
+                {
+                    foreach(var d in sp.GetPoiDescriptionList())
+                    {
+                        if(d.language == lang)
+                        {
+                            summaryWindow.SummaryNoImage(d.title, d.summary, myCloseAction);
+                        }
+                    }
+                }
+            }
+            
+            //summaryWindow.SummaryNoImage(panelTitle, panelDescription, myCloseAction);
             //summaryWindow.SummaryOneImage(titlePanel, descriptionPanel, image1, myCloseAction);
             Debug.Log("displayPanelSummary has been finished.");
         }

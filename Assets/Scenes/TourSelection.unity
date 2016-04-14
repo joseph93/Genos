@@ -97,7 +97,7 @@ GameObject:
   - 114: {fileID: 96383091}
   - 114: {fileID: 96383090}
   m_Layer: 5
-  m_Name: Tour (2)
+  m_Name: TourFreeRoaming
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -272,7 +272,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -409,7 +408,7 @@ GameObject:
   - 114: {fileID: 540716181}
   - 114: {fileID: 540716184}
   m_Layer: 5
-  m_Name: Tour
+  m_Name: Tour1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -891,7 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: buttonCommingSoon
+  _key: buttonFreeRoaming
 --- !u!114 &902970140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,7 +943,7 @@ GameObject:
   - 114: {fileID: 1036449379}
   - 114: {fileID: 1036449382}
   m_Layer: 5
-  m_Name: Tour (1)
+  m_Name: Tour2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1132,7 +1131,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A Tour With Jean
+  m_Text: A tour with Jean
 --- !u!222 &1321254720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1150,7 +1149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: buttonFreeRoaming
+  _key: titlestoryline2
 --- !u!1001 &1469181109
 Prefab:
   m_ObjectHideFlags: 0
@@ -1409,7 +1408,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A Stroll With Nipper
+  m_Text: A stroll with Nipper
 --- !u!222 &2014294900
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1422,9 +1421,9 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2014294897}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: buttonNipperTour
+  _key: titlestoryline1
