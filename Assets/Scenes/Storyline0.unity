@@ -4562,6 +4562,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &922468041 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 145674, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
+  m_PrefabInternal: {fileID: 922468040}
 --- !u!1 &927840314
 GameObject:
   m_ObjectHideFlags: 0
@@ -8457,7 +8461,7 @@ Prefab:
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: BeaconGameObject
       value: 
-      objectReference: {fileID: 2036907898}
+      objectReference: {fileID: 922468041}
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: checkmarkIcon
       value: 
@@ -9214,10 +9218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _key: title1
---- !u!1 &2036907898 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 145674, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
-  m_PrefabInternal: {fileID: 407014}
 --- !u!1 &2056655702
 GameObject:
   m_ObjectHideFlags: 0
