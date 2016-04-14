@@ -202,7 +202,7 @@ namespace Assets.Scripts
                 }*/
 
 
-                    if (b.accuracy < 2.00)
+                    if (b.accuracy < 3.00)
                     {
                         // print("Im near the beacon.");
                         foreach (POS sp in storyPoints)
