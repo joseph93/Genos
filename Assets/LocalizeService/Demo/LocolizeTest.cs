@@ -37,7 +37,7 @@ public class LocolizeTest : MonoBehaviour
     {
         PlayerPrefs.SetString("language", "EN");
 
-        SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
+        SceneManager.LoadScene("Menu");  //changer a Menu, this is for testing purposes
 
         //SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
 
@@ -60,7 +60,7 @@ public class LocolizeTest : MonoBehaviour
     {
         PlayerPrefs.SetString("language", "FR");
 
-        SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
+        SceneManager.LoadScene("Menu");  //changer a Menu, this is for testing purposes
 
         //SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
 
