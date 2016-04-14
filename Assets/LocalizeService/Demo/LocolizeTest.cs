@@ -15,6 +15,9 @@ public class LocolizeTest : MonoBehaviour
 
     public void EnglishInPanel()
     {
+        //Added
+        PlayerPrefs.SetString("language", "EN");
+
         LocalizationService.Instance.Localization = "English";   
         CurrentText.text = string.Format("Current localization {0}",
         LocalizationService.Instance.GetTextByKeyWithLocalize("localization1", "English"));
@@ -22,6 +25,9 @@ public class LocolizeTest : MonoBehaviour
 
     public void FrenchInPanel()
     {
+        //Added
+        PlayerPrefs.SetString("language", "FR");
+
         LocalizationService.Instance.Localization = "French";
         CurrentText.text = string.Format("Current localization {0}",
         LocalizationService.Instance.GetTextByKeyWithLocalize("localization3", "English"));
