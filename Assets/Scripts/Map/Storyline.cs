@@ -222,12 +222,13 @@ namespace Assets.Scripts
                                             //visitedStorypoint++;
                                             StoryPointView storyPointView = new StoryPointView(sp);
                                             sp.setVisited(true);
-                                            visitedStoryPoints.Add(sp);
+                                            Debug.Log("Storypoint detected.");
+                                            //visitedStoryPoints.Add(sp);
                                             //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
-                                            //Camera.main.transform.position = new Vector3(sp.x, sp.y, -10);
+                                            Camera.main.transform.position = new Vector3(sp.gameObject.transform.position.x, sp.gameObject.transform.position.y, -10);
 
                                         }
-                                        else
+                                        /*else
                                         {
                                             if (!sp.warned)
                                             {
@@ -239,7 +240,7 @@ namespace Assets.Scripts
                                                 sp.displayWarning(description);
                                                 sp.warned = true;
                                             }
-                                        }
+                                        }*/
                                     }
                                 }
                             }

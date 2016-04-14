@@ -18,10 +18,11 @@ namespace Assets.Scripts.Observer_Pattern
 
         public void update()
         {
-            //sp.changeIconScale();
+            sp.changeIconScale();
             //sp.popUpSound();
             Vibration.Vibrate(1000);
             sp.displayStorylinePopUpWindow();
+            //StartCoroutine(sp.playVideo());
             //sp.storyIsVisited();
             Debug.Log("Storypoint detected.");
         }

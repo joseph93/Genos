@@ -67,6 +67,11 @@ namespace Assets.Scripts
             descriptionList = new List<Description>();
         }
 
+        public void setDescriptionList(List<Description> descr)
+        {
+            descriptionList = descr;
+        }
+
         public List<Description> GetPoiDescriptionList()
         {
             return descriptionList;
@@ -112,7 +117,7 @@ namespace Assets.Scripts
 
         public void changeIconScale()
         {
-            transform.localScale = new Vector3(0.08f, 0.08f, 1);
+            transform.localScale = new Vector3(1f, 1f, 1);
         }
 
         public void POIdisplayImageWithCaption()

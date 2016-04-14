@@ -13,11 +13,13 @@ EditorBuildSettings:
     path: Assets/Scenes/F2-next.unity
   - enabled: 0
     path: Assets/Scenes/F2.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Settings.unity
   - enabled: 0
     path: Assets/Scenes/Settings.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Help.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
+  - enabled: 0
+    path: Assets/Scenes/FreeRoaming.unity

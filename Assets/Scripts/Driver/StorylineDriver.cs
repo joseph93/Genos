@@ -25,13 +25,13 @@ namespace Assets.Scripts.Driver
         private MapController mc;
 
         public GameObject iBeaconHandler;
-
-        public GameObject nodePrefabPOI;
-        public GameObject nodePrefabPOT;
+        
+        public PointOfTransition nodePrefabPOT;
+        public POS POSprefab;
         public Sprite[] nodeSprites;
 
         private GameObject floorManager;
-        private readonly List<GameObject> gameObjectNodesList = new List<GameObject>();
+        private readonly List<Node> instantiatedNodes = new List<Node>(); 
 
         public GameObject shortestPathCreator;
 
@@ -58,7 +58,7 @@ namespace Assets.Scripts.Driver
         // Update is called once per frame
         void Update()
         {
-            StartCoroutine(map.GetStoryline(PlayerPrefs.GetInt("storylineID")).searchForStorypointBeacon(0.05f));
+            //StartCoroutine(map.GetStoryline(PlayerPrefs.GetInt("storylineID")).searchForStorypointBeacon(0.05f));
             swipePanelLeft();
             
         }
@@ -106,7 +106,7 @@ namespace Assets.Scripts.Driver
             StartCoroutine("DisableTrail", trail);
             if (trail.time < 0)
                 trail.time = -trail.time;
-            shortestPathCreator.transform.position = new Vector3(gameObjectNodesList[0].transform.position.x, gameObjectNodesList[0].transform.position.y, -7);
+            shortestPathCreator.transform.position = new Vector3(instantiatedNodes[0].transform.position.x, instantiatedNodes[0].transform.position.y, -7);
         }
 
         IEnumerator DisableTrail(TrailRenderer trail)
@@ -136,40 +136,44 @@ namespace Assets.Scripts.Driver
             List<Beacon> beacons = bh.getBeacons();
             int slID = PlayerPrefs.GetInt("storylineID");
 
+
+            DisplayFloor(2, slID); //this should be the first floor
             print("Storyline id is: " + slID);
 			map.GetStoryline(slID).setBeaconList(beacons);
             
-            List<Node> orderedPath = map.orderedPath(slID);
+            List<Node> orderedPath = map.orderedPath(instantiatedNodes, slID);
 
             //map.setStorypointList(orderedPath);
 
             map.startStoryline(orderedPath, slID);
-            DisplayFloor(2, slID); //this should be the first floor
+            
 			map.GetStoryline(slID).getStorypointList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
 
+            POS sp = map.GetStoryline(slID).getStorypointList()[0];
 
+            sp.displayStorylinePopUpWindow();
 
             /*print(map.GetStoryline(slID).getStorypointList().Count);
             foreach (var sp in map.GetStoryline(slID).getStorypointList())
             {
                 print(sp.storylineID);
             }
-            POS sp = map.GetStoryline(slID).getStorypointList()[0];
+            
             /*
             foreach (var d in sp.GetPoiDescriptionList())
             {
                 print("Title: " + d.title + ", language: " + d.language + ", description: " + d.summary);
             }*/
-            
-			//map.GetStoryline(slID).getStorypointList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
-            
-            shortestPathCreator.transform.position = new Vector3(gameObjectNodesList[0].transform.position.x, gameObjectNodesList[0].transform.position.y, -7);
+
+            //map.GetStoryline(slID).getStorypointList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
+
+            shortestPathCreator.transform.position = new Vector3(instantiatedNodes[0].transform.position.x, instantiatedNodes[0].transform.position.y, -7);
             
         }
 
-        public List<GameObject> GetNodeGameObjects()
+        public List<Node> GetNodeGameObjects()
         {
-            return gameObjectNodesList;
+            return instantiatedNodes;
         } 
 
         public void DisplayFloorPlan(int floorId)
@@ -179,9 +183,9 @@ namespace Assets.Scripts.Driver
 
         public void DisplayFloor(int floorId, int storylineId)
         {
-            if (gameObjectNodesList.Count > 0)
+            if (instantiatedNodes.Count > 0)
             {
-                foreach (var obj in gameObjectNodesList)
+                foreach (var obj in instantiatedNodes)
                 {
                     Destroy(obj);
                 }
@@ -300,7 +304,6 @@ namespace Assets.Scripts.Driver
         public float YCoordinatesConversion(float y, float mapHeight)
         {
             Renderer rend = floorManager.GetComponent<Renderer>();
-            
             float yScaled = rend.bounds.max.y; //(2 * rend.bounds.max.y * mapHeight) / 2328f;
             float yConverted = -(y) + mapHeight / 2;
             float yConvertedScaled = (yConverted * (2 * yScaled)) / mapHeight;
@@ -320,81 +323,88 @@ namespace Assets.Scripts.Driver
             {
                 Sprite nodeSprite;
                 string nodeColorEditor; // show name of color of the sprite in editor (optional)
-                GameObject newNode;
-
+               
                 if (n.GetType() == typeof(POS)) //check if poi or pot at runtime type
                 {
+                    POS pos = (POS) n;
                     float x = XCoordinatesConversion(n.x, floorPlan.getImageWidth());
                     float y = YCoordinatesConversion(n.y, floorPlan.getImageHeight());
-                    newNode = GameObject.Instantiate(nodePrefabPOI, new Vector3(x, y, -7), Quaternion.identity) as GameObject; //not exist in this current object must add as
-                    
+                    //newNode = GameObject.Instantiate(nodePrefabPOI, new Vector3(x, y, -7), Quaternion.identity) as GameObject; //not exist in this current object must add as
+                    pos = (POS)Instantiate(POSprefab, new Vector3(x, y, -7), Quaternion.identity);
 
-                    if (newNode != null)
+                    if (pos != null)
                     {
-                        newNode.transform.localScale = new Vector3(5f, 5f, 5f);
-                        newNode.transform.parent = floorManager.transform;
-                        newNode.SetActive(true);
+                        pos.transform.localScale = new Vector3(5f, 5f, 5f);
+                        pos.transform.parent = floorManager.transform;
+                        pos.gameObject.SetActive(true);
                         nodeSprite = nodeSprites[blue];
                         nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
-                        newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                        newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
-                        newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
-                        newNode.GetComponent<Node>().id = (n.getID());
-                        newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
-                        newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-                        gameObjectNodesList.Add(newNode);
+                        pos.name = nodeColorEditor; //print color name for specific sprite (optional)
+                        /*pos.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
+                        pos.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
+                        pos.GetComponent<Node>().id = (n.getID());
+                        pos.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);*/
+                        pos.GetComponent<SpriteRenderer>().sprite = nodeSprite;
+                        POS sp = (POS) n;
+                        pos.id = sp.id;
+                        pos.x = sp.x;
+                        pos.y = sp.y;
+                        pos.floorNumber = sp.floorNumber;
+                        pos.storylineID = sp.storylineID;
+                        pos.setContents(sp.getContents());
+                        pos.setDescriptionList(sp.GetPoiDescriptionList());
+                        pos.setBeacon(sp.getBeacon());
+                        pos.setPopUpInstance();
+
+                        instantiatedNodes.Add(pos);
+                        print(pos.storylineID);
   
                     }
                 }
                 else if (n.GetType() == typeof(PointOfTransition)) //check poi or pot at runtime type
                 {
+                    PointOfTransition pot = (PointOfTransition) n;
                     float x = XCoordinatesConversion(n.x, floorPlan.getImageWidth());
                     float y = YCoordinatesConversion(n.y, floorPlan.getImageHeight());
-                    newNode = GameObject.Instantiate(nodePrefabPOT, new Vector3(x, y, -7), Quaternion.identity) as GameObject; //not exist in this current object must add as
-
-                    if (newNode != null)
+                    pot = (PointOfTransition)Instantiate(nodePrefabPOT, new Vector3(x, y, -7), Quaternion.identity); //not exist in this current object must add as
+                    
+                    if (pot != null)
                     {
-
-                        PointOfTransition pot = (PointOfTransition) n;
-                        newNode.transform.localScale = new Vector3(5f, 5f, 5f);
-                        newNode.transform.parent = floorManager.transform;
-                        newNode.SetActive(true);
-                        newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
-                        newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
-                        newNode.GetComponent<Node>().id = (n.getID());
-                        newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
-
-                        nodeSprite = nodeSprites[green];
-                        nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
-                        newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                        newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-
+                        PointOfTransition pointOfTransition = (PointOfTransition) n;
+                        pot.transform.localScale = new Vector3(5f, 5f, 5f);
+                        pot.transform.parent = floorManager.transform;
+                        pot.gameObject.SetActive(true);
+                        pot.id = pointOfTransition.id;
+                        pot.x = pointOfTransition.x;
+                        pot.y = pointOfTransition.y;
+                        pot.label = pointOfTransition.label;
+                        pot.floorNumber = pointOfTransition.floorNumber;
 
                             if (pot.label == PointOfTransition.Label.STAIRS) //stairs
                             {
                                 nodeSprite = nodeSprites[stairs];
                                 nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
-                                newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
+                                pot.name = nodeColorEditor; //print color name for specific sprite (optional)
 
-                                newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-                                gameObjectNodesList.Add(newNode);
+                                pot.GetComponent<SpriteRenderer>().sprite = nodeSprite;
+                                instantiatedNodes.Add(pot);
                             }
 
                             else if (pot.label == PointOfTransition.Label.ELEVATOR) //elevator
                             {
                                 nodeSprite = nodeSprites[elevator];
                                 nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
-                                newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                                newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-                                gameObjectNodesList.Add(newNode);
+                                pot.name = nodeColorEditor; //print color name for specific sprite (optional)
+                                pot.GetComponent<SpriteRenderer>().sprite = nodeSprite;
+                                instantiatedNodes.Add(pot);
                             }
                             else //none=green
                             {
                                 nodeSprite = nodeSprites[green];
                                 nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
-                                newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                                newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-                                gameObjectNodesList.Add(newNode);
+                                pot.name = nodeColorEditor; //print color name for specific sprite (optional)
+                                pot.GetComponent<SpriteRenderer>().sprite = nodeSprite;
+                                instantiatedNodes.Add(pot);
                             }
                         }
                     }

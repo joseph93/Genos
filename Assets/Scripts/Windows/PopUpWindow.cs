@@ -37,10 +37,7 @@ public class PopUpWindow : MonoBehaviour {
         description.text = descr;
 
         viewButton.gameObject.SetActive(true);
-
-        /*yield return new WaitForSeconds(3.0f);
-
-        closePanel();*/
+        
     }
 
     public void closePanel()

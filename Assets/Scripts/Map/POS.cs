@@ -34,32 +34,40 @@ namespace Assets.Scripts
         
         private List<ExhibitionContent> contents;
 
+        [SerializeField] private string[] videoPaths;
+        [SerializeField] private string[] titles;
+        [SerializeField] private string[] descriptions;
+
         void Awake()
         {
-            //beacon = BeaconGameObject.GetComponent<iBeaconServer>();
-            sounds = GetComponents<AudioSource>();
-            //popUp = sounds[0];
-            //beforeSound = sounds[1];
-            observers = new List<Observer>();
-
-            visited = false;
+            /*visited = false;
             detected = false;
             warned = false;
-
-            
+            contents = new List<ExhibitionContent>();
+            descriptionList = new List<Description>();
+            observers = new List<Observer>();
+            popUpWindow = PopUpWindow.Instance();
+            myViewAction = new UnityAction(playContent);
+            //modalWindow = ModalWindow.Instance();
+            warningPanel = WarningPanel.Instance();
+            yesAction = new UnityAction(warningPanel.closePanel);
+            noAction = new UnityAction(warningPanel.closePanel);*/
         }
 
         void Start()
         {
+            visited = false;
+            detected = false;
+            warned = false;
+            contents = new List<ExhibitionContent>();
+            descriptionList = new List<Description>();
+            observers = new List<Observer>();
             popUpWindow = PopUpWindow.Instance();
-            //myViewAction = poiImage != null ? new UnityAction(POSdisplayImageWithCaption) : new UnityAction(playVideo);
-            //viewVideoAction = new UnityAction(playVideo);
-
-            modalWindow = ModalWindow.Instance();
-            yesAction = new UnityAction(modalWindow.closePanel);
-            noAction = new UnityAction(modalWindow.closePanel);
-
+            myViewAction = new UnityAction(playContent);
+            //modalWindow = ModalWindow.Instance();
             warningPanel = WarningPanel.Instance();
+            yesAction = new UnityAction(warningPanel.closePanel);
+            noAction = new UnityAction(warningPanel.closePanel);
 
         }
         public POS(int id, int x, int y, int floorNumber, int stID) : base(id, x, y, floorNumber)
@@ -72,7 +80,7 @@ namespace Assets.Scripts
             descriptionList = new List<Description>();
             observers = new List<Observer>();
             popUpWindow = PopUpWindow.Instance();
-            myViewAction = new UnityAction(playVideo);
+            myViewAction = new UnityAction(playContent);
             //modalWindow = ModalWindow.Instance();
             warningPanel = WarningPanel.Instance();
             yesAction = new UnityAction(warningPanel.closePanel);
@@ -98,6 +106,21 @@ namespace Assets.Scripts
         public void addContent(ExhibitionContent c)
         {
             contents.Add(c);
+        }
+
+        public void setPopUpInstance()
+        {
+            popUpWindow = PopUpWindow.Instance();
+        }
+
+        public void setViewAction(UnityAction action)
+        {
+            myViewAction = action;
+        }
+
+        public UnityAction getViewAction()
+        {
+            return myViewAction;
         }
 
         public List<ExhibitionContent> getContents()
@@ -156,10 +179,11 @@ namespace Assets.Scripts
         public void playContent()
         {
             StartCoroutine(CoroutinePlayVideo());
-            playAudio();
+            //playAudio();
         }
 
-        public void playVideo()
+
+        public IEnumerator playVideo()
         {
             string lg = PlayerPrefs.GetString("language");
 
@@ -174,6 +198,8 @@ namespace Assets.Scripts
                         print("Storypoint " + id + " is playing video " + video.path);
                         Screen.orientation = ScreenOrientation.Landscape;
                         Handheld.PlayFullScreenMovie(video.path, Color.black, FullScreenMovieControlMode.Full);
+                        yield return new WaitForEndOfFrame();
+                        yield return new WaitForEndOfFrame();
                     }
                 }
 
@@ -183,41 +209,45 @@ namespace Assets.Scripts
 
         public IEnumerator CoroutinePlayVideo()
         {
+            string lg = PlayerPrefs.GetString("language");
             
-            foreach (var video in contents)
-            {
-                if (video.GetType() == typeof (Video))
+                if (lg.Equals("EN"))
                 {
-                    print("Storypoint " + id + " is playing video " + video.path);
                     Screen.orientation = ScreenOrientation.Landscape;
-                    Handheld.PlayFullScreenMovie(video.path, Color.black, FullScreenMovieControlMode.Full);
+                    Handheld.PlayFullScreenMovie(videoPaths[0], Color.black, FullScreenMovieControlMode.Full);
                     yield return new WaitForEndOfFrame();
                     yield return new WaitForEndOfFrame();
                     
                 }
-                
-            }
-            Screen.orientation = ScreenOrientation.Portrait;
-            /*SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-            renderer.color = new Color32(140, 115, 115, 255);
-            transform.localScale = new Vector3(0.05f, 0.05f, 1);*/
-        }
 
+            else if (lg.Equals("FR"))
+            {
+                Screen.orientation = ScreenOrientation.Landscape;
+                Handheld.PlayFullScreenMovie(videoPaths[1], Color.black, FullScreenMovieControlMode.Full);
+                yield return new WaitForEndOfFrame();
+                yield return new WaitForEndOfFrame();
+            }
+
+            Screen.orientation = ScreenOrientation.Portrait;
+            SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+            renderer.color = new Color32(140, 115, 115, 255);
+            transform.localScale = new Vector3(0.05f, 0.05f, 1);
+        }
+        
         public void displayStorylinePopUpWindow()
         {
+            
             string lg = PlayerPrefs.GetString("language");
-
-            Language.Language lang = Description.convertStringToLang(lg);
-
-            foreach(var d in descriptionList)
-            {
-                if(lang == d.language)
+            
+                if(lg.Equals("EN"))
                 {
-                    popUpWindow.PopUp(d.title, myViewAction);
-                    break;
+                    popUpWindow.PopUp(titles[0], myViewAction);
                 }
-            }
-            //CHANGE HERE WITH STORYPOINT DESCRIPTION
+
+                else if (lg.Equals("FR"))
+                {
+                    popUpWindow.PopUp(titles[1], myViewAction);
+                }
         }
 
         public void displayWarning(string description)
