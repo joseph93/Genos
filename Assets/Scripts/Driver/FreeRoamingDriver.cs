@@ -13,8 +13,6 @@ using UnityEngine.UI;
 
 public class FreeRoamingDriver : MonoBehaviour
 {
-
-    public Node[] ArrayOfNodes;
     private FreeRoaming freeRoamingTour;
 
     private float minSwipeDistX = 300;
@@ -27,6 +25,7 @@ public class FreeRoamingDriver : MonoBehaviour
     private MapController mc;
 
     public GameObject iBeaconHandler;
+    public GameObject shortestPathCreator;
 
     public GameObject nodePrefabPOI;
     public GameObject nodePrefabPOT;
@@ -34,6 +33,9 @@ public class FreeRoamingDriver : MonoBehaviour
 
     private GameObject floorManager;
     private readonly List<GameObject> gameObjectNodesList = new List<GameObject>();
+
+
+    public Node[] arrayOfNodes;
 
     public Button[] cercles;
 
@@ -57,6 +59,62 @@ public class FreeRoamingDriver : MonoBehaviour
         return map;
     }
 
+    public Node[] getArrayOfNodes()
+    {
+        return arrayOfNodes;
+    }
+
+    public List<Node> getShortestPath()
+    {
+        List<Node> shortest_path = new List<Node>();
+
+        //JOSEPH: When you touch a point of interest on the map, it shows the shortest path from the first node of the nodeList to the touched node.
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Input.GetTouch(0).position)), Vector2.zero);
+
+        if (hit.collider != null)
+        {
+            //if (touched)
+            //shortest_path.Clear();
+
+            //JOSEPH: erase the path renderer and recalculate which node you touched
+            ResetTrails();
+            GameObject recipient = hit.transform.gameObject;
+            Node touchedNode = recipient.GetComponent<Node>();
+            ShortestPathCreator.currentPoint = 0;
+            Debug.Log("First node: " + map.getGraph().getVertices()[0].getID());
+            Debug.Log("Touched node floor number: " + touchedNode.getFloorNumber());
+            shortest_path = map.getGraph().shortest_path(map.getGraph().getVertices()[0], touchedNode);
+            shortest_path.Reverse();
+
+            foreach (var n in shortest_path)
+            {
+                print(n.getID());
+            }
+
+        }
+
+        return shortest_path;
+    }
+
+    public void ResetTrails()
+    {
+        TrailRenderer trail = shortestPathCreator.GetComponent<TrailRenderer>();
+        StartCoroutine("DisableTrail", trail);
+        if (trail.time < 0)
+            trail.time = -trail.time;
+        shortestPathCreator.transform.position = new Vector3(arrayOfNodes[0].transform.position.x, arrayOfNodes[0].transform.position.y, -7);
+    }
+
+    IEnumerator DisableTrail(TrailRenderer trail)
+    {
+        if (trail.time < 0)
+            yield break;
+
+        yield return new WaitForSeconds(0.01f);
+
+        trail.time = -trail.time;
+    }
+
     public IEnumerator startFreeRoaming()
     {
         yield return new WaitForSeconds(0.005f);
@@ -73,15 +131,17 @@ public class FreeRoamingDriver : MonoBehaviour
         iBeaconHandler bh = iBeaconHandler.GetComponent<iBeaconHandler>();
         List<Beacon> beacons = bh.getBeacons();
 
+        DisplayFloor(2);
+        
+
+        map.initializeLists(arrayOfNodes);
+
         freeRoamingTour.setBeaconList(beacons);
 
         freeRoamingTour.initializeLists(map.GetPoiNodes());
 
 
-        DisplayFloor(2);
-
-       freeRoamingTour.getPoiList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
-
+        shortestPathCreator.transform.position = new Vector3(arrayOfNodes[0].transform.position.x, arrayOfNodes[0].transform.position.y, -7);
         /*public IEnumerator startStoryline()
         {
             yield return new WaitForSeconds(0.005f);
@@ -202,6 +262,14 @@ public class FreeRoamingDriver : MonoBehaviour
                 cercles[i].image.color = new Color32(0, 0, 0, 0);
         }
 
+        if (changedFloor && ShortestPathCreator.touched)
+        {
+            TrailRenderer trail = shortestPathCreator.GetComponent<TrailRenderer>();
+            StartCoroutine("DisableTrail", trail);
+            ShortestPathCreator.touched = false;
+        }
+
+
         changedFloor = true;
 
 
@@ -214,7 +282,8 @@ public class FreeRoamingDriver : MonoBehaviour
                 if (tex != null)
                     floorManager.GetComponent<SpriteRenderer>().sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
                 Camera.main.orthographicSize = floorManager.GetComponent<Renderer>().bounds.max.y;
-                List<Node> floorNodes = new List<Node>();
+
+                /* List<Node> floorNodes = new List<Node>();
                 foreach (var floorNode in map.GetPoiNodes())
                 {
 
@@ -223,7 +292,9 @@ public class FreeRoamingDriver : MonoBehaviour
                         floorNodes.Add(floorNode);
                     }
                 }
-                     DisplayNodes(floorNodes,f);
+                */
+
+                     DisplayNodes(floorId);
                      break;
 
             }
@@ -232,8 +303,15 @@ public class FreeRoamingDriver : MonoBehaviour
             
         }
 
-    public void DisplayNodes(List<Node> storyPointList, FloorPlan floorPlan)
+    public void DisplayNodes(/*List<Node> storyPointList, FloorPlan floorPlan*/ int floorId)
     {
+
+        foreach (var n in arrayOfNodes)
+        {
+            n.gameObject.SetActive(n.floorNumber == floorId);
+        }
+
+        /*
         int blue = 0;
         int green = 1;
         int red = 2;
@@ -281,7 +359,7 @@ public class FreeRoamingDriver : MonoBehaviour
                         newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
                         newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
 
-                    }*/
+                    }
                 }
             }
             else if (n.GetType() == typeof(PointOfTransition)) //check poi or pot at runtime type
@@ -316,7 +394,7 @@ public class FreeRoamingDriver : MonoBehaviour
                         newNode.GetComponent<Node>().id = (n.getID());
                         newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
                         newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-                    }*/
+                    }
 
                     //Added foreach loop 
 
@@ -350,7 +428,7 @@ public class FreeRoamingDriver : MonoBehaviour
             }
 
         }
-
+        */
 
     } 
 } 

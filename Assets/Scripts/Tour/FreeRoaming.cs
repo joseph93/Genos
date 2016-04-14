@@ -83,7 +83,6 @@ namespace Assets.Scripts
             {
                 if (b.accuracy < 2.00f)
                 {
-
                     foreach (PointOfInterest p in pointsOfInterest)
                     {
                         if (!p.isDetected())
@@ -93,7 +92,7 @@ namespace Assets.Scripts
                             {
                                 PointOfInterestView poiView = new PointOfInterestView(p);
                                 p.setDetected(true);
-                                mainCam.transform.position = new Vector3(p.x, p.y, -10);
+                                Camera.main.transform.position = new Vector3(p.gameObject.transform.position.x, p.gameObject.transform.position.y, -10);
                                 print("im inside");
                             }
 
