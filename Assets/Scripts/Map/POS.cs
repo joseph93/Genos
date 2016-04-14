@@ -36,7 +36,7 @@ namespace Assets.Scripts
 
         void Awake()
         {
-            beacon = BeaconGameObject.GetComponent<iBeaconServer>();
+            //beacon = BeaconGameObject.GetComponent<iBeaconServer>();
             sounds = GetComponents<AudioSource>();
             //popUp = sounds[0];
             //beforeSound = sounds[1];
@@ -52,8 +52,8 @@ namespace Assets.Scripts
         void Start()
         {
             popUpWindow = PopUpWindow.Instance();
-            myViewAction = poiImage != null ? new UnityAction(POSdisplayImageWithCaption) : new UnityAction(playVideo);
-            viewVideoAction = new UnityAction(playVideo);
+            //myViewAction = poiImage != null ? new UnityAction(POSdisplayImageWithCaption) : new UnityAction(playVideo);
+            //viewVideoAction = new UnityAction(playVideo);
 
             modalWindow = ModalWindow.Instance();
             yesAction = new UnityAction(modalWindow.closePanel);
@@ -71,13 +71,12 @@ namespace Assets.Scripts
             contents = new List<ExhibitionContent>();
             descriptionList = new List<Description>();
             observers = new List<Observer>();
-          //  popUpWindow = PopUpWindow.Instance();
-          //  myViewAction = new UnityAction(modalWindow.closePanel);
-          //  modalWindow = ModalWindow.Instance();
-          //  yesAction = new UnityAction(modalWindow.closePanel);
-          //  noAction = new UnityAction(modalWindow.closePanel);
-    
-         //   warningPanel = WarningPanel.Instance();
+            popUpWindow = PopUpWindow.Instance();
+            myViewAction = new UnityAction(playVideo);
+            //modalWindow = ModalWindow.Instance();
+            warningPanel = WarningPanel.Instance();
+            yesAction = new UnityAction(warningPanel.closePanel);
+            noAction = new UnityAction(warningPanel.closePanel);
         }
         
 
@@ -104,7 +103,12 @@ namespace Assets.Scripts
         public List<ExhibitionContent> getContents()
         {
             return contents;
-        } 
+        }
+
+        public void setContents(List<ExhibitionContent> contents)
+        {
+            this.contents = contents;
+        }
 
         public void setVisited(bool visited)
         {
@@ -149,13 +153,37 @@ namespace Assets.Scripts
             }
         }
 
-        public void playVideo()
+        public void playContent()
         {
             StartCoroutine(CoroutinePlayVideo());
+            playAudio();
+        }
+
+        public void playVideo()
+        {
+            string lg = PlayerPrefs.GetString("language");
+
+            Language.Language lang = Description.convertStringToLang(lg);
+
+            foreach (var video in contents)
+            {
+                if (video.GetType() == typeof(Video))
+                {
+                    if (video.lg == lang)
+                    {
+                        print("Storypoint " + id + " is playing video " + video.path);
+                        Screen.orientation = ScreenOrientation.Landscape;
+                        Handheld.PlayFullScreenMovie(video.path, Color.black, FullScreenMovieControlMode.Full);
+                    }
+                }
+
+            }
+            Screen.orientation = ScreenOrientation.Portrait;
         }
 
         public IEnumerator CoroutinePlayVideo()
         {
+            
             foreach (var video in contents)
             {
                 if (video.GetType() == typeof (Video))
@@ -177,7 +205,7 @@ namespace Assets.Scripts
 
         public void displayStorylinePopUpWindow()
         {
-            /*string lg = PlayerPrefs.GetString("language");
+            string lg = PlayerPrefs.GetString("language");
 
             Language.Language lang = Description.convertStringToLang(lg);
 
@@ -185,17 +213,16 @@ namespace Assets.Scripts
             {
                 if(lang == d.language)
                 {
-                    popUpWindow.PopUp(d.title, nipperPopUp, myViewAction);
+                    popUpWindow.PopUp(d.title, myViewAction);
                     break;
                 }
-            }*/
+            }
             //CHANGE HERE WITH STORYPOINT DESCRIPTION
-            print(descriptionList[0].title);
         }
 
         public void displayWarning(string description)
         {
-            warningPanel.Warn(description, iconImage, yesAction, noAction);
+            warningPanel.Warn(description, yesAction, noAction);
         }
     }
 }

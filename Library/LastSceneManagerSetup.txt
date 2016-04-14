@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/FreeRoaming.unity
+=======
+- path: Assets/Scenes/F2-next.unity
+>>>>>>> 6f55a59d5408080a30da2e37f70ca10bc1358859
   isLoaded: 1
   isActive: 1

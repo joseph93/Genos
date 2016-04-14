@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts;
 using Assets.Scripts.Exhibition_Content;
 using Assets.Scripts.Language;
+using Assets.Scripts.Observer_Pattern;
 using Assets.Scripts.Path;
 using UnityEngine;
 using UnityEngine.UI;
@@ -49,17 +51,15 @@ namespace Assets.Scripts.Driver
         void Start()
         {
             StartCoroutine(startStoryline());
-
             //Added
             // assignContent(poiList);
             //displayButtonTitle();
-
         }
 
         // Update is called once per frame
         void Update()
         {
-            StartCoroutine(map.GetStorylines()[0].searchForStorypointBeacon(1.00f));
+            StartCoroutine(map.GetStoryline(PlayerPrefs.GetInt("storylineID")).searchForStorypointBeacon(0.05f));
             swipePanelLeft();
             
         }
@@ -143,9 +143,25 @@ namespace Assets.Scripts.Driver
             List<Node> orderedPath = map.orderedPath(slID);
 
             //map.setStorypointList(orderedPath);
+
             map.startStoryline(orderedPath, slID);
             DisplayFloor(2, slID); //this should be the first floor
+			map.GetStoryline(slID).getStorypointList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
 
+
+
+            /*print(map.GetStoryline(slID).getStorypointList().Count);
+            foreach (var sp in map.GetStoryline(slID).getStorypointList())
+            {
+                print(sp.storylineID);
+            }
+            POS sp = map.GetStoryline(slID).getStorypointList()[0];
+            /*
+            foreach (var d in sp.GetPoiDescriptionList())
+            {
+                print("Title: " + d.title + ", language: " + d.language + ", description: " + d.summary);
+            }*/
+            
 			//map.GetStoryline(slID).getStorypointList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
             
             shortestPathCreator.transform.position = new Vector3(gameObjectNodesList[0].transform.position.x, gameObjectNodesList[0].transform.position.y, -7);
@@ -312,7 +328,7 @@ namespace Assets.Scripts.Driver
                 string nodeColorEditor; // show name of color of the sprite in editor (optional)
                 GameObject newNode;
 
-                if (n.GetType() == typeof(PointOfInterest) || n.GetType() == typeof(POS)) //check if poi or pot at runtime type
+                if (n.GetType() == typeof(POS)) //check if poi or pot at runtime type
                 {
                     float x = XCoordinatesConversion(n.x, floorPlan.getImageWidth());
                     float y = YCoordinatesConversion(n.y, floorPlan.getImageHeight());
@@ -397,14 +413,79 @@ namespace Assets.Scripts.Driver
                     }
 
                 }//foreach
+
+
             } //display
 
-        //map.GetStorylines()[0].getStorypointList()
+        /*public IEnumerator searchForStorypointBeacon(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
 
+            Storyline sl = map.GetStoryline(PlayerPrefs.GetInt("storylineID"));
+
+            foreach (Beacon b in sl.getBeacons())
+            {
+                /*if (b.accuracy > 2.00 && b.accuracy < 6.00)
+                {
+                    foreach (PointOfInterest poi in nodeList)
+                    {
+                        if (!poi.isDetected())
+                        {
+                            if (poi.getBeacon().m_uuid.ToLower().Equals(b.UUID.ToLower()))
+                            {
+                                //JOSEPH: When you approach a beacon and you're 2 to 6 meters away (typewrite sound)
+                                poi.playBeforeSound();
+                            }
+                        }
+                    }
+                }
+
+
+                if (b.accuracy < 2.00)
+                {
+                    // print("Im near the beacon.");
+                    foreach (POS sp in sl.getStorypointList())
+                    {
+                        //print("I'm in the for loop.");
+                        if (!sp.isVisited())
+                        {
+                            //print("Storypoint is not visited.");
+                            if (sp.getBeacon().Equals(b))
+                            {
+                                //print("Its the same beacon");
+                                if (sl.isInOrder(sp))
+                                {
+                                    //print("It's in order.");
+                                    //StoryPointView storyPointView = new StoryPointView(sp);
+                                    sp.setVisited(true);
+                                    StartCoroutine(sp.CoroutinePlayVideo());
+                                    //visitedStoryPoints.Add(sp);
+                                    //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
+                                    Camera.main.transform.position = new Vector3(sp.x, sp.y, -10);
+
+                                }
+                                else
+                                {
+                                    if (!sp.warned)
+                                    {
+                                        //POS lastUnvisitedSp = findLastUnvisitedSp();
+                                        //Pop up, notify the user that he missed a poi
+                                        string description = "You have missed a point of interest. Please go back and visit it before proceeding.";
+                                        print(description);
+                                        sp.displayWarning(description);
+                                        sp.warned = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }*/
 
         /*
-         * Assign the parsed titleButton, titlePanel, and descriptionPanel from the list of storyline/pos/poi
-         */
+     * Assign the parsed titleButton, titlePanel, and descriptionPanel from the list of storyline/pos/poi
+     */
         public void assignContent(List<Node> poiList)
         {
             Debug.Log("assignContent() has been started.");
@@ -496,6 +577,7 @@ namespace Assets.Scripts.Driver
             Debug.Log("displayPanelSummary has been finished.");
         }
 
-    }  
-}
+    } 
+} 
+  
 
