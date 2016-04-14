@@ -12,7 +12,7 @@ namespace Assets.Scripts.Path
     {
         private MapController mc;
         private StorylineDriver slDriver;
-        private List<GameObject> nodesGameObjects;
+        private List<Node> nodesGameObjects;
         private List<GameObject> shortestPathGameObjects;
         public float speed = 5.0f;
         public float reachDist = 0.2f;
@@ -57,9 +57,9 @@ namespace Assets.Scripts.Path
                 {
                     foreach (var g in nodesGameObjects)
                     {
-                        if (g.GetComponent<Node>().getID() == n.getID())
+                        if (g.getID() == n.getID())
                         {
-                            shortestPathGameObjects.Add(g);
+                            shortestPathGameObjects.Add(g.gameObject);
                         }
                     }
                 }

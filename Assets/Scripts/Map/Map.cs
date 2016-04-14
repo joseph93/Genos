@@ -38,6 +38,15 @@ namespace Assets.Scripts
             storylines = slList;
         }
 
+        //For demo
+        public void initializeListAndGraph(Node[] arrayOfNodes)
+        {
+            foreach (var n in arrayOfNodes)
+            {
+                addNode(n);
+            }
+        }
+
         public void initializeGraph(List<Node> nl)
         {
             
@@ -54,6 +63,7 @@ namespace Assets.Scripts
         {
             mapGraph.InsertNewVertex(n);
             poiList.Add(n);
+            storypointList.Add(n);
         }
 
         //Add nodes to the node list and add them to the graph also.
@@ -126,7 +136,7 @@ namespace Assets.Scripts
          * Set camera zoom height and width
          * Display floorPlan image according to their x-y scaled
          */
-        public List<Node> orderedPath(int slID)
+        public List<Node> orderedPath(List<Node> unorderedPath, int slID)
         {
             
             List<Node> orderedPath = new List<Node>();
@@ -137,7 +147,7 @@ namespace Assets.Scripts
                 { 
                     foreach (var id in s.getPath())
                     {
-                        foreach (var n in storypointList)
+                        foreach (var n in unorderedPath)
                         {
                             if (n.getID() == id)
                             {
