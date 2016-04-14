@@ -4171,18 +4171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63960cc59f001e4b9f3b76604f2601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image1: {fileID: 0}
-  image2: {fileID: 0}
-  image3: {fileID: 0}
-  image4: {fileID: 0}
-  image5: {fileID: 0}
-  image6: {fileID: 0}
-  poi1: {fileID: 1601835666}
-  poi2: {fileID: 819343469}
-  poi3: {fileID: 930961131}
-  poi4: {fileID: 0}
-  poi5: {fileID: 0}
-  poi6: {fileID: 0}
 --- !u!114 &774399268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4271,10 +4259,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 774399265}
---- !u!1 &819343469 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 110470, guid: 821681ec035e9484e81a6687913e9762, type: 2}
-  m_PrefabInternal: {fileID: 2082527664}
 --- !u!1 &820024415
 GameObject:
   m_ObjectHideFlags: 0
@@ -4603,7 +4587,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4886,10 +4869,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 927840314}
---- !u!1 &930961131 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 110470, guid: 821681ec035e9484e81a6687913e9762, type: 2}
-  m_PrefabInternal: {fileID: 55722603}
 --- !u!1001 &958773449
 Prefab:
   m_ObjectHideFlags: 0
@@ -5316,7 +5295,6 @@ MonoBehaviour:
   image1: {fileID: 1727449933}
   image2: {fileID: 642205646}
   closeButton: {fileID: 199317799}
-  findButton: {fileID: 401950371}
   scrollBar: {fileID: 1003625571}
   modalPanelObject: {fileID: 622885839}
 --- !u!114 &1142338500
@@ -6193,18 +6171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63960cc59f001e4b9f3b76604f2601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image1: {fileID: 0}
-  image2: {fileID: 0}
-  image3: {fileID: 0}
-  image4: {fileID: 0}
-  image5: {fileID: 0}
-  image6: {fileID: 0}
-  poi1: {fileID: 1601835666}
-  poi2: {fileID: 819343469}
-  poi3: {fileID: 930961131}
-  poi4: {fileID: 0}
-  poi5: {fileID: 0}
-  poi6: {fileID: 0}
 --- !u!1 &1443871081
 GameObject:
   m_ObjectHideFlags: 0
@@ -6899,7 +6865,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 144288, guid: ee50ea8a32708574f94647420cab7c1b, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11454864, guid: ee50ea8a32708574f94647420cab7c1b, type: 2}
       propertyPath: reachDist
@@ -7128,10 +7094,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
---- !u!1 &1601835666 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 110470, guid: 821681ec035e9484e81a6687913e9762, type: 2}
-  m_PrefabInternal: {fileID: 1875497653}
 --- !u!1 &1603958738
 GameObject:
   m_ObjectHideFlags: 0
@@ -7269,18 +7231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63960cc59f001e4b9f3b76604f2601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image1: {fileID: 0}
-  image2: {fileID: 0}
-  image3: {fileID: 0}
-  image4: {fileID: 0}
-  image5: {fileID: 0}
-  image6: {fileID: 0}
-  poi1: {fileID: 1601835666}
-  poi2: {fileID: 819343469}
-  poi3: {fileID: 930961131}
-  poi4: {fileID: 0}
-  poi5: {fileID: 0}
-  poi6: {fileID: 0}
 --- !u!1 &1604873746
 GameObject:
   m_ObjectHideFlags: 0

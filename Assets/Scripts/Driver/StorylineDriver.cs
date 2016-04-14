@@ -144,7 +144,7 @@ namespace Assets.Scripts.Driver
 
             DisplayFloor(2); //this should be the first floor
 
-            map.initializeListAndGraph(arrayOfNodes);
+            map.initializeLists(arrayOfNodes);
             
             print("Storyline id is: " + slID);
 			map.GetStoryline(slID).setBeaconList(beacons);

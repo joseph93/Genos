@@ -47,7 +47,7 @@ namespace Assets.Scripts
         {
             beacon = BeaconGameObject.GetComponent<iBeaconServer>();
             sounds = GetComponents<AudioSource>();
-            popUp = sounds[0];
+           // popUp = sounds[0];
             //beforeSound = sounds[1];
             observers = new List<Observer>();
             detected = false;
@@ -58,7 +58,7 @@ namespace Assets.Scripts
 
             modalWindow = ModalWindow.Instance();
 
-            myViewAction = poiImage != null ? new UnityAction(POIdisplayImageWithCaption) : new UnityAction(POIplayVideo);
+            myViewAction = new UnityAction(displaySummary);
             myCloseAction = new UnityAction(popUpWindow.closePanel);
         }
 
@@ -133,6 +133,7 @@ namespace Assets.Scripts
 
         public void displayPopUpWindow()
         {
+            /*
             foreach (var descr in descriptionList)
             {
 
@@ -151,16 +152,46 @@ namespace Assets.Scripts
                     break;
                 }
             }
-            
+            */
+
+
             //popUpWindow.PopUp(poiDescriptionList.title, nipperPopUp, myViewAction);
             //CHANGE HERE WITH LIST OF POIDESCRIPTION
+
+
+            string lg = PlayerPrefs.GetString("language");
+
+            if (lg.Equals("EN"))
+            {
+                popUpWindow.PopUp(titles[0], myViewAction);
+            }
+
+            else if (lg.Equals("FR"))
+            {
+                popUpWindow.PopUp(titles[1], myViewAction);
+            }
         }
 
         public void displaySummary()
         {
+            transform.localScale = new Vector3(0.6f, 0.6f, 1);
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
             renderer.color = new Color32(140, 115, 115, 255);
-            //summaryWindow.SummaryOneImage(poiDescriptionList.title, poiDescriptionList.summary, poiImage, myCloseAction);
+            //summaryWindow.SummaryOneButton(poiDescriptionList.title, poiDescriptionList.summary, poiImage, myCloseAction);
+
+
+            string lg = PlayerPrefs.GetString("language");
+
+            if (lg.Equals("EN"))
+            {
+                summaryWindow.SummaryOneButton(titles[0], descriptions[0], myCloseAction);
+            }
+
+            else if (lg.Equals("FR"))
+            {
+
+                summaryWindow.SummaryOneButton(titles[1], descriptions[1], myCloseAction);
+            }
             //CHANGE HERE WITH LIST OF POIDESCRIPTION
         }
 
