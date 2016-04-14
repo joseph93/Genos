@@ -147,6 +147,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &407015 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 145674, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
+  m_PrefabInternal: {fileID: 407014}
 --- !u!1 &20050328
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +809,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 129565658}
+--- !u!114 &129565660 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 129565658}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1 &134538466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,6 +1225,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 242326056}
+--- !u!114 &242326058 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 242326056}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1001 &244329848
 Prefab:
   m_ObjectHideFlags: 0
@@ -1293,7 +1309,7 @@ Prefab:
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: BeaconGameObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 407015}
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: nipperPopUp
       value: 
@@ -1327,7 +1343,7 @@ Prefab:
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: checkmarkIcon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 246438032}
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: storylineID
       value: 4
@@ -1339,6 +1355,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 406342, guid: 821681ec035e9484e81a6687913e9762, type: 2}
   m_PrefabInternal: {fileID: 244329848}
+--- !u!114 &244329851 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762,
+    type: 2}
+  m_PrefabInternal: {fileID: 244329848}
+  m_Script: {fileID: 11500000, guid: 464744ad5a11c7547b6d8cd92161b79b, type: 3}
 --- !u!1 &246438032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1797,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 406342, guid: 821681ec035e9484e81a6687913e9762, type: 2}
   m_PrefabInternal: {fileID: 320846858}
+--- !u!114 &320846861 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762,
+    type: 2}
+  m_PrefabInternal: {fileID: 320846858}
+  m_Script: {fileID: 11500000, guid: 464744ad5a11c7547b6d8cd92161b79b, type: 3}
 --- !u!114 &325950883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1991,7 +2019,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Point of Interest
+  m_Text: 
 --- !u!222 &352977149
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2070,6 +2098,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 375848233}
+--- !u!114 &375848235 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 375848233}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1001 &419002118
 Prefab:
   m_ObjectHideFlags: 0
@@ -2177,11 +2211,11 @@ Prefab:
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: BeaconGameObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2002594035}
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: checkmarkIcon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1967320498}
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: storylineID
       value: 4
@@ -2193,6 +2227,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 406342, guid: 821681ec035e9484e81a6687913e9762, type: 2}
   m_PrefabInternal: {fileID: 419002118}
+--- !u!114 &419002121 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762,
+    type: 2}
+  m_PrefabInternal: {fileID: 419002118}
+  m_Script: {fileID: 11500000, guid: 464744ad5a11c7547b6d8cd92161b79b, type: 3}
 --- !u!114 &420117763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2293,6 +2333,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 431757678}
+--- !u!114 &431757680 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 431757678}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!114 &435198980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2313,7 +2359,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e74095a7936ae3f40bcfb34b031f244c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2963,7 +3009,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 406342, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.787385
       objectReference: {fileID: 0}
     - target: {fileID: 406342, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3016,7 +3062,7 @@ Prefab:
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: BeaconGameObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1040690161}
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: nipperPopUp
       value: 
@@ -3069,6 +3115,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 406342, guid: 821681ec035e9484e81a6687913e9762, type: 2}
   m_PrefabInternal: {fileID: 471423612}
+--- !u!114 &471423615 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762,
+    type: 2}
+  m_PrefabInternal: {fileID: 471423612}
+  m_Script: {fileID: 11500000, guid: 464744ad5a11c7547b6d8cd92161b79b, type: 3}
 --- !u!1 &486033517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3206,6 +3258,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 487500397}
+--- !u!114 &487500399 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 487500397}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1 &491677322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,6 +3478,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 525436859}
+--- !u!114 &525436861 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 525436859}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1001 &546089834
 Prefab:
   m_ObjectHideFlags: 0
@@ -4057,6 +4121,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 639056305}
+--- !u!114 &639056307 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 639056305}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!114 &642205646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5039,7 +5109,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3da4147b8bcda5e498e060c036e29e9d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5656,6 +5726,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -5980,6 +6051,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 406342, guid: 821681ec035e9484e81a6687913e9762, type: 2}
   m_PrefabInternal: {fileID: 911578460}
+--- !u!114 &911578463 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762,
+    type: 2}
+  m_PrefabInternal: {fileID: 911578460}
+  m_Script: {fileID: 11500000, guid: 464744ad5a11c7547b6d8cd92161b79b, type: 3}
 --- !u!1001 &922468040
 Prefab:
   m_ObjectHideFlags: 0
@@ -6273,6 +6350,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 964450110}
+--- !u!114 &964450112 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 964450110}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!114 &974989381 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11472570, guid: 82afc875b95ad5643b736046615648a8,
@@ -6388,6 +6471,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1040690161 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 145674, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
+  m_PrefabInternal: {fileID: 1040690160}
 --- !u!1001 &1089622311
 Prefab:
   m_ObjectHideFlags: 0
@@ -6463,6 +6550,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 1089622311}
+--- !u!114 &1089622313 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1089622311}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1 &1125990151
 GameObject:
   m_ObjectHideFlags: 0
@@ -6781,6 +6874,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 1145800556}
+--- !u!114 &1145800558 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1145800556}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1001 &1146088875
 Prefab:
   m_ObjectHideFlags: 0
@@ -6847,6 +6946,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 1146088875}
+--- !u!114 &1146088877 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1146088875}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1 &1170164239
 GameObject:
   m_ObjectHideFlags: 0
@@ -7057,6 +7162,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 1244530282}
+--- !u!114 &1244530284 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1244530282}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1 &1309568702
 GameObject:
   m_ObjectHideFlags: 0
@@ -7629,6 +7740,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1426480370 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 145674, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
+  m_PrefabInternal: {fileID: 1426480369}
 --- !u!1 &1442675374
 GameObject:
   m_ObjectHideFlags: 0
@@ -10437,7 +10552,7 @@ Prefab:
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: BeaconGameObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1426480370}
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: nipperPopUp
       value: 
@@ -10470,7 +10585,7 @@ Prefab:
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: checkmarkIcon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1531075485}
     - target: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
       propertyPath: storylineID
       value: 4
@@ -10482,6 +10597,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 406342, guid: 821681ec035e9484e81a6687913e9762, type: 2}
   m_PrefabInternal: {fileID: 1946357327}
+--- !u!114 &1946357330 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762,
+    type: 2}
+  m_PrefabInternal: {fileID: 1946357327}
+  m_Script: {fileID: 11500000, guid: 464744ad5a11c7547b6d8cd92161b79b, type: 3}
 --- !u!1001 &1965104480
 Prefab:
   m_ObjectHideFlags: 0
@@ -10557,6 +10678,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 1965104480}
+--- !u!114 &1965104482 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1965104480}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1 &1967320498
 GameObject:
   m_ObjectHideFlags: 0
@@ -10786,6 +10913,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _key: title1
+--- !u!1 &2002594035 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 145674, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
+  m_PrefabInternal: {fileID: 922468040}
 --- !u!1001 &2052396369
 Prefab:
   m_ObjectHideFlags: 0
@@ -10852,6 +10983,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478652, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
   m_PrefabInternal: {fileID: 2052396369}
+--- !u!114 &2052396371 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c,
+    type: 2}
+  m_PrefabInternal: {fileID: 2052396369}
+  m_Script: {fileID: 11500000, guid: 6f891e5f154da594a99769f7a03b18f8, type: 3}
 --- !u!1 &2056655702
 GameObject:
   m_ObjectHideFlags: 0
@@ -11201,8 +11338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1864860390}
   iBeaconHandler: {fileID: 659002836}
-  nodePrefabPOT: {fileID: 0}
-  POSprefab: {fileID: 0}
+  nodePrefabPOT: {fileID: 11437116, guid: 6420d31a95ae48346b163219b63c285c, type: 2}
+  POSprefab: {fileID: 11453572, guid: 821681ec035e9484e81a6687913e9762, type: 2}
   nodeSprites:
   - {fileID: 21300000, guid: 75cbd5ff660ed894aaaec97d486c4def, type: 3}
   - {fileID: 21300000, guid: 61afb6392da613146afbed3383696217, type: 3}
@@ -11211,26 +11348,26 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7589a8ff21835ba4baeaf91c95b3c191, type: 3}
   shortestPathCreator: {fileID: 121809811}
   arrayOfNodes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 419002121}
+  - {fileID: 244329851}
+  - {fileID: 1946357330}
+  - {fileID: 911578463}
+  - {fileID: 471423615}
+  - {fileID: 320846861}
+  - {fileID: 639056307}
+  - {fileID: 1146088877}
+  - {fileID: 2052396371}
+  - {fileID: 431757680}
+  - {fileID: 964450112}
+  - {fileID: 375848235}
+  - {fileID: 1145800558}
+  - {fileID: 525436861}
+  - {fileID: 1965104482}
+  - {fileID: 1089622313}
+  - {fileID: 129565660}
+  - {fileID: 487500399}
+  - {fileID: 1244530284}
+  - {fileID: 242326058}
   cercles:
   - {fileID: 896459501}
   - {fileID: 78186951}

@@ -54,52 +54,45 @@ public class ListOfPOI : MonoBehaviour
 
    /* public void locatePoi()
     {
-        GameObject obj;
 
         if (poiId == 1)
         {
-            obj = poi1;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi1.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
 
         if (poiId == 2)
         {
-            obj = poi2;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi2.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
 
         if (poiId == 3)
         {
-            obj = poi3;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi3.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
 
         if (poiId == 4)
         {
-            obj = poi4;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi4.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
 
         if (poiId == 5)
         {
-            obj = poi5;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi5.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             
 
         if (poiId == 6)
         {
-            obj = poi6;
-            Camera.main.transform.position = obj.transform.position;
+            Camera.main.transform.position = poi6.transform.position;
             Camera.main.orthographicSize = 30f;
         }
             

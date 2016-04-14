@@ -240,7 +240,7 @@ namespace Assets.Scripts
             Screen.orientation = ScreenOrientation.Portrait;
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
             renderer.color = new Color32(140, 115, 115, 255);
-            transform.localScale = new Vector3(1f, 15f, 1);
+            transform.localScale = new Vector3(0.6f, 0.6f, 1);
         }
         
         public void displayStorylinePopUpWindow()
