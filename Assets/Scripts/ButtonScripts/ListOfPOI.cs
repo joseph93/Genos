@@ -17,31 +17,33 @@ public class ListOfPOI : MonoBehaviour
     public Sprite image5;
     public Sprite image6;
 
-    private string title1 = "1";
-    private string title2 = "2";
-    private string title3 = "3";
-    private string title4 = "4";
-    private string title5 = "5";
-    private string title6 = "6";
+    private string title1 = "MOEB Start for all tours";
+    private string title2 = "Ross and MacDonald Building";
+    private string title3 = "Presidents office";
+    private string title4 = "Freight Elevator";
+    private string title5 = "The column on the 5th floor";
+    private string title6 = "The court yard";
 
-    private string description1 = "1";
-    private string description2 = "2";
-    private string description3 = "3";
-    private string description4 = "4";
-    private string description5 = "5";
-    private string description6 = "6";
+    private string description1 = "You can start an exploration tour on your own. Just keep your smart phone handy and walk. You will get notefied when you can listen to a audioclip, a video, images or written information on the building and its fascinating history. Happy walk!";
+    private string description2 = "You have entered into the small extension that RCA had commissioned in the mid 1930s from Montreal;s architectural firm Ross and MacDonald. The architects were in high demand, many buildings in Montreal carry their signature. Look at the smooth column heads. Nowhere else in the building will you see this level of care taken in the appearance.";
+    private string description3 = "When the building opened in 1936, the management and administration moved from the older complex along Lacasse and St. Antoine Street to here. The floorplan has cangened, resulting that you now can walk barrierfree from the cloakrooms, at the bottom of the stairs, through the showroom, crossing the advertisement department and ending up, where the secretary of the president had her or his desk. A private stair case, which starts today on the second floor, allowed the president to enter and exit the building relatively unobserved. How convenient.";
+    private string description4 = "Look at the wall around the passenger elevator. You see the shadow of a much larger frame. We do not know why originally two freight elevators were here side by side. The old passenger elevator is still in place behind the door to the staircase. Have a look. Did you try to push the butten to call the elevator here? Well, good luck!";
+    private string description5 = "put text";
+    private string description6 = "put text";
+
+
 
     // Use this for initialization
     void Start () {
-        summaryWindow = SummaryWindow.Instance();
         
-        myCloseAction = new UnityAction(summaryWindow.closePanel);
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        summaryWindow = SummaryWindow.Instance();
+
+        myCloseAction = new UnityAction(summaryWindow.closePanel);
+    }
 
     public void pointOfInterest1()
     {
