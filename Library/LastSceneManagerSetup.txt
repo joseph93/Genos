@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/FreeRoaming.unity
+=======
+- path: Assets/Scenes/Settings.unity
+>>>>>>> 7033fdb1de59a7855aa9df045217e5d1ea2ff87b
   isLoaded: 1
   isActive: 1

@@ -5,6 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+<<<<<<< HEAD
   - enabled: 1
     path: Assets/Scenes/LoadingPage.unity
   - enabled: 1
@@ -27,3 +28,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Storyline4.unity
   - enabled: 1
     path: Assets/Scenes/FreeRoaming.unity
+=======
+  - enabled: 0
+    path: Assets/Scenes/Menu.unity
+  - enabled: 0
+    path: Assets/Scenes/Settings.unity
+  - enabled: 0
+    path: Assets/Scenes/Help.unity
+  - enabled: 0
+    path: Assets/Scenes/Storyline4.unity
+  - enabled: 0
+    path: Assets/Scenes/Overview0.unity
+  - enabled: 1
+    path: Assets/Scenes/Storyline0.unity
+>>>>>>> 7033fdb1de59a7855aa9df045217e5d1ea2ff87b
