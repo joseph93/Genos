@@ -38,6 +38,15 @@ namespace Assets.Scripts
             storylines = slList;
         }
 
+        //For demo
+        public void initializeListAndGraph(Node[] arrayOfNodes)
+        {
+            foreach (var n in arrayOfNodes)
+            {
+                addNode(n);
+            }
+        }
+
         public void initializeGraph(List<Node> nl)
         {
             
@@ -54,6 +63,7 @@ namespace Assets.Scripts
         {
             mapGraph.InsertNewVertex(n);
             poiList.Add(n);
+            storypointList.Add(n);
         }
 
         //Add nodes to the node list and add them to the graph also.

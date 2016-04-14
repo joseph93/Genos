@@ -34,6 +34,9 @@ namespace Assets.Scripts
 
         public string[] videoPath;
         public string caption;
+        public string[] titles;
+        public string[] descriptions;
+        public AudioClip[] audioSources;
 
         private UnityAction viewVideoAction;
         private ModalWindow modalWindow;
@@ -44,7 +47,7 @@ namespace Assets.Scripts
         {
             beacon = BeaconGameObject.GetComponent<iBeaconServer>();
             sounds = GetComponents<AudioSource>();
-            //popUp = sounds[0];
+            popUp = sounds[0];
             //beforeSound = sounds[1];
             observers = new List<Observer>();
             detected = false;

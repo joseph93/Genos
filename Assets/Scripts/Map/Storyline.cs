@@ -112,6 +112,7 @@ namespace Assets.Scripts
                     storyPoints.Add((POS)sp);
                 }
             }
+            storyPoints.Sort();
 
         }
 
@@ -124,7 +125,7 @@ namespace Assets.Scripts
         public bool isInOrder(POS sp)
         {
             
-            for (int i = 0; i < storyPoints.Count; i++)
+            /*for (int i = 0; i < storyPoints.Count; i++)
             {
                 if (sp.id == storyPoints[0].id)
                     return true;
@@ -135,11 +136,11 @@ namespace Assets.Scripts
                         return true;
                 }
             }
-            return false;
+            return false;*/
 
 
 
-            /*int currentPoi = this.storyPoints.IndexOf(sp);
+            int currentPoi = this.storyPoints.IndexOf(sp);
 
             POS[] poss = this.storyPoints.ToArray();
 
@@ -151,7 +152,7 @@ namespace Assets.Scripts
                 }
             }
 
-            return true;*/
+            return true;
         }
 
         public POS findLastUnvisitedSp()
@@ -223,12 +224,12 @@ namespace Assets.Scripts
                                             StoryPointView storyPointView = new StoryPointView(sp);
                                             sp.setVisited(true);
                                             Debug.Log("Storypoint detected.");
-                                            //visitedStoryPoints.Add(sp);
+                                            visitedStoryPoints.Add(sp);
                                             //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
                                             Camera.main.transform.position = new Vector3(sp.gameObject.transform.position.x, sp.gameObject.transform.position.y, -10);
 
                                         }
-                                        /*else
+                                        else
                                         {
                                             if (!sp.warned)
                                             {
@@ -240,7 +241,7 @@ namespace Assets.Scripts
                                                 sp.displayWarning(description);
                                                 sp.warned = true;
                                             }
-                                        }*/
+                                        }
                                     }
                                 }
                             }

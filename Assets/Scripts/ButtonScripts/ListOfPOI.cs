@@ -9,6 +9,7 @@ public class ListOfPOI : MonoBehaviour
 
     private SummaryWindow summaryWindow;
     private UnityAction myCloseAction;
+    private UnityAction myFindAction;
 
     public Sprite image1;
     public Sprite image2;
@@ -16,6 +17,15 @@ public class ListOfPOI : MonoBehaviour
     public Sprite image4;
     public Sprite image5;
     public Sprite image6;
+
+    public GameObject poi1;
+    public GameObject poi2;
+    public GameObject poi3;
+    public GameObject poi4;
+    public GameObject poi5;
+    public GameObject poi6;
+
+    private int poiId;
 
     private string title1 = "MOEB Start for all tours";
     private string title2 = "Ross and MacDonald Building";
@@ -34,45 +44,103 @@ public class ListOfPOI : MonoBehaviour
 
 
     // Use this for initialization
-    void Start () {
-        
-    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Start() {
         summaryWindow = SummaryWindow.Instance();
 
         myCloseAction = new UnityAction(summaryWindow.closePanel);
+        myFindAction = new UnityAction(locatePoi);
+    }
+
+    public void locatePoi()
+    {
+        GameObject obj;
+
+        if (poiId == 1)
+        {
+            obj = poi1;
+            Camera.main.transform.position = obj.transform.position;
+            Camera.main.orthographicSize = 30f;
+        }
+            
+
+        if (poiId == 2)
+        {
+            obj = poi2;
+            Camera.main.transform.position = obj.transform.position;
+            Camera.main.orthographicSize = 30f;
+        }
+            
+
+        if (poiId == 3)
+        {
+            obj = poi3;
+            Camera.main.transform.position = obj.transform.position;
+            Camera.main.orthographicSize = 30f;
+        }
+            
+
+        if (poiId == 4)
+        {
+            obj = poi4;
+            Camera.main.transform.position = obj.transform.position;
+            Camera.main.orthographicSize = 30f;
+        }
+            
+
+        if (poiId == 5)
+        {
+            obj = poi5;
+            Camera.main.transform.position = obj.transform.position;
+            Camera.main.orthographicSize = 30f;
+        }
+            
+
+        if (poiId == 6)
+        {
+            obj = poi6;
+            Camera.main.transform.position = obj.transform.position;
+            Camera.main.orthographicSize = 30f;
+        }
+            
+       
     }
 
     public void pointOfInterest1()
     {
-        summaryWindow.SummaryNoImage(title1, description1, myCloseAction);
+        poiId = 1;
+        summaryWindow.SummaryNoImage(title1, description1, myCloseAction, myFindAction);
     }
 
     public void pointOfInterest2()
     {
-        summaryWindow.SummaryOneImage(title2, description2, image1, myCloseAction);
+        poiId = 2;
+        summaryWindow.SummaryNoImage(title2, description2, myCloseAction, myFindAction);
     }
 
     public void pointOfInterest3()
     {
-        summaryWindow.SummaryNoImage(title3, description3, myCloseAction);
+        poiId = 3;
+        summaryWindow.SummaryNoImage(title3, description3, myCloseAction, myFindAction);
     }
 
     public void pointOfInterest4()
     {
-        summaryWindow.SummaryNoImage(title4, description4, myCloseAction);
+        poiId = 4;
+        summaryWindow.SummaryNoImage(title4, description4, myCloseAction, myFindAction);
     }
 
     public void pointOfInterest5()
     {
-        summaryWindow.SummaryNoImage(title5, description5, myCloseAction);
+        poiId = 5;
+        summaryWindow.SummaryNoImage(title5, description5, myCloseAction, myFindAction);
     }
 
     public void pointOfInterest6()
     {
-        summaryWindow.SummaryNoImage(title6, description6, myCloseAction);
+        poiId = 6;
+        summaryWindow.SummaryNoImage(title6, description6, myCloseAction, myFindAction);
     }
 
     //map.GetStorylines()[0].getStorypointList()

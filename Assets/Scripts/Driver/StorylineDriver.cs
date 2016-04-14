@@ -37,6 +37,8 @@ namespace Assets.Scripts.Driver
 
         private static bool changedFloor;
 
+        public Node[] arrayOfNodes;
+
         //Added to display buttonTitle, panelTitle, and panelDescription
         private SummaryWindow summaryWindow;
         private UnityAction myCloseAction;
@@ -45,7 +47,7 @@ namespace Assets.Scripts.Driver
         private string buttonTitle="buttontitle";
         private string panelTitle = "paneltitle";
         private string panelDescription = "paneldescription";
-        public Button b;
+        //public Button b;
 
         public Button[] cercles;
 
@@ -61,7 +63,7 @@ namespace Assets.Scripts.Driver
         // Update is called once per frame
         void Update()
         {
-            //StartCoroutine(map.GetStoryline(PlayerPrefs.GetInt("storylineID")).searchForStorypointBeacon(0.05f));
+            StartCoroutine(map.GetStoryline(PlayerPrefs.GetInt("storylineID")).searchForStorypointBeacon(0.05f));
             swipePanelLeft();
             
         }
@@ -140,11 +142,21 @@ namespace Assets.Scripts.Driver
             int slID = PlayerPrefs.GetInt("storylineID");
 
 
-            DisplayFloor(2, slID); //this should be the first floor
+            DisplayFloor(2); //this should be the first floor
+
+            map.initializeListAndGraph(arrayOfNodes);
+            
             print("Storyline id is: " + slID);
 			map.GetStoryline(slID).setBeaconList(beacons);
             
-            List<Node> orderedPath = map.orderedPath(instantiatedNodes, slID);
+            map.startStoryline(map.getStorypointNodes(), slID);
+
+            foreach (var sp in map.GetStoryline(slID).getStorypointList())
+            {
+                print("Storypoint " + sp.id + " and is in order " + map.GetStoryline(slID).isInOrder(sp));
+            }
+
+            /*List<Node> orderedPath = map.orderedPath(instantiatedNodes, slID);
 
             //map.setStorypointList(orderedPath);
 
@@ -170,8 +182,8 @@ namespace Assets.Scripts.Driver
 
             //map.GetStoryline(slID).getStorypointList()[0].setBeacon(new iBeaconServer("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 38714, 26839));
 
-            shortestPathCreator.transform.position = new Vector3(instantiatedNodes[0].transform.position.x, instantiatedNodes[0].transform.position.y, -7);
-            
+            //shortestPathCreator.transform.position = new Vector3(instantiatedNodes[0].transform.position.x, instantiatedNodes[0].transform.position.y, -7);
+
         }
 
         public List<Node> GetNodeGameObjects()
@@ -181,14 +193,10 @@ namespace Assets.Scripts.Driver
 
         public void DisplayFloorPlan(int floorId)
         {
-         
-          
-      
-
-            DisplayFloor(floorId, PlayerPrefs.GetInt("storylineID"));
+            DisplayFloor(floorId);
         }
 
-        public void DisplayFloor(int floorId, int storylineId)
+        public void DisplayFloor(int floorId)
         {
             if (instantiatedNodes.Count > 0)
             {
@@ -200,12 +208,7 @@ namespace Assets.Scripts.Driver
 
             for (int i = 0; i < cercles.Length; i++)
             {
-                if (i == (floorId - 1))
-                {
-                    cercles[i].image.color = new Color32(255, 0, 0, 94);
-                }
-                else
-                    cercles[i].image.color = new Color32(0, 0, 0, 0);
+                cercles[i].image.color = i == (floorId - 1) ? new Color32(255, 0, 0, 94) : new Color32(0, 0, 0, 0);
             }
 
 
@@ -230,7 +233,7 @@ namespace Assets.Scripts.Driver
                     if (tex != null)
                         floorManager.GetComponent<SpriteRenderer>().sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
                     Camera.main.orthographicSize = floorManager.GetComponent<Renderer>().bounds.max.y;
-                    List<Node> floorNodes = new List<Node>();
+                    /*List<Node> floorNodes = new List<Node>();
                     foreach (var floorNode in map.getStorypointNodes())
                     {
                         if (floorNode.GetType() == typeof (POS))
@@ -252,8 +255,8 @@ namespace Assets.Scripts.Driver
                             }
                         }
                         
-                    }
-                    DisplayNodes(floorNodes, f);
+                    }*/
+                    DisplayNodes(floorId);
                   
                     //Added
                     //DisplayButtons(map.GetStorylines()[0].getStorypointList());
@@ -332,9 +335,15 @@ namespace Assets.Scripts.Driver
         }
 
 
-        public void DisplayNodes(List<Node> storyPointList, FloorPlan floorPlan)
+        public void DisplayNodes(int floorId)
         {
-            int blue = 0;
+            foreach (var n in arrayOfNodes)
+            {
+                n.gameObject.SetActive(n.floorNumber == floorId);
+            }
+
+
+           /* int blue = 0;
             int green = 1;
             int red = 2;
             int stairs = 3;
@@ -360,12 +369,12 @@ namespace Assets.Scripts.Driver
                         pos.gameObject.SetActive(true);
                         nodeSprite = nodeSprites[blue];
                         nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
-<<<<<<< HEAD
+
                         pos.name = nodeColorEditor; //print color name for specific sprite (optional)
                         /*pos.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
                         pos.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
                         pos.GetComponent<Node>().id = (n.getID());
-                        pos.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);*/
+                        pos.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
                         pos.GetComponent<SpriteRenderer>().sprite = nodeSprite;
                         POS sp = (POS) n;
                         pos.id = sp.id;
@@ -380,15 +389,6 @@ namespace Assets.Scripts.Driver
 
                         instantiatedNodes.Add(pos);
                         print(pos.storylineID);
-  
-=======
-                        newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
-                        newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
-                        newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
-                        newNode.GetComponent<Node>().id = (n.getID());
-                        newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
-                        newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
-                        gameObjectNodesList.Add(newNode);
 
                        /* //Added
                         if(storyPointList.Count >= 3) { 
@@ -396,8 +396,7 @@ namespace Assets.Scripts.Driver
                             b.GetComponentInChildren<CanvasRenderer>().SetAlpha(0);
                             b.GetComponentInChildren<UnityEngine.UI.Text>().color = Color.clear;
                         }
-                        */
->>>>>>> e38c962b2f2ab223928ccfef8a7145e8de4d2cee
+                        
                     }
                 }
                 else if (n.GetType() == typeof(PointOfTransition)) //check poi or pot at runtime type
@@ -450,75 +449,9 @@ namespace Assets.Scripts.Driver
 
                 }//foreach
 
-
-            } //display
-
-        /*public IEnumerator searchForStorypointBeacon(float seconds)
-        {
-            yield return new WaitForSeconds(seconds);
-
-            Storyline sl = map.GetStoryline(PlayerPrefs.GetInt("storylineID"));
-
-            foreach (Beacon b in sl.getBeacons())
-            {
-                /*if (b.accuracy > 2.00 && b.accuracy < 6.00)
-                {
-                    foreach (PointOfInterest poi in nodeList)
-                    {
-                        if (!poi.isDetected())
-                        {
-                            if (poi.getBeacon().m_uuid.ToLower().Equals(b.UUID.ToLower()))
-                            {
-                                //JOSEPH: When you approach a beacon and you're 2 to 6 meters away (typewrite sound)
-                                poi.playBeforeSound();
-                            }
-                        }
-                    }
-                }
-
-
-                if (b.accuracy < 2.00)
-                {
-                    // print("Im near the beacon.");
-                    foreach (POS sp in sl.getStorypointList())
-                    {
-                        //print("I'm in the for loop.");
-                        if (!sp.isVisited())
-                        {
-                            //print("Storypoint is not visited.");
-                            if (sp.getBeacon().Equals(b))
-                            {
-                                //print("Its the same beacon");
-                                if (sl.isInOrder(sp))
-                                {
-                                    //print("It's in order.");
-                                    //StoryPointView storyPointView = new StoryPointView(sp);
-                                    sp.setVisited(true);
-                                    StartCoroutine(sp.CoroutinePlayVideo());
-                                    //visitedStoryPoints.Add(sp);
-                                    //JOSEPH: When you're 2 meters or less away from a beacon, make the icon on the map bigger, center the camera on the icon, vibration and the given sound and text.
-                                    Camera.main.transform.position = new Vector3(sp.x, sp.y, -10);
-
-                                }
-                                else
-                                {
-                                    if (!sp.warned)
-                                    {
-                                        //POS lastUnvisitedSp = findLastUnvisitedSp();
-                                        //Pop up, notify the user that he missed a poi
-                                        string description = "You have missed a point of interest. Please go back and visit it before proceeding.";
-                                        print(description);
-                                        sp.displayWarning(description);
-                                        sp.warned = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
-
+            */
+            } //end of display nodes
+        
         /*
      * Assign the parsed titleButton, titlePanel, and descriptionPanel from the list of storyline/pos/poi
      */
@@ -602,7 +535,7 @@ namespace Assets.Scripts.Driver
                     {
                         if(d.language == lang)
                         {
-                            summaryWindow.SummaryNoImage(d.title, d.summary, myCloseAction);
+                            summaryWindow.SummaryOneButton(d.title, d.summary, myCloseAction);
                         }
                     }
                 }

@@ -13,7 +13,7 @@ namespace Assets.Scripts
 {
     public class POS : PointOfInterest, IComparable<POS>
     {
-        public int storylineID { get; set; }
+        public int storylineID;
         [SerializeField]
         private int sequentialID; //JOSEPH: the order of the storypoint
         private bool visited;
@@ -23,7 +23,7 @@ namespace Assets.Scripts
         private ModalWindow modalWindow;
         private WarningPanel warningPanel;
 
-        public Sprite iconImage;
+        //public Sprite iconImage;
         private UnityAction yesAction;
         private UnityAction noAction;
 
@@ -33,14 +33,12 @@ namespace Assets.Scripts
         public GameObject checkmarkIcon;
         
         private List<ExhibitionContent> contents;
-
-        [SerializeField] private string[] videoPaths;
-        [SerializeField] private string[] titles;
-        [SerializeField] private string[] descriptions;
-
+        
         void Awake()
         {
-            /*visited = false;
+            beacon = BeaconGameObject.GetComponent<iBeaconServer>();
+            //popUp = sounds[0];
+            visited = false;
             detected = false;
             warned = false;
             contents = new List<ExhibitionContent>();
@@ -51,11 +49,13 @@ namespace Assets.Scripts
             //modalWindow = ModalWindow.Instance();
             warningPanel = WarningPanel.Instance();
             yesAction = new UnityAction(warningPanel.closePanel);
-            noAction = new UnityAction(warningPanel.closePanel);*/
+            noAction = new UnityAction(warningPanel.closePanel);
         }
 
         void Start()
         {
+            //popUp = sounds[0];
+            beacon = BeaconGameObject.GetComponent<iBeaconServer>();
             visited = false;
             detected = false;
             warned = false;
@@ -165,7 +165,13 @@ namespace Assets.Scripts
 
         public void playAudio()
         {
-            foreach (var audio in contents)
+            foreach (AudioClip a in audioSources)
+            {
+                AudioSource source = gameObject.AddComponent<AudioSource>();
+                source.PlayOneShot(a);
+            }
+
+            /*foreach (var audio in contents)
             {
                 if (audio.GetType() == typeof (Audio))
                 {
@@ -173,13 +179,16 @@ namespace Assets.Scripts
                     AudioSource source = GameObject.Find("FloorManager").AddComponent<AudioSource>();
                     source.PlayOneShot(a);
                 }
-            }
+            }*/
         }
 
         public void playContent()
         {
-            StartCoroutine(CoroutinePlayVideo());
-            //playAudio();
+            if(videoPath.Length > 0)
+                StartCoroutine(CoroutinePlayVideo());
+
+            else if(audioSources.Length > 0)
+                playAudio();
         }
 
 
@@ -214,7 +223,7 @@ namespace Assets.Scripts
                 if (lg.Equals("EN"))
                 {
                     Screen.orientation = ScreenOrientation.Landscape;
-                    Handheld.PlayFullScreenMovie(videoPaths[0], Color.black, FullScreenMovieControlMode.Full);
+                    Handheld.PlayFullScreenMovie(videoPath[0], Color.black, FullScreenMovieControlMode.Full);
                     yield return new WaitForEndOfFrame();
                     yield return new WaitForEndOfFrame();
                     
@@ -223,7 +232,7 @@ namespace Assets.Scripts
             else if (lg.Equals("FR"))
             {
                 Screen.orientation = ScreenOrientation.Landscape;
-                Handheld.PlayFullScreenMovie(videoPaths[1], Color.black, FullScreenMovieControlMode.Full);
+                Handheld.PlayFullScreenMovie(videoPath[1], Color.black, FullScreenMovieControlMode.Full);
                 yield return new WaitForEndOfFrame();
                 yield return new WaitForEndOfFrame();
             }
@@ -231,7 +240,7 @@ namespace Assets.Scripts
             Screen.orientation = ScreenOrientation.Portrait;
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
             renderer.color = new Color32(140, 115, 115, 255);
-            transform.localScale = new Vector3(0.05f, 0.05f, 1);
+            transform.localScale = new Vector3(1f, 15f, 1);
         }
         
         public void displayStorylinePopUpWindow()
