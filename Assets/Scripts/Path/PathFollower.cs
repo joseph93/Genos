@@ -14,11 +14,8 @@ public class PathFollower : MonoBehaviour {
     public int currentPoint;
     public int sizeOfPath = Length;
 
-
     private StorylineDriver sd;
-
     private List<Node> path;
-
     public static int Length { get; private set; }
     
 
