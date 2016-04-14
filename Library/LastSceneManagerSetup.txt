@@ -1,16 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/3D-outdoor.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/Overview0.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/Storyline0.unity
-=======
 - path: Assets/Scenes/FreeRoaming.unity
->>>>>>> a4418c0fe2ae277a26be7290e21ad02dff36e2ee
->>>>>>> 51c013c0e2fab53e6a965c13ed3867452bbd7b77
->>>>>>> e26d1a43a2e7dfd83f4d14f321a03945afc38493
   isLoaded: 1
   isActive: 1

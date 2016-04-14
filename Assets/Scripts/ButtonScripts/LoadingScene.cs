@@ -15,7 +15,7 @@ public class LoadingScene : MonoBehaviour {
     IEnumerator loadingScreen()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("Lang");
+        SceneManager.LoadScene("Menu");
     }
 
 	// Update is called once per frame

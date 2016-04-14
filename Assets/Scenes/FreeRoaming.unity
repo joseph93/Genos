@@ -3406,7 +3406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6535e6ecefbeb694bbc0a6b845edb382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArrayOfNodes: []
   anim: {fileID: 41636487}
   iBeaconHandler: {fileID: 1717249383}
   shortestPathCreator: {fileID: 1784968502}
@@ -3702,11 +3701,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11410404, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
       propertyPath: m_major
-      value: 59520
+      value: 26515
       objectReference: {fileID: 0}
     - target: {fileID: 11410404, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
       propertyPath: m_minor
-      value: 56840
+      value: 372
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
@@ -4566,7 +4565,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447510, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 11410404, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
       propertyPath: m_Enabled
@@ -4761,11 +4760,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11410404, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
       propertyPath: m_major
-      value: 32561
+      value: 60352
       objectReference: {fileID: 0}
     - target: {fileID: 11410404, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
       propertyPath: m_minor
-      value: 47495
+      value: 3099
       objectReference: {fileID: 0}
     - target: {fileID: 145674, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
       propertyPath: m_Name
@@ -5547,18 +5546,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6535e6ecefbeb694bbc0a6b845edb382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArrayOfNodes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   anim: {fileID: 0}
   iBeaconHandler: {fileID: 0}
   shortestPathCreator: {fileID: 0}
@@ -5710,7 +5697,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447510, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 11410404, guid: 3ecc182e9b0538f41acfea2ec33e7816, type: 2}
       propertyPath: m_Enabled
@@ -6495,11 +6482,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11433270, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
       propertyPath: m_major
-      value: 11163
+      value: 26793
       objectReference: {fileID: 0}
     - target: {fileID: 11433270, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
       propertyPath: m_minor
-      value: 7229
+      value: 57400
       objectReference: {fileID: 0}
     - target: {fileID: 179602, guid: 5e4c62c490cf08445a9513e7ad34cfa4, type: 2}
       propertyPath: m_Name
