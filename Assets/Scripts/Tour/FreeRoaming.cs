@@ -81,7 +81,7 @@ namespace Assets.Scripts
             yield return new WaitForSeconds(seconds);
             foreach (Beacon b in myBeacons)
             {
-                if (b.accuracy < 2.00f)
+                if (b.accuracy < 3.00f)
                 {
                     foreach (PointOfInterest p in pointsOfInterest)
                     {
