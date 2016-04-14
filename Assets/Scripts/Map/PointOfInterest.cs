@@ -65,6 +65,9 @@ namespace Assets.Scripts
             detected = false;
             contents = new List<ExhibitionContent>();
             descriptionList = new List<Description>();
+            observers = new List<Observer>();
+            popUpWindow = PopUpWindow.Instance();
+            modalWindow = ModalWindow.Instance();
         }
 
         public void setDescriptionList(List<Description> descr)
@@ -129,8 +132,23 @@ namespace Assets.Scripts
         {
             foreach (var descr in descriptionList)
             {
+
                 
             }
+
+            string lg = PlayerPrefs.GetString("language");
+
+            Language.Language lang = Description.convertStringToLang(lg);
+
+            foreach (var d in descriptionList)
+            {
+                if (lang == d.language)
+                {
+                    popUpWindow.PopUp(d.title, myViewAction);
+                    break;
+                }
+            }
+            
             //popUpWindow.PopUp(poiDescriptionList.title, nipperPopUp, myViewAction);
             //CHANGE HERE WITH LIST OF POIDESCRIPTION
         }

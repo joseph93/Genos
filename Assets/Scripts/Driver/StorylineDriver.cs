@@ -45,6 +45,9 @@ namespace Assets.Scripts.Driver
         private string buttonTitle="buttontitle";
         private string panelTitle = "paneltitle";
         private string panelDescription = "paneldescription";
+        public Button b;
+
+        public Button[] cercles;
 
         // Use this for initialization
         void Start()
@@ -178,6 +181,10 @@ namespace Assets.Scripts.Driver
 
         public void DisplayFloorPlan(int floorId)
         {
+         
+          
+      
+
             DisplayFloor(floorId, PlayerPrefs.GetInt("storylineID"));
         }
 
@@ -191,12 +198,25 @@ namespace Assets.Scripts.Driver
                 }
             }
 
+            for (int i = 0; i < cercles.Length; i++)
+            {
+                if (i == (floorId - 1))
+                {
+                    cercles[i].image.color = new Color32(255, 0, 0, 94);
+                }
+                else
+                    cercles[i].image.color = new Color32(0, 0, 0, 0);
+            }
+
+
+
             if (changedFloor && ShortestPathCreator.touched)
             {
                 TrailRenderer trail = shortestPathCreator.GetComponent<TrailRenderer>();
                 StartCoroutine("DisableTrail", trail);
                 ShortestPathCreator.touched = false;
             }
+
 
             changedFloor = true;
 
@@ -234,6 +254,7 @@ namespace Assets.Scripts.Driver
                         
                     }
                     DisplayNodes(floorNodes, f);
+                  
                     //Added
                     //DisplayButtons(map.GetStorylines()[0].getStorypointList());
                     //Added
@@ -339,6 +360,7 @@ namespace Assets.Scripts.Driver
                         pos.gameObject.SetActive(true);
                         nodeSprite = nodeSprites[blue];
                         nodeColorEditor = nodeSprite.name; //get sprite color name (optional)
+<<<<<<< HEAD
                         pos.name = nodeColorEditor; //print color name for specific sprite (optional)
                         /*pos.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
                         pos.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
@@ -359,6 +381,23 @@ namespace Assets.Scripts.Driver
                         instantiatedNodes.Add(pos);
                         print(pos.storylineID);
   
+=======
+                        newNode.name = nodeColorEditor; //print color name for specific sprite (optional)
+                        newNode.GetComponent<Node>().x = (XCoordinatesConversion(n.x, floorPlan.getImageWidth()));
+                        newNode.GetComponent<Node>().y = (YCoordinatesConversion(n.y, floorPlan.getImageHeight()));
+                        newNode.GetComponent<Node>().id = (n.getID());
+                        newNode.GetComponent<Node>().floorNumber = int.Parse(floorPlan.floorNumber);
+                        newNode.GetComponent<SpriteRenderer>().sprite = nodeSprite;
+                        gameObjectNodesList.Add(newNode);
+
+                       /* //Added
+                        if(storyPointList.Count >= 3) { 
+                            b.enabled = false;
+                            b.GetComponentInChildren<CanvasRenderer>().SetAlpha(0);
+                            b.GetComponentInChildren<UnityEngine.UI.Text>().color = Color.clear;
+                        }
+                        */
+>>>>>>> e38c962b2f2ab223928ccfef8a7145e8de4d2cee
                     }
                 }
                 else if (n.GetType() == typeof(PointOfTransition)) //check poi or pot at runtime type
@@ -495,6 +534,21 @@ namespace Assets.Scripts.Driver
                 {
                     Debug.Log("if getType entered");
 
+
+                    POS pos = (POS)n;
+                    string lg = PlayerPrefs.GetString("language");
+
+                    Language.Language lang = Description.convertStringToLang(lg);
+
+                    foreach (var d in pos.GetPoiDescriptionList())
+                    {
+                        if (lang == d.language)
+                        {
+                            
+                            break;
+                        }
+                    }
+
                     //this.buttonTitle = n.GetComponent<Description>().getTitle(); //TODO
                     Debug.Log("buttonTitle has been entered");
 
@@ -531,10 +585,30 @@ namespace Assets.Scripts.Driver
         /*
          * Display the title and the description of the summary panel
          */
-        public void displayPanelSummary()
+        public void displayPanelSummary(int id)
         {
             Debug.Log("displayPanelSummary has been started.");
-            summaryWindow.SummaryNoImage(panelTitle, panelDescription, myCloseAction);
+
+            List<POS> storypoints = map.GetStoryline(PlayerPrefs.GetInt("storylineID")).getStorypointList();
+            string lg = PlayerPrefs.GetString("language");
+
+            Language.Language lang = Description.convertStringToLang(lg);
+
+            foreach (var sp in storypoints)
+            {
+                if(sp.id == id)
+                {
+                    foreach(var d in sp.GetPoiDescriptionList())
+                    {
+                        if(d.language == lang)
+                        {
+                            summaryWindow.SummaryNoImage(d.title, d.summary, myCloseAction);
+                        }
+                    }
+                }
+            }
+            
+            //summaryWindow.SummaryNoImage(panelTitle, panelDescription, myCloseAction);
             //summaryWindow.SummaryOneImage(titlePanel, descriptionPanel, image1, myCloseAction);
             Debug.Log("displayPanelSummary has been finished.");
         }

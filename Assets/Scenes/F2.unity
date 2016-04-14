@@ -396,6 +396,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 61afb6392da613146afbed3383696217, type: 3}
   - {fileID: 21300000, guid: 6925195a1041d424db6761f6ca104d9e, type: 3}
   shortestPathCreator: {fileID: 1724916039}
+  b: {fileID: 0}
+  cercles: []
 --- !u!4 &693852290
 Transform:
   m_ObjectHideFlags: 0
@@ -966,9 +968,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Floor 3
-
-'
+  m_Text: 
 --- !u!222 &983152136
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -982,7 +982,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 983152133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1137a3dd71637cb4183ce720f58b1991, type: 3}
   m_Name: 
@@ -2372,7 +2372,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
