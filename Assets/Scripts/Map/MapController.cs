@@ -63,11 +63,11 @@ namespace Assets.Scripts
             setAdjacencies();              //add all the adjacencies to all the nodes
 
             map = new Map();
-            map.setPoiList(poiList);
-            map.setStorypointList(storypointList);
+            //map.setPoiList(poiList);
+            //map.setStorypointList(storypointList);
             map.setFloorplanList(floorList);
             map.setStorylineList(storylineList);
-            map.initializeGraph(poiList);
+            //map.initializeGraph(poiList);
             
         }
 

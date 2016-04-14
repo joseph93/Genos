@@ -75,9 +75,19 @@ namespace Assets.Scripts
         {
             if (bluetoothOn)
             {
-                SceneManager.LoadScene("F2-next");    //change to F2, this is for testing purposes.
-                Vibration.Vibrate(100);
-                PlayerPrefs.SetInt("storylineID", slID);
+                if (slID == 0)
+                {
+                    SceneManager.LoadScene("Storyline0");    //change to Storyline0, this is for testing purposes.
+                    Vibration.Vibrate(100);
+                    PlayerPrefs.SetInt("storylineID", slID);
+                }
+                if (slID == 4)
+                {
+                    SceneManager.LoadScene("Storyline4");    //change to Storyline4, this is for testing purposes.
+                    Vibration.Vibrate(100);
+                    PlayerPrefs.SetInt("storylineID", slID);
+                }
+                
             }
 
             else

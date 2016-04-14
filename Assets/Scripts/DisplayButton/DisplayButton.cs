@@ -79,7 +79,7 @@ namespace Assets.Scripts
          */
         public void displayPanelSummary()
         {
-            summaryWindow.SummaryNoImage(titlePanel, descriptionPanel, myCloseAction);
+            summaryWindow.SummaryOneButton(titlePanel, descriptionPanel, myCloseAction);
             //summaryWindow.SummaryOneImage(title2, description2, image1, myCloseAction);
         }
     }
