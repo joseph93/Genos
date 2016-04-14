@@ -18,10 +18,13 @@ namespace Assets.Scripts
         private string titlePanel = "tttttttttttt1";
         private string descriptionPanel = "dddddddddddd1";
 
+        public Button b;
+
 
 
         void Start() {
-           // assignContent(poiList);
+            // assignContent(poiList);
+            displayButtonTitle();
 
             summaryWindow = SummaryWindow.Instance();
             myCloseAction = new UnityAction(summaryWindow.closePanel);
@@ -54,8 +57,21 @@ namespace Assets.Scripts
          */
         public void displayButtonTitle()
         {
-            yourButtonText = transform.FindChild("Text").GetComponent<Text>();
-            yourButtonText.text = titleButton;
+            int storyline = 0;
+            if(storyline == 0)
+            {           
+                yourButtonText = transform.FindChild("Text").GetComponent<Text>();
+                yourButtonText.text = titleButton;  
+            }
+            else
+            {
+                yourButtonText = transform.FindChild("Text").GetComponent<Text>();
+                yourButtonText.text = titleButton;
+                b.enabled = false;
+                b.GetComponentInChildren<CanvasRenderer>().SetAlpha(0);
+                b.GetComponentInChildren<Text>().color = Color.clear;
+            }
+            
         }
 
         /*
