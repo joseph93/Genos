@@ -12,6 +12,8 @@ namespace Assets.Scripts.Path
     {
         private MapController mc;
         private StorylineDriver slDriver;
+        private FreeRoamingDriver frDriver;
+        private Node[] nodesArray;
         private List<Node> nodesGameObjects;
         private List<GameObject> shortestPathGameObjects;
         public float speed = 5.0f;
@@ -35,8 +37,11 @@ namespace Assets.Scripts.Path
             yield return new WaitForSeconds(0.5f);
 
             slDriver = FindObjectOfType<StorylineDriver>();
-            if (slDriver != null)
-                nodesGameObjects = slDriver.GetNodeGameObjects();
+            frDriver = FindObjectOfType<FreeRoamingDriver>();
+            if (frDriver != null)
+                nodesArray = frDriver.getArrayOfNodes();
+            //if (slDriver != null)
+              //  nodesGameObjects = slDriver.GetNodeGameObjects();
             //transform.position = new Vector3(nodesGameObjects[1].transform.position.x, nodesGameObjects[1].transform.position.y, -7);
             mc = FindObjectOfType<MapController>();
             map = mc.getMap();
@@ -51,11 +56,11 @@ namespace Assets.Scripts.Path
 
                 shortestPathGameObjects.Clear();
 
-                shortest_path = slDriver.getShortestPath();
+                shortest_path = frDriver.getShortestPath();
 
                 foreach (var n in shortest_path)
                 {
-                    foreach (var g in nodesGameObjects)
+                    foreach (var g in nodesArray)
                     {
                         if (g.getID() == n.getID())
                         {

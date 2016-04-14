@@ -39,7 +39,7 @@ namespace Assets.Scripts
         }
 
         //For demo
-        public void initializeListAndGraph(Node[] arrayOfNodes)
+        public void initializeLists(Node[] arrayOfNodes)
         {
             foreach (var n in arrayOfNodes)
             {
@@ -61,7 +61,7 @@ namespace Assets.Scripts
 
         public void addNode(Node n)
         {
-            mapGraph.InsertNewVertex(n);
+            //mapGraph.InsertNewVertex(n);
             poiList.Add(n);
             storypointList.Add(n);
         }

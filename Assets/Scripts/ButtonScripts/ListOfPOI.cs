@@ -9,9 +9,8 @@ public class ListOfPOI : MonoBehaviour
 
     private SummaryWindow summaryWindow;
     private UnityAction myCloseAction;
-    private UnityAction myFindAction;
 
-    public Sprite image1;
+    /*public Sprite image1;
     public Sprite image2;
     public Sprite image3;
     public Sprite image4;
@@ -23,7 +22,7 @@ public class ListOfPOI : MonoBehaviour
     public GameObject poi3;
     public GameObject poi4;
     public GameObject poi5;
-    public GameObject poi6;
+    public GameObject poi6;*/
 
     private int poiId;
 
@@ -50,10 +49,10 @@ public class ListOfPOI : MonoBehaviour
         summaryWindow = SummaryWindow.Instance();
 
         myCloseAction = new UnityAction(summaryWindow.closePanel);
-        myFindAction = new UnityAction(locatePoi);
+        //myFindAction = new UnityAction(locatePoi);
     }
 
-    public void locatePoi()
+   /* public void locatePoi()
     {
         GameObject obj;
 
@@ -105,42 +104,42 @@ public class ListOfPOI : MonoBehaviour
         }
             
        
-    }
+    }*/
 
     public void pointOfInterest1()
     {
         poiId = 1;
-        summaryWindow.SummaryNoImage(title1, description1, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title1, description1, myCloseAction);
     }
 
     public void pointOfInterest2()
     {
         poiId = 2;
-        summaryWindow.SummaryNoImage(title2, description2, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title2, description2, myCloseAction);
     }
 
     public void pointOfInterest3()
     {
         poiId = 3;
-        summaryWindow.SummaryNoImage(title3, description3, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title3, description3, myCloseAction);
     }
 
     public void pointOfInterest4()
     {
         poiId = 4;
-        summaryWindow.SummaryNoImage(title4, description4, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title4, description4, myCloseAction);
     }
 
     public void pointOfInterest5()
     {
         poiId = 5;
-        summaryWindow.SummaryNoImage(title5, description5, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title5, description5, myCloseAction);
     }
 
     public void pointOfInterest6()
     {
         poiId = 6;
-        summaryWindow.SummaryNoImage(title6, description6, myCloseAction, myFindAction);
+        summaryWindow.SummaryOneButton(title6, description6, myCloseAction);
     }
 
     //map.GetStorylines()[0].getStorypointList()
