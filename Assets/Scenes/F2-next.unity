@@ -2047,7 +2047,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Floor 3
+  m_Text: 
 --- !u!222 &459022169
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9090,6 +9090,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7589a8ff21835ba4baeaf91c95b3c191, type: 3}
   shortestPathCreator: {fileID: 121809811}
   b: {fileID: 0}
+  cercles:
+  - {fileID: 896459501}
+  - {fileID: 78186951}
+  - {fileID: 1760496529}
+  - {fileID: 293812706}
+  - {fileID: 550356821}
 --- !u!224 &2079881387
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9119,6 +9125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 1358959132}
+  checkmarks: []
 --- !u!114 &2090153666 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11482788, guid: 82afc875b95ad5643b736046615648a8,

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class DialogueBox : MonoBehaviour
 {
     public Text introText;
-    private string testIntroText = "Welcome to the Musée des Ondes.\n Nipper will be your guide throughout this immersive experience! Manipulate the 3D-outdoor, and explore the outside of the Museum.\n When you are done,\n Enter, to discover the inside of the Museum.";
+    private string testIntroText = "Welcome to the Musée des Ondes! Manipulate the 3D-outdoor to explore around the building. Follow Nipper and press Enter to discover the inside of the Museum.";
     public float speedOfText = 0.05f;
     void Awake()
     {
