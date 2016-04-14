@@ -17,7 +17,7 @@ namespace Assets.Scripts.Observer_Pattern
         }
         public void update()
         {
-           // poi.changeIconScale();
+           poi.changeIconScale();
            // poi.popUpSound();
             Vibration.Vibrate(1000);
            poi.displayPopUpWindow();

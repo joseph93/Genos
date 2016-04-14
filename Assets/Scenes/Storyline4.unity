@@ -2516,6 +2516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63960cc59f001e4b9f3b76604f2601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   image1: {fileID: 0}
   image2: {fileID: 0}
   image3: {fileID: 0}
@@ -2528,6 +2529,8 @@ MonoBehaviour:
   poi4: {fileID: 911578462}
   poi5: {fileID: 471423614}
   poi6: {fileID: 320846860}
+=======
+>>>>>>> a4418c0fe2ae277a26be7290e21ad02dff36e2ee
 --- !u!1 &437103934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,6 +2668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63960cc59f001e4b9f3b76604f2601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   image1: {fileID: 0}
   image2: {fileID: 0}
   image3: {fileID: 0}
@@ -2677,6 +2681,8 @@ MonoBehaviour:
   poi4: {fileID: 911578462}
   poi5: {fileID: 471423614}
   poi6: {fileID: 320846860}
+=======
+>>>>>>> a4418c0fe2ae277a26be7290e21ad02dff36e2ee
 --- !u!1 &447753230
 GameObject:
   m_ObjectHideFlags: 0
@@ -5213,6 +5219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63960cc59f001e4b9f3b76604f2601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   image1: {fileID: 0}
   image2: {fileID: 0}
   image3: {fileID: 0}
@@ -5225,6 +5232,8 @@ MonoBehaviour:
   poi4: {fileID: 911578462}
   poi5: {fileID: 471423614}
   poi6: {fileID: 320846860}
+=======
+>>>>>>> a4418c0fe2ae277a26be7290e21ad02dff36e2ee
 --- !u!114 &774399268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5634,6 +5643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63960cc59f001e4b9f3b76604f2601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   image1: {fileID: 0}
   image2: {fileID: 0}
   image3: {fileID: 0}
@@ -5646,6 +5656,8 @@ MonoBehaviour:
   poi4: {fileID: 911578462}
   poi5: {fileID: 471423614}
   poi6: {fileID: 320846860}
+=======
+>>>>>>> a4418c0fe2ae277a26be7290e21ad02dff36e2ee
 --- !u!1 &893378981
 GameObject:
   m_ObjectHideFlags: 0
@@ -5790,7 +5802,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -7949,6 +7960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63960cc59f001e4b9f3b76604f2601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   image1: {fileID: 0}
   image2: {fileID: 0}
   image3: {fileID: 0}
@@ -7961,6 +7973,8 @@ MonoBehaviour:
   poi4: {fileID: 911578462}
   poi5: {fileID: 471423614}
   poi6: {fileID: 320846860}
+=======
+>>>>>>> a4418c0fe2ae277a26be7290e21ad02dff36e2ee
 --- !u!1 &1443871081
 GameObject:
   m_ObjectHideFlags: 0
@@ -8425,7 +8439,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 144288, guid: ee50ea8a32708574f94647420cab7c1b, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11454864, guid: ee50ea8a32708574f94647420cab7c1b, type: 2}
       propertyPath: reachDist
@@ -8791,6 +8805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63960cc59f001e4b9f3b76604f2601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   image1: {fileID: 0}
   image2: {fileID: 0}
   image3: {fileID: 0}
@@ -8803,6 +8818,8 @@ MonoBehaviour:
   poi4: {fileID: 911578462}
   poi5: {fileID: 471423614}
   poi6: {fileID: 320846860}
+=======
+>>>>>>> a4418c0fe2ae277a26be7290e21ad02dff36e2ee
 --- !u!1 &1604873746
 GameObject:
   m_ObjectHideFlags: 0
@@ -11444,6 +11461,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7589a8ff21835ba4baeaf91c95b3c191, type: 3}
   shortestPathCreator: {fileID: 121809811}
   arrayOfNodes:
+<<<<<<< HEAD
   - {fileID: 419002121}
   - {fileID: 244329851}
   - {fileID: 1946357330}
@@ -11464,6 +11482,28 @@ MonoBehaviour:
   - {fileID: 487500399}
   - {fileID: 1244530284}
   - {fileID: 242326058}
+=======
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+>>>>>>> a4418c0fe2ae277a26be7290e21ad02dff36e2ee
   cercles:
   - {fileID: 896459501}
   - {fileID: 78186951}
