@@ -47,6 +47,8 @@ namespace Assets.Scripts.Driver
         private string panelDescription = "paneldescription";
         public Button b;
 
+        public Button[] cercles;
+
         // Use this for initialization
         void Start()
         {
@@ -192,12 +194,25 @@ namespace Assets.Scripts.Driver
                 }
             }
 
+            for (int i = 0; i < cercles.Length; i++)
+            {
+                if (i == (floorId - 1))
+                {
+                    cercles[i].image.color = new Color32(255, 0, 0, 94);
+                }
+                else
+                    cercles[i].image.color = new Color32(0, 0, 0, 0);
+            }
+
+
+
             if (changedFloor && ShortestPathCreator.touched)
             {
                 TrailRenderer trail = shortestPathCreator.GetComponent<TrailRenderer>();
                 StartCoroutine("DisableTrail", trail);
                 ShortestPathCreator.touched = false;
             }
+
 
             changedFloor = true;
 
