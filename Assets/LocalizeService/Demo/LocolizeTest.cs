@@ -17,7 +17,6 @@ public class LocolizeTest : MonoBehaviour
     {
         //Added
         PlayerPrefs.SetString("language", "EN");
-
         LocalizationService.Instance.Localization = "English";   
         CurrentText.text = string.Format("Current localization {0}",
         LocalizationService.Instance.GetTextByKeyWithLocalize("localization1", "English"));
@@ -27,7 +26,6 @@ public class LocolizeTest : MonoBehaviour
     {
         //Added
         PlayerPrefs.SetString("language", "FR");
-
         LocalizationService.Instance.Localization = "French";
         CurrentText.text = string.Format("Current localization {0}",
         LocalizationService.Instance.GetTextByKeyWithLocalize("localization3", "English"));
@@ -36,36 +34,19 @@ public class LocolizeTest : MonoBehaviour
     public void English()
     {
         PlayerPrefs.SetString("language", "EN");
-
-        SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
-
-        //SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
-
+        SceneManager.LoadScene("Menu");  //changer a Menu, this is for testing purposes
         Vibration.Vibrate(100);
-
         LocalizationService.Instance.Localization = "English";
         CurrentText.text = string.Format("Current localization {0}",
         LocalizationService.Instance.GetTextByKeyWithLocalize("localization1", "English"));
         
     }
-/*
-    public void Russian()
-    {
-        LocalizationService.Instance.Localization = "Russian";
-        CurrentText.text = string.Format("Current localization {0}",
-        LocalizationService.Instance.GetTextByKeyWithLocalize("localization2", "English"));
-    }
-*/
+
     public void French()
     {
         PlayerPrefs.SetString("language", "FR");
-
-        SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
-
-        //SceneManager.LoadScene("TourSelection");  //changer a Menu, this is for testing purposes
-
+        SceneManager.LoadScene("Menu");  //changer a Menu, this is for testing purposes
         Vibration.Vibrate(100);
-
         LocalizationService.Instance.Localization = "French";
         CurrentText.text = string.Format("Current localization {0}",
         LocalizationService.Instance.GetTextByKeyWithLocalize("localization3", "English"));

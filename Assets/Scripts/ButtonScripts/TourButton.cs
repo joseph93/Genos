@@ -32,15 +32,15 @@ namespace Assets.Scripts
             Vibration.Vibrate(100);
         }
 
-        public void loadFloor2Next()
+        public void loadStoryline()
         {
-            SceneManager.LoadScene("F2-next");
+            SceneManager.LoadScene("Storyline0");
             Vibration.Vibrate(100);
         }
 
         public void loadOverview()
         {
-            SceneManager.LoadScene("F2");
+            SceneManager.LoadScene("Overview0");
             Vibration.Vibrate(100);
         }
 
