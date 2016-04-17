@@ -12,12 +12,6 @@ public class PathFollowerOverview : MonoBehaviour
 
     public static int Length { get; private set; }
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -33,36 +27,4 @@ public class PathFollowerOverview : MonoBehaviour
                 currentPoint++;
         }
     }
-/*
-    void OnDrawGizmos()
-    {
-
-        //Draw gizmos lines
-        for (int i = 0; i < path.Length; i++)
-        {
-            Vector3 pos = path[i].position; //current point PointB
-            if (i > 0)
-            {
-                Vector3 prev = path[i - 1].position; //previous point PointA
-                Gizmos.DrawLine(prev, pos);
-            }
-        }
-
-        //Draw gizmos spheres
-        if (path.Length > 0)
-        {
-            for (int i = 0; i < path.Length; i++)
-            {
-                if (path[i] != null)
-                {
-                    float radius = 0.2f;
-                    Gizmos.DrawWireSphere(path[i].position, radius);
-                    //Gizmos.DrawSphere(path[i].position, reachDist);				
-                }
-            }
-        }
-
-
-    }
-*/
 }

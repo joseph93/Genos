@@ -450,7 +450,7 @@ namespace Assets.Scripts.Driver
                 }//foreach
 
             */
-            } //end of display nodes
+            }//end of displaynodes
         
         /*
      * Assign the parsed titleButton, titlePanel, and descriptionPanel from the list of storyline/pos/poi

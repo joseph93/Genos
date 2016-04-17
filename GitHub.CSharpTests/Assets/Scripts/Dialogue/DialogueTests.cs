@@ -2,7 +2,6 @@
 using UnityEditor;
 using NUnit.Framework;
 using SunCubeStudio.Localization;
-using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
